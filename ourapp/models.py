@@ -29,6 +29,19 @@ class Customer(models.Model) :
 	def __str__(self) : 
 		return self.name
 		
+class Cuisine(models.Model) : 
+	name = models.CharField('Comment', max_length=30)
+	
+	def __str__(self) : 
+		return str(self.rating)	
+				
+class GenericDish(models.Model) : 
+	name = models.CharField('Comment', max_length=30)
+	cuisine = models.ForeignKey(Cuisine)
+	
+	def __str__(self) : 
+		return self.name	
+				
 class Dish(models.Model) : 
 	name = models.CharField('Dish Name', max_length=20)
 	rating = models.IntegerField('Avg. Rating', max_length=1)
@@ -62,16 +75,3 @@ class DishReview(models.Model) :
 	
 	def __str__(self) : 
 		return str(self.rating)		
-	
-class Cuisine(models.Model) : 
-	name = models.CharField('Comment', max_length=30)
-	
-	def __str__(self) : 
-		return str(self.rating)	
-		
-class GenericDish(models.Model) : 
-	name = models.CharField('Comment', max_length=30)
-	cuisine = models.ForeignKey(Cuisine)
-	
-	def __str__(self) : 
-		return self.name	
