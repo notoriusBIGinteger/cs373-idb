@@ -20,7 +20,7 @@ class Restaurant(models.Model) :
 	pet_friendly = models.BooleanField('Pet Friendly')
 	cost = models.IntegerField('Cost', max_length=1)
 	website = models.URLField('Website')
-        cuisine = models.ForeignKey(Cuisine)
+	cuisine = models.ForeignKey(Cuisine)
 	
 	def __str__(self) : 
 		return self.name
@@ -47,8 +47,8 @@ class GenericDish(models.Model) :
 class Dish(models.Model) : 
 	name = models.CharField('Name', max_length=40)
 	rating = models.IntegerField('Avg. Rating', max_length=1)
-        num_ratings = models.IntegerField('Number of Ratings')
-        sum_of_ratings = models.IntegerField() # customers shouldn't see this.
+	num_ratings = models.IntegerField('Number of Ratings')
+	sum_of_ratings = models.IntegerField() # customers shouldn't see this.
 	vegetarian = models.BooleanField('Vegetarian')
 	vegan = models.BooleanField('Vegan')
 	kosher = models.BooleanField('Kosher')
