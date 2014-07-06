@@ -4,9 +4,9 @@ class Restaurant(models.Model) :
 	name = models.CharField('Name', max_length=30)
 	reservation_required = models.BooleanField('Reservations Required')
 	reservation_avail = models.BooleanField('Reservations Available')
-	has_waiter =models.CharField('Table Service', max_length=10)
+	has_waiter =models.BooleanField('Waiter Service')
 	phone_number = models.CharField('Phone Number', max_length=50)
-	food_type = models.CharField('Cuisine', max_length=30)
+	description = models.CharField('Description', max_length=200)
 	zip_code = models.CharField('Zip Code', max_length=5)
 	address = models.CharField('Address', max_length=50)
 	delivery = models.BooleanField('Delivery Available')
@@ -22,7 +22,7 @@ class Restaurant(models.Model) :
 		ordering = ["name"]
 
 class Customer(models.Model) : 
-	name = models.CharField('Customer Name', max_length=15)
+	name = models.CharField('Name', max_length=15)
 	recent_check_in = models.CharField('Last Check-In', max_length=30)
 	dietary_preference = models.CharField('Diet', max_length=60)
 	
@@ -30,20 +30,20 @@ class Customer(models.Model) :
 		return self.name
 		
 class Cuisine(models.Model) : 
-	name = models.CharField('Comment', max_length=30)
+	name = models.CharField('Name', max_length=30)
 	
 	def __str__(self) : 
 		return str(self.rating)	
 				
 class GenericDish(models.Model) : 
-	name = models.CharField('Comment', max_length=30)
+	name = models.CharField('Name', max_length=30)
 	cuisine = models.ForeignKey(Cuisine)
 	
 	def __str__(self) : 
 		return self.name	
 				
 class Dish(models.Model) : 
-	name = models.CharField('Dish Name', max_length=20)
+	name = models.CharField('Name', max_length=20)
 	rating = models.IntegerField('Avg. Rating', max_length=1)
 	vegetarian = models.BooleanField('Vegetarian')
 	vegan = models.BooleanField('Vegan')
