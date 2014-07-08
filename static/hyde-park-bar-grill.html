@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Wham and Wheeler Sample Page</title>
+    <title>Hyde Park Bar and Grill</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -37,8 +37,25 @@ $("#menu").load("hyde-park-bar-grill-menu.html", function () {
           subDiv.slideUp(200);
        }
       });
-    
-   /*$(".close-food-item").bind("click", 
+});   
+
+$("#reviews").load("hyde-park-bar-grill-reviews.html", function () {
+  $(".review-item").bind("click", 
+      function(event) {
+        if(!$(event.target).hasClass("review-item-link")) 
+        {
+         event.preventDefault();
+        }
+       var subDiv = $(this).find('.review-item-content');
+     if (!subDiv.is(":visible")) { 
+       subDiv.slideDown(200);
+     }
+       else {
+          subDiv.slideUp(200);
+       }
+      });
+
+/*$(".close-food-item").bind("click", 
       function(event) { 
          event.preventDefault(); 
          var subDiv = $(this).parent().parent().parent().find('.food-item-content');
@@ -68,15 +85,8 @@ $("#menu").load("hyde-park-bar-grill-menu.html", function () {
 
 <div class="container" id="main-restaurant">
 
-<div class="col-md-6">
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Reviews</h3>
-  </div>
-  <div class="panel-body">
-  </div>
-</div>
-</div>
+<div class="col-md-6" id="reviews">
+</div> <!-- end col-md-6 -->
 <div class="col-md-6" id="menu">
 </div> <!-- end col-md-4 -->
 
