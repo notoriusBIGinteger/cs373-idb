@@ -1,0 +1,55 @@
+.masthead
+{
+background-image:url("../img/kerbeylane.jpg");
+background-position:left bottom;
+}
+
+.gray-overlay
+{
+padding:1em;
+background-color:rgba(240, 240, 240, 0.5);
+}
+
+.white-overlay
+{
+padding:1em;
+background-color:rgba(255, 255, 255, 0.5);
+}
+
+.status-open
+{
+color:#009933;
+}
+
+#main-restaurant
+{
+margin-bottom:5%;
+}
+
+.food-list
+{
+list-style:none;
+}
+
+.food-item:hover
+{
+background-color:#f5f5f5;
+}
+
+.food-item .food-item-content
+{
+  display:none;
+}
+.food-item-rating, .food-item-dollars
+{
+float:right;
+}
+.food-item-rating
+{
+margin-right:3%;
+}
+
+.close-food-item
+{
+float:right; padding:2px;
+}
