@@ -1,0 +1,10 @@
+#!/v/filer4b/v38q001/mwham/public_html/testpage/css/venv/bin/python3.2
+# EASY-INSTALL-ENTRY-SCRIPT: 'grunt==0.1.1','console_scripts','grunt'
+__requires__ = 'grunt==0.1.1'
+import sys
+from pkg_resources import load_entry_point
+
+if __name__ == '__main__':
+    sys.exit(
+        load_entry_point('grunt==0.1.1', 'console_scripts', 'grunt')()
+    )
