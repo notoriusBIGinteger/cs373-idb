@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Wham and Wheeler Sample Page</title>
+    <title>Kerbey Lane Cafe</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -22,7 +22,7 @@
 
 $(document).ready(
 function() {
-$("#menu").load("magnolia-cafe-menu.html", function () {
+$("#menu").load("kerbey-lane-menu.html", function () {
   $(".food-item").bind("click", 
       function(event) {
         if(!$(event.target).hasClass("menu-item-link")) 
@@ -30,25 +30,6 @@ $("#menu").load("magnolia-cafe-menu.html", function () {
          event.preventDefault();
         }
        var subDiv = $(this).find('.food-item-content');
-     if (!subDiv.is(":visible")) { 
-       subDiv.slideDown(200);
-     }
-       else {
-          subDiv.slideUp(200);
-       }
-      });
-
-
-});   
-
-$("#reviews").load("magnolia-cafe-reviews.html", function () {
-  $(".review-item").bind("click", 
-      function(event) {
-        if(!$(event.target).hasClass("review-item-link")) 
-        {
-         event.preventDefault();
-        }
-       var subDiv = $(this).find('.review-item-content');
      if (!subDiv.is(":visible")) { 
        subDiv.slideDown(200);
      }
@@ -79,7 +60,7 @@ $("#reviews").load("magnolia-cafe-reviews.html", function () {
     <script src="js/bootstrap.min.js"></script>
 <div class="jumbotron masthead">
 <div class="container gray-overlay">
-<div class="col-md-8"><h1>Magnolia Cafe</h1>
+<div class="col-md-8"><h1>Kerbey Lane Cafe</h1>
 <p><strong class="status-open">Open 24/7</strong></p>
 <p>Description of this here fiiine restaurant</p>
 </div>
@@ -87,7 +68,14 @@ $("#reviews").load("magnolia-cafe-reviews.html", function () {
 
 <div class="container" id="main-restaurant">
 
-<div class="col-md-6" id="reviews">
+<div class="col-md-6">
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">Reviews</h3>
+  </div>
+  <div class="panel-body">
+  </div>
+</div>
 </div>
 <div class="col-md-6" id="menu">
 </div> <!-- end col-md-4 -->
