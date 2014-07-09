@@ -18,20 +18,20 @@ Get a list of all restaurants.
                 "restaurants": [
                     {
                         "restaurant_id": "1",
-                        "name": "Chang Thai"
+                        "name": "Chang Thai",
                         "cuisine_id" : "1",
                         "reservation_required" : "False",
                         "reservation_avail" : "False",
                         "has_waiter" : "True",
                         "phone" :  "512-491-8859",
                         "description" : "Brings the legendary flavors of Thailand to Austin.",
-                        "zip_code" : "78753"
-                        "address" : "13000 N IH-35"
-                        "delivery" : "False"
-                        "take_out" : "True"
-                        "pet_friendly" : "False"
-                        "cost" : "2"
-                        "website" : "http://www.changthaithaicuisine.com/",
+                        "zip_code" : "78753",
+                        "address" : "13000 N IH-35",
+                        "delivery" : "False",
+                        "take_out" : "True",
+                        "pet_friendly" : "False",
+                        "cost" : "2",
+                        "website" : "http://www.changthaithaicuisine.com/"
                     },
                     {
                         "restaurant_id": "2",
@@ -42,13 +42,13 @@ Get a list of all restaurants.
                         "has_waiter" : "True",
                         "phone" :  "512-477-5717",
                         "description" : "Brings the legendary flavors of Austin to Austin.",
-                        "zip_code" : "78705"
-                        "address" : "2606 Guadalupe St."
-                        "delivery" : "False"
-                        "take_out" : "True"
-                        "pet_friendly" : "False"
-                        "cost" : "1"
-                        "website" : "http://www.kerbeylanecafe.com/",
+                        "zip_code" : "78705",
+                        "address" : "2606 Guadalupe St.",
+                        "delivery" : "False",
+                        "take_out" : "True",
+                        "pet_friendly" : "False",
+                        "cost" : "1",
+                        "website" : "http://www.kerbeylanecafe.com/"
                     },
                     {
                         "restaurant_id": "3",
@@ -59,13 +59,13 @@ Get a list of all restaurants.
                         "has_waiter" : "True",
                         "phone" :  "512-491-8859",
                         "description" : "Brings the legendary flavors of Magnolia to Austin.",
-                        "zip_code" : "78704"
-                        "address" : "1920 S. Congress Ave."
-                        "delivery" : "False"
-                        "take_out" : "True"
-                        "pet_friendly" : "False"
-                        "cost" : "1"
-                        "website" : "http://themagnoliacafe.com/",
+                        "zip_code" : "78704",
+                        "address" : "1920 S. Congress Ave.",
+                        "delivery" : "False",
+                        "take_out" : "True",
+                        "pet_friendly" : "False",
+                        "cost" : "1",
+                        "website" : "http://themagnoliacafe.com/"
                     }
                 ]
             }
@@ -96,20 +96,20 @@ Get a single restaurant's details:
 
             { 
               "name" : "Chang Thai", 
-              "id" : "1",
+              "restaurant_id" : "1",
               "cuisine_id" : "1",
               "reservation_required" : "False",
               "reservation_avail" : "False",
               "has_waiter" : "True",
               "phone" :  "512-491-8859",
               "description" : "Brings the legendary flavors of Thailand to Austin.",
-              "zip_code" : "78753"
-              "address" : "13000 N IH-35"
-              "delivery" : "False"
-              "take_out" : "True"
-              "pet_friendly" : "False"
-              "cost" : "1"
-              "website" : "http://www.changthaithaicuisine.com/",
+              "zip_code" : "78753",
+              "address" : "13000 N IH-35",
+              "delivery" : "False",
+              "take_out" : "True",
+              "pet_friendly" : "False",
+              "cost" : "1",
+              "website" : "http://www.changthaithaicuisine.com/"
              }
 
 ## GET /api/restaurant/{id}/dishes
@@ -139,7 +139,7 @@ Content-Type: application/json
                         "nut_allergy" : "False", 
                         "cost" : "2",
                         "restaurant_id" : "4",
-                        "generic_id" : "2",
+                        "generic_id" : "2"
                     },
                     {
                         "dish_id" : "13", 
@@ -154,7 +154,7 @@ Content-Type: application/json
                         "nut_allergy" : "False", 
                         "cost" : "1",
                         "restaurant_id" : "4",
-                        "generic_id" : "3",
+                        "generic_id" : "3"
                     },
                 ]
             }
@@ -177,14 +177,14 @@ Get a list of a restaurant's reviews.
                         "customer_id" : "1",
                         "review_id" : "1",
                         "comment" : "The ambience is pretty nice, great date spot!!!",
-                        "rating" : "4",
+                        "rating" : "4"
                     },
                     {
                         "restaurant_id" : "4", 
                         "customer_id" : "2",
                         "review_id" : "2",
                         "comment" : "Being a vegetarian I was pleased to see that they had plenty of options for me.",
-                        "rating" : "3",
+                        "rating" : "3"
                     },
                 ]
             }
@@ -203,16 +203,16 @@ Get a list of all customers.
             { 
                 "customers": [
                     {
-                        "id": "1",
-                        "name": "Kevin Wheeler",
+                        "customer_id": "1",
+                        "name": "Kevin Wheeler"
                     },
                     {
-                        "id": "2",
-                        "name": "Mike Wham",
+                        "customer_id": "2",
+                        "name": "Mike Wham"
                     },
                     {
-                        "id": "3",
-                        "name": "Omar Lalani",
+                        "customer_id": "3",
+                        "name": "Omar Lalani"
                     }
                 ]
             }
@@ -232,7 +232,7 @@ Get a single customers's details:
 
             { 
               "name" : "Omar Lalani", 
-              "id" : "3",
+              "customer_id" : "3"
             }
 
 ## GET /api/customer/{id}/restaurantreviews
@@ -251,14 +251,14 @@ Get a list of restaurant reviews by a specific customer.
                         "restaurant_id" : "4", 
                         "customer_id" : "1" ,
                         "rating" : "5",
-                        "comment" : "The ambience is pretty nice, great date spot!!!",
+                        "comment" : "The ambience is pretty nice, great date spot!!!"
                     },
                     {
                         "restaurant_id" : "3", 
                         "customer_id" : "1" ,
                         "rating" : "4",
-                        "comment" : "Menu selection is HUGE!!! Lots to choose from and something for everyone.",
-                    },
+                        "comment" : "Menu selection is HUGE!!! Lots to choose from and something for everyone."
+                    }
                 ]
             }
 
@@ -279,14 +279,14 @@ Get a list of dish reviews by a specific customer.
                         "dish_id" : "12", 
                         "customer_id" : "1" ,
                         "rating" : "2",
-                        "comment" : "Tortillas were mad soggy.",
+                        "comment" : "Tortillas were mad soggy."
                     },
                     {
                         "dish_id" : "13", 
                         "customer_id" : "1" ,
                         "rating" : "3",
-                        "comment" : "Love me some crunchy iceberg lettuce!",
-                    },
+                        "comment" : "Love me some crunchy iceberg lettuce!"
+                    }
                 ]
             }
 
@@ -317,7 +317,7 @@ Get a list of all dishes.
                         "nut_allergy" : "False", 
                         "cost" : "1",
                         "restaurant_id" : "3",
-                        "generic_id" : "1",
+                        "generic_id" : "1"
                     },
                     {
                         "dish_id" : "2", 
@@ -332,8 +332,8 @@ Get a list of all dishes.
                         "nut_allergy" : "False", 
                         "cost" : "1",
                         "restaurant_id" : "3",
-                        "generic_id" : "1",
-                    },
+                        "generic_id" : "1"
+                    }
                 ]
             }
 
@@ -372,7 +372,7 @@ Content-Type: application/json
                     "nut_allergy" : "False", 
                     "cost" : "1",
                     "restaurant_id" : "3",
-                    "generic_id" : "1",
+                    "generic_id" : "1"
                 }
 
 ## GET /api/dish/{id}/reviews
@@ -391,14 +391,14 @@ Get a list of reviews of a specific dish.
                         "dish_id" : "12", 
                         "customer_id" : "1" ,
                         "rating" : "2",
-                        "comment" : "Tortillas were mad soggy.",
+                        "comment" : "Tortillas were mad soggy."
                     },
                     {
                         "dish_id" : "12", 
                         "customer_id" : "2" ,
                         "rating" : "3",
-                        "comment" : "I would rather have fried fish but I suppose this option is healthier.",
-                    },
+                        "comment" : "I would rather have fried fish but I suppose this option is healthier."
+                    }
                 ]
             }
 
@@ -417,17 +417,17 @@ Get a list of generic dishes.
                     {
                         "generic_id": "1",
                         "cuisine_id": "1",
-                        "name" : "Pasta",
+                        "name" : "Pasta"
                     },
                     {
                         "generic_id": "2",
                         "cuisine_id": "2",
-                        "name" : "Tacos",
+                        "name" : "Tacos"
                     },
                     {
                         "generic_id": "3",
                         "cuisine_id": "3",
-                        "name" : "Salad",
+                        "name" : "Salad"
                     }
                 ]
             }
@@ -445,7 +445,7 @@ Get attributes of a generic dish type.
             {
                 "generic_id": "3",
                 "cuisine_id": "3",
-                "name" : "Salad",
+                "name" : "Salad"
             }
 
 ## GET /api/genericdish/{id}/dishes
@@ -473,7 +473,7 @@ Get a list of dishes categorized under a generic dish type.
                         "nut_allergy" : "False", 
                         "cost" : "1",
                         "restaurant_id" : "2",
-                        "generic_id" : "4",
+                        "generic_id" : "4"
                     },
                     {
                         "dish_id" : "4", 
@@ -488,7 +488,7 @@ Get a list of dishes categorized under a generic dish type.
                         "nut_allergy" : "False", 
                         "cost" : "1",
                         "restaurant_id" : "2",
-                        "generic_id" : "3",
+                        "generic_id" : "3"
                     },
                     {
                         "dish_id" : "13", 
@@ -503,8 +503,8 @@ Get a list of dishes categorized under a generic dish type.
                         "nut_allergy" : "False", 
                         "cost" : "1",
                         "restaurant_id" : "3",
-                        "generic_id" : "3",
-                    },
+                        "generic_id" : "3"
+                    }
                 ]
             }
 
@@ -523,20 +523,20 @@ Get a list of all cuisines.
                 "cuisines": [
                     {
                         "id" : "1",
-                        "name" : "Italian",
+                        "name" : "Italian"
                     },
                     {
                         "id" : "2",
-                        "name" : "Mexican",
+                        "name" : "Mexican"
                     },
                     {
                         "id" : "3",
-                        "name" : "American",
+                        "name" : "American"
                     },
                     {
                         "id" : "4",
-                        "name" : "Asian",
-                    },
+                        "name" : "Asian"
+                    }
                 ]
             }
             
@@ -547,11 +547,12 @@ Get attributes of a specific cuisine.
     + id (required, number, `1`) ... Numeric `id` of the cuisine to perform action with. Has example value.
 
 + Response 200 (application/json)
+    
     + Body
 
             {
-                "id": "4",
-                "name" : "Asian",
+                "id" : "4",
+                "name" : "Asian"
             }   
 
 ## GET /api/cuisine/{id}/dishes
@@ -569,18 +570,18 @@ Get a list of generic dishes for a specific cuisine.
                     {
                         "cuisine_id" : "1", 
                         "generic_id" : "1",
-                        "name" : "Pasta",
+                        "name" : "Pasta"
                     },
                     {
                         "cuisine_id" : "1", 
                         "generic_id" : "4" ,
-                        "name" : "Pizza",
+                        "name" : "Pizza"
                     },
                     {
                         "cuisine_id" : "1", 
                         "generic_id" : "11" ,
-                        "name" : "Antipasti",
-                    },
+                        "name" : "Antipasti"
+                    }
                 ]
             }
 
@@ -611,8 +612,8 @@ Get a list of restaurants serving a specific cuisine.
                         "take_out" : "True"
                         "pet_friendly" : "False"
                         "cost" : "1"
-                        "website" : "http://www.torchystacos.com/",
-                    }
+                        "website" : "http://www.torchystacos.com/"
+                    },
                     {
                         "restaurant_id": "13",
                         "name": "Habanero Mexican Cafe",
@@ -628,8 +629,8 @@ Get a list of restaurants serving a specific cuisine.
                         "take_out" : "False"
                         "pet_friendly" : "False"
                         "cost" : "1"
-                        "website" : "http://www.habanerocafe.com/",
-                    }
+                        "website" : "http://www.habanerocafe.com/"
+                    },
                     {
                         "restaurant_id": "14",
                         "name": "Curra's Grill"
@@ -645,7 +646,7 @@ Get a list of restaurants serving a specific cuisine.
                         "take_out" : "False"
                         "pet_friendly" : "False"
                         "cost" : "2"
-                        "website" : "http://www.currasgrill.com/",
+                        "website" : "http://www.currasgrill.com/"
                     }
                 ]
             }
