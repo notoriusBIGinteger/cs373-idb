@@ -1,0 +1,651 @@
+FORMAT: 1A
+HOST: http://notoriousbiginteger.pythonanywhere.com/
+
+# fead.ly
+fead.ly API is a **meal recommendation and review** service.
+
+# Group Restaurants
+Restaurant related resources of the *fead.ly API*
+
+## GET /api/restaurants
+Get a list of all restaurants.
+
++ Response 200 (application/json)
+
+    + Body
+
+            { 
+                "restaurants": [
+                    {
+                        "restaurant_id": "1",
+                        "name": "Chang Thai"
+                        "cuisine_id" : "1",
+                        "reservation_required" : "False",
+                        "reservation_avail" : "False",
+                        "has_waiter" : "True",
+                        "phone" :  "512-491-8859",
+                        "description" : "Brings the legendary flavors of Thailand to Austin.",
+                        "zip_code" : "78753"
+                        "address" : "13000 N IH-35"
+                        "delivery" : "False"
+                        "take_out" : "True"
+                        "pet_friendly" : "False"
+                        "cost" : "2"
+                        "website" : "http://www.changthaithaicuisine.com/",
+                    },
+                    {
+                        "restaurant_id": "2",
+                        "name": "Kerbey Lane"
+                        "cuisine_id" : "2",
+                        "reservation_required" : "False",
+                        "reservation_avail" : "False",
+                        "has_waiter" : "True",
+                        "phone" :  "512-477-5717",
+                        "description" : "Brings the legendary flavors of Austin to Austin.",
+                        "zip_code" : "78705"
+                        "address" : "2606 Guadalupe St."
+                        "delivery" : "False"
+                        "take_out" : "True"
+                        "pet_friendly" : "False"
+                        "cost" : "1"
+                        "website" : "http://www.kerbeylanecafe.com/",
+                    },
+                    {
+                        "restaurant_id": "3",
+                        "name": "Magnolia Cafe"
+                        "cuisine_id" : "2",
+                        "reservation_required" : "False",
+                        "reservation_avail" : "False",
+                        "has_waiter" : "True",
+                        "phone" :  "512-491-8859",
+                        "description" : "Brings the legendary flavors of Magnolia to Austin.",
+                        "zip_code" : "78704"
+                        "address" : "1920 S. Congress Ave."
+                        "delivery" : "False"
+                        "take_out" : "True"
+                        "pet_friendly" : "False"
+                        "cost" : "1"
+                        "website" : "http://themagnoliacafe.com/",
+                    }
+                ]
+            }
+
+## GET /api/restaurant/{id}/attributes
+Get a single restaurant's details:
+
+- Name
+- Cuisine type
+- Reservation required
+- Reservation available
+- Waiter service
+- Phone number
+- Description
+- Zip code
+- Address
+- Delivery
+- Take out
+- Pet-friendly
+- Cost
+- Website
+
++ Parameters
+    + id (required, number, `1`) ... Numeric `id` of the restaurant to perform action with. Has example value.
+
++ Response 200 (application/json)
+    + Body
+
+            { 
+              "name" : "Chang Thai", 
+              "id" : "1",
+              "cuisine_id" : "1",
+              "reservation_required" : "False",
+              "reservation_avail" : "False",
+              "has_waiter" : "True",
+              "phone" :  "512-491-8859",
+              "description" : "Brings the legendary flavors of Thailand to Austin.",
+              "zip_code" : "78753"
+              "address" : "13000 N IH-35"
+              "delivery" : "False"
+              "take_out" : "True"
+              "pet_friendly" : "False"
+              "cost" : "1"
+              "website" : "http://www.changthaithaicuisine.com/",
+             }
+
+## GET /api/restaurant/{id}/dishes
+Get a list of a restaurant's dishes.
+
++ Parameters
+    + id (required, number, `1`) ... Numeric `id` of the restaurant to perform action with. Has example value.
+
++ Response 200 (application/json)
+Content-Type: application/json
+
+    + Body
+
+            { 
+                
+                "restaurant_dishes": [
+                    {   
+                        "dish_id" : "12", 
+                        "name" : "Blackened Fish Tacos" ,
+                        "rating" : "3",
+                        "number_ratings" : "5",
+                        "sum_ratings" : "15",
+                        "vegetarian" : "False", 
+                        "vegan" : "False",
+                        "kosher" : "False",
+                        "halal" : "False",
+                        "nut_allergy" : "False", 
+                        "cost" : "2",
+                        "restaurant_id" : "4",
+                        "generic_id" : "2",
+                    },
+                    {
+                        "dish_id" : "13", 
+                        "name" : "Caesar Salad" ,
+                        "rating" : "2",
+                        "number_ratings" : "5",
+                        "sum_ratings" : "10",
+                        "vegetarian" : "True", 
+                        "vegan" : "False",
+                        "kosher" : "False",
+                        "halal" : "False",
+                        "nut_allergy" : "False", 
+                        "cost" : "1",
+                        "restaurant_id" : "4",
+                        "generic_id" : "3",
+                    },
+                ]
+            }
+    
+## GET /api/restaurant/{id}/reviews     
+Get a list of a restaurant's reviews.
+
++ Parameters
+    + id (required, number, `1`) ... Numeric `id` of the restaurant to perform action with. Has example value.
+
++ Response 200 (application/json)
+
+    + Body
+
+            { 
+                
+                "restaurant_reviews": [
+                    {   
+                        "restaurant_id" : "4", 
+                        "customer_id" : "1",
+                        "review_id" : "1",
+                        "comment" : "The ambience is pretty nice, great date spot!!!",
+                        "rating" : "4",
+                    },
+                    {
+                        "restaurant_id" : "4", 
+                        "customer_id" : "2",
+                        "review_id" : "2",
+                        "comment" : "Being a vegetarian I was pleased to see that they had plenty of options for me.",
+                        "rating" : "3",
+                    },
+                ]
+            }
+
+# Group Customers
+Customer related resources of the *fead.ly API*
+
+## GET /api/customers/
+
+Get a list of all customers.
+
++ Response 200 (application/json)
+
+    + Body
+
+            { 
+                "customers": [
+                    {
+                        "id": "1",
+                        "name": "Kevin Wheeler",
+                    },
+                    {
+                        "id": "2",
+                        "name": "Mike Wham",
+                    },
+                    {
+                        "id": "3",
+                        "name": "Omar Lalani",
+                    }
+                ]
+            }
+
+## GET /api/customer/{id}
+Get a single customers's details:
+
+- Name
+
++ Parameters
+    + id (required, number, `1`) ... Numeric `id` of the customer to perform action with. Has example value.
+
+
++ Response 200 (application/json)
+
+    + Body
+
+            { 
+              "name" : "Omar Lalani", 
+              "id" : "3",
+            }
+
+## GET /api/customer/{id}/restaurantreviews
+Get a list of restaurant reviews by a specific customer.
+
++ Parameters
+    + id (required, number, `1`) ... Numeric `id` of the customer to perform action with. Has example value.
+
++ Response 200 (application/json)
+
+    + Body
+
+            { 
+                "customer_restaurant_reviews": [
+                    {
+                        "restaurant_id" : "4", 
+                        "customer_id" : "1" ,
+                        "rating" : "5",
+                        "comment" : "The ambience is pretty nice, great date spot!!!",
+                    },
+                    {
+                        "restaurant_id" : "3", 
+                        "customer_id" : "1" ,
+                        "rating" : "4",
+                        "comment" : "Menu selection is HUGE!!! Lots to choose from and something for everyone.",
+                    },
+                ]
+            }
+
+## GET /api/customer/{id}/dishreviews
+Get a list of dish reviews by a specific customer.
+
++ Parameters
+    + id (required, number, `1`) ... Numeric `id` of the customer to perform action with. Has example value.
+
+
++ Response 200 (application/json)
+
+    + Body
+
+            { 
+                "customer_dish_reviews": [
+                    {
+                        "dish_id" : "12", 
+                        "customer_id" : "1" ,
+                        "rating" : "2",
+                        "comment" : "Tortillas were mad soggy.",
+                    },
+                    {
+                        "dish_id" : "13", 
+                        "customer_id" : "1" ,
+                        "rating" : "3",
+                        "comment" : "Love me some crunchy iceberg lettuce!",
+                    },
+                ]
+            }
+
+
+# Group Dishes
+Dish related resources of the *fead.ly API*
+
+## GET /api/dishes/
+
+Get a list of all dishes.
+
++ Response 200 (application/json)
+
+    + Body
+
+            { 
+                "dishes": [
+                    {
+                        "dish_id" : "1", 
+                        "name" : "Alfredo Pasta" ,
+                        "rating" : "4",
+                        "number_ratings" : "4",
+                        "sum_ratings" : "16",
+                        "vegetarian" : "False", 
+                        "vegan" : "False",
+                        "kosher" : "False",
+                        "halal" : "False",
+                        "nut_allergy" : "False", 
+                        "cost" : "1",
+                        "restaurant_id" : "3",
+                        "generic_id" : "1",
+                    },
+                    {
+                        "dish_id" : "2", 
+                        "name" : "Pasta Caspian" ,
+                        "rating" : "3",
+                        "number_ratings" : "7",
+                        "sum_ratings" : "21",
+                        "vegetarian" : "False", 
+                        "vegan" : "False",
+                        "kosher" : "False",
+                        "halal" : "False",
+                        "nut_allergy" : "False", 
+                        "cost" : "1",
+                        "restaurant_id" : "3",
+                        "generic_id" : "1",
+                    },
+                ]
+            }
+
+## GET /api/dish/{id}
+Get a single dishes's details:
+
+- Name
+- Average Rating
+- Vegetarian
+- Vegan
+- Kosher
+- Halal
+- Contains Nuts
+- Cost
+- Restaurant Location
+- Dish Type
+
++ Parameters
+    + id (required, number, `1`) ... Numeric `id` of the dish to perform action with. Has example value.
+
++ Response 200 (OK)
+Content-Type: application/json
+
+    + Body
+
+                {
+                    "dish_id" : "2", 
+                    "name" : "Pasta Caspian" ,
+                    "rating" : "3",
+                    "number_ratings" : "7",
+                    "sum_ratings" : "21",
+                    "vegetarian" : "False", 
+                    "vegan" : "False",
+                    "kosher" : "False",
+                    "halal" : "False",
+                    "nut_allergy" : "False", 
+                    "cost" : "1",
+                    "restaurant_id" : "3",
+                    "generic_id" : "1",
+                }
+
+## GET /api/dish/{id}/reviews
+Get a list of reviews of a specific dish.
+
++ Parameters
+    + id (required, number, `1`) ... Numeric `id` of the dish to perform action with. Has example value.
+
++ Response 200 (application/json)
+
+    + Body
+
+            { 
+                "dish_reviews": [
+                    {
+                        "dish_id" : "12", 
+                        "customer_id" : "1" ,
+                        "rating" : "2",
+                        "comment" : "Tortillas were mad soggy.",
+                    },
+                    {
+                        "dish_id" : "12", 
+                        "customer_id" : "2" ,
+                        "rating" : "3",
+                        "comment" : "I would have rather the fish been fried but I suppose this option is healthier.",
+                    },
+                ]
+            }
+
+# Group Generic Dishes
+Generic Dish related resources of the *fead.ly API*
+
+## GET /api/genericdishes/
+Get a list of generic dishes.
+
++ Response 200 (application/json)
+
+    + Body
+
+            { 
+                "generic_dishes": [
+                    {
+                        "generic_id": "1",
+                        "cuisine_id": "1",
+                        "name" : "Pasta",
+                    },
+                    {
+                        "generic_id": "2",
+                        "cuisine_id": "2",
+                        "name" : "Tacos",
+                    },
+                    {
+                        "generic_id": "3",
+                        "cuisine_id": "3",
+                        "name" : "Salad",
+                    }
+                ]
+            }
+
+## GET /api/genericdish/{id}
+Get attributes of a generic dish type.
+
++ Parameters
+    + id (required, number, `1`) ... Numeric `id` of the generic dish to perform action with. Has example value.
+
++ Response 200 (application/json)
+
+    + Body
+
+            {
+                "generic_id": "3",
+                "cuisine_id": "3",
+                "name" : "Salad",
+            }
+
+## GET /api/genericdish/{id}/dishes
+Get a list of dishes categorized under a generic dish type.
+
++ Parameters
+    + id (required, number, `1`) ... Numeric `id` of the dish to perform action with. Has example value.
+
++ Response 200 (application/json)
+
+    + Body
+
+            { 
+                "dishes": [
+                    {
+                        "dish_id" : "3", 
+                        "name" : "Asian Chicken Salad" ,
+                        "rating" : "3",
+                        "number_ratings" : "6",
+                        "sum_ratings" : "18",
+                        "vegetarian" : "False", 
+                        "vegan" : "False",
+                        "kosher" : "False",
+                        "halal" : "False",
+                        "nut_allergy" : "False", 
+                        "cost" : "1",
+                        "restaurant_id" : "2",
+                        "generic_id" : "4",
+                    },
+                    {
+                        "dish_id" : "4", 
+                        "name" : "Southwestern Grilled Chicken Salad" ,
+                        "rating" : "5",
+                        "number_ratings" : "5",
+                        "sum_ratings" : "25",
+                        "vegetarian" : "False", 
+                        "vegan" : "False",
+                        "kosher" : "False",
+                        "halal" : "False",
+                        "nut_allergy" : "False", 
+                        "cost" : "1",
+                        "restaurant_id" : "2",
+                        "generic_id" : "3",
+                    },
+                    {
+                        "dish_id" : "13", 
+                        "name" : "Caesar Salad" ,
+                        "rating" : "4",
+                        "number_ratings" : "4",
+                        "sum_ratings" : "16",
+                        "vegetarian" : "True", 
+                        "vegan" : "False",
+                        "kosher" : "False",
+                        "halal" : "False",
+                        "nut_allergy" : "False", 
+                        "cost" : "1",
+                        "restaurant_id" : "3",
+                        "generic_id" : "3",
+                    },
+                ]
+            }
+
+# Group Cuisines
+Cuisine related resources of the *fead.ly API*
+
+## GET /api/cuisines/
+
+Get a list of all cuisines.
+
++ Response 200 (application/json)
+
+    + Body
+
+            { 
+                "cuisines": [
+                    {
+                        "id" : "1",
+                        "name" : "Italian",
+                    },
+                    {
+                        "id" : "2",
+                        "name" : "Mexican",
+                    },
+                    {
+                        "id" : "3",
+                        "name" : "American",
+                    },
+                    {
+                        "id" : "4",
+                        "name" : "Asian",
+                    },
+                ]
+            }
+            
+## GET /api/cuisine/{id}
+Get attributes of a specific cuisine.
+
++ Parameters
+    + id (required, number, `1`) ... Numeric `id` of the cuisine to perform action with. Has example value.
+
++ Response 200 (application/json)
+    + Body
+
+            {
+                "id": "4",
+                "name" : "Asian",
+            }   
+
+## GET /api/cuisine/{id}/dishes
+Get a list of generic dishes for a specific cuisine.
+
++ Parameters
+    + id (required, number, `1`) ... Numeric `id` of the cuisine to perform action with. Has example value.
+
++ Response 200 (application/json)
+
+    + Body
+
+            { 
+                "cuisine_dishes": [
+                    {
+                        "cuisine_id" : "1", 
+                        "generic_id" : "1",
+                        "name" : "Pasta",
+                    },
+                    {
+                        "cuisine_id" : "1", 
+                        "generic_id" : "4" ,
+                        "name" : "Pizza",
+                    },
+                    {
+                        "cuisine_id" : "1", 
+                        "generic_id" : "11" ,
+                        "name" : "Antipasti",
+                    },
+                ]
+            }
+
+## GET /api/cuisine/{id}/restaurants
+Get a list of restaurants serving a specific cuisine.
+
++ Parameters
+    + id (required, number, `1`) ... Numeric `id` of the cuisine to perform action with. Has example value.
+
++ Response 200 (application/json)
+
+    + Body
+
+            { 
+                "cuisine_restaurants": [
+                    {
+                        "restaurant_id": "12",
+                        "name": "Torchy's Tacos"
+                        "cuisine_id" : "2",
+                        "reservation_required" : "False",
+                        "reservation_avail" : "False",
+                        "has_waiter" : "False",
+                        "phone" :  "512-444-0300",
+                        "description" : "Brings the legendary flavors of Mejico to Austin.",
+                        "zip_code" : "78704"
+                        "address" : " 2809 S 1st St."
+                        "delivery" : "False"
+                        "take_out" : "True"
+                        "pet_friendly" : "False"
+                        "cost" : "1"
+                        "website" : "http://www.torchystacos.com/",
+                    }
+                    {
+                        "restaurant_id": "13",
+                        "name": "Habanero Mexican Cafe",
+                        "cuisine_id" : "2",
+                        "reservation_required" : "False",
+                        "reservation_avail" : "False",
+                        "has_waiter" : "True",
+                        "phone" :  "512-416-0443",
+                        "description" : "Brings the legendary flavors of Mejico to Austin.",
+                        "zip_code" : "78704"
+                        "address" : " 501 W. Oltorf St."
+                        "delivery" : "False"
+                        "take_out" : "False"
+                        "pet_friendly" : "False"
+                        "cost" : "1"
+                        "website" : "http://www.habanerocafe.com/",
+                    }
+                    {
+                        "restaurant_id": "14",
+                        "name": "Curra's Grill"
+                        "cuisine_id" : "2",
+                        "reservation_required" : "False",
+                        "reservation_avail" : "False",
+                        "has_waiter" : "True",
+                        "phone" :  "512-444-0012",
+                        "description" : "Brings the legendary flavors of Mejico to Austin.",
+                        "zip_code" : "78704"
+                        "address" : " 614 E Oltorf St."
+                        "delivery" : "False"
+                        "take_out" : "False"
+                        "pet_friendly" : "False"
+                        "cost" : "2"
+                        "website" : "http://www.currasgrill.com/",
+                    }
+                ]
+            }
