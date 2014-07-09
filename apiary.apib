@@ -73,8 +73,8 @@ Get a list of all restaurants.
 ## GET /api/restaurant/{id}/attributes
 Get a single restaurant's details:
 
-- Name
 - Restaurant ID
+- Name
 - Cuisine ID
 - Reservation required
 - Reservation available
@@ -96,8 +96,8 @@ Get a single restaurant's details:
     + Body
 
             { 
-              "name" : "Chang Thai", 
               "restaurant_id" : "1",
+              "name" : "Chang Thai", 
               "cuisine_id" : "1",
               "reservation_required" : "False",
               "reservation_avail" : "False",
@@ -128,7 +128,9 @@ Content-Type: application/json
                 
                 "restaurant_dishes": [
                     {   
+                        "restaurant_id" : "4",
                         "dish_id" : "12", 
+                        "generic_id" : "2"
                         "name" : "Blackened Fish Tacos" ,
                         "rating" : "3",
                         "number_ratings" : "5",
@@ -139,11 +141,11 @@ Content-Type: application/json
                         "halal" : "False",
                         "nut_allergy" : "False", 
                         "cost" : "2",
-                        "restaurant_id" : "4",
-                        "generic_id" : "2"
                     },
                     {
-                        "dish_id" : "13", 
+                        "restaurant_id" : "4",
+                        "dish_id" : "13",
+                        "generic_id" : "3"
                         "name" : "Caesar Salad" ,
                         "rating" : "2",
                         "number_ratings" : "5",
@@ -154,8 +156,6 @@ Content-Type: application/json
                         "halal" : "False",
                         "nut_allergy" : "False", 
                         "cost" : "1",
-                        "restaurant_id" : "4",
-                        "generic_id" : "3"
                     },
                 ]
             }
@@ -249,14 +249,14 @@ Get a list of restaurant reviews by a specific customer.
             { 
                 "customer_restaurant_reviews": [
                     {
-                        "restaurant_id" : "4", 
                         "customer_id" : "1" ,
+                        "restaurant_id" : "4", 
                         "rating" : "5",
                         "comment" : "The ambience is pretty nice, great date spot!!!"
                     },
                     {
-                        "restaurant_id" : "3", 
                         "customer_id" : "1" ,
+                        "restaurant_id" : "3", 
                         "rating" : "4",
                         "comment" : "Menu selection is HUGE!!! Lots to choose from and something for everyone."
                     }
@@ -307,6 +307,8 @@ Get a list of all dishes.
                 "dishes": [
                     {
                         "dish_id" : "1", 
+                        "restaurant_id" : "3",
+                        "generic_id" : "1",
                         "name" : "Alfredo Pasta" ,
                         "rating" : "4",
                         "number_ratings" : "4",
@@ -317,11 +319,11 @@ Get a list of all dishes.
                         "halal" : "False",
                         "nut_allergy" : "False", 
                         "cost" : "1",
-                        "restaurant_id" : "3",
-                        "generic_id" : "1"
                     },
                     {
                         "dish_id" : "2", 
+                        "restaurant_id" : "3",
+                        "generic_id" : "1",
                         "name" : "Pasta Caspian" ,
                         "rating" : "3",
                         "number_ratings" : "7",
@@ -331,9 +333,7 @@ Get a list of all dishes.
                         "kosher" : "False",
                         "halal" : "False",
                         "nut_allergy" : "False", 
-                        "cost" : "1",
-                        "restaurant_id" : "3",
-                        "generic_id" : "1"
+                        "cost" : "1"
                     }
                 ]
             }
@@ -363,6 +363,8 @@ Content-Type: application/json
 
                 {
                     "dish_id" : "2", 
+                    "restaurant_id" : "3",
+                    "generic_id" : "1",
                     "name" : "Pasta Caspian" ,
                     "rating" : "3",
                     "number_ratings" : "7",
@@ -372,9 +374,7 @@ Content-Type: application/json
                     "kosher" : "False",
                     "halal" : "False",
                     "nut_allergy" : "False", 
-                    "cost" : "1",
-                    "restaurant_id" : "3",
-                    "generic_id" : "1"
+                    "cost" : "1"
                 }
 
 ## GET /api/dish/{id}/reviews
@@ -464,6 +464,8 @@ Get a list of dishes categorized under a generic dish type.
                 "dishes": [
                     {
                         "dish_id" : "3", 
+                        "restaurant_id" : "2",
+                        "generic_id" : "4",
                         "name" : "Asian Chicken Salad" ,
                         "rating" : "3",
                         "number_ratings" : "6",
@@ -473,12 +475,12 @@ Get a list of dishes categorized under a generic dish type.
                         "kosher" : "False",
                         "halal" : "False",
                         "nut_allergy" : "False", 
-                        "cost" : "1",
-                        "restaurant_id" : "2",
-                        "generic_id" : "4"
+                        "cost" : "1"
                     },
                     {
                         "dish_id" : "4", 
+                        "restaurant_id" : "2",
+                        "generic_id" : "3",
                         "name" : "Southwestern Grilled Chicken Salad" ,
                         "rating" : "5",
                         "number_ratings" : "5",
@@ -488,12 +490,12 @@ Get a list of dishes categorized under a generic dish type.
                         "kosher" : "False",
                         "halal" : "False",
                         "nut_allergy" : "False", 
-                        "cost" : "1",
-                        "restaurant_id" : "2",
-                        "generic_id" : "3"
+                        "cost" : "1"
                     },
                     {
                         "dish_id" : "13", 
+                        "restaurant_id" : "3",
+                        "generic_id" : "3",
                         "name" : "Caesar Salad" ,
                         "rating" : "4",
                         "number_ratings" : "4",
@@ -503,9 +505,7 @@ Get a list of dishes categorized under a generic dish type.
                         "kosher" : "False",
                         "halal" : "False",
                         "nut_allergy" : "False", 
-                        "cost" : "1",
-                        "restaurant_id" : "3",
-                        "generic_id" : "3"
+                        "cost" : "1"
                     }
                 ]
             }
@@ -576,12 +576,12 @@ Get a list of generic dishes for a specific cuisine.
                     },
                     {
                         "cuisine_id" : "1", 
-                        "generic_id" : "4" ,
+                        "generic_id" : "4",
                         "name" : "Pizza"
                     },
                     {
                         "cuisine_id" : "1", 
-                        "generic_id" : "11" ,
+                        "generic_id" : "11",
                         "name" : "Antipasti"
                     }
                 ]
