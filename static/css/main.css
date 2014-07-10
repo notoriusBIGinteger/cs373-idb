@@ -53,3 +53,8 @@ margin-right:3%;
 {
 float:right; padding:2px;
 }
+
+#food-carousel {
+margin-bottom:1.5%;
+}
+.carousel-caption { display:none;}
