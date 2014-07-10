@@ -8,7 +8,7 @@
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/main.css" rel="stylesheet"> 
+    <link href="css/main.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -25,14 +25,14 @@ function() {
  $('.carousel').carousel({  interval: 2500 } );
 
 $("#menu").load("featured-dishes.html", function () {
-  $(".food-item").bind("click", 
+  $(".food-item").bind("click",
       function(event) {
-        if(!$(event.target).hasClass("menu-item-link")) 
+        if(!$(event.target).hasClass("menu-item-link"))
         {
          event.preventDefault();
         }
        var subDiv = $(this).find('.food-item-content');
-     if (!subDiv.is(":visible")) { 
+     if (!subDiv.is(":visible")) {
        subDiv.slideDown(200);
      }
        else {
@@ -45,17 +45,17 @@ $("#menu").load("featured-dishes.html", function () {
     $(".food-item-rating").append("<span class=\"glyphicon glyphicon-star\"></span>");
 }
 
-});   
+});
 
 $("#reviews").load("featured-restaurants.html", function () {
-  $(".review-item").bind("click", 
+  $(".review-item").bind("click",
       function(event) {
-        if(!$(event.target).hasClass("review-item-link")) 
+        if(!$(event.target).hasClass("review-item-link"))
         {
          event.preventDefault();
         }
        var subDiv = $(this).find('.review-item-content');
-     if (!subDiv.is(":visible")) { 
+     if (!subDiv.is(":visible")) {
        subDiv.slideDown(200);
      }
        else {
@@ -63,22 +63,22 @@ $("#reviews").load("featured-restaurants.html", function () {
        }
       });
 
-/*$(".close-food-item").bind("click", 
-     
-   /*$(".close-food-item").bind("click", 
-      function(event) { 
-         event.preventDefault(); 
+/*$(".close-food-item").bind("click",
+
+   /*$(".close-food-item").bind("click",
+      function(event) {
+         event.preventDefault();
          var subDiv = $(this).parent().parent().parent().find('.food-item-content');
-      	 if (subDiv.is(":visible")) { 
+      	 if (subDiv.is(":visible")) {
 	  subDiv.slideUp(200);
         }
       });
    */
- 
+
   });
 });
 
-</script> 
+</script>
    <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
 <!-- open menu -->
@@ -92,7 +92,7 @@ $("#reviews").load("featured-restaurants.html", function () {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Dish Finder</a>
+      <a class="navbar-brand" href="index.html">Dish Finder</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -109,10 +109,14 @@ $("#reviews").load("featured-restaurants.html", function () {
 	<li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dishes<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="hyde-park-bar-grill.html">Blackened Fish Tacos</a>		</li>
-             <li><a href="magnolia-cafe.html">Caesar Salad</a></li>
-            <li><a href="kerbey-lane-cafe.html">Alfredo Pasta</a></li>
+            <li><a href="hyde-park-bar-grill-blackened-fish-tacos.html ">Blackened Fish Tacos</a>		</li>
+             <li><a href="hyde-park-bar-grill-ceasar-salad.html ">Caesar Salad</a></li>
+            <li><a href="magnolia-cafe-alfredo-pasta.html">Alfredo Pasta</a></li>
           </ul>
+        </li>
+
+        <li><a href="about_us.html ">About Us</a></li>
+
         </li>
 
       </ul>
@@ -127,8 +131,8 @@ $("#reviews").load("featured-restaurants.html", function () {
 <div class="col-md-8"><h1>Austin Food Finder</h1>
 <p><strong class="status-open"></strong></p>
 <p>Look below for featured dishes</p>
-</div> 
-</div> 
+</div>
+</div>
 </div> -->
 
 <div id="food-carousel" class="carousel slide"><!-- class of slide for animation -->

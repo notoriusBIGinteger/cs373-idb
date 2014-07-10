@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hyde Park Blackened Fish Tacos</title>
+    <title>About Us</title>
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -18,68 +18,12 @@
   </head>
   <body>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-   <script type="text/javascript">
-
-$(document).ready(
-function() {
-$("#menu").load("ceasar-salad-similar.html", function () {
-  $(".food-item").bind("click",
-      function(event) {
-        if(!$(event.target).hasClass("menu-item-link"))
-        {
-         event.preventDefault();
-        }
-       var subDiv = $(this).find('.food-item-content');
-     if (!subDiv.is(":visible")) {
-       subDiv.slideDown(200);
-     }
-       else {
-          subDiv.slideUp(200);
-       }
-      });
-
-   $(".close-food-item").bind("click",
-      function(event) {
-         event.preventDefault();
-         var subDiv = $(this).parent().parent().parent().find('.food-item-content');
-      	 if (subDiv.is(":visible")) {
-	  subDiv.slideUp(200);
-        }
-      });
-
-  for (var i = 0; i<5; i++)
-   {
-    $(".food-item-rating").append("<span class=\"glyphicon glyphicon-star\"></span>");
-}
-
-  });
-
-
-
-  $("#reviews").load("blackened-fish-tacos-reviews.html", function () {
-  $(".review-item").bind("click",
-      function(event) {
-        if(!$(event.target).hasClass("menu-item-link"))
-        {
-         event.preventDefault();
-        }
-       var subDiv = $(this).find('.review-item-content');
-     if (!subDiv.is(":visible")) {
-       subDiv.slideDown(200);
-     }
-       else {
-          subDiv.slideUp(200);
-       }
-      });
-
-  });
-
-});
-
-
+<script type="text/javascript">
 </script>
+
    <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+
 
 <!-- open menu -->
 <nav class="navbar navbar-default" role="navigation" style="margin-bottom:0px">
@@ -114,7 +58,8 @@ $("#menu").load("ceasar-salad-similar.html", function () {
             <li><a href="magnolia-cafe-alfredo-pasta.html">Alfredo Pasta</a></li>
           </ul>
         </li>
-    <li><a href="about_us.html ">About Us</a></li>
+
+            <li><a href="about_us.html ">About Us</a></li>
 
       </ul>
     </div><!-- /.navbar-collapse -->
@@ -123,23 +68,19 @@ $("#menu").load("ceasar-salad-similar.html", function () {
 
 <div class="jumbotron masthead">
 <div class="container gray-overlay">
-<div class="col-md-8"><h1>Blackened Fish Tacos</h1>
-<p>from <a href="hyde-park-bar-grill.html"><strong class="status-open">Hyde Park Bar and Grill</strong></a></p>
-<p>Spinach fettuccine with fresh basil, mushrooms, and garlic topped with alfredo parmesan sauce. Served with garlic bread.</p>
+<div class="col-md-8"><h1>Syscall of the Wild</h1>
+<p><strong class="status-open">Summer CS373</strong></p>
+<p>Alejandro Landaverde, Kevin Wheeler, Mike Wham, Nathan Heskia, Omar Lalani</p>
 </div>
-<div class="col-md-3"><img src="img/fishtaco.jpg" alt="Blackened Fish Tacos" width="100%" height="100%"></div></div></div>
+<div class="col-md-3"><img src="https://fbcdn-sphotos-b-a.akamaihd.net/hphotos-ak-xfa1/t1.0-9/374006_4185679279222_2125692641_n.jpg" width="100%" height="100%" frameborder="0" style="border:0px"></div></div></div>
 
-<div class="container" id="main-restaurant">
-<div class="col-md-6" id="reviews">
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Reviews</h3>
-  </div>
-  <div class="panel-body">
-  </div>
-</div>
-</div>
-<div class="col-md-6" id="menu">
+<div class="container" id="main-about us">
+
+<div class="col-md-6" id="Members Account">
+</div> <!-- end col-md-6 -->
+<div class="col-md-12" id="About Us">
+  <p>   This site is designed to help people decide and find what they want to eat. When posed with the question “Hey what do you want to eat?”, why is it that most people respond with the name of a restaurant or a cuisine instead of the actual dish that they want to eat? Lets face it, you have a craving and nothing else will satisfy it. You may want a chicken quesadilla but you respond “lets eat mexican”. You may want some gourmet pizza but you say “lets eat italian”. Next you start looking up restaurants that serve this particular kind of cuisine and reading their reviews. But the problem is that nobody writes reviews for dishes, they write it for restaurants. Sure this is helpful in some cases if you want to know how long food takes on average or how friendly the wait staff is, but you aren’t going to eat the restaurant. You’re going to eat the dish. This is what we are setting out to change. A person should be able to look up “alfredo pasta” and get a listing of every restaurant in the area that has either this dish of something similar complete with reviews about the dish. This site will enable people to not only find the closest enchilada, but furthermore the best enchilada.
+  </p>
 </div> <!-- end col-md-4 -->
 
 </div>

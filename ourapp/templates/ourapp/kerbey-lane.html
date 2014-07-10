@@ -7,8 +7,8 @@
     <title>Kerbey Lane Cafe</title>
 
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/main.css" rel="stylesheet">
+    <link href="../../../static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../static/css/main.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -17,13 +17,12 @@
     <![endif]-->
   </head>
   <body>
-
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
    <script type="text/javascript">
 
 $(document).ready(
 function() {
-$("#menu").load("kerbey-lane-menu.html", function () {
+$("#menu").load("../../../static/kerbey-lane-menu.html", function () {
   $(".food-item").bind("click",
       function(event) {
         if(!$(event.target).hasClass("menu-item-link"))
@@ -46,7 +45,7 @@ $("#menu").load("kerbey-lane-menu.html", function () {
 
 });
 
-$("#reviews").load("hyde-park-bar-grill-reviews.html", function () {
+$("#reviews").load("../../../static/hyde-park-bar-grill-reviews.html", function () {
   $(".review-item").bind("click",
       function(event) {
         if(!$(event.target).hasClass("review-item-link"))
@@ -60,10 +59,7 @@ $("#reviews").load("hyde-park-bar-grill-reviews.html", function () {
        else {
           subDiv.slideUp(200);
        }
-
       });
-             $("#reviews").append($('<div>').load('kerbey-twitter.html').append('</dev>'));
-
 
 /*$(".close-food-item").bind("click",
 
@@ -82,66 +78,22 @@ $("#reviews").load("hyde-park-bar-grill-reviews.html", function () {
 
 </script>
    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-
-
-<!-- open menu -->
-<nav class="navbar navbar-default" role="navigation" style="margin-bottom:0px">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="index.html">Dish Finder</a>
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Restaurants<span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="hyde-park-bar-grill.html">Hyde Park Bar &amp; Grill</a></li>
-            <li><a href="magnolia-cafe.html">Magnolia Cafe</a></li>
-            <li><a href="kerbey-lane.html">Kerbey Lane Cafe</a></li>
-          </ul>
-        </li>
-	<li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dishes<span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="hyde-park-bar-grill-blackened-fish-tacos.html ">Blackened Fish Tacos</a>		</li>
-             <li><a href="hyde-park-bar-grill-ceasar-salad.html ">Caesar Salad</a></li>
-            <li><a href="magnolia-cafe-alfredo-pasta.html">Alfredo Pasta</a></li>
-          </ul>
-        </li>
-    <li><a href="about_us.html ">About Us</a></li>
-
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav><!-- close menu -->
-
+    <script src="../../../static/js/bootstrap.min.js"></script>
 <div class="jumbotron masthead">
 <div class="container gray-overlay">
 <div class="col-md-8"><h1>Kerbey Lane Cafe</h1>
 <p><strong class="status-open">Open 24/7</strong></p>
-<p>Serves breakfast, lunch, and dinner 24 hours a day</p>
+<p>Description of this here fiiine restaurant</p>
 </div>
 <div class="col-md-3"><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1722.5496975568656!2d-97.74155309325339!3d30.291231896087066!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8644b58276fe620d%3A0x5204a539c93cc528!2sKerbey+Lane+Cafe!5e0!3m2!1sen!2sus!4v1404673906535" width="100%" height="100%" frameborder="0" style="border:0px"></iframe></div></div></div>
 
 <div class="container" id="main-restaurant">
 
-
-
-
 <div class="col-md-6" id="reviews">
 </div>
 <div class="col-md-6" id="menu">
 </div> <!-- end col-md-4 -->
+
 </div>
   </body>
 </html>

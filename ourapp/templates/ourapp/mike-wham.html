@@ -4,11 +4,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hyde Park Blackened Fish Tacos</title>
+    <title>Mike Wham</title>
 
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/main.css" rel="stylesheet">
+    <link href="../../../static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../static/css/main.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -22,7 +22,7 @@
 
 $(document).ready(
 function() {
-$("#menu").load("ceasar-salad-similar.html", function () {
+$("#menu").load("../../../static/mike-wham-dish-reviews.html", function () {
   $(".food-item").bind("click",
       function(event) {
         if(!$(event.target).hasClass("menu-item-link"))
@@ -37,29 +37,12 @@ $("#menu").load("ceasar-salad-similar.html", function () {
           subDiv.slideUp(200);
        }
       });
+});
 
-   $(".close-food-item").bind("click",
-      function(event) {
-         event.preventDefault();
-         var subDiv = $(this).parent().parent().parent().find('.food-item-content');
-      	 if (subDiv.is(":visible")) {
-	  subDiv.slideUp(200);
-        }
-      });
-
-  for (var i = 0; i<5; i++)
-   {
-    $(".food-item-rating").append("<span class=\"glyphicon glyphicon-star\"></span>");
-}
-
-  });
-
-
-
-  $("#reviews").load("blackened-fish-tacos-reviews.html", function () {
+$("#reviews").load("../../../static/mike-wham-restaurant-reviews.html", function () {
   $(".review-item").bind("click",
       function(event) {
-        if(!$(event.target).hasClass("menu-item-link"))
+        if(!$(event.target).hasClass("review-item-link"))
         {
          event.preventDefault();
         }
@@ -72,14 +55,27 @@ $("#menu").load("ceasar-salad-similar.html", function () {
        }
       });
 
+/*$(".close-food-item").bind("click",
+      function(event) {
+         event.preventDefault();
+         var subDiv = $(this).parent().parent().parent().find('.food-item-content');
+      	 if (subDiv.is(":visible")) {
+	  subDiv.slideUp(200);
+        }
+      });
+   */
+ for (var i = 0; i<5; i++)
+   {
+    $(".food-item-rating").append("<span class=\"glyphicon glyphicon-star\"></span>");
+}
+
   });
-
 });
-
 
 </script>
    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="../../../static/js/bootstrap.min.js"></script>
+
 
 <!-- open menu -->
 <nav class="navbar navbar-default" role="navigation" style="margin-bottom:0px">
@@ -109,12 +105,11 @@ $("#menu").load("ceasar-salad-similar.html", function () {
 	<li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dishes<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="hyde-park-bar-grill-blackened-fish-tacos.html ">Blackened Fish Tacos</a>		</li>
-             <li><a href="hyde-park-bar-grill-ceasar-salad.html ">Caesar Salad</a></li>
-            <li><a href="magnolia-cafe-alfredo-pasta.html">Alfredo Pasta</a></li>
+            <li><a href="hyde-park-bar-grill.html">Blackened Fish Tacos</a>		</li>
+             <li><a href="magnolia-cafe.html">Caesar Salad</a></li>
+            <li><a href="kerbey-lane-cafe.html">Alfredo Pasta</a></li>
           </ul>
         </li>
-    <li><a href="about_us.html ">About Us</a></li>
 
       </ul>
     </div><!-- /.navbar-collapse -->
@@ -123,22 +118,16 @@ $("#menu").load("ceasar-salad-similar.html", function () {
 
 <div class="jumbotron masthead">
 <div class="container gray-overlay">
-<div class="col-md-8"><h1>Blackened Fish Tacos</h1>
-<p>from <a href="hyde-park-bar-grill.html"><strong class="status-open">Hyde Park Bar and Grill</strong></a></p>
-<p>Spinach fettuccine with fresh basil, mushrooms, and garlic topped with alfredo parmesan sauce. Served with garlic bread.</p>
+<div class="col-md-8"><h1>Mike Wham</h1>
+<p><strong class="status-open">Austin TX</strong></p>
+<p>My Stomach soaks up food better than a shamwow soaks up water!!!</p>
 </div>
-<div class="col-md-3"><img src="img/fishtaco.jpg" alt="Blackened Fish Tacos" width="100%" height="100%"></div></div></div>
+<div class="col-md-3"><iframe src="http://media3.s-nbcnews.com/j/streams/2013/September/130906/8C8881134-shamwowguy.blocks_desktop_small.jpg" width="100%" height="100%" frameborder="0" style="border:0px"></iframe></div></div></div>
 
 <div class="container" id="main-restaurant">
+
 <div class="col-md-6" id="reviews">
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Reviews</h3>
-  </div>
-  <div class="panel-body">
-  </div>
-</div>
-</div>
+</div> <!-- end col-md-6 -->
 <div class="col-md-6" id="menu">
 </div> <!-- end col-md-4 -->
 
