@@ -22,7 +22,7 @@
 
 $(document).ready(
 function() {
-$("#menu").load("omar-lalani-dishes.html", function () {
+$("#menu").load("omar-lalani-dish-reviews.html", function () {
   $(".food-item").bind("click", 
       function(event) {
         if(!$(event.target).hasClass("menu-item-link")) 
@@ -39,7 +39,7 @@ $("#menu").load("omar-lalani-dishes.html", function () {
       });
 });   
 
-$("#reviews").load("omar-lalani-restaurants.html", function () {
+$("#reviews").load("omar-lalani-restaurant-reviews.html", function () {
   $(".review-item").bind("click", 
       function(event) {
         if(!$(event.target).hasClass("review-item-link")) 

@@ -22,7 +22,7 @@
 
 $(document).ready(
 function() {
-$("#menu").load("mike-wham-dishes.html", function () {
+$("#menu").load("mike-wham-dish-reviews.html", function () {
   $(".food-item").bind("click", 
       function(event) {
         if(!$(event.target).hasClass("menu-item-link")) 
@@ -39,7 +39,7 @@ $("#menu").load("mike-wham-dishes.html", function () {
       });
 });   
 
-$("#reviews").load("mike-wham-restaurants.html", function () {
+$("#reviews").load("mike-wham-restaurant-reviews.html", function () {
   $(".review-item").bind("click", 
       function(event) {
         if(!$(event.target).hasClass("review-item-link")) 
@@ -75,6 +75,47 @@ $("#reviews").load("mike-wham-restaurants.html", function () {
 </script> 
    <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+
+
+<!-- open menu -->
+<nav class="navbar navbar-default" role="navigation" style="margin-bottom:0px">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Dish Finder</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Restaurants<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="hyde-park-bar-grill.html">Hyde Park Bar &amp; Grill</a></li>
+            <li><a href="magnolia-cafe.html">Magnolia Cafe</a></li>
+            <li><a href="kerbey-lane.html">Kerbey Lane Cafe</a></li>
+          </ul>
+        </li>
+	<li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dishes<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="hyde-park-bar-grill.html">Blackened Fish Tacos</a>		</li>
+             <li><a href="magnolia-cafe.html">Caesar Salad</a></li>
+            <li><a href="kerbey-lane-cafe.html">Alfredo Pasta</a></li>
+          </ul>
+        </li>
+
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav><!-- close menu -->
+
 <div class="jumbotron masthead">
 <div class="container gray-overlay">
 <div class="col-md-8"><h1>Mike Wham</h1>
