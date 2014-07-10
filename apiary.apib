@@ -221,6 +221,7 @@ Get a list of all customers.
 ## GET /api/customer/{id}/attributes
 Get a single customers's details:
 
+- Customer ID
 - Name
 
 + Parameters
@@ -232,8 +233,8 @@ Get a single customers's details:
     + Body
 
             { 
-              "name" : "Omar Lalani", 
-              "customer_id" : "3"
+              "customer_id" : "3",
+              "name" : "Omar Lalani"
             }
 
 ## GET /api/customer/{id}/restaurantreviews
@@ -439,6 +440,10 @@ Get a list of generic dishes.
 ## GET /api/genericdish/{id}/attributes
 Get attributes of a generic dish type.
 
+- Generic Dish ID
+- Cuisine ID
+- Name
+
 + Parameters
     + id (required, number, `1`) ... Numeric `id` of the generic dish to perform action with. Has example value.
 
@@ -546,6 +551,9 @@ Get a list of all cuisines.
             
 ## GET /api/cuisine/{id}/attributes
 Get attributes of a specific cuisine.
+
+- Cuisine ID
+- Name
 
 + Parameters
     + id (required, number, `1`) ... Numeric `id` of the cuisine to perform action with. Has example value.
