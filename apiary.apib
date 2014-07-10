@@ -74,8 +74,8 @@ Get a list of all restaurants.
 Get a single restaurant's details:
 
 - Restaurant ID
-- Name
 - Cuisine ID
+- Name
 - Reservation required
 - Reservation available
 - Waiter service
@@ -97,8 +97,8 @@ Get a single restaurant's details:
 
             { 
               "restaurant_id" : "1",
-              "name" : "Chang Thai", 
               "cuisine_id" : "1",
+              "name" : "Chang Thai", 
               "reservation_required" : "False",
               "reservation_avail" : "False",
               "has_waiter" : "True",
@@ -131,7 +131,7 @@ Content-Type: application/json
                         "restaurant_id" : "4",
                         "dish_id" : "12", 
                         "generic_id" : "2"
-                        "name" : "Blackened Fish Tacos" ,
+                        "name" : "Blackened Fish Tacos",
                         "rating" : "3",
                         "number_ratings" : "5",
                         "sum_ratings" : "15",
@@ -140,13 +140,13 @@ Content-Type: application/json
                         "kosher" : "False",
                         "halal" : "False",
                         "nut_allergy" : "False", 
-                        "cost" : "2",
+                        "cost" : "2"
                     },
                     {
                         "restaurant_id" : "4",
                         "dish_id" : "13",
                         "generic_id" : "3"
-                        "name" : "Caesar Salad" ,
+                        "name" : "Caesar Salad",
                         "rating" : "2",
                         "number_ratings" : "5",
                         "sum_ratings" : "10",
@@ -155,7 +155,7 @@ Content-Type: application/json
                         "kosher" : "False",
                         "halal" : "False",
                         "nut_allergy" : "False", 
-                        "cost" : "1",
+                        "cost" : "1"
                     },
                 ]
             }
@@ -249,15 +249,15 @@ Get a list of restaurant reviews by a specific customer.
             { 
                 "customer_restaurant_reviews": [
                     {
+                        "customer_id" : "1",
                         "restaurant_id" : "4", 
-                        "customer_id" : "1" ,
                         "review_id" : "1",
                         "rating" : "5",
                         "comment" : "The ambience is pretty nice, great date spot!!!"
                     },
                     {
+                        "customer_id" : "1",
                         "restaurant_id" : "4", 
-                        "customer_id" : "1" ,
                         "review_id" : "5",
                         "rating" : "4",
                         "comment" : "Menu selection is HUGE!!! Lots to choose from and something for everyone."
@@ -279,14 +279,14 @@ Get a list of dish reviews by a specific customer.
             { 
                 "customer_dish_reviews": [
                     {
+                        "customer_id" : "1",
                         "dish_id" : "12", 
-                        "customer_id" : "1" ,
                         "rating" : "2",
                         "comment" : "Tortillas were mad soggy."
                     },
                     {
+                        "customer_id" : "1",
                         "dish_id" : "13", 
-                        "customer_id" : "1" ,
                         "rating" : "3",
                         "comment" : "Love me some crunchy iceberg lettuce!"
                     }
@@ -311,7 +311,7 @@ Get a list of all dishes.
                         "dish_id" : "1", 
                         "restaurant_id" : "3",
                         "generic_id" : "1",
-                        "name" : "Alfredo Pasta" ,
+                        "name" : "Alfredo Pasta",
                         "rating" : "4",
                         "number_ratings" : "4",
                         "sum_ratings" : "16",
@@ -326,7 +326,7 @@ Get a list of all dishes.
                         "dish_id" : "2", 
                         "restaurant_id" : "3",
                         "generic_id" : "1",
-                        "name" : "Pasta Caspian" ,
+                        "name" : "Pasta Caspian",
                         "rating" : "3",
                         "number_ratings" : "7",
                         "sum_ratings" : "21",
@@ -343,8 +343,10 @@ Get a list of all dishes.
 ## GET /api/dish/{id}/attributes
 Get a single dishes's details:
 
-- Name
 - Dish ID
+- Restaurant ID
+- Generic Dish ID
+- Name
 - Average Rating
 - Vegetarian
 - Vegan
@@ -352,8 +354,6 @@ Get a single dishes's details:
 - Halal
 - Contains Nuts
 - Cost
-- Restaurant ID
-- Generic Dish ID
 
 + Parameters
     + id (required, number, `1`) ... Numeric `id` of the dish to perform action with. Has example value.
@@ -395,7 +395,7 @@ Get a list of reviews of a specific dish.
                         "dish_id" : "12", 
                         "customer_id" : "1" ,
                         "rating" : "2",
-                        "comment" : "Tortillas were mad soggy."
+                        "comment" : "Tortillas were soggy."
                     },
                     {
                         "dish_id" : "12", 
@@ -465,9 +465,9 @@ Get a list of dishes categorized under a generic dish type.
             { 
                 "dishes": [
                     {
+                        "generic_id" : "4",
                         "dish_id" : "3", 
                         "restaurant_id" : "2",
-                        "generic_id" : "4",
                         "name" : "Asian Chicken Salad" ,
                         "rating" : "3",
                         "number_ratings" : "6",
@@ -480,9 +480,9 @@ Get a list of dishes categorized under a generic dish type.
                         "cost" : "1"
                     },
                     {
+                        "generic_id" : "3",
                         "dish_id" : "4", 
                         "restaurant_id" : "2",
-                        "generic_id" : "3",
                         "name" : "Southwestern Grilled Chicken Salad" ,
                         "rating" : "5",
                         "number_ratings" : "5",
@@ -495,9 +495,9 @@ Get a list of dishes categorized under a generic dish type.
                         "cost" : "1"
                     },
                     {
+                        "generic_id" : "3",
                         "dish_id" : "13", 
                         "restaurant_id" : "3",
-                        "generic_id" : "3",
                         "name" : "Caesar Salad" ,
                         "rating" : "4",
                         "number_ratings" : "4",
@@ -526,19 +526,19 @@ Get a list of all cuisines.
             { 
                 "cuisines": [
                     {
-                        "id" : "1",
+                        "cuisine_id" : "1",
                         "name" : "Italian"
                     },
                     {
-                        "id" : "2",
+                        "cuisine_id" : "2",
                         "name" : "Mexican"
                     },
                     {
-                        "id" : "3",
+                        "cuisine_id" : "3",
                         "name" : "American"
                     },
                     {
-                        "id" : "4",
+                        "cuisine_id" : "4",
                         "name" : "Asian"
                     }
                 ]
@@ -555,7 +555,7 @@ Get attributes of a specific cuisine.
     + Body
 
             {
-                "id" : "4",
+                "cuisine_id" : "4",
                 "name" : "Asian"
             }   
 
@@ -602,54 +602,54 @@ Get a list of restaurants serving a specific cuisine.
             { 
                 "cuisine_restaurants": [
                     {
+                        "cuisine_id" : "2",
                         "restaurant_id": "12",
                         "name": "Torchy's Tacos"
-                        "cuisine_id" : "2",
                         "reservation_required" : "False",
                         "reservation_avail" : "False",
                         "has_waiter" : "False",
                         "phone" :  "5124440300",
                         "description" : "Brings the legendary flavors of Mexico to Austin.",
-                        "zip_code" : "78704"
-                        "address" : " 2809 S 1st St."
-                        "delivery" : "False"
-                        "take_out" : "True"
-                        "pet_friendly" : "False"
-                        "cost" : "1"
+                        "zip_code" : "78704",
+                        "address" : " 2809 S 1st St.",
+                        "delivery" : "False",
+                        "take_out" : "True",
+                        "pet_friendly" : "False",
+                        "cost" : "1",
                         "website" : "http://www.torchystacos.com/"
                     },
                     {
+                        "cuisine_id" : "2",
                         "restaurant_id": "13",
                         "name": "Habanero Mexican Cafe",
-                        "cuisine_id" : "2",
                         "reservation_required" : "False",
                         "reservation_avail" : "False",
                         "has_waiter" : "True",
                         "phone" :  "5124160443",
                         "description" : "Brings the legendary flavors of Mexico to Austin.",
-                        "zip_code" : "78704"
-                        "address" : " 501 W. Oltorf St."
-                        "delivery" : "False"
-                        "take_out" : "False"
-                        "pet_friendly" : "False"
-                        "cost" : "1"
+                        "zip_code" : "78704",
+                        "address" : " 501 W. Oltorf St.",
+                        "delivery" : "False",
+                        "take_out" : "False",
+                        "pet_friendly" : "False",
+                        "cost" : "1",
                         "website" : "http://www.habanerocafe.com/"
                     },
                     {
-                        "restaurant_id": "14",
-                        "name": "Curra's Grill"
                         "cuisine_id" : "2",
+                        "restaurant_id": "14",
+                        "name": "Curra's Grill",
                         "reservation_required" : "False",
                         "reservation_avail" : "False",
                         "has_waiter" : "True",
                         "phone" :  "5124440012",
                         "description" : "Brings the legendary flavors of Mexico to Austin.",
-                        "zip_code" : "78704"
-                        "address" : " 614 E Oltorf St."
-                        "delivery" : "False"
-                        "take_out" : "False"
-                        "pet_friendly" : "False"
-                        "cost" : "2"
+                        "zip_code" : "78704",
+                        "address" : " 614 E Oltorf St.",
+                        "delivery" : "False",
+                        "take_out" : "False",
+                        "pet_friendly" : "False",
+                        "cost" : "2",
                         "website" : "http://www.currasgrill.com/"
                     }
                 ]
