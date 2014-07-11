@@ -1,0 +1,812 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module models</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>models</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/notoriousbiginteger/notoriousBIGinteger/ourapp/models.py">/home/notoriousbiginteger/notoriousBIGinteger/ourapp/models.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="django.db.models.html">django.db.models</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="django.db.models.base.html#Model">django.db.models.base.Model</a>(django.db.models.base.NewBase)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="models.html#Cuisine">Cuisine</a>
+</font></dt><dt><font face="helvetica, arial"><a href="models.html#Customer">Customer</a>
+</font></dt><dt><font face="helvetica, arial"><a href="models.html#Dish">Dish</a>
+</font></dt><dt><font face="helvetica, arial"><a href="models.html#DishReview">DishReview</a>
+</font></dt><dt><font face="helvetica, arial"><a href="models.html#GenericDish">GenericDish</a>
+</font></dt><dt><font face="helvetica, arial"><a href="models.html#Restaurant">Restaurant</a>
+</font></dt><dt><font face="helvetica, arial"><a href="models.html#RestaurantReview">RestaurantReview</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Cuisine">class <strong>Cuisine</strong></a>(<a href="django.db.models.base.html#Model">django.db.models.base.Model</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Cuisine">Cuisine</a>(id,&nbsp;name)<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="models.html#Cuisine">Cuisine</a></dd>
+<dd><a href="django.db.models.base.html#Model">django.db.models.base.Model</a></dd>
+<dd>django.db.models.base.NewBase</dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Cuisine-__str__"><strong>__str__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Cuisine-get_all"><strong>get_all</strong></a>(self)</dt></dl>
+
+<strong>objects</strong> = &lt;django.db.models.manager.Manager object&gt;
+<dl><dt><a name="Cuisine-set_name"><strong>set_name</strong></a>(self, name)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>genericdish_set</strong></dt>
+</dl>
+<dl><dt><strong>restaurant_set</strong></dt>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>DoesNotExist</strong> = &lt;class 'models.DoesNotExist'&gt;</dl>
+
+<dl><dt><strong>MultipleObjectsReturned</strong> = &lt;class 'models.MultipleObjectsReturned'&gt;</dl>
+
+<hr>
+Methods inherited from <a href="django.db.models.base.html#Model">django.db.models.base.Model</a>:<br>
+<dl><dt><a name="Cuisine-__eq__"><strong>__eq__</strong></a>(self, other)</dt></dl>
+
+<dl><dt><a name="Cuisine-__hash__"><strong>__hash__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Cuisine-__init__"><strong>__init__</strong></a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="Cuisine-__ne__"><strong>__ne__</strong></a>(self, other)</dt></dl>
+
+<dl><dt><a name="Cuisine-__reduce__"><strong>__reduce__</strong></a>(self)</dt><dd><tt>Provides&nbsp;pickling&nbsp;support.&nbsp;Normally,&nbsp;this&nbsp;just&nbsp;dispatches&nbsp;to&nbsp;Python's<br>
+standard&nbsp;handling.&nbsp;However,&nbsp;for&nbsp;models&nbsp;with&nbsp;deferred&nbsp;field&nbsp;loading,&nbsp;we<br>
+need&nbsp;to&nbsp;do&nbsp;things&nbsp;manually,&nbsp;as&nbsp;they're&nbsp;dynamically&nbsp;created&nbsp;classes&nbsp;and<br>
+only&nbsp;module-level&nbsp;classes&nbsp;can&nbsp;be&nbsp;pickled&nbsp;by&nbsp;the&nbsp;default&nbsp;path.</tt></dd></dl>
+
+<dl><dt><a name="Cuisine-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Cuisine-clean"><strong>clean</strong></a>(self)</dt><dd><tt>Hook&nbsp;for&nbsp;doing&nbsp;any&nbsp;extra&nbsp;model-wide&nbsp;validation&nbsp;after&nbsp;<a href="#Cuisine-clean">clean</a>()&nbsp;has&nbsp;been<br>
+called&nbsp;on&nbsp;every&nbsp;field&nbsp;by&nbsp;self.<strong>clean_fields</strong>.&nbsp;Any&nbsp;ValidationError&nbsp;raised<br>
+by&nbsp;this&nbsp;method&nbsp;will&nbsp;not&nbsp;be&nbsp;associated&nbsp;with&nbsp;a&nbsp;particular&nbsp;field;&nbsp;it&nbsp;will<br>
+have&nbsp;a&nbsp;special-case&nbsp;association&nbsp;with&nbsp;the&nbsp;field&nbsp;defined&nbsp;by&nbsp;NON_FIELD_ERRORS.</tt></dd></dl>
+
+<dl><dt><a name="Cuisine-clean_fields"><strong>clean_fields</strong></a>(self, exclude<font color="#909090">=None</font>)</dt><dd><tt>Cleans&nbsp;all&nbsp;fields&nbsp;and&nbsp;raises&nbsp;a&nbsp;ValidationError&nbsp;containing&nbsp;message_dict<br>
+of&nbsp;all&nbsp;validation&nbsp;errors&nbsp;if&nbsp;any&nbsp;occur.</tt></dd></dl>
+
+<dl><dt><a name="Cuisine-date_error_message"><strong>date_error_message</strong></a>(self, lookup_type, field, unique_for)</dt></dl>
+
+<dl><dt><a name="Cuisine-delete"><strong>delete</strong></a>(self, using<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="Cuisine-full_clean"><strong>full_clean</strong></a>(self, exclude<font color="#909090">=None</font>, validate_unique<font color="#909090">=True</font>)</dt><dd><tt>Calls&nbsp;clean_fields,&nbsp;clean,&nbsp;and&nbsp;validate_unique,&nbsp;on&nbsp;the&nbsp;model,<br>
+and&nbsp;raises&nbsp;a&nbsp;``ValidationError``&nbsp;for&nbsp;any&nbsp;errors&nbsp;that&nbsp;occurred.</tt></dd></dl>
+
+<dl><dt><a name="Cuisine-prepare_database_save"><strong>prepare_database_save</strong></a>(self, unused)</dt></dl>
+
+<dl><dt><a name="Cuisine-save"><strong>save</strong></a>(self, force_insert<font color="#909090">=False</font>, force_update<font color="#909090">=False</font>, using<font color="#909090">=None</font>, update_fields<font color="#909090">=None</font>)</dt><dd><tt>Saves&nbsp;the&nbsp;current&nbsp;instance.&nbsp;Override&nbsp;this&nbsp;in&nbsp;a&nbsp;subclass&nbsp;if&nbsp;you&nbsp;want&nbsp;to<br>
+control&nbsp;the&nbsp;saving&nbsp;process.<br>
+&nbsp;<br>
+The&nbsp;'force_insert'&nbsp;and&nbsp;'force_update'&nbsp;parameters&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;insist<br>
+that&nbsp;the&nbsp;"save"&nbsp;must&nbsp;be&nbsp;an&nbsp;SQL&nbsp;insert&nbsp;or&nbsp;update&nbsp;(or&nbsp;equivalent&nbsp;for<br>
+non-SQL&nbsp;backends),&nbsp;respectively.&nbsp;Normally,&nbsp;they&nbsp;should&nbsp;not&nbsp;be&nbsp;set.</tt></dd></dl>
+
+<dl><dt><a name="Cuisine-save_base"><strong>save_base</strong></a>(self, raw<font color="#909090">=False</font>, force_insert<font color="#909090">=False</font>, force_update<font color="#909090">=False</font>, using<font color="#909090">=None</font>, update_fields<font color="#909090">=None</font>)</dt><dd><tt>Handles&nbsp;the&nbsp;parts&nbsp;of&nbsp;saving&nbsp;which&nbsp;should&nbsp;be&nbsp;done&nbsp;only&nbsp;once&nbsp;per&nbsp;save,<br>
+yet&nbsp;need&nbsp;to&nbsp;be&nbsp;done&nbsp;in&nbsp;raw&nbsp;saves,&nbsp;too.&nbsp;This&nbsp;includes&nbsp;some&nbsp;sanity<br>
+checks&nbsp;and&nbsp;signal&nbsp;sending.<br>
+&nbsp;<br>
+The&nbsp;'raw'&nbsp;argument&nbsp;is&nbsp;telling&nbsp;save_base&nbsp;not&nbsp;to&nbsp;save&nbsp;any&nbsp;parent<br>
+models&nbsp;and&nbsp;not&nbsp;to&nbsp;do&nbsp;any&nbsp;changes&nbsp;to&nbsp;the&nbsp;values&nbsp;before&nbsp;save.&nbsp;This<br>
+is&nbsp;used&nbsp;by&nbsp;fixture&nbsp;loading.</tt></dd></dl>
+
+<dl><dt><a name="Cuisine-serializable_value"><strong>serializable_value</strong></a>(self, field_name)</dt><dd><tt>Returns&nbsp;the&nbsp;value&nbsp;of&nbsp;the&nbsp;field&nbsp;name&nbsp;for&nbsp;this&nbsp;instance.&nbsp;If&nbsp;the&nbsp;field&nbsp;is<br>
+a&nbsp;foreign&nbsp;key,&nbsp;returns&nbsp;the&nbsp;id&nbsp;value,&nbsp;instead&nbsp;of&nbsp;the&nbsp;object.&nbsp;If&nbsp;there's<br>
+no&nbsp;Field&nbsp;object&nbsp;with&nbsp;this&nbsp;name&nbsp;on&nbsp;the&nbsp;model,&nbsp;the&nbsp;model&nbsp;attribute's<br>
+value&nbsp;is&nbsp;returned&nbsp;directly.<br>
+&nbsp;<br>
+Used&nbsp;to&nbsp;serialize&nbsp;a&nbsp;field's&nbsp;value&nbsp;(in&nbsp;the&nbsp;serializer,&nbsp;or&nbsp;form&nbsp;output,<br>
+for&nbsp;example).&nbsp;Normally,&nbsp;you&nbsp;would&nbsp;just&nbsp;access&nbsp;the&nbsp;attribute&nbsp;directly<br>
+and&nbsp;not&nbsp;use&nbsp;this&nbsp;method.</tt></dd></dl>
+
+<dl><dt><a name="Cuisine-unique_error_message"><strong>unique_error_message</strong></a>(self, model_class, unique_check)</dt></dl>
+
+<dl><dt><a name="Cuisine-validate_unique"><strong>validate_unique</strong></a>(self, exclude<font color="#909090">=None</font>)</dt><dd><tt>Checks&nbsp;unique&nbsp;constraints&nbsp;on&nbsp;the&nbsp;model&nbsp;and&nbsp;raises&nbsp;``ValidationError``<br>
+if&nbsp;any&nbsp;failed.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="django.db.models.base.html#Model">django.db.models.base.Model</a>:<br>
+<dl><dt><strong>pk</strong></dt>
+</dl>
+<hr>
+Data descriptors inherited from django.db.models.base.NewBase:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Customer">class <strong>Customer</strong></a>(<a href="django.db.models.base.html#Model">django.db.models.base.Model</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Customer">Customer</a>(id,&nbsp;name)<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="models.html#Customer">Customer</a></dd>
+<dd><a href="django.db.models.base.html#Model">django.db.models.base.Model</a></dd>
+<dd>django.db.models.base.NewBase</dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Customer-__str__"><strong>__str__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Customer-get_all"><strong>get_all</strong></a>(self)</dt></dl>
+
+<strong>objects</strong> = &lt;django.db.models.manager.Manager object&gt;
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>dishreview_set</strong></dt>
+</dl>
+<dl><dt><strong>restaurantreview_set</strong></dt>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>DoesNotExist</strong> = &lt;class 'models.DoesNotExist'&gt;</dl>
+
+<dl><dt><strong>MultipleObjectsReturned</strong> = &lt;class 'models.MultipleObjectsReturned'&gt;</dl>
+
+<hr>
+Methods inherited from <a href="django.db.models.base.html#Model">django.db.models.base.Model</a>:<br>
+<dl><dt><a name="Customer-__eq__"><strong>__eq__</strong></a>(self, other)</dt></dl>
+
+<dl><dt><a name="Customer-__hash__"><strong>__hash__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Customer-__init__"><strong>__init__</strong></a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="Customer-__ne__"><strong>__ne__</strong></a>(self, other)</dt></dl>
+
+<dl><dt><a name="Customer-__reduce__"><strong>__reduce__</strong></a>(self)</dt><dd><tt>Provides&nbsp;pickling&nbsp;support.&nbsp;Normally,&nbsp;this&nbsp;just&nbsp;dispatches&nbsp;to&nbsp;Python's<br>
+standard&nbsp;handling.&nbsp;However,&nbsp;for&nbsp;models&nbsp;with&nbsp;deferred&nbsp;field&nbsp;loading,&nbsp;we<br>
+need&nbsp;to&nbsp;do&nbsp;things&nbsp;manually,&nbsp;as&nbsp;they're&nbsp;dynamically&nbsp;created&nbsp;classes&nbsp;and<br>
+only&nbsp;module-level&nbsp;classes&nbsp;can&nbsp;be&nbsp;pickled&nbsp;by&nbsp;the&nbsp;default&nbsp;path.</tt></dd></dl>
+
+<dl><dt><a name="Customer-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Customer-clean"><strong>clean</strong></a>(self)</dt><dd><tt>Hook&nbsp;for&nbsp;doing&nbsp;any&nbsp;extra&nbsp;model-wide&nbsp;validation&nbsp;after&nbsp;<a href="#Customer-clean">clean</a>()&nbsp;has&nbsp;been<br>
+called&nbsp;on&nbsp;every&nbsp;field&nbsp;by&nbsp;self.<strong>clean_fields</strong>.&nbsp;Any&nbsp;ValidationError&nbsp;raised<br>
+by&nbsp;this&nbsp;method&nbsp;will&nbsp;not&nbsp;be&nbsp;associated&nbsp;with&nbsp;a&nbsp;particular&nbsp;field;&nbsp;it&nbsp;will<br>
+have&nbsp;a&nbsp;special-case&nbsp;association&nbsp;with&nbsp;the&nbsp;field&nbsp;defined&nbsp;by&nbsp;NON_FIELD_ERRORS.</tt></dd></dl>
+
+<dl><dt><a name="Customer-clean_fields"><strong>clean_fields</strong></a>(self, exclude<font color="#909090">=None</font>)</dt><dd><tt>Cleans&nbsp;all&nbsp;fields&nbsp;and&nbsp;raises&nbsp;a&nbsp;ValidationError&nbsp;containing&nbsp;message_dict<br>
+of&nbsp;all&nbsp;validation&nbsp;errors&nbsp;if&nbsp;any&nbsp;occur.</tt></dd></dl>
+
+<dl><dt><a name="Customer-date_error_message"><strong>date_error_message</strong></a>(self, lookup_type, field, unique_for)</dt></dl>
+
+<dl><dt><a name="Customer-delete"><strong>delete</strong></a>(self, using<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="Customer-full_clean"><strong>full_clean</strong></a>(self, exclude<font color="#909090">=None</font>, validate_unique<font color="#909090">=True</font>)</dt><dd><tt>Calls&nbsp;clean_fields,&nbsp;clean,&nbsp;and&nbsp;validate_unique,&nbsp;on&nbsp;the&nbsp;model,<br>
+and&nbsp;raises&nbsp;a&nbsp;``ValidationError``&nbsp;for&nbsp;any&nbsp;errors&nbsp;that&nbsp;occurred.</tt></dd></dl>
+
+<dl><dt><a name="Customer-prepare_database_save"><strong>prepare_database_save</strong></a>(self, unused)</dt></dl>
+
+<dl><dt><a name="Customer-save"><strong>save</strong></a>(self, force_insert<font color="#909090">=False</font>, force_update<font color="#909090">=False</font>, using<font color="#909090">=None</font>, update_fields<font color="#909090">=None</font>)</dt><dd><tt>Saves&nbsp;the&nbsp;current&nbsp;instance.&nbsp;Override&nbsp;this&nbsp;in&nbsp;a&nbsp;subclass&nbsp;if&nbsp;you&nbsp;want&nbsp;to<br>
+control&nbsp;the&nbsp;saving&nbsp;process.<br>
+&nbsp;<br>
+The&nbsp;'force_insert'&nbsp;and&nbsp;'force_update'&nbsp;parameters&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;insist<br>
+that&nbsp;the&nbsp;"save"&nbsp;must&nbsp;be&nbsp;an&nbsp;SQL&nbsp;insert&nbsp;or&nbsp;update&nbsp;(or&nbsp;equivalent&nbsp;for<br>
+non-SQL&nbsp;backends),&nbsp;respectively.&nbsp;Normally,&nbsp;they&nbsp;should&nbsp;not&nbsp;be&nbsp;set.</tt></dd></dl>
+
+<dl><dt><a name="Customer-save_base"><strong>save_base</strong></a>(self, raw<font color="#909090">=False</font>, force_insert<font color="#909090">=False</font>, force_update<font color="#909090">=False</font>, using<font color="#909090">=None</font>, update_fields<font color="#909090">=None</font>)</dt><dd><tt>Handles&nbsp;the&nbsp;parts&nbsp;of&nbsp;saving&nbsp;which&nbsp;should&nbsp;be&nbsp;done&nbsp;only&nbsp;once&nbsp;per&nbsp;save,<br>
+yet&nbsp;need&nbsp;to&nbsp;be&nbsp;done&nbsp;in&nbsp;raw&nbsp;saves,&nbsp;too.&nbsp;This&nbsp;includes&nbsp;some&nbsp;sanity<br>
+checks&nbsp;and&nbsp;signal&nbsp;sending.<br>
+&nbsp;<br>
+The&nbsp;'raw'&nbsp;argument&nbsp;is&nbsp;telling&nbsp;save_base&nbsp;not&nbsp;to&nbsp;save&nbsp;any&nbsp;parent<br>
+models&nbsp;and&nbsp;not&nbsp;to&nbsp;do&nbsp;any&nbsp;changes&nbsp;to&nbsp;the&nbsp;values&nbsp;before&nbsp;save.&nbsp;This<br>
+is&nbsp;used&nbsp;by&nbsp;fixture&nbsp;loading.</tt></dd></dl>
+
+<dl><dt><a name="Customer-serializable_value"><strong>serializable_value</strong></a>(self, field_name)</dt><dd><tt>Returns&nbsp;the&nbsp;value&nbsp;of&nbsp;the&nbsp;field&nbsp;name&nbsp;for&nbsp;this&nbsp;instance.&nbsp;If&nbsp;the&nbsp;field&nbsp;is<br>
+a&nbsp;foreign&nbsp;key,&nbsp;returns&nbsp;the&nbsp;id&nbsp;value,&nbsp;instead&nbsp;of&nbsp;the&nbsp;object.&nbsp;If&nbsp;there's<br>
+no&nbsp;Field&nbsp;object&nbsp;with&nbsp;this&nbsp;name&nbsp;on&nbsp;the&nbsp;model,&nbsp;the&nbsp;model&nbsp;attribute's<br>
+value&nbsp;is&nbsp;returned&nbsp;directly.<br>
+&nbsp;<br>
+Used&nbsp;to&nbsp;serialize&nbsp;a&nbsp;field's&nbsp;value&nbsp;(in&nbsp;the&nbsp;serializer,&nbsp;or&nbsp;form&nbsp;output,<br>
+for&nbsp;example).&nbsp;Normally,&nbsp;you&nbsp;would&nbsp;just&nbsp;access&nbsp;the&nbsp;attribute&nbsp;directly<br>
+and&nbsp;not&nbsp;use&nbsp;this&nbsp;method.</tt></dd></dl>
+
+<dl><dt><a name="Customer-unique_error_message"><strong>unique_error_message</strong></a>(self, model_class, unique_check)</dt></dl>
+
+<dl><dt><a name="Customer-validate_unique"><strong>validate_unique</strong></a>(self, exclude<font color="#909090">=None</font>)</dt><dd><tt>Checks&nbsp;unique&nbsp;constraints&nbsp;on&nbsp;the&nbsp;model&nbsp;and&nbsp;raises&nbsp;``ValidationError``<br>
+if&nbsp;any&nbsp;failed.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="django.db.models.base.html#Model">django.db.models.base.Model</a>:<br>
+<dl><dt><strong>pk</strong></dt>
+</dl>
+<hr>
+Data descriptors inherited from django.db.models.base.NewBase:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Dish">class <strong>Dish</strong></a>(<a href="django.db.models.base.html#Model">django.db.models.base.Model</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Dish">Dish</a>(id,&nbsp;name,&nbsp;rating,&nbsp;num_ratings,&nbsp;sum_of_ratings,&nbsp;vegetarian,&nbsp;vegan,&nbsp;kosher,&nbsp;halal,&nbsp;nut_allergy,&nbsp;cost,&nbsp;restaurant_id,&nbsp;generic_dish_id)<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="models.html#Dish">Dish</a></dd>
+<dd><a href="django.db.models.base.html#Model">django.db.models.base.Model</a></dd>
+<dd>django.db.models.base.NewBase</dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Dish-__str__"><strong>__str__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Dish-get_all"><strong>get_all</strong></a>(self)</dt></dl>
+
+<strong>objects</strong> = &lt;django.db.models.manager.Manager object&gt;
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>dishreview_set</strong></dt>
+</dl>
+<dl><dt><strong>generic_dish</strong></dt>
+</dl>
+<dl><dt><strong>restaurant</strong></dt>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>DoesNotExist</strong> = &lt;class 'models.DoesNotExist'&gt;</dl>
+
+<dl><dt><strong>MultipleObjectsReturned</strong> = &lt;class 'models.MultipleObjectsReturned'&gt;</dl>
+
+<hr>
+Methods inherited from <a href="django.db.models.base.html#Model">django.db.models.base.Model</a>:<br>
+<dl><dt><a name="Dish-__eq__"><strong>__eq__</strong></a>(self, other)</dt></dl>
+
+<dl><dt><a name="Dish-__hash__"><strong>__hash__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Dish-__init__"><strong>__init__</strong></a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="Dish-__ne__"><strong>__ne__</strong></a>(self, other)</dt></dl>
+
+<dl><dt><a name="Dish-__reduce__"><strong>__reduce__</strong></a>(self)</dt><dd><tt>Provides&nbsp;pickling&nbsp;support.&nbsp;Normally,&nbsp;this&nbsp;just&nbsp;dispatches&nbsp;to&nbsp;Python's<br>
+standard&nbsp;handling.&nbsp;However,&nbsp;for&nbsp;models&nbsp;with&nbsp;deferred&nbsp;field&nbsp;loading,&nbsp;we<br>
+need&nbsp;to&nbsp;do&nbsp;things&nbsp;manually,&nbsp;as&nbsp;they're&nbsp;dynamically&nbsp;created&nbsp;classes&nbsp;and<br>
+only&nbsp;module-level&nbsp;classes&nbsp;can&nbsp;be&nbsp;pickled&nbsp;by&nbsp;the&nbsp;default&nbsp;path.</tt></dd></dl>
+
+<dl><dt><a name="Dish-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Dish-clean"><strong>clean</strong></a>(self)</dt><dd><tt>Hook&nbsp;for&nbsp;doing&nbsp;any&nbsp;extra&nbsp;model-wide&nbsp;validation&nbsp;after&nbsp;<a href="#Dish-clean">clean</a>()&nbsp;has&nbsp;been<br>
+called&nbsp;on&nbsp;every&nbsp;field&nbsp;by&nbsp;self.<strong>clean_fields</strong>.&nbsp;Any&nbsp;ValidationError&nbsp;raised<br>
+by&nbsp;this&nbsp;method&nbsp;will&nbsp;not&nbsp;be&nbsp;associated&nbsp;with&nbsp;a&nbsp;particular&nbsp;field;&nbsp;it&nbsp;will<br>
+have&nbsp;a&nbsp;special-case&nbsp;association&nbsp;with&nbsp;the&nbsp;field&nbsp;defined&nbsp;by&nbsp;NON_FIELD_ERRORS.</tt></dd></dl>
+
+<dl><dt><a name="Dish-clean_fields"><strong>clean_fields</strong></a>(self, exclude<font color="#909090">=None</font>)</dt><dd><tt>Cleans&nbsp;all&nbsp;fields&nbsp;and&nbsp;raises&nbsp;a&nbsp;ValidationError&nbsp;containing&nbsp;message_dict<br>
+of&nbsp;all&nbsp;validation&nbsp;errors&nbsp;if&nbsp;any&nbsp;occur.</tt></dd></dl>
+
+<dl><dt><a name="Dish-date_error_message"><strong>date_error_message</strong></a>(self, lookup_type, field, unique_for)</dt></dl>
+
+<dl><dt><a name="Dish-delete"><strong>delete</strong></a>(self, using<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="Dish-full_clean"><strong>full_clean</strong></a>(self, exclude<font color="#909090">=None</font>, validate_unique<font color="#909090">=True</font>)</dt><dd><tt>Calls&nbsp;clean_fields,&nbsp;clean,&nbsp;and&nbsp;validate_unique,&nbsp;on&nbsp;the&nbsp;model,<br>
+and&nbsp;raises&nbsp;a&nbsp;``ValidationError``&nbsp;for&nbsp;any&nbsp;errors&nbsp;that&nbsp;occurred.</tt></dd></dl>
+
+<dl><dt><a name="Dish-prepare_database_save"><strong>prepare_database_save</strong></a>(self, unused)</dt></dl>
+
+<dl><dt><a name="Dish-save"><strong>save</strong></a>(self, force_insert<font color="#909090">=False</font>, force_update<font color="#909090">=False</font>, using<font color="#909090">=None</font>, update_fields<font color="#909090">=None</font>)</dt><dd><tt>Saves&nbsp;the&nbsp;current&nbsp;instance.&nbsp;Override&nbsp;this&nbsp;in&nbsp;a&nbsp;subclass&nbsp;if&nbsp;you&nbsp;want&nbsp;to<br>
+control&nbsp;the&nbsp;saving&nbsp;process.<br>
+&nbsp;<br>
+The&nbsp;'force_insert'&nbsp;and&nbsp;'force_update'&nbsp;parameters&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;insist<br>
+that&nbsp;the&nbsp;"save"&nbsp;must&nbsp;be&nbsp;an&nbsp;SQL&nbsp;insert&nbsp;or&nbsp;update&nbsp;(or&nbsp;equivalent&nbsp;for<br>
+non-SQL&nbsp;backends),&nbsp;respectively.&nbsp;Normally,&nbsp;they&nbsp;should&nbsp;not&nbsp;be&nbsp;set.</tt></dd></dl>
+
+<dl><dt><a name="Dish-save_base"><strong>save_base</strong></a>(self, raw<font color="#909090">=False</font>, force_insert<font color="#909090">=False</font>, force_update<font color="#909090">=False</font>, using<font color="#909090">=None</font>, update_fields<font color="#909090">=None</font>)</dt><dd><tt>Handles&nbsp;the&nbsp;parts&nbsp;of&nbsp;saving&nbsp;which&nbsp;should&nbsp;be&nbsp;done&nbsp;only&nbsp;once&nbsp;per&nbsp;save,<br>
+yet&nbsp;need&nbsp;to&nbsp;be&nbsp;done&nbsp;in&nbsp;raw&nbsp;saves,&nbsp;too.&nbsp;This&nbsp;includes&nbsp;some&nbsp;sanity<br>
+checks&nbsp;and&nbsp;signal&nbsp;sending.<br>
+&nbsp;<br>
+The&nbsp;'raw'&nbsp;argument&nbsp;is&nbsp;telling&nbsp;save_base&nbsp;not&nbsp;to&nbsp;save&nbsp;any&nbsp;parent<br>
+models&nbsp;and&nbsp;not&nbsp;to&nbsp;do&nbsp;any&nbsp;changes&nbsp;to&nbsp;the&nbsp;values&nbsp;before&nbsp;save.&nbsp;This<br>
+is&nbsp;used&nbsp;by&nbsp;fixture&nbsp;loading.</tt></dd></dl>
+
+<dl><dt><a name="Dish-serializable_value"><strong>serializable_value</strong></a>(self, field_name)</dt><dd><tt>Returns&nbsp;the&nbsp;value&nbsp;of&nbsp;the&nbsp;field&nbsp;name&nbsp;for&nbsp;this&nbsp;instance.&nbsp;If&nbsp;the&nbsp;field&nbsp;is<br>
+a&nbsp;foreign&nbsp;key,&nbsp;returns&nbsp;the&nbsp;id&nbsp;value,&nbsp;instead&nbsp;of&nbsp;the&nbsp;object.&nbsp;If&nbsp;there's<br>
+no&nbsp;Field&nbsp;object&nbsp;with&nbsp;this&nbsp;name&nbsp;on&nbsp;the&nbsp;model,&nbsp;the&nbsp;model&nbsp;attribute's<br>
+value&nbsp;is&nbsp;returned&nbsp;directly.<br>
+&nbsp;<br>
+Used&nbsp;to&nbsp;serialize&nbsp;a&nbsp;field's&nbsp;value&nbsp;(in&nbsp;the&nbsp;serializer,&nbsp;or&nbsp;form&nbsp;output,<br>
+for&nbsp;example).&nbsp;Normally,&nbsp;you&nbsp;would&nbsp;just&nbsp;access&nbsp;the&nbsp;attribute&nbsp;directly<br>
+and&nbsp;not&nbsp;use&nbsp;this&nbsp;method.</tt></dd></dl>
+
+<dl><dt><a name="Dish-unique_error_message"><strong>unique_error_message</strong></a>(self, model_class, unique_check)</dt></dl>
+
+<dl><dt><a name="Dish-validate_unique"><strong>validate_unique</strong></a>(self, exclude<font color="#909090">=None</font>)</dt><dd><tt>Checks&nbsp;unique&nbsp;constraints&nbsp;on&nbsp;the&nbsp;model&nbsp;and&nbsp;raises&nbsp;``ValidationError``<br>
+if&nbsp;any&nbsp;failed.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="django.db.models.base.html#Model">django.db.models.base.Model</a>:<br>
+<dl><dt><strong>pk</strong></dt>
+</dl>
+<hr>
+Data descriptors inherited from django.db.models.base.NewBase:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="DishReview">class <strong>DishReview</strong></a>(<a href="django.db.models.base.html#Model">django.db.models.base.Model</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#DishReview">DishReview</a>(id,&nbsp;rating,&nbsp;review_comment,&nbsp;customer_id,&nbsp;dish_id)<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="models.html#DishReview">DishReview</a></dd>
+<dd><a href="django.db.models.base.html#Model">django.db.models.base.Model</a></dd>
+<dd>django.db.models.base.NewBase</dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="DishReview-__str__"><strong>__str__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="DishReview-get_all"><strong>get_all</strong></a>(self)</dt></dl>
+
+<strong>objects</strong> = &lt;django.db.models.manager.Manager object&gt;
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>customer</strong></dt>
+</dl>
+<dl><dt><strong>dish</strong></dt>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>DoesNotExist</strong> = &lt;class 'models.DoesNotExist'&gt;</dl>
+
+<dl><dt><strong>MultipleObjectsReturned</strong> = &lt;class 'models.MultipleObjectsReturned'&gt;</dl>
+
+<hr>
+Methods inherited from <a href="django.db.models.base.html#Model">django.db.models.base.Model</a>:<br>
+<dl><dt><a name="DishReview-__eq__"><strong>__eq__</strong></a>(self, other)</dt></dl>
+
+<dl><dt><a name="DishReview-__hash__"><strong>__hash__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="DishReview-__init__"><strong>__init__</strong></a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="DishReview-__ne__"><strong>__ne__</strong></a>(self, other)</dt></dl>
+
+<dl><dt><a name="DishReview-__reduce__"><strong>__reduce__</strong></a>(self)</dt><dd><tt>Provides&nbsp;pickling&nbsp;support.&nbsp;Normally,&nbsp;this&nbsp;just&nbsp;dispatches&nbsp;to&nbsp;Python's<br>
+standard&nbsp;handling.&nbsp;However,&nbsp;for&nbsp;models&nbsp;with&nbsp;deferred&nbsp;field&nbsp;loading,&nbsp;we<br>
+need&nbsp;to&nbsp;do&nbsp;things&nbsp;manually,&nbsp;as&nbsp;they're&nbsp;dynamically&nbsp;created&nbsp;classes&nbsp;and<br>
+only&nbsp;module-level&nbsp;classes&nbsp;can&nbsp;be&nbsp;pickled&nbsp;by&nbsp;the&nbsp;default&nbsp;path.</tt></dd></dl>
+
+<dl><dt><a name="DishReview-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="DishReview-clean"><strong>clean</strong></a>(self)</dt><dd><tt>Hook&nbsp;for&nbsp;doing&nbsp;any&nbsp;extra&nbsp;model-wide&nbsp;validation&nbsp;after&nbsp;<a href="#DishReview-clean">clean</a>()&nbsp;has&nbsp;been<br>
+called&nbsp;on&nbsp;every&nbsp;field&nbsp;by&nbsp;self.<strong>clean_fields</strong>.&nbsp;Any&nbsp;ValidationError&nbsp;raised<br>
+by&nbsp;this&nbsp;method&nbsp;will&nbsp;not&nbsp;be&nbsp;associated&nbsp;with&nbsp;a&nbsp;particular&nbsp;field;&nbsp;it&nbsp;will<br>
+have&nbsp;a&nbsp;special-case&nbsp;association&nbsp;with&nbsp;the&nbsp;field&nbsp;defined&nbsp;by&nbsp;NON_FIELD_ERRORS.</tt></dd></dl>
+
+<dl><dt><a name="DishReview-clean_fields"><strong>clean_fields</strong></a>(self, exclude<font color="#909090">=None</font>)</dt><dd><tt>Cleans&nbsp;all&nbsp;fields&nbsp;and&nbsp;raises&nbsp;a&nbsp;ValidationError&nbsp;containing&nbsp;message_dict<br>
+of&nbsp;all&nbsp;validation&nbsp;errors&nbsp;if&nbsp;any&nbsp;occur.</tt></dd></dl>
+
+<dl><dt><a name="DishReview-date_error_message"><strong>date_error_message</strong></a>(self, lookup_type, field, unique_for)</dt></dl>
+
+<dl><dt><a name="DishReview-delete"><strong>delete</strong></a>(self, using<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="DishReview-full_clean"><strong>full_clean</strong></a>(self, exclude<font color="#909090">=None</font>, validate_unique<font color="#909090">=True</font>)</dt><dd><tt>Calls&nbsp;clean_fields,&nbsp;clean,&nbsp;and&nbsp;validate_unique,&nbsp;on&nbsp;the&nbsp;model,<br>
+and&nbsp;raises&nbsp;a&nbsp;``ValidationError``&nbsp;for&nbsp;any&nbsp;errors&nbsp;that&nbsp;occurred.</tt></dd></dl>
+
+<dl><dt><a name="DishReview-prepare_database_save"><strong>prepare_database_save</strong></a>(self, unused)</dt></dl>
+
+<dl><dt><a name="DishReview-save"><strong>save</strong></a>(self, force_insert<font color="#909090">=False</font>, force_update<font color="#909090">=False</font>, using<font color="#909090">=None</font>, update_fields<font color="#909090">=None</font>)</dt><dd><tt>Saves&nbsp;the&nbsp;current&nbsp;instance.&nbsp;Override&nbsp;this&nbsp;in&nbsp;a&nbsp;subclass&nbsp;if&nbsp;you&nbsp;want&nbsp;to<br>
+control&nbsp;the&nbsp;saving&nbsp;process.<br>
+&nbsp;<br>
+The&nbsp;'force_insert'&nbsp;and&nbsp;'force_update'&nbsp;parameters&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;insist<br>
+that&nbsp;the&nbsp;"save"&nbsp;must&nbsp;be&nbsp;an&nbsp;SQL&nbsp;insert&nbsp;or&nbsp;update&nbsp;(or&nbsp;equivalent&nbsp;for<br>
+non-SQL&nbsp;backends),&nbsp;respectively.&nbsp;Normally,&nbsp;they&nbsp;should&nbsp;not&nbsp;be&nbsp;set.</tt></dd></dl>
+
+<dl><dt><a name="DishReview-save_base"><strong>save_base</strong></a>(self, raw<font color="#909090">=False</font>, force_insert<font color="#909090">=False</font>, force_update<font color="#909090">=False</font>, using<font color="#909090">=None</font>, update_fields<font color="#909090">=None</font>)</dt><dd><tt>Handles&nbsp;the&nbsp;parts&nbsp;of&nbsp;saving&nbsp;which&nbsp;should&nbsp;be&nbsp;done&nbsp;only&nbsp;once&nbsp;per&nbsp;save,<br>
+yet&nbsp;need&nbsp;to&nbsp;be&nbsp;done&nbsp;in&nbsp;raw&nbsp;saves,&nbsp;too.&nbsp;This&nbsp;includes&nbsp;some&nbsp;sanity<br>
+checks&nbsp;and&nbsp;signal&nbsp;sending.<br>
+&nbsp;<br>
+The&nbsp;'raw'&nbsp;argument&nbsp;is&nbsp;telling&nbsp;save_base&nbsp;not&nbsp;to&nbsp;save&nbsp;any&nbsp;parent<br>
+models&nbsp;and&nbsp;not&nbsp;to&nbsp;do&nbsp;any&nbsp;changes&nbsp;to&nbsp;the&nbsp;values&nbsp;before&nbsp;save.&nbsp;This<br>
+is&nbsp;used&nbsp;by&nbsp;fixture&nbsp;loading.</tt></dd></dl>
+
+<dl><dt><a name="DishReview-serializable_value"><strong>serializable_value</strong></a>(self, field_name)</dt><dd><tt>Returns&nbsp;the&nbsp;value&nbsp;of&nbsp;the&nbsp;field&nbsp;name&nbsp;for&nbsp;this&nbsp;instance.&nbsp;If&nbsp;the&nbsp;field&nbsp;is<br>
+a&nbsp;foreign&nbsp;key,&nbsp;returns&nbsp;the&nbsp;id&nbsp;value,&nbsp;instead&nbsp;of&nbsp;the&nbsp;object.&nbsp;If&nbsp;there's<br>
+no&nbsp;Field&nbsp;object&nbsp;with&nbsp;this&nbsp;name&nbsp;on&nbsp;the&nbsp;model,&nbsp;the&nbsp;model&nbsp;attribute's<br>
+value&nbsp;is&nbsp;returned&nbsp;directly.<br>
+&nbsp;<br>
+Used&nbsp;to&nbsp;serialize&nbsp;a&nbsp;field's&nbsp;value&nbsp;(in&nbsp;the&nbsp;serializer,&nbsp;or&nbsp;form&nbsp;output,<br>
+for&nbsp;example).&nbsp;Normally,&nbsp;you&nbsp;would&nbsp;just&nbsp;access&nbsp;the&nbsp;attribute&nbsp;directly<br>
+and&nbsp;not&nbsp;use&nbsp;this&nbsp;method.</tt></dd></dl>
+
+<dl><dt><a name="DishReview-unique_error_message"><strong>unique_error_message</strong></a>(self, model_class, unique_check)</dt></dl>
+
+<dl><dt><a name="DishReview-validate_unique"><strong>validate_unique</strong></a>(self, exclude<font color="#909090">=None</font>)</dt><dd><tt>Checks&nbsp;unique&nbsp;constraints&nbsp;on&nbsp;the&nbsp;model&nbsp;and&nbsp;raises&nbsp;``ValidationError``<br>
+if&nbsp;any&nbsp;failed.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="django.db.models.base.html#Model">django.db.models.base.Model</a>:<br>
+<dl><dt><strong>pk</strong></dt>
+</dl>
+<hr>
+Data descriptors inherited from django.db.models.base.NewBase:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="GenericDish">class <strong>GenericDish</strong></a>(<a href="django.db.models.base.html#Model">django.db.models.base.Model</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#GenericDish">GenericDish</a>(id,&nbsp;name,&nbsp;cuisine_id)<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="models.html#GenericDish">GenericDish</a></dd>
+<dd><a href="django.db.models.base.html#Model">django.db.models.base.Model</a></dd>
+<dd>django.db.models.base.NewBase</dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="GenericDish-__str__"><strong>__str__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="GenericDish-get_all"><strong>get_all</strong></a>(self)</dt></dl>
+
+<strong>objects</strong> = &lt;django.db.models.manager.Manager object&gt;
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>cuisine</strong></dt>
+</dl>
+<dl><dt><strong>dish_set</strong></dt>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>DoesNotExist</strong> = &lt;class 'models.DoesNotExist'&gt;</dl>
+
+<dl><dt><strong>MultipleObjectsReturned</strong> = &lt;class 'models.MultipleObjectsReturned'&gt;</dl>
+
+<hr>
+Methods inherited from <a href="django.db.models.base.html#Model">django.db.models.base.Model</a>:<br>
+<dl><dt><a name="GenericDish-__eq__"><strong>__eq__</strong></a>(self, other)</dt></dl>
+
+<dl><dt><a name="GenericDish-__hash__"><strong>__hash__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="GenericDish-__init__"><strong>__init__</strong></a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="GenericDish-__ne__"><strong>__ne__</strong></a>(self, other)</dt></dl>
+
+<dl><dt><a name="GenericDish-__reduce__"><strong>__reduce__</strong></a>(self)</dt><dd><tt>Provides&nbsp;pickling&nbsp;support.&nbsp;Normally,&nbsp;this&nbsp;just&nbsp;dispatches&nbsp;to&nbsp;Python's<br>
+standard&nbsp;handling.&nbsp;However,&nbsp;for&nbsp;models&nbsp;with&nbsp;deferred&nbsp;field&nbsp;loading,&nbsp;we<br>
+need&nbsp;to&nbsp;do&nbsp;things&nbsp;manually,&nbsp;as&nbsp;they're&nbsp;dynamically&nbsp;created&nbsp;classes&nbsp;and<br>
+only&nbsp;module-level&nbsp;classes&nbsp;can&nbsp;be&nbsp;pickled&nbsp;by&nbsp;the&nbsp;default&nbsp;path.</tt></dd></dl>
+
+<dl><dt><a name="GenericDish-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="GenericDish-clean"><strong>clean</strong></a>(self)</dt><dd><tt>Hook&nbsp;for&nbsp;doing&nbsp;any&nbsp;extra&nbsp;model-wide&nbsp;validation&nbsp;after&nbsp;<a href="#GenericDish-clean">clean</a>()&nbsp;has&nbsp;been<br>
+called&nbsp;on&nbsp;every&nbsp;field&nbsp;by&nbsp;self.<strong>clean_fields</strong>.&nbsp;Any&nbsp;ValidationError&nbsp;raised<br>
+by&nbsp;this&nbsp;method&nbsp;will&nbsp;not&nbsp;be&nbsp;associated&nbsp;with&nbsp;a&nbsp;particular&nbsp;field;&nbsp;it&nbsp;will<br>
+have&nbsp;a&nbsp;special-case&nbsp;association&nbsp;with&nbsp;the&nbsp;field&nbsp;defined&nbsp;by&nbsp;NON_FIELD_ERRORS.</tt></dd></dl>
+
+<dl><dt><a name="GenericDish-clean_fields"><strong>clean_fields</strong></a>(self, exclude<font color="#909090">=None</font>)</dt><dd><tt>Cleans&nbsp;all&nbsp;fields&nbsp;and&nbsp;raises&nbsp;a&nbsp;ValidationError&nbsp;containing&nbsp;message_dict<br>
+of&nbsp;all&nbsp;validation&nbsp;errors&nbsp;if&nbsp;any&nbsp;occur.</tt></dd></dl>
+
+<dl><dt><a name="GenericDish-date_error_message"><strong>date_error_message</strong></a>(self, lookup_type, field, unique_for)</dt></dl>
+
+<dl><dt><a name="GenericDish-delete"><strong>delete</strong></a>(self, using<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="GenericDish-full_clean"><strong>full_clean</strong></a>(self, exclude<font color="#909090">=None</font>, validate_unique<font color="#909090">=True</font>)</dt><dd><tt>Calls&nbsp;clean_fields,&nbsp;clean,&nbsp;and&nbsp;validate_unique,&nbsp;on&nbsp;the&nbsp;model,<br>
+and&nbsp;raises&nbsp;a&nbsp;``ValidationError``&nbsp;for&nbsp;any&nbsp;errors&nbsp;that&nbsp;occurred.</tt></dd></dl>
+
+<dl><dt><a name="GenericDish-prepare_database_save"><strong>prepare_database_save</strong></a>(self, unused)</dt></dl>
+
+<dl><dt><a name="GenericDish-save"><strong>save</strong></a>(self, force_insert<font color="#909090">=False</font>, force_update<font color="#909090">=False</font>, using<font color="#909090">=None</font>, update_fields<font color="#909090">=None</font>)</dt><dd><tt>Saves&nbsp;the&nbsp;current&nbsp;instance.&nbsp;Override&nbsp;this&nbsp;in&nbsp;a&nbsp;subclass&nbsp;if&nbsp;you&nbsp;want&nbsp;to<br>
+control&nbsp;the&nbsp;saving&nbsp;process.<br>
+&nbsp;<br>
+The&nbsp;'force_insert'&nbsp;and&nbsp;'force_update'&nbsp;parameters&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;insist<br>
+that&nbsp;the&nbsp;"save"&nbsp;must&nbsp;be&nbsp;an&nbsp;SQL&nbsp;insert&nbsp;or&nbsp;update&nbsp;(or&nbsp;equivalent&nbsp;for<br>
+non-SQL&nbsp;backends),&nbsp;respectively.&nbsp;Normally,&nbsp;they&nbsp;should&nbsp;not&nbsp;be&nbsp;set.</tt></dd></dl>
+
+<dl><dt><a name="GenericDish-save_base"><strong>save_base</strong></a>(self, raw<font color="#909090">=False</font>, force_insert<font color="#909090">=False</font>, force_update<font color="#909090">=False</font>, using<font color="#909090">=None</font>, update_fields<font color="#909090">=None</font>)</dt><dd><tt>Handles&nbsp;the&nbsp;parts&nbsp;of&nbsp;saving&nbsp;which&nbsp;should&nbsp;be&nbsp;done&nbsp;only&nbsp;once&nbsp;per&nbsp;save,<br>
+yet&nbsp;need&nbsp;to&nbsp;be&nbsp;done&nbsp;in&nbsp;raw&nbsp;saves,&nbsp;too.&nbsp;This&nbsp;includes&nbsp;some&nbsp;sanity<br>
+checks&nbsp;and&nbsp;signal&nbsp;sending.<br>
+&nbsp;<br>
+The&nbsp;'raw'&nbsp;argument&nbsp;is&nbsp;telling&nbsp;save_base&nbsp;not&nbsp;to&nbsp;save&nbsp;any&nbsp;parent<br>
+models&nbsp;and&nbsp;not&nbsp;to&nbsp;do&nbsp;any&nbsp;changes&nbsp;to&nbsp;the&nbsp;values&nbsp;before&nbsp;save.&nbsp;This<br>
+is&nbsp;used&nbsp;by&nbsp;fixture&nbsp;loading.</tt></dd></dl>
+
+<dl><dt><a name="GenericDish-serializable_value"><strong>serializable_value</strong></a>(self, field_name)</dt><dd><tt>Returns&nbsp;the&nbsp;value&nbsp;of&nbsp;the&nbsp;field&nbsp;name&nbsp;for&nbsp;this&nbsp;instance.&nbsp;If&nbsp;the&nbsp;field&nbsp;is<br>
+a&nbsp;foreign&nbsp;key,&nbsp;returns&nbsp;the&nbsp;id&nbsp;value,&nbsp;instead&nbsp;of&nbsp;the&nbsp;object.&nbsp;If&nbsp;there's<br>
+no&nbsp;Field&nbsp;object&nbsp;with&nbsp;this&nbsp;name&nbsp;on&nbsp;the&nbsp;model,&nbsp;the&nbsp;model&nbsp;attribute's<br>
+value&nbsp;is&nbsp;returned&nbsp;directly.<br>
+&nbsp;<br>
+Used&nbsp;to&nbsp;serialize&nbsp;a&nbsp;field's&nbsp;value&nbsp;(in&nbsp;the&nbsp;serializer,&nbsp;or&nbsp;form&nbsp;output,<br>
+for&nbsp;example).&nbsp;Normally,&nbsp;you&nbsp;would&nbsp;just&nbsp;access&nbsp;the&nbsp;attribute&nbsp;directly<br>
+and&nbsp;not&nbsp;use&nbsp;this&nbsp;method.</tt></dd></dl>
+
+<dl><dt><a name="GenericDish-unique_error_message"><strong>unique_error_message</strong></a>(self, model_class, unique_check)</dt></dl>
+
+<dl><dt><a name="GenericDish-validate_unique"><strong>validate_unique</strong></a>(self, exclude<font color="#909090">=None</font>)</dt><dd><tt>Checks&nbsp;unique&nbsp;constraints&nbsp;on&nbsp;the&nbsp;model&nbsp;and&nbsp;raises&nbsp;``ValidationError``<br>
+if&nbsp;any&nbsp;failed.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="django.db.models.base.html#Model">django.db.models.base.Model</a>:<br>
+<dl><dt><strong>pk</strong></dt>
+</dl>
+<hr>
+Data descriptors inherited from django.db.models.base.NewBase:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Restaurant">class <strong>Restaurant</strong></a>(<a href="django.db.models.base.html#Model">django.db.models.base.Model</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Restaurant">Restaurant</a>(id,&nbsp;name,&nbsp;reservation_required,&nbsp;reservation_avail,&nbsp;has_waiter,&nbsp;phone_number,&nbsp;description,&nbsp;zip_code,&nbsp;address,&nbsp;delivery,&nbsp;take_out,&nbsp;pet_friendly,&nbsp;cost,&nbsp;website,&nbsp;cuisine_id)<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="models.html#Restaurant">Restaurant</a></dd>
+<dd><a href="django.db.models.base.html#Model">django.db.models.base.Model</a></dd>
+<dd>django.db.models.base.NewBase</dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Restaurant-__str__"><strong>__str__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Restaurant-get_all"><strong>get_all</strong></a>(self)</dt></dl>
+
+<strong>objects</strong> = &lt;django.db.models.manager.Manager object&gt;
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>cuisine</strong></dt>
+</dl>
+<dl><dt><strong>dish_set</strong></dt>
+</dl>
+<dl><dt><strong>restaurantreview_set</strong></dt>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>DoesNotExist</strong> = &lt;class 'models.DoesNotExist'&gt;</dl>
+
+<dl><dt><strong>MultipleObjectsReturned</strong> = &lt;class 'models.MultipleObjectsReturned'&gt;</dl>
+
+<hr>
+Methods inherited from <a href="django.db.models.base.html#Model">django.db.models.base.Model</a>:<br>
+<dl><dt><a name="Restaurant-__eq__"><strong>__eq__</strong></a>(self, other)</dt></dl>
+
+<dl><dt><a name="Restaurant-__hash__"><strong>__hash__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Restaurant-__init__"><strong>__init__</strong></a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="Restaurant-__ne__"><strong>__ne__</strong></a>(self, other)</dt></dl>
+
+<dl><dt><a name="Restaurant-__reduce__"><strong>__reduce__</strong></a>(self)</dt><dd><tt>Provides&nbsp;pickling&nbsp;support.&nbsp;Normally,&nbsp;this&nbsp;just&nbsp;dispatches&nbsp;to&nbsp;Python's<br>
+standard&nbsp;handling.&nbsp;However,&nbsp;for&nbsp;models&nbsp;with&nbsp;deferred&nbsp;field&nbsp;loading,&nbsp;we<br>
+need&nbsp;to&nbsp;do&nbsp;things&nbsp;manually,&nbsp;as&nbsp;they're&nbsp;dynamically&nbsp;created&nbsp;classes&nbsp;and<br>
+only&nbsp;module-level&nbsp;classes&nbsp;can&nbsp;be&nbsp;pickled&nbsp;by&nbsp;the&nbsp;default&nbsp;path.</tt></dd></dl>
+
+<dl><dt><a name="Restaurant-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Restaurant-clean"><strong>clean</strong></a>(self)</dt><dd><tt>Hook&nbsp;for&nbsp;doing&nbsp;any&nbsp;extra&nbsp;model-wide&nbsp;validation&nbsp;after&nbsp;<a href="#Restaurant-clean">clean</a>()&nbsp;has&nbsp;been<br>
+called&nbsp;on&nbsp;every&nbsp;field&nbsp;by&nbsp;self.<strong>clean_fields</strong>.&nbsp;Any&nbsp;ValidationError&nbsp;raised<br>
+by&nbsp;this&nbsp;method&nbsp;will&nbsp;not&nbsp;be&nbsp;associated&nbsp;with&nbsp;a&nbsp;particular&nbsp;field;&nbsp;it&nbsp;will<br>
+have&nbsp;a&nbsp;special-case&nbsp;association&nbsp;with&nbsp;the&nbsp;field&nbsp;defined&nbsp;by&nbsp;NON_FIELD_ERRORS.</tt></dd></dl>
+
+<dl><dt><a name="Restaurant-clean_fields"><strong>clean_fields</strong></a>(self, exclude<font color="#909090">=None</font>)</dt><dd><tt>Cleans&nbsp;all&nbsp;fields&nbsp;and&nbsp;raises&nbsp;a&nbsp;ValidationError&nbsp;containing&nbsp;message_dict<br>
+of&nbsp;all&nbsp;validation&nbsp;errors&nbsp;if&nbsp;any&nbsp;occur.</tt></dd></dl>
+
+<dl><dt><a name="Restaurant-date_error_message"><strong>date_error_message</strong></a>(self, lookup_type, field, unique_for)</dt></dl>
+
+<dl><dt><a name="Restaurant-delete"><strong>delete</strong></a>(self, using<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="Restaurant-full_clean"><strong>full_clean</strong></a>(self, exclude<font color="#909090">=None</font>, validate_unique<font color="#909090">=True</font>)</dt><dd><tt>Calls&nbsp;clean_fields,&nbsp;clean,&nbsp;and&nbsp;validate_unique,&nbsp;on&nbsp;the&nbsp;model,<br>
+and&nbsp;raises&nbsp;a&nbsp;``ValidationError``&nbsp;for&nbsp;any&nbsp;errors&nbsp;that&nbsp;occurred.</tt></dd></dl>
+
+<dl><dt><a name="Restaurant-prepare_database_save"><strong>prepare_database_save</strong></a>(self, unused)</dt></dl>
+
+<dl><dt><a name="Restaurant-save"><strong>save</strong></a>(self, force_insert<font color="#909090">=False</font>, force_update<font color="#909090">=False</font>, using<font color="#909090">=None</font>, update_fields<font color="#909090">=None</font>)</dt><dd><tt>Saves&nbsp;the&nbsp;current&nbsp;instance.&nbsp;Override&nbsp;this&nbsp;in&nbsp;a&nbsp;subclass&nbsp;if&nbsp;you&nbsp;want&nbsp;to<br>
+control&nbsp;the&nbsp;saving&nbsp;process.<br>
+&nbsp;<br>
+The&nbsp;'force_insert'&nbsp;and&nbsp;'force_update'&nbsp;parameters&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;insist<br>
+that&nbsp;the&nbsp;"save"&nbsp;must&nbsp;be&nbsp;an&nbsp;SQL&nbsp;insert&nbsp;or&nbsp;update&nbsp;(or&nbsp;equivalent&nbsp;for<br>
+non-SQL&nbsp;backends),&nbsp;respectively.&nbsp;Normally,&nbsp;they&nbsp;should&nbsp;not&nbsp;be&nbsp;set.</tt></dd></dl>
+
+<dl><dt><a name="Restaurant-save_base"><strong>save_base</strong></a>(self, raw<font color="#909090">=False</font>, force_insert<font color="#909090">=False</font>, force_update<font color="#909090">=False</font>, using<font color="#909090">=None</font>, update_fields<font color="#909090">=None</font>)</dt><dd><tt>Handles&nbsp;the&nbsp;parts&nbsp;of&nbsp;saving&nbsp;which&nbsp;should&nbsp;be&nbsp;done&nbsp;only&nbsp;once&nbsp;per&nbsp;save,<br>
+yet&nbsp;need&nbsp;to&nbsp;be&nbsp;done&nbsp;in&nbsp;raw&nbsp;saves,&nbsp;too.&nbsp;This&nbsp;includes&nbsp;some&nbsp;sanity<br>
+checks&nbsp;and&nbsp;signal&nbsp;sending.<br>
+&nbsp;<br>
+The&nbsp;'raw'&nbsp;argument&nbsp;is&nbsp;telling&nbsp;save_base&nbsp;not&nbsp;to&nbsp;save&nbsp;any&nbsp;parent<br>
+models&nbsp;and&nbsp;not&nbsp;to&nbsp;do&nbsp;any&nbsp;changes&nbsp;to&nbsp;the&nbsp;values&nbsp;before&nbsp;save.&nbsp;This<br>
+is&nbsp;used&nbsp;by&nbsp;fixture&nbsp;loading.</tt></dd></dl>
+
+<dl><dt><a name="Restaurant-serializable_value"><strong>serializable_value</strong></a>(self, field_name)</dt><dd><tt>Returns&nbsp;the&nbsp;value&nbsp;of&nbsp;the&nbsp;field&nbsp;name&nbsp;for&nbsp;this&nbsp;instance.&nbsp;If&nbsp;the&nbsp;field&nbsp;is<br>
+a&nbsp;foreign&nbsp;key,&nbsp;returns&nbsp;the&nbsp;id&nbsp;value,&nbsp;instead&nbsp;of&nbsp;the&nbsp;object.&nbsp;If&nbsp;there's<br>
+no&nbsp;Field&nbsp;object&nbsp;with&nbsp;this&nbsp;name&nbsp;on&nbsp;the&nbsp;model,&nbsp;the&nbsp;model&nbsp;attribute's<br>
+value&nbsp;is&nbsp;returned&nbsp;directly.<br>
+&nbsp;<br>
+Used&nbsp;to&nbsp;serialize&nbsp;a&nbsp;field's&nbsp;value&nbsp;(in&nbsp;the&nbsp;serializer,&nbsp;or&nbsp;form&nbsp;output,<br>
+for&nbsp;example).&nbsp;Normally,&nbsp;you&nbsp;would&nbsp;just&nbsp;access&nbsp;the&nbsp;attribute&nbsp;directly<br>
+and&nbsp;not&nbsp;use&nbsp;this&nbsp;method.</tt></dd></dl>
+
+<dl><dt><a name="Restaurant-unique_error_message"><strong>unique_error_message</strong></a>(self, model_class, unique_check)</dt></dl>
+
+<dl><dt><a name="Restaurant-validate_unique"><strong>validate_unique</strong></a>(self, exclude<font color="#909090">=None</font>)</dt><dd><tt>Checks&nbsp;unique&nbsp;constraints&nbsp;on&nbsp;the&nbsp;model&nbsp;and&nbsp;raises&nbsp;``ValidationError``<br>
+if&nbsp;any&nbsp;failed.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="django.db.models.base.html#Model">django.db.models.base.Model</a>:<br>
+<dl><dt><strong>pk</strong></dt>
+</dl>
+<hr>
+Data descriptors inherited from django.db.models.base.NewBase:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="RestaurantReview">class <strong>RestaurantReview</strong></a>(<a href="django.db.models.base.html#Model">django.db.models.base.Model</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#RestaurantReview">RestaurantReview</a>(id,&nbsp;rating,&nbsp;review_comment,&nbsp;customer_id,&nbsp;restaurant_id)<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="models.html#RestaurantReview">RestaurantReview</a></dd>
+<dd><a href="django.db.models.base.html#Model">django.db.models.base.Model</a></dd>
+<dd>django.db.models.base.NewBase</dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="RestaurantReview-__str__"><strong>__str__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="RestaurantReview-get_all"><strong>get_all</strong></a>(self)</dt></dl>
+
+<strong>objects</strong> = &lt;django.db.models.manager.Manager object&gt;
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>customer</strong></dt>
+</dl>
+<dl><dt><strong>restaurant</strong></dt>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>DoesNotExist</strong> = &lt;class 'models.DoesNotExist'&gt;</dl>
+
+<dl><dt><strong>MultipleObjectsReturned</strong> = &lt;class 'models.MultipleObjectsReturned'&gt;</dl>
+
+<hr>
+Methods inherited from <a href="django.db.models.base.html#Model">django.db.models.base.Model</a>:<br>
+<dl><dt><a name="RestaurantReview-__eq__"><strong>__eq__</strong></a>(self, other)</dt></dl>
+
+<dl><dt><a name="RestaurantReview-__hash__"><strong>__hash__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="RestaurantReview-__init__"><strong>__init__</strong></a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="RestaurantReview-__ne__"><strong>__ne__</strong></a>(self, other)</dt></dl>
+
+<dl><dt><a name="RestaurantReview-__reduce__"><strong>__reduce__</strong></a>(self)</dt><dd><tt>Provides&nbsp;pickling&nbsp;support.&nbsp;Normally,&nbsp;this&nbsp;just&nbsp;dispatches&nbsp;to&nbsp;Python's<br>
+standard&nbsp;handling.&nbsp;However,&nbsp;for&nbsp;models&nbsp;with&nbsp;deferred&nbsp;field&nbsp;loading,&nbsp;we<br>
+need&nbsp;to&nbsp;do&nbsp;things&nbsp;manually,&nbsp;as&nbsp;they're&nbsp;dynamically&nbsp;created&nbsp;classes&nbsp;and<br>
+only&nbsp;module-level&nbsp;classes&nbsp;can&nbsp;be&nbsp;pickled&nbsp;by&nbsp;the&nbsp;default&nbsp;path.</tt></dd></dl>
+
+<dl><dt><a name="RestaurantReview-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="RestaurantReview-clean"><strong>clean</strong></a>(self)</dt><dd><tt>Hook&nbsp;for&nbsp;doing&nbsp;any&nbsp;extra&nbsp;model-wide&nbsp;validation&nbsp;after&nbsp;<a href="#RestaurantReview-clean">clean</a>()&nbsp;has&nbsp;been<br>
+called&nbsp;on&nbsp;every&nbsp;field&nbsp;by&nbsp;self.<strong>clean_fields</strong>.&nbsp;Any&nbsp;ValidationError&nbsp;raised<br>
+by&nbsp;this&nbsp;method&nbsp;will&nbsp;not&nbsp;be&nbsp;associated&nbsp;with&nbsp;a&nbsp;particular&nbsp;field;&nbsp;it&nbsp;will<br>
+have&nbsp;a&nbsp;special-case&nbsp;association&nbsp;with&nbsp;the&nbsp;field&nbsp;defined&nbsp;by&nbsp;NON_FIELD_ERRORS.</tt></dd></dl>
+
+<dl><dt><a name="RestaurantReview-clean_fields"><strong>clean_fields</strong></a>(self, exclude<font color="#909090">=None</font>)</dt><dd><tt>Cleans&nbsp;all&nbsp;fields&nbsp;and&nbsp;raises&nbsp;a&nbsp;ValidationError&nbsp;containing&nbsp;message_dict<br>
+of&nbsp;all&nbsp;validation&nbsp;errors&nbsp;if&nbsp;any&nbsp;occur.</tt></dd></dl>
+
+<dl><dt><a name="RestaurantReview-date_error_message"><strong>date_error_message</strong></a>(self, lookup_type, field, unique_for)</dt></dl>
+
+<dl><dt><a name="RestaurantReview-delete"><strong>delete</strong></a>(self, using<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="RestaurantReview-full_clean"><strong>full_clean</strong></a>(self, exclude<font color="#909090">=None</font>, validate_unique<font color="#909090">=True</font>)</dt><dd><tt>Calls&nbsp;clean_fields,&nbsp;clean,&nbsp;and&nbsp;validate_unique,&nbsp;on&nbsp;the&nbsp;model,<br>
+and&nbsp;raises&nbsp;a&nbsp;``ValidationError``&nbsp;for&nbsp;any&nbsp;errors&nbsp;that&nbsp;occurred.</tt></dd></dl>
+
+<dl><dt><a name="RestaurantReview-prepare_database_save"><strong>prepare_database_save</strong></a>(self, unused)</dt></dl>
+
+<dl><dt><a name="RestaurantReview-save"><strong>save</strong></a>(self, force_insert<font color="#909090">=False</font>, force_update<font color="#909090">=False</font>, using<font color="#909090">=None</font>, update_fields<font color="#909090">=None</font>)</dt><dd><tt>Saves&nbsp;the&nbsp;current&nbsp;instance.&nbsp;Override&nbsp;this&nbsp;in&nbsp;a&nbsp;subclass&nbsp;if&nbsp;you&nbsp;want&nbsp;to<br>
+control&nbsp;the&nbsp;saving&nbsp;process.<br>
+&nbsp;<br>
+The&nbsp;'force_insert'&nbsp;and&nbsp;'force_update'&nbsp;parameters&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;insist<br>
+that&nbsp;the&nbsp;"save"&nbsp;must&nbsp;be&nbsp;an&nbsp;SQL&nbsp;insert&nbsp;or&nbsp;update&nbsp;(or&nbsp;equivalent&nbsp;for<br>
+non-SQL&nbsp;backends),&nbsp;respectively.&nbsp;Normally,&nbsp;they&nbsp;should&nbsp;not&nbsp;be&nbsp;set.</tt></dd></dl>
+
+<dl><dt><a name="RestaurantReview-save_base"><strong>save_base</strong></a>(self, raw<font color="#909090">=False</font>, force_insert<font color="#909090">=False</font>, force_update<font color="#909090">=False</font>, using<font color="#909090">=None</font>, update_fields<font color="#909090">=None</font>)</dt><dd><tt>Handles&nbsp;the&nbsp;parts&nbsp;of&nbsp;saving&nbsp;which&nbsp;should&nbsp;be&nbsp;done&nbsp;only&nbsp;once&nbsp;per&nbsp;save,<br>
+yet&nbsp;need&nbsp;to&nbsp;be&nbsp;done&nbsp;in&nbsp;raw&nbsp;saves,&nbsp;too.&nbsp;This&nbsp;includes&nbsp;some&nbsp;sanity<br>
+checks&nbsp;and&nbsp;signal&nbsp;sending.<br>
+&nbsp;<br>
+The&nbsp;'raw'&nbsp;argument&nbsp;is&nbsp;telling&nbsp;save_base&nbsp;not&nbsp;to&nbsp;save&nbsp;any&nbsp;parent<br>
+models&nbsp;and&nbsp;not&nbsp;to&nbsp;do&nbsp;any&nbsp;changes&nbsp;to&nbsp;the&nbsp;values&nbsp;before&nbsp;save.&nbsp;This<br>
+is&nbsp;used&nbsp;by&nbsp;fixture&nbsp;loading.</tt></dd></dl>
+
+<dl><dt><a name="RestaurantReview-serializable_value"><strong>serializable_value</strong></a>(self, field_name)</dt><dd><tt>Returns&nbsp;the&nbsp;value&nbsp;of&nbsp;the&nbsp;field&nbsp;name&nbsp;for&nbsp;this&nbsp;instance.&nbsp;If&nbsp;the&nbsp;field&nbsp;is<br>
+a&nbsp;foreign&nbsp;key,&nbsp;returns&nbsp;the&nbsp;id&nbsp;value,&nbsp;instead&nbsp;of&nbsp;the&nbsp;object.&nbsp;If&nbsp;there's<br>
+no&nbsp;Field&nbsp;object&nbsp;with&nbsp;this&nbsp;name&nbsp;on&nbsp;the&nbsp;model,&nbsp;the&nbsp;model&nbsp;attribute's<br>
+value&nbsp;is&nbsp;returned&nbsp;directly.<br>
+&nbsp;<br>
+Used&nbsp;to&nbsp;serialize&nbsp;a&nbsp;field's&nbsp;value&nbsp;(in&nbsp;the&nbsp;serializer,&nbsp;or&nbsp;form&nbsp;output,<br>
+for&nbsp;example).&nbsp;Normally,&nbsp;you&nbsp;would&nbsp;just&nbsp;access&nbsp;the&nbsp;attribute&nbsp;directly<br>
+and&nbsp;not&nbsp;use&nbsp;this&nbsp;method.</tt></dd></dl>
+
+<dl><dt><a name="RestaurantReview-unique_error_message"><strong>unique_error_message</strong></a>(self, model_class, unique_check)</dt></dl>
+
+<dl><dt><a name="RestaurantReview-validate_unique"><strong>validate_unique</strong></a>(self, exclude<font color="#909090">=None</font>)</dt><dd><tt>Checks&nbsp;unique&nbsp;constraints&nbsp;on&nbsp;the&nbsp;model&nbsp;and&nbsp;raises&nbsp;``ValidationError``<br>
+if&nbsp;any&nbsp;failed.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="django.db.models.base.html#Model">django.db.models.base.Model</a>:<br>
+<dl><dt><strong>pk</strong></dt>
+</dl>
+<hr>
+Data descriptors inherited from django.db.models.base.NewBase:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table>
+</body></html>
