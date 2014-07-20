@@ -1,0 +1,66 @@
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+   <script type="text/javascript">
+
+
+   <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+
+$(document).ready(
+function() {
+ $('.carousel').carousel({  interval: 2500 } );
+
+$("#menu").load("featured-dishes.html", function () {
+  $(".food-item").bind("click",
+      function(event) {
+        if(!$(event.target).hasClass("menu-item-link"))
+        {
+         event.preventDefault();
+        }
+       var subDiv = $(this).find('.food-item-content');
+     if (!subDiv.is(":visible")) {
+       subDiv.slideDown(200);
+     }
+       else {
+          subDiv.slideUp(200);
+       }
+      });
+
+ for (var i = 0; i<5; i++)
+   {
+    $(".food-item-rating").append("<span class=\"glyphicon glyphicon-star\"></span>");
+}
+
+});
+
+$("#reviews").load("featured-restaurants.html", function () {
+  $(".review-item").bind("click",
+      function(event) {
+        if(!$(event.target).hasClass("review-item-link"))
+        {
+         event.preventDefault();
+        }
+       var subDiv = $(this).find('.review-item-content');
+     if (!subDiv.is(":visible")) {
+       subDiv.slideDown(200);
+     }
+       else {
+          subDiv.slideUp(200);
+       }
+      });
+
+/*$(".close-food-item").bind("click",
+
+   /*$(".close-food-item").bind("click",
+      function(event) {
+         event.preventDefault();
+         var subDiv = $(this).parent().parent().parent().find('.food-item-content');
+      	 if (subDiv.is(":visible")) {
+	  subDiv.slideUp(200);
+        }
+      });
+   */
+
+  });
+});
+
+</script>
