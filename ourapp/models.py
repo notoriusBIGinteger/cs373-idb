@@ -13,8 +13,6 @@ class Cuisine(models.Model) :
     def set_name(self, name):
         self.name = name
 
-    class Meta:
-        app_label = 'notoriousBIGinteger'
 
     def get_all(self):
         """
@@ -47,9 +45,6 @@ class Restaurant(models.Model) :
     def __str__(self) :
         return self.name
 
-    class Meta:
-        ordering = ["name"]
-        app_label = 'notoriousBIGinteger'
 
     def get_all(self):
         """
@@ -89,8 +84,6 @@ class Customer(models.Model) :
         and value being the value of the attribute
         """
         return {"name":self.name}
-    class Meta:
-        app_label = 'notoriousBIGinteger'
 
 """
 Generic Dish has a foreign key Cuisine
@@ -110,9 +103,6 @@ class GenericDish(models.Model) :
         and value being the value of the attribute
         """
         return { "name" : self.name }
-
-    class Meta:
-        app_label = 'notoriousBIGinteger'
 
 """
 Dish contains two foreign keys of a restaurant and a generic dish
@@ -153,8 +143,6 @@ class Dish(models.Model) :
                 "nut_allergy":self.nut_allergy,
                 "cost":self.cost}
 
-    class Meta:
-        app_label = 'notoriousBIGinteger'
 
 """
 Restaurant Review contains two foreign keys from Customer and Restaurant
@@ -177,8 +165,6 @@ class RestaurantReview(models.Model) :
         """
         return {"rating": self.rating,
                 "review_comment":self.review_comment}
-    class Meta:
-        app_label = 'notoriousBIGinteger'
 
 """
 Dish Review contains two foreign keys from Customer and Dish
@@ -192,8 +178,6 @@ class DishReview(models.Model) :
 
     def __str__(self) :
         return str(self.rating)
-    class Meta:
-        app_label = 'notoriousBIGinteger'
 
     def get_all(self):
         """
