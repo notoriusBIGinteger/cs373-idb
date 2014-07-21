@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ourapp',
+    'rest_framework',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -52,6 +53,17 @@ ROOT_URLCONF = 'notoriousBIGinteger.urls'
 
 WSGI_APPLICATION = 'notoriousBIGinteger.wsgi.application'
 
+REST_FRAMEWORK = {
+    # Use hyperlinked styles by default.
+    # Only used if the `serializer_class` attribute is not set on a view.
+    'DEFAULT_MODEL_SERIALIZER_CLASS':
+        'rest_framework.serializers.HyperlinkedModelSerializer',
+
+    'DEFAULT_RENDERER_CLASSES': (
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    )
+}
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
