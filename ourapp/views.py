@@ -13,8 +13,13 @@ from ourapp.serializers import *
 
 def dish_temp(request):
     dish_result = Dish.objects.order_by('name')
-    context = {'dish_result':dish_result}
-    return render(request,'ourapp/dish_temp.html',context)
+    #context = {'dish_result':dish_result}
+
+    d_serializer = DishesSerializer(dish_result, many=True)
+
+    return render_to_response('ourapp/dish_temp.html', {'dish_result' : d_serializer.data})
+
+    #return render(request,'ourapp/dish_temp.html',context)
 
 def splash(request):
     context = {}
@@ -114,19 +119,8 @@ def restaurant_detail(request, pk):
 
     if request.method == 'GET':
         serializer = RestaurantSerializer(restaurant)
-        x = dict(serializer.data)
 
-        res = []
-
-        for k, v in x.items() :
-            if k == 'id' :
-                res.append(('restaurant_id', v))
-            else :
-                res.append((k,v))
-
-        new_one = OrderedDict( res )
-
-        return JSONResponse(new_one)
+        return JSONResponse(serializer.data)
 
 @csrf_exempt
 def restaurant_dishes(request, pk):
@@ -342,12 +336,25 @@ def cuisine_detail(request, pk):
 @csrf_exempt
 def cuisine_restaurants(request, pk):
     """
-    List all Cuisine's dishes.
+    List all Cuisine's restaurants.
     """
     if request.method == 'GET':
         restaurants =  Restaurant.objects.all().filter(cuisine_id = pk)
         serializer = RestaurantSerializer(restaurants, many=True)
 
         d = {"cuisine_restaurants" : serializer.data}
+
+        return JSONResponse(d)
+
+@csrf_exempt
+def cuisine_dishes(request, pk):
+    """
+    List all Cuisine's dishes.
+    """
+    if request.method == 'GET':
+        dishes =  Dish.objects.all().filter(cuisine_id = pk)
+        serializer = DishesSerializer(dishes, many=True)
+
+        d = {"cuisine_dishes" : serializer.data}
 
         return JSONResponse(d)
