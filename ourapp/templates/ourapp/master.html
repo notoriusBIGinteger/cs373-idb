@@ -1,0 +1,22 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block page_title %}Test{% endblock %}</title>
+    {% load staticfiles %}
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/main.css'    %}" rel="stylesheet">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="{% static 'js/bootstrap.min.js'%}"></script>
+    {# {% scripts %} #}
+  </head>
+  <body>
+    {% include "ourapp/menu.html" %}
+    {# {% include "ourapp/carousel.html" %} #} 
+    {% block   page_header %} <h1>Hi</h1> {% endblock %}
+  {% block   main_content %} <p></p> {% endblock %}
+  </body>                                                                                                      
+</html>

@@ -1,16 +1,40 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import Http404
-
+from django.shortcuts import render_to_response
+from collections import OrderedDict
 
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.renderers import JSONRenderer
 from rest_framework.parsers import JSONParser
-from rest_framework.views import APIView
 from rest_framework.response import Response
-from ourapp.models import Restaurant
+from ourapp.models import *
 from ourapp.serializers import *
 
+def dish_temp(request):
+    dish_result = Dish.objects.order_by('name')
+    context = {'dish_result':dish_result}
+    return render(request,'ourapp/dish_temp.html',context)
+
+def splash(request):
+    context = {}
+    return render(request, 'ourapp/splash.html', context)
+
+def temp(request):
+  context = {}
+  return render(request, 'ourapp/master.html', context)
+
+def rest(request):
+  context = {}
+  return render(request, 'ourapp/rest.html', context)
+
+def nate_test(request):
+  customers =  Customer.objects.all()
+  serializer = CustomerSerializer(customers, many=True)
+
+  d = {"Customers" : serializer.data}
+
+  return render_to_response('ourapp/nathan_test.html', {'items' : d['Customers']})
 
 # Create your views here.
 def customer(request, customerID):
@@ -73,6 +97,9 @@ def restaurant_list(request):
 
         d = {"Restaurants" : serializer.data}
 
+        for x in d['Restaurants'] :
+            x['restaurant_id'] = x.pop('id')
+
         return JSONResponse(d)
 
 @csrf_exempt
@@ -87,7 +114,19 @@ def restaurant_detail(request, pk):
 
     if request.method == 'GET':
         serializer = RestaurantSerializer(restaurant)
-        return JSONResponse(serializer.data)
+        x = dict(serializer.data)
+
+        res = []
+
+        for k, v in x.items() :
+            if k == 'id' :
+                res.append(('restaurant_id', v))
+            else :
+                res.append((k,v))
+
+        new_one = OrderedDict( res )
+
+        return JSONResponse(new_one)
 
 @csrf_exempt
 def restaurant_dishes(request, pk):
@@ -143,7 +182,7 @@ def customer_detail(request, pk):
     """
     try:
         customer = Customer.objects.get(pk=pk)
-    except Restaurant.DoesNotExist:
+    except Customer.DoesNotExist:
         return HttpResponse(content='Customer not found', status=404)
 
     if request.method == 'GET':
@@ -157,7 +196,7 @@ def customer_restaurant_reviews(request, pk):
     """
     try:
         customer_r_reviews = RestaurantReview.objects.get(customer_id = pk)
-    except Restaurant.DoesNotExist:
+    except RestaurantReview.DoesNotExist:
         return HttpResponse(content='Customer not found', status=404)
 
     if request.method == 'GET':
@@ -174,12 +213,141 @@ def customer_dish_reviews(request, pk):
     """
     try:
         customer_d_reviews = DishReview.objects.get(customer_id = pk)
-    except Restaurant.DoesNotExist:
+    except DishReview.DoesNotExist:
         return HttpResponse(content='Customer not found', status=404)
 
     if request.method == 'GET':
         serializer = DishReviewsSerializer(customer_d_reviews)
 
         d = {'customer_dish_reviews' : serializer.data}
+
+        return JSONResponse(d)
+
+@csrf_exempt
+def dish_list(request):
+    """
+    List all Dishes.
+    """
+    if request.method == 'GET':
+        dishes =  Dish.objects.all()
+        serializer = DishesSerializer(dishes, many=True)
+
+        d = {"dishes" : serializer.data}
+
+        return JSONResponse(d)
+
+@csrf_exempt
+def dish_detail(request, pk):
+    """
+    Retrieve a dish's details.
+    """
+    try:
+        dish = Dish.objects.get(pk = pk)
+    except Dish.DoesNotExist:
+        return HttpResponse(content='Dish not found', status=404)
+
+    if request.method == 'GET':
+        serializer = DishesSerializer(dish)
+        return JSONResponse(serializer.data)
+
+@csrf_exempt
+def dish_reviews(request, pk):
+    """
+    Retrieve a Dish's reviews.
+    """
+    try:
+        dish_reviews = DishReview.objects.get(dish_id = pk)
+    except DishReview.DoesNotExist:
+        return HttpResponse(content='Dish not found', status=404)
+
+    if request.method == 'GET':
+        serializer = DishReviewsSerializer(dish_reviews)
+
+        d = {'dish_reviews' : serializer.data}
+
+        return JSONResponse(d)
+
+@csrf_exempt
+def generic_dish_list(request):
+    """
+    List all Generic Dishes.
+    """
+    if request.method == 'GET':
+        generic_dishes =  GenericDish.objects.all()
+        serializer = GenericDishSerializer(generic_dishes, many=True)
+
+        d = {"generic_dishes" : serializer.data}
+
+        return JSONResponse(d)
+
+@csrf_exempt
+def generic_dish_detail(request, pk):
+    """
+    Retrieve a Generic Dish's details.
+    """
+    try:
+        generic_dish = GenericDish.objects.get(pk = pk)
+    except GenericDish.DoesNotExist:
+        return HttpResponse(content='Generic Dish not found', status=404)
+
+    if request.method == 'GET':
+        serializer = GenericDishSerializer(generic_dish)
+        return JSONResponse(serializer.data)
+
+@csrf_exempt
+def generic_dish_dishes(request, pk):
+    """
+    Retrieve a Generic Dish's dishes.
+    """
+    try:
+        generic_dish_dishes = Dish.objects.get(generic_dish_id = pk)
+    except Dish.DoesNotExist:
+        return HttpResponse(content='Dish not found', status=404)
+
+    if request.method == 'GET':
+        serializer = DishesSerializer(generic_dish_dishes)
+
+        d = {'dishes' : serializer.data}
+
+        return JSONResponse(d)
+
+@csrf_exempt
+def cuisine_list(request):
+    """
+    List all Cuisines.
+    """
+    if request.method == 'GET':
+        cuisines =  Cuisine.objects.all()
+        serializer = CuisineSerializer(cuisines, many=True)
+
+        d = {"cuisines" : serializer.data}
+
+        return JSONResponse(d)
+
+@csrf_exempt
+def cuisine_detail(request, pk):
+    """
+    Retrieve a cuisine's details.
+    """
+    try:
+        cuisine = Cuisine.objects.get(pk = pk)
+    except Cuisine.DoesNotExist:
+        return HttpResponse(content='Dish not found', status=404)
+
+    if request.method == 'GET':
+        serializer = CuisineSerializer(cuisine)
+        return JSONResponse(serializer.data)
+
+
+@csrf_exempt
+def cuisine_restaurants(request, pk):
+    """
+    List all Cuisine's dishes.
+    """
+    if request.method == 'GET':
+        restaurants =  Restaurant.objects.all().filter(cuisine_id = pk)
+        serializer = RestaurantSerializer(restaurants, many=True)
+
+        d = {"cuisine_restaurants" : serializer.data}
 
         return JSONResponse(d)

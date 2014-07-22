@@ -3,7 +3,7 @@ from ourapp.models import *
 
 class RestaurantSerializer(serializers.Serializer):
     id = serializers.Field()  # Note: `Field` is an untyped read-only field.
-    name = serializers.CharField(max_length=100)
+    name = serializers.CharField(max_length=30)
     reservation_required = serializers.BooleanField(required=False)
     reservation_avail = serializers.BooleanField(required=False)
     has_waiter = serializers.BooleanField(required=False)
@@ -14,9 +14,12 @@ class RestaurantSerializer(serializers.Serializer):
     delivery = serializers.BooleanField(required=False)
     take_out = serializers.BooleanField(required=False)
     pet_friendly = serializers.BooleanField(required=False)
-    cost = serializers.CharField(max_length=5)
-    website = serializers.CharField(max_length=50)
-    cuisine = serializers.CharField(max_length=50)
+    cost = serializers.IntegerField()
+    star_avg_rating = serializers.FloatField()
+    star_num_rating = serializers.IntegerField()
+    star_sum_rating = serializers.IntegerField()
+    website = serializers.URLField()
+    cuisine_id = serializers.Field()
 
     def restore_object(self, attrs, instance=None):
         """
@@ -40,6 +43,9 @@ class RestaurantSerializer(serializers.Serializer):
             instance.take_out = attrs.get('Take-out Available', instance.take_out)
             instance.pet_friendly = attrs.get('Pet Friendly', instance.pet_friendly)
             instance.cost = attrs.get('Cost', instance.cost)
+            instance.star_avg_rating = attrs.get('Avg. of Ratings', instance.star_avg_rating)
+            instance.star_num_rating = attrs.get('Number of Ratings', instance.star_num_rating)
+            instance.star_sum_rating = attrs.get('Sum of Ratings', instance.star_sum_rating)
             instance.website = attrs.get('Website', instance.website)
             instance.cuisine = attrs.get('Cuisine', instance.cuisine)
             return instance
@@ -77,9 +83,12 @@ class RestaurantReviewsSerializer(serializers.Serializer) :
 class DishesSerializer(serializers.Serializer) :
     id = serializers.Field()  # Note: `Field` is an untyped read-only field.
     name = serializers.CharField(max_length=100)
-    rating = serializers.CharField(max_length=1)
-    num_ratings = serializers.CharField(max_length=10)
-    sum_of_ratings = serializers.CharField(max_length=10)
+    star_avg_rating = serializers.CharField(max_length=10)
+    star_num_ratings = serializers.CharField(max_length=10)
+    star_sum_ratings = serializers.CharField(max_length=10)
+    dollar_avg_rating = serializers.CharField(max_length=10)
+    dollar_num_ratings = serializers.CharField(max_length=10)
+    dollar_sum_ratings = serializers.CharField(max_length=10)
     vegetarian = serializers.BooleanField(required=False)
     vegan = serializers.BooleanField(required=False)
     kosher = serializers.BooleanField(required=False)
@@ -100,9 +109,12 @@ class DishesSerializer(serializers.Serializer) :
         if instance:
             # Update existing instance
             instance.name = attrs.get('Name', instance.name)
-            instance.rating = attrs.get('Rating', instance.rating)
-            instance.num_ratings = attrs.get('Number of Ratings', instance.num_ratings)
-            instance.sum_of_ratings = attrs.get('Sum Of Ratings', instance.sum_of_ratings)
+            instance.star_avg_rating = attrs.get('Star Avg. Rating', instance.star_avg_rating)
+            instance.star_num_ratings = attrs.get('Num. Star Ratings', instance.star_num_ratings)
+            instance.star_sum_ratings = attrs.get('Sum Star Ratings', instance.star_sum_ratings)
+            instance.dollar_avg_rating = attrs.get('Dollar Avg. Ratings', instance.dollar_avg_rating)
+            instance.dollar_num_ratings = attrs.get('Num Dollar Ratings', instance.dollar_num_ratings)
+            instance.dollar_sum_ratings = attrs.get('Sum Dollar Ratings', instance.dollar_sum_ratings)
             instance.vegetarian = attrs.get('Vegetarian', instance.vegetarian)
             instance.vegan = attrs.get('Vegan', instance.vegan)
             instance.kosher = attrs.get('Kosher', instance.kosher)
@@ -205,4 +217,4 @@ class CuisineSerializer(serializers.Serializer) :
             return instance
 
         # Create new instance
-        return GenericDish(**attrs)
+        return Cuisine(**attrs)

@@ -39,8 +39,12 @@ class Restaurant(models.Model) :
     take_out = models.BooleanField('Take-out Available')
     pet_friendly = models.BooleanField('Pet Friendly')
     cost = models.IntegerField('Cost', max_length=1)
+    star_avg_rating = models.FloatField()
+    star_num_rating =models.IntegerField()
+    star_sum_rating=models.IntegerField()
     website = models.URLField('Website')
     cuisine = models.ForeignKey(Cuisine)
+    hours = models.CharField('Hours', max_length=100)
 
     def __str__(self) :
         return self.name
@@ -110,9 +114,12 @@ and descriptive attributes of a meal.
 """
 class Dish(models.Model) :
     name = models.CharField('Name', max_length=40)
-    rating = models.IntegerField('Avg. Rating', max_length=1)
-    num_ratings = models.IntegerField('Number of Ratings')
-    sum_of_ratings = models.IntegerField() # customers shouldn't see this.
+    star_avg_rating = models.FloatField(max_length=1)
+    star_num_ratings = models.IntegerField()
+    star_sum_ratings = models.IntegerField() # customers shouldn't see this.
+    dollar_avg_rating = models.FloatField(max_length=1)
+    dollar_num_ratings = models.IntegerField()
+    dollar_sum_ratings = models.IntegerField()
     vegetarian = models.BooleanField('Vegetarian')
     vegan = models.BooleanField('Vegan')
     kosher = models.BooleanField('Kosher')
@@ -122,6 +129,7 @@ class Dish(models.Model) :
     cost = models.IntegerField('Cost', max_length=1)
     restaurant = models.ForeignKey(Restaurant)
     generic_dish = models.ForeignKey(GenericDish)
+    description = models.CharField('Description', max_length=200)
 
     def __str__(self) :
         return self.name

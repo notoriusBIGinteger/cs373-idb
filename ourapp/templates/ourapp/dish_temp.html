@@ -1,0 +1,13 @@
+{% extends 'ourapp/master.html' %}
+{% block page_title %}Dish{% endblock %}
+{% block main_content %}
+
+{% if dish_result %}
+    {% for d in dish_result %}
+        <li><a href = "/dish/{{d.id}}/">{{d.name}}</a></li>
+    {% endfor %}
+{% else %}
+    <p>No dishes are available</p>
+{% endif %}
+
+{% endblock %}
