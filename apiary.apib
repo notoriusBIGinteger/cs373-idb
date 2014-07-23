@@ -5,9 +5,9 @@ HOST: http://notoriousbiginteger.pythonanywhere.com/
 Kravester API is a **meal recommendation and review** service.
 
 # Group Restaurants
-Restaurant related resources of the *feed.ly API*
+Restaurant related resources of the *Kravester API*
 
-## GET /api/restaurants
+## GET /restaurants
 Get a list of all restaurants.
 
 + Response 200 (application/json)
@@ -70,7 +70,7 @@ Get a list of all restaurants.
                 ]
             }
 
-## GET /api/restaurant/{id}/attributes
+## GET /restaurants/{id}
 Get a single restaurant's details:
 
 - Restaurant ID
@@ -113,7 +113,7 @@ Get a single restaurant's details:
               "website" : "http://www.changthaithaicuisine.com/"
              }
 
-## GET /api/restaurant/{id}/dishes
+## GET /restaurants/{id}/dishes
 Get a list of a restaurant's dishes.
 
 + Parameters
@@ -160,7 +160,7 @@ Content-Type: application/json
                 ]
             }
     
-## GET /api/restaurant/{id}/reviews     
+## GET /restaurants/{id}/reviews     
 Get a list of a restaurant's reviews.
 
 + Parameters
@@ -191,9 +191,9 @@ Get a list of a restaurant's reviews.
             }
 
 # Group Customers
-Customer related resources of the *feed.ly API*
+Customer related resources of the *Kravester API*
 
-## GET /api/customers/
+## GET /customers
 
 Get a list of all customers.
 
@@ -218,7 +218,7 @@ Get a list of all customers.
                 ]
             }
 
-## GET /api/customer/{id}/attributes
+## GET /customers/{id}
 Get a single customers's details:
 
 - Customer ID
@@ -237,7 +237,7 @@ Get a single customers's details:
               "name" : "Omar Lalani"
             }
 
-## GET /api/customer/{id}/restaurantreviews
+## GET /customers/{id}/restaurantreviews
 Get a list of restaurant reviews by a specific customer.
 
 + Parameters
@@ -266,7 +266,7 @@ Get a list of restaurant reviews by a specific customer.
                 ]
             }
 
-## GET /api/customer/{id}/dishreviews
+## GET /customers/{id}/dishreviews
 Get a list of dish reviews by a specific customer.
 
 + Parameters
@@ -296,9 +296,9 @@ Get a list of dish reviews by a specific customer.
 
 
 # Group Dishes
-Dish related resources of the *feed.ly API*
+Dish related resources of the *Kravester API*
 
-## GET /api/dishes/
+## GET /dishes
 
 Get a list of all dishes.
 
@@ -341,7 +341,7 @@ Get a list of all dishes.
                 ]
             }
 
-## GET /api/dish/{id}/attributes
+## GET /dishes/{id}
 Get a single dishes's details:
 
 - Dish ID
@@ -380,7 +380,7 @@ Content-Type: application/json
                     "cost" : "1"
                 }
 
-## GET /api/dish/{id}/reviews
+## GET /dishes/{id}/reviews
 Get a list of reviews of a specific dish.
 
 + Parameters
@@ -408,9 +408,9 @@ Get a list of reviews of a specific dish.
             }
 
 # Group Generic Dishes
-Generic Dish related resources of the *feed.ly API*
+Generic Dish related resources of the *Kravester API*
 
-## GET /api/genericdishes/
+## GET /genericdishes
 Get a list of generic dishes.
 
 + Response 200 (application/json)
@@ -437,7 +437,7 @@ Get a list of generic dishes.
                 ]
             }
 
-## GET /api/genericdish/{id}/attributes
+## GET /genericdishes/{id}
 Get attributes of a generic dish type.
 
 - Generic Dish ID
@@ -457,7 +457,7 @@ Get attributes of a generic dish type.
                 "name" : "Salad"
             }
 
-## GET /api/genericdish/{id}/dishes
+## GET /genericdishes/{id}/dishes
 Get a list of dishes categorized under a generic dish type.
 
 + Parameters
@@ -518,9 +518,9 @@ Get a list of dishes categorized under a generic dish type.
             }
 
 # Group Cuisines
-Cuisine related resources of the *feed.ly API*
+Cuisine related resources of the *Kravester API*
 
-## GET /api/cuisines/
+## GET /cuisines/
 
 Get a list of all cuisines.
 
@@ -549,7 +549,7 @@ Get a list of all cuisines.
                 ]
             }
             
-## GET /api/cuisine/{id}/attributes
+## GET /cuisines/{id}
 Get attributes of a specific cuisine.
 
 - Cuisine ID
@@ -567,7 +567,7 @@ Get attributes of a specific cuisine.
                 "name" : "Asian"
             }   
 
-## GET /api/cuisine/{id}/dishes
+## GET /cuisines/{id}/dishes
 Get a list of generic dishes for a specific cuisine.
 
 + Parameters
@@ -597,7 +597,7 @@ Get a list of generic dishes for a specific cuisine.
                 ]
             }
 
-## GET /api/cuisine/{id}/restaurants
+## GET /cuisines/{id}/restaurants
 Get a list of restaurants serving a specific cuisine.
 
 + Parameters
