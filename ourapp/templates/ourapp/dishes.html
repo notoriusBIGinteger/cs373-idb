@@ -1,0 +1,13 @@
+<!-- This will list all the dishes in our db -->
+{% extends 'ourapp/master.html' %}
+{% block page_title %}Dishes{% endblock %}
+{% block page_header %}{% include "ourapp/carousel.html" %}{%endblock%}
+{% if dish_list %}
+    {% for dish in dish_list %}
+        <li> <a href = "/dishes/{{dish.id}}" >{{dish.name}}</a> </li>
+    {% endfor %}
+{% else %}
+    <p>No Dishes in Database</p>
+{% endif %}
+
+{% endblock %}

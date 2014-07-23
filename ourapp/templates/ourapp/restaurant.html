@@ -1,0 +1,14 @@
+<!--  This will list all the restaurants in our db in one page   -->
+{% extends 'ourapp/master.html' %}
+{% block page_title %}Restaurants{% endblock %}
+{% block page_header %}{% include "ourapp/carousel.html" %}{%endblock%}
+{% block main_content %}
+{% if restaurants_result %}
+    {% for r in restaurants_result %}
+    <li> <a href = "/restaurants/{{r.id}}" >{{r.name}}</a></li>
+
+    {% endfor %}
+{% else %}
+    <p>No restaurants are available</p>
+{% endif %}
+{% endblock %}

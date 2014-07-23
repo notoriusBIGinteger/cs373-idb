@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'ourapp',
     'rest_framework',
+    'django_extensions',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -75,8 +76,14 @@ DATABASES = {
         'USER': 'notoriousbiginte',
         'PASSWORD': 'wordpass',
         'HOST': 'mysql.server',
+        'TEST_NAME': 'notoriousbiginte$test_default',
     }
 }
+
+GRAPH_MODELS = {
+    'all_applications':True,
+    'group_models':True,
+    }
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/

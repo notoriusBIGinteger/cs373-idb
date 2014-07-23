@@ -1,0 +1,30 @@
+<!-- This page will be of a single customer, so will have two list dishes and restaurants it has reviewed -->
+{% extends 'ourapp/master.html' %}
+{% block page_title %}{{customer.name}}{% endblock %}
+{% block page_header %}{% include "ourapp/carousel.html" %}{%endblock%}
+{% block main_content %}
+<!-- First list of all the dish reviews he/she has done -->
+{% if dish_reviews %}
+    {% for d in dish_reviews %}
+        <li> <a href = "dishes/{{d.dish}}">{{d.dish}}</a>
+            ,{{d.star_rating}}, {{d.dollar_rating}}
+            <p>{{d.review_comment}}</p>
+        </li>
+    {% endfor %}
+{% else %}
+    <p>No Dish Reviews</p>
+{% endif %}
+
+<!-- Second list restaurant reviews he/she has done -->
+{if restaurant_reviews %}
+    {% for r in restaurant_reviews %}
+        <li> <a href = "restaurants/{{r.restaurant}}">{{r.restaurant}}</a>
+            ,{{r.star_rating}},{{r.dollar_rating}}
+            <p>{{r.review_comment}}</p>
+        </li>
+    {% endfor %}
+{% else %}
+    <p>No Restaurant Reviews</p>
+{% endif %}
+
+{% endblock %}

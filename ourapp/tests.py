@@ -1,4 +1,5 @@
 from django.test import TestCase
+from django.test.client import Client
 from ourapp.models import Cuisine, Restaurant, Customer, GenericDish, Dish, RestaurantReview, DishReview
 
 
@@ -259,4 +260,14 @@ class DishReviewMethodTests(TestCase):
     def test_get_all_3(self):
         dr = DishReview(rating = 5, review_comment = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium.")
         self.assertEqual(dr.get_all(), {"rating":5, "review_comment":"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium."})
+
+class restaurantAPITests(TestCase):
+    def test_list_restaurants_1(self):
+        dr = DishReview(rating = 3, review_comment = "Okay")
+        dr.save()
+        self.assertEqual(a,3)
+        
+
+
+
 

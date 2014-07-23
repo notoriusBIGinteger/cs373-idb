@@ -1,0 +1,14 @@
+<!-- This page will list all the customers in our DB-->
+{% extends 'ourapp/master.html' %}
+{% block page_title %}Customers{% endblock %}
+{% block page_header %}{% include "ourapp/carousel.html" %}{%endblock%}
+{% block main_content %}
+{% if customers_result %}
+    {% for c in customers_result %}
+    <li> <a href = "/customers/{{c.id}}" >{{c.name}}</a></li>
+
+    {% endfor %}
+{% else %}
+    <p>No Customers in our database</p>
+{% endif %}
+{% endblock %}

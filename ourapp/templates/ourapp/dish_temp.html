@@ -1,13 +1,45 @@
 {% extends 'ourapp/master.html' %}
-{% block page_title %}Dish{% endblock %}
+{% block page_title %}{{restaurant.name}}{% endblock %}
+{% block page_header %}{% include "ourapp/carousel.html" %}{%endblock%}
 {% block main_content %}
+{% load staticfiles %}
+<script src="{% static 'js/restaurant.js'%}"></script>
 
-{% if dish_result %}
-    {% for d in dish_result %}
-        <li><a href = "/dish/{{d.id}}/">{{d.name}}</a></li>
+<div class="col-md-6" id="reviews">
+{% if restaurant_reviews %}
+    {% for cr in restaurant_reviews %}
+        <li> <a href = "/temp/" >{{cr.customer.name}}</a>
+        </li>
+    {% endfor %}
+{% else %}
+    <p>No Customer Ratings</p>
+{% endif %}
+</div> <!-- end col-md-6 -->
+
+<div class="col-md-6" id="menu">
+<div class="panel panel-default">
+	 <div class="panel-heading">
+		    <h3 class="panel-title">Dishes</h3>
+		     </div>
+		      <div class="panel-body">
+<ul class="list-group food-list">
+{% if dish_results %}
+    {% for d in dish_results %}
+    <li class="list-group-item food-item"><a href = "/dishes/{{d.id}}">{{d.name}}</a>
+    <div class="food-item-content">
+	    <p>{{d.description}}</p>
+		    <p><a href="/dishes/{{d.id}}/reviews" class="menu-item-link">Read Reviews</a></p></div>
+
+
+
+    </li>
+
     {% endfor %}
 {% else %}
     <p>No dishes are available</p>
 {% endif %}
-
+</ul>
+</div>
+</div>
+</div> <!-- end col-md-6 -->
 {% endblock %}

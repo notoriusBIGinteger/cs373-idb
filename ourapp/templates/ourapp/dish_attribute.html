@@ -1,0 +1,23 @@
+<!-- This is a single dish page, it will have two list of customer reviews and similar dishes -->
+{% extends 'ourapp/master.html' %}
+{% block page_title %}{{dish.name}}{% endblock %}
+{% block page_header %}{% include "ourapp/carousel.html" %}{%endblock%}
+<!-- First list of the customer reviews -->
+{% if customer_reviews %}
+    {% for customer in customer_reviews %}
+        <li> <a href = "/customers/{{customer.id}}" >{{customer.name}}</a> </li>
+    {% endfor %}
+{% else %}
+    <p>No Customers have reviewed this dish</p>
+{% endif %}
+
+<!-- Second list of all the similar dishes -->
+{% if similar_dishes %}
+    {% for d in similar_dishes %}
+        <li> <a href ="/dishes/{{d.id}}">{{d.name}}</a></li>
+    {% endfor %}
+{% else %}
+    <p>This dish has no similar dishes in database</p>
+{% endif %}
+
+{% endblock%}

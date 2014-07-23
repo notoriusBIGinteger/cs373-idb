@@ -1,8 +1,0 @@
-<li class="list-group-item review-item">
-        <a href="#"{% reviewer.name %}/a>
-        <div class="review-item-rating">{% review.rating %}</div>
-        <div class="review-item-content">
-           <p>{ %review %} </p>
-           <p><a href="/reviewers/{%reviewer.name%}" class="menu-item-link">More Reviews</a></p>
-        </div>
- </li>
