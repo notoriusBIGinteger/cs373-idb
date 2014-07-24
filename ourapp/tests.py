@@ -472,3 +472,227 @@ class Tests(TestCase):
             'dish' : Tests.d3
             })
 
+
+    def model_instances():
+        c1 = Cuisine.objects.create(name = "Ital")  # gets set to Italian soon after 
+        c2 = Cuisine.objects.create(name = "Mexi")  # gets set to Meixcan soon after
+        c3 = Cuisine.objects.create(name = "Amer") # gets set to American soon after
+        
+        r1 = Restaurant.objects.create(
+        name = "Kerbey Lane",
+        reservation_required = False,
+        reservation_avail = False,
+        has_waiter = True,
+        phone_number = '5555555555',
+        description = 'Delicious breakfast',
+        zip_code = '78705',
+        address = '555 w 5th St',
+        delivery = False,
+        take_out = True,
+        pet_friendly = False, 
+        dollar_avg_rating = 5,
+        dollar_num_rating = 5,
+        dollar_sum_rating = 25,
+        star_avg_rating = 5,
+        star_num_rating = 5,
+        star_sum_rating = 25,
+        cuisine = c3,
+        mon_hours = '11AM - 9PM', 
+        tue_hours = '11AM - 9PM',
+        wed_hours = '11AM - 9PM',
+        thu_hours = '11AM - 9PM',
+        fri_hours = '11AM - 9PM',
+        sat_hours = '11AM - 9PM',
+        sun_hours = '11AM - 9PM',
+        website = 'www.kerbey.com', 
+        ) 
+
+        r2 = Restaurant.objects.create(
+        name = "Magnolia",
+        reservation_required = True,
+        reservation_avail = False,
+        has_waiter = False,
+        phone_number = '5554445555',
+        description = 'Amazing breakfast',
+        zip_code = '78705',
+        address = '555 w 5th St',
+        delivery = False,
+        take_out = True,
+        pet_friendly = False, 
+        dollar_avg_rating = 6,
+        dollar_num_rating = 6,
+        dollar_sum_rating = 36,
+        star_avg_rating = 4,
+        star_num_rating = 4,
+        star_sum_rating = 16,
+        cuisine = c3,
+        mon_hours = '9AM - 10PM', 
+        tue_hours = '9AM - 10PM',
+        wed_hours = '9AM - 10PM',
+        thu_hours = '9AM - 10PM',
+        fri_hours = '9AM - 10PM',
+        sat_hours = '9AM - 10PM',
+        sun_hours = '9AM - 10PM',
+        website = 'www.MangoliaCafe.com', 
+        ) 
+
+
+        r3 = Restaurant.objects.create(
+        name = "Big Bite",
+        reservation_required = False,
+        reservation_avail = False,
+        has_waiter = True,
+        phone_number = '1234445555',
+        description = 'Amazing pizza',
+        zip_code = '78705',
+        address = '523 w 5th St',
+        delivery = False,
+        take_out = True,
+        pet_friendly = True, 
+        dollar_avg_rating = 7,
+        dollar_num_rating = 7,
+        dollar_sum_rating = 49,
+        star_avg_rating = 2,
+        star_num_rating = 2,
+        star_sum_rating = 4,
+        cuisine = c1,
+        mon_hours = '9AM - 10PM', 
+        tue_hours = '9AM - 10PM',
+        wed_hours = '9AM - 10PM',
+        thu_hours = '9AM - 10PM',
+        fri_hours = '9AM - 10PM',
+        sat_hours = '9AM - 10PM',
+        sun_hours = '9AM - 10PM',
+        website = 'www.BigBite.com' 
+        ) 
+
+        cu1 = Customer.objects.create(name = "Bobby")
+        cu2 = Customer.objects.create(name = "Sam")
+        cu3 = Customer.objects.create(name = "Jake")
+        gd1 = GenericDish.objects.create(name = "Hamburger")
+        gd2 = GenericDish.objects.create(name = "Pizza")
+        gd3 = GenericDish.objects.create(name = "Sushi")
+
+        d1 = Dish(
+        name = 'Trifecta Pizza',
+        star_avg_rating = 4,
+        star_num_ratings = 4,
+        star_sum_ratings = 16,
+        dollar_avg_rating = 3 ,
+        dollar_num_ratings = 3,
+        dollar_sum_ratings = 9,
+        vegetarian = False,
+        vegan = False,
+        kosher = False, 
+        halal = False,
+        nut_allergy = False,
+        restaurant = r3,
+        generic_dish = gd2,
+        cuisine = c1,
+        description = 'A trifecta of 3 meats' 
+        )
+
+        d2 = Dish(
+        name = 'Bacon Cheezburger',
+        star_avg_rating = 5,
+        star_num_ratings = 5,
+        star_sum_ratings = 25,
+        dollar_avg_rating = 2 ,
+        dollar_num_ratings = 5,
+        dollar_sum_ratings = 10,
+        vegetarian = False,
+        vegan = False,
+        kosher = False, 
+        halal = False,
+        nut_allergy = False,
+        restaurant = r1,
+        generic_dish = gd1,
+        cuisine = c1,
+        description = 'Bacon with some cheezburger on it' 
+        )
+
+        d3 = Dish(
+        name = 'White Roll',
+        star_avg_rating = 3,
+        star_num_ratings = 7,
+        star_sum_ratings = 21,
+        dollar_avg_rating = 2 ,
+        dollar_num_ratings = 7,
+        dollar_sum_ratings = 14,
+        vegetarian = False,
+        vegan = False,
+        kosher = False, 
+        halal = False,
+        nut_allergy = False,
+        restaurant = r2,
+        generic_dish = gd3,
+        cuisine = c1,
+        description = 'Prime sushi' 
+        )
+
+        rr1 = RestaurantReview(
+        star_rating = 1,
+        dollar_rating = 5,
+        review_comment = 'The food here stinks',
+        customer = cu1,
+        restaurant = r1,
+        )
+
+        rr2 = RestaurantReview(
+        star_rating = 5,
+        dollar_rating = 1,
+        review_comment = 'The food here da bomb dot com.',
+        customer = cu2,
+        restaurant = r2,
+        )
+
+        rr3 = RestaurantReview(
+        star_rating = 3,
+        dollar_rating = 3,
+        review_comment = 'The food here is alright.',
+        customer = cu3,
+        restaurant = r3,
+        )
+
+        dr1 = DishReview(
+        star_rating = 2,
+        dollar_rating = 4,
+        review_comment = 'Meh.',
+        customer = cu1 ,
+        dish = d1
+        )
+        
+        dr2 = DishReview(
+        star_rating = 5,
+        dollar_rating = 2,
+        review_comment = 'I love bacon! I love this burger!',
+        customer = cu2,
+        dish = d2
+        )
+
+        dr3 = DishReview(
+        star_rating = 3,
+        dollar_rating = 4,
+        review_comment = "It's ok but it's a little expensive.", 
+        customer = cu3,
+        dish = d3,
+        )
+        
+        retDict = {'d1' : d1}
+        return retDict
+        
+        
+    def test_table(self):
+        modelsDict = Tests.model_instances()
+        response = self.client.get(reverse('restsjson', args=['json']))
+        b = str(response.content)[2:-1]#.replace("\\n", "")
+        print('b=',b,'=b',sep='')
+        json.loads(b)
+
+    def test_table_2(self):
+        response = self.client.get(reverse('restsjson', args=['json']))
+        b = str(response.content)[2:-1]#.replace("\\n", "")
+        print('b=',b,'=b',sep='')
+        json.loads(b)
+         
+

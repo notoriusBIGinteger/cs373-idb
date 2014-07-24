@@ -327,7 +327,12 @@ def generic_dish_detail(request, pk, format=None):
     """
     try :
         generic_dish = GenericDish.objects.get(id = pk)
-        generic_dish_dishes = Dish.objects.all().filter(generic_dish_id = pk)
+        generic_dish_dishes = Dish.objects.all().filter(generic_dish = generic_dish)
+        restaurant_results = []
+        for dish in generic_dish_dishes:
+            rest = Restaurant.objects.get(pk = dish.restaurant.id)
+            if not rest in restaurant_results:
+                restaurant_results.append(rest)
     except GenericDish.DoesNotExist :
         if format is None :
             return HttpResponse(content='No generic dish found.', status=404)
@@ -337,7 +342,7 @@ def generic_dish_detail(request, pk, format=None):
     if request.method == 'GET':
         if format is None:
             return render_to_response('ourapp/generic_dish_detail.html',{ 'generic_dish_name' : generic_dish.name ,
-            'dish_results' : generic_dish_dishes, 'restaurant_results' :  False })
+            'dish_results' : generic_dish_dishes, 'restaurant_results' :  restaurant_results })
         elif format.lower() == 'json' :
             serializer = GenericDishSerializer(generic_dish)
             return JSONResponse(serializer.data)
@@ -399,9 +404,17 @@ def cuisine_detail(request, pk, format=None):
     """
     try:
         cuisine = Cuisine.objects.get(id = pk)
-        dish_results = Dish.objects.all().filter(cuisine = cuisine)
-        restaurant_results = Restaurant.objects.all().filter(cuisine = cuisine)
-        generic_results = GenericDish.objects.all().filter(cuisine = cuisine)
+        dish_results = Dish.objects.all().filter(cuisine = cuisine)[:5]
+        restaurant_results = []#Restaurant.objects.all().filter(cuisine = cuisine)[:5]
+        for d in dish_results:
+            r = Restaurant.objects.get(pk = d.restaurant.id)
+            if not r in restaurant_results:
+                restaurant_results.append(r)
+        rest = Restaurant.objects.all().filter(cuisine = cuisine)
+        for r in rest:
+            if not r in restaurant_results:
+                restaurant_results.append(r)
+        generic_results = GenericDish.objects.all().filter(cuisine = cuisine)[:5]
     except Cuisine.DoesNotExist :
         if format is None :
             return HttpResponse(content='No cuisine found.', status=404)
