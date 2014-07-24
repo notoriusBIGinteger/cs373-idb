@@ -64,33 +64,33 @@ class Restaurant(models.Model) :
         in a dictionary with key being the attribute name
         and value being the value of the attribute
         """
-        return {}
- #   name = 
- #   reservation_required =
- #   reservation_avail = 
- #   has_waiter =
- #   phone_number = 
- #   description = 
- #   zip_code = 
- #   address = 
- #   delivery = 
- #   take_out = 
- #   pet_friendly =
- #   dollar_avg_rating =
- #   dollar_num_rating =
- #   dollar_sum_rating=
- #   star_avg_rating = 
- #   star_num_rating =
- #   star_sum_rating=
- #   website = 
- #   cuisine = 
- #   mon_hours = 
- #   tue_hours = 
- #   wed_hours = 
- #   thu_hours = 
- #   fri_hours = 
- #   sat_hours = 
- #   sun_hours = } 
+        return {
+                'name' : self.name,
+                'reservation_required' : self.reservation_required ,
+                'reservation_avail' :  self.reservation_avail ,
+                'has_waiter' : self.has_waiter ,
+                'phone_number' : self.phone_number ,
+                'description' : self.description,
+                'zip_code' : self.zip_code,
+                'address' : self.address,
+                'delivery' : self.delivery,
+                'take_out' : self.take_out,
+                'pet_friendly' : self.pet_friendly,
+                'dollar_avg_rating' : self.dollar_avg_rating,
+                'dollar_num_rating' : self.dollar_num_rating,
+                'dollar_sum_rating' : self.dollar_sum_rating,
+                'star_avg_rating' : self.star_avg_rating,
+                'star_num_rating' : self.star_num_rating,
+                'star_sum_rating' : self.star_sum_rating,
+                'website' : self.website,
+                'cuisine' : self.cuisine,
+                'mon_hours' : self.mon_hours,
+                'tue_hours' : self.tue_hours,
+                'wed_hours' : self.wed_hours,
+                'thu_hours' : self.thu_hours,
+                'fri_hours' : self.fri_hours,
+                'sat_hours' : self.sat_hours,
+                'sun_hours' : self.sun_hours,  }
 #        return {"name": self.name,
 #                "reservation_required": self.reservation_required,
 #                "reservation_avail": self.reservation_avail ,
@@ -109,6 +109,8 @@ Customer containts a full name of a reviewer
 """
 class Customer(models.Model) :
     name = models.CharField('Name', max_length=35)
+   # location = models.CharField('Location', max_length=35)
+    description = models.CharField('Description', max_length=100)
     #recent_check_in = models.CharField('Last Check-In', max_length=30)
     #dietary_preference = models.CharField('Diet', max_length=60)
 
@@ -174,15 +176,24 @@ class Dish(models.Model) :
         in a dictionary with key being the attribute name
         and value being the value of the attribute
         """
-        return {"name": self.name,
-                "star_avg_rating": self.star_avg_rating,
-                "num_ratings":self.num_ratings,
-                "sum_of_ratings":self.sum_of_ratings,
-                "vegetarian":self.vegetarian,
-                "vegan":self.vegan,
-                "kosher":self.kosher,
-                "halal":self.halal,
-                "nut_allergy":self.nut_allergy}
+        return {
+               'name' : self.name,
+               'star_avg_rating' : self.star_avg_rating,
+               'star_num_ratings' : self.star_num_ratings,
+               'star_sum_ratings' : self.star_sum_ratings,
+               'dollar_avg_rating' : self.dollar_avg_rating,
+               'dollar_num_ratings' : self.dollar_num_ratings,
+               'dollar_sum_ratings' : self.dollar_sum_ratings,
+               'vegetarian' : self.vegetarian,
+               'vegan' : self.vegan,
+               'kosher' : self.kosher,
+               'halal' : self.halal,
+               'nut_allergy' : self.nut_allergy,
+               'restaurant' : self.restaurant,
+               'generic_dish' : self.generic_dish,
+               'cuisine' : self.cuisine,
+               'description' : self.description
+               }
 
 
 """
@@ -205,9 +216,13 @@ class RestaurantReview(models.Model) :
         in a dictionary with key being the attribute name
         and value being the value of the attribute
         """
-        return {"star_rating": self.star_rating,
+        return {
+                "star_rating": self.star_rating,
                 "dollar_rating":self.dollar_rating,
-                "review_comment":self.review_comment}
+                "review_comment":self.review_comment,
+                'customer' : self.customer,
+                'restaurant' : self.restaurant
+                        }
 
 """
 Dish Review contains two foreign keys from Customer and Dish
@@ -229,6 +244,9 @@ class DishReview(models.Model) :
         in a dictionary with key being the attribute name
         and value being the value of the attribute
         """
-        return {"star_rating": self.star_rating,
-                "dollar_rating":self.dollar_rating,
-                "review_comment":self.review_comment}
+        return {'star_rating' : self.star_rating,
+                'dollar_rating' : self.dollar_rating,
+                'review_comment' : self.review_comment,
+                'customer' : self.customer,
+                'dish' : self.dish
+               }

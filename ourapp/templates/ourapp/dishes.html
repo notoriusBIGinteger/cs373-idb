@@ -1,14 +1,33 @@
-<!-- This will list all the dishes in our db -->
 {% extends 'ourapp/master.html' %}
 {% block page_title %}Dishes{% endblock %}
 {% block page_header %}{% include "ourapp/carousel.html" %}{%endblock%}
 {% block main_content %}
+{% load staticfiles %}
+<script src="{% static 'js/restaurant.js'%}"></script>
+<div class="col-md-3">
+</div>
+<div class="col-md-6" id="reviews">
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">All Dishes</h3>
+        </div>
+        <div class="panel-body">
+<ul class="list-group food-list">
 {% if dish_list %}
     {% for dish in dish_list %}
-        <li> <a href = "/dishes/{{dish.id}}" >{{dish.name}}</a> </li>
+    <li class = "list-group-item food-item"> <strong>{{dish.name}}</strong>
+        <div class="food-item-content">
+            <p>{{dish.description}}</p>
+                <p><a href="/dishes/{{dish.id}}" class="menu-item-link">Read Reviews</a></p></div>
+        </li>
     {% endfor %}
 {% else %}
     <p>No Dishes in Database</p>
 {% endif %}
-
+</ul>
+</div>
+</div>
+</div>
+<div class="col-md-3">
+</div>
 {% endblock %}

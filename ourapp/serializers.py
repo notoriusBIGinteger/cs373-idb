@@ -114,7 +114,6 @@ class DishesSerializer(serializers.Serializer) :
     kosher = serializers.BooleanField(required=False)
     halal = serializers.BooleanField(required=False)
     nut_allergy = serializers.BooleanField(required=False)
-    cost = serializers.IntegerField()
     restaurant_id = serializers.IntegerField()
     generic_dish_id = serializers.IntegerField()
     cuisine_id = serializers.IntegerField()
@@ -142,7 +141,6 @@ class DishesSerializer(serializers.Serializer) :
             instance.kosher = attrs.get('Kosher', instance.kosher)
             instance.halal = attrs.get('Halal', instance.halal)
             instance.nut_allergy = attrs.get('Nut Allergy', instance.nut_allergy)
-            instance.cost = attrs.get('Cost', instance.cost)
             instance.restaurant_id = attrs.get('Restaurant', instance.restaurant_id)
             instance.generic_dish_id = attrs.get('Generic Dish', instance.generic_dish_id)
             instance.cuisine_id = attrs.get('Cuisine', instance.cuisine_id)
@@ -184,6 +182,7 @@ class DishReviewsSerializer(serializers.Serializer) :
 class CustomerSerializer(serializers.Serializer):
     id = serializers.Field()  # Note: `Field` is an untyped read-only field.
     name = serializers.CharField(max_length=35)
+    description = serializers.CharField(max_length=100)
 
     def restore_object(self, attrs, instance=None):
         """
@@ -196,6 +195,7 @@ class CustomerSerializer(serializers.Serializer):
         if instance:
             # Update existing instance
             instance.name = attrs.get('Name', instance.name)
+            instance.description = attrs.get('Description', instance.description)
             return instance
 
         # Create new instance

@@ -1,7 +1,7 @@
 <!-- This page will be of a single customer, so will have two list dishes and restaurants it has reviewed -->
 {% extends 'ourapp/master.html' %}
 {% block page_title %}{{customer.name}}{% endblock %}
-{% block page_header %}{% include "ourapp/carousel.html" %}{%endblock%}
+{% block page_header %}{% include "ourapp/customer_header.html" %}{%endblock%}
 {% block main_content %}
 {% load staticfiles %}
 <script src="{% static 'js/restaurant.js'%}"></script>
@@ -9,13 +9,13 @@
 <div class="col-md-6" id="reviews">
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title">Dish Reviews</h3>
+        <h3 class="panel-title"><a href ="dishreviews">Dish Reviews</a></h3>
         </div>
         <div class="panel-body">
 <ul class="list-group food-list">
 {% if dish_reviews %}
     {% for d in dish_reviews %}
-        <li class = "list-group-item review-item"> <a href = "dishes/{{d.dish}}">{{d.dish}}</a>
+        <li class = "list-group-item review-item"> {{d.dish}}
         <div class = "review-item-content">
             <p>{{d.review_comment}}</p>
             <p><a href = "/dishes/{{d.dish.id}}" class = "review-item-link">Read Reviews</a></p>
@@ -33,13 +33,13 @@
 <div class="col-md-6" id="reviews">
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title">Restaurant Reviews</h3>
+        <h3 class="panel-title"><a href = "restaurantreviews" >Restaurant Reviews</a></h3>
         </div>
         <div class="panel-body">
 <ul class="list-group food-list">
 {% if restaurant_reviews %}
     {% for r in restaurant_reviews %}
-        <li class = "list-group-item review-item"> <a href = "restaurants/{{r.restaurant}}">{{r.restaurant}}</a>
+        <li class = "list-group-item review-item">{{r.restaurant}}
         <div class = "review-item-content">
             <p>{{r.review_comment}}</p>
             <p><a href = "/restaurants/{{r.restaurant.id}}" class = "review-item-link">Read Reviews</a></p>

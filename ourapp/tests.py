@@ -1,8 +1,12 @@
+import json 
 from django.test import TestCase
 from django.test.client import Client
+from django.core.urlresolvers import reverse
 from ourapp.models import Cuisine, Restaurant, Customer, GenericDish, Dish, RestaurantReview, DishReview
 
 class Tests(TestCase):
+
+
     # ---------------
     # cuisine get_all
     # ---------------
@@ -11,7 +15,8 @@ class Tests(TestCase):
     c2 = Cuisine(name = "Mexi")  # gets set to Meixcan soon after
     c3 = Cuisine(name = "Amer") # gets set to American soon after
     
-    r = Restaurant(name="Kerbey Lane",
+    r1 = Restaurant(
+    name = "Kerbey Lane",
     reservation_required = False,
     reservation_avail = False,
     has_waiter = True,
@@ -27,8 +32,7 @@ class Tests(TestCase):
     dollar_sum_rating = 25,
     star_avg_rating = 5,
     star_num_rating = 5,
-    star_sum_rating= 25,
-    website = 'www.kerbey.com', #models.URLField('Website')
+    star_sum_rating = 25,
     cuisine = c3,
     mon_hours = '11AM - 9PM', 
     tue_hours = '11AM - 9PM',
@@ -36,9 +40,180 @@ class Tests(TestCase):
     thu_hours = '11AM - 9PM',
     fri_hours = '11AM - 9PM',
     sat_hours = '11AM - 9PM',
-    sun_hours = '11AM - 9PM') 
+    sun_hours = '11AM - 9PM',
+    website = 'www.kerbey.com', 
+    ) 
+
+    r2 = Restaurant(
+    name = "Magnolia",
+    reservation_required = True,
+    reservation_avail = False,
+    has_waiter = False,
+    phone_number = '5554445555',
+    description = 'Amazing breakfast',
+    zip_code = '78705',
+    address = '555 w 5th St',
+    delivery = False,
+    take_out = True,
+    pet_friendly = False, 
+    dollar_avg_rating = 6,
+    dollar_num_rating = 6,
+    dollar_sum_rating = 36,
+    star_avg_rating = 4,
+    star_num_rating = 4,
+    star_sum_rating = 16,
+    cuisine = c3,
+    mon_hours = '9AM - 10PM', 
+    tue_hours = '9AM - 10PM',
+    wed_hours = '9AM - 10PM',
+    thu_hours = '9AM - 10PM',
+    fri_hours = '9AM - 10PM',
+    sat_hours = '9AM - 10PM',
+    sun_hours = '9AM - 10PM',
+    website = 'www.MangoliaCafe.com', 
+    ) 
 
 
+    r3 = Restaurant(
+    name = "Big Bite",
+    reservation_required = False,
+    reservation_avail = False,
+    has_waiter = True,
+    phone_number = '1234445555',
+    description = 'Amazing pizza',
+    zip_code = '78705',
+    address = '523 w 5th St',
+    delivery = False,
+    take_out = True,
+    pet_friendly = True, 
+    dollar_avg_rating = 7,
+    dollar_num_rating = 7,
+    dollar_sum_rating = 49,
+    star_avg_rating = 2,
+    star_num_rating = 2,
+    star_sum_rating = 4,
+    cuisine = c1,
+    mon_hours = '9AM - 10PM', 
+    tue_hours = '9AM - 10PM',
+    wed_hours = '9AM - 10PM',
+    thu_hours = '9AM - 10PM',
+    fri_hours = '9AM - 10PM',
+    sat_hours = '9AM - 10PM',
+    sun_hours = '9AM - 10PM',
+    website = 'www.BigBite.com' 
+    ) 
+
+    cu1 = Customer(name = "Bobby")
+    cu2 = Customer(name = "Sam")
+    cu3 = Customer(name = "Jake")
+    gd1 = GenericDish(name = "Hamburger")
+    gd2 = GenericDish(name = "Pizza")
+    gd3 = GenericDish(name = "Sushi")
+
+    d1 = Dish(
+    name = 'Trifecta Pizza',
+    star_avg_rating = 4,
+    star_num_ratings = 4,
+    star_sum_ratings = 16,
+    dollar_avg_rating = 3 ,
+    dollar_num_ratings = 3,
+    dollar_sum_ratings = 9,
+    vegetarian = False,
+    vegan = False,
+    kosher = False, 
+    halal = False,
+    nut_allergy = False,
+    restaurant = r3,
+    generic_dish = gd2,
+    cuisine = c1,
+    description = 'A trifecta of 3 meats' 
+    )
+
+    d2 = Dish(
+    name = 'Bacon Cheezburger',
+    star_avg_rating = 5,
+    star_num_ratings = 5,
+    star_sum_ratings = 25,
+    dollar_avg_rating = 2 ,
+    dollar_num_ratings = 5,
+    dollar_sum_ratings = 10,
+    vegetarian = False,
+    vegan = False,
+    kosher = False, 
+    halal = False,
+    nut_allergy = False,
+    restaurant = r1,
+    generic_dish = gd1,
+    cuisine = c1,
+    description = 'Bacon with some cheezburger on it' 
+    )
+
+    d3 = Dish(
+    name = 'White Roll',
+    star_avg_rating = 3,
+    star_num_ratings = 7,
+    star_sum_ratings = 21,
+    dollar_avg_rating = 2 ,
+    dollar_num_ratings = 7,
+    dollar_sum_ratings = 14,
+    vegetarian = False,
+    vegan = False,
+    kosher = False, 
+    halal = False,
+    nut_allergy = False,
+    restaurant = r2,
+    generic_dish = gd3,
+    cuisine = c1,
+    description = 'Prime sushi' 
+    )
+
+    rr1 = RestaurantReview(
+    star_rating = 1,
+    dollar_rating = 5,
+    review_comment = 'The food here stinks',
+    customer = cu1,
+    restaurant = r1,
+    )
+
+    rr2 = RestaurantReview(
+    star_rating = 5,
+    dollar_rating = 1,
+    review_comment = 'The food here da bomb dot com.',
+    customer = cu2,
+    restaurant = r2,
+    )
+
+    rr3 = RestaurantReview(
+    star_rating = 3,
+    dollar_rating = 3,
+    review_comment = 'The food here is alright.',
+    customer = cu3,
+    restaurant = r3,
+    )
+
+    dr1 = DishReview(
+    star_rating = 2,
+    dollar_rating = 4,
+    review_comment = 'Meh.',
+    customer = cu1 ,
+    dish = d1
+    )
+    
+    dr2 = DishReview(
+    star_rating = 5,
+    dollar_rating = 2,
+    review_comment = 'I love bacon! I love this burger!',
+    customer = cu2,
+    dish = d2
+    )
+
+    dr3 = DishReview(
+    star_rating = 3,
+    dollar_rating = 4,
+    review_comment = "It's ok but it's a little expensive.", 
+    customer = cu3,
+    dish = d3,
+    )
 
     def test_cuisine_get_all_1(self):
         self.assertEqual(Tests.c1.get_all(), {"name": "Ital"})
@@ -72,212 +247,228 @@ class Tests(TestCase):
     # ------------------
     def test_restaurant_get_all_1(self):
 
-        self.assertEqual(Tests.r.get_all(), {"name": "Kerbey Lane",
-	                                   "reservation_required": False,
-	                                   "reservation_avail": False,
-	                                   "has_waiter": True,
-	                                   "phone_number":"5125555555" ,
-	                                   "description": "Diner Food",
-	                                   "zip_code": "78741",
-	                                   "address": "Austin",
-	                                   "delivery":False,
-	                                   "take_out":False,
-	                                   "pet_friendly":True,
-	                                   "cost":2,
-	                                   "website":"http://fake.com"})
+        self.assertEqual(Tests.r1.get_all(),  {'name' : "Kerbey Lane",
+            'reservation_required' : False,
+            'reservation_avail' : False,
+            'has_waiter' : True,
+            'phone_number' : '5555555555',
+            'description' : 'Delicious breakfast',
+            'zip_code' : '78705',
+            'address' : '555 w 5th St',
+            'delivery' : False,
+            'take_out' : True,
+            'pet_friendly' : False, 
+            'dollar_avg_rating' : 5,
+            'dollar_num_rating' : 5,
+            'dollar_sum_rating' : 25, 
+            'star_avg_rating' : 5,
+            'star_num_rating' : 5,
+            'star_sum_rating' : 25,                                                                  
+            'cuisine' : Tests.c3,
+            'mon_hours' : '11AM - 9PM', 
+            'tue_hours' : '11AM - 9PM',
+            'wed_hours' : '11AM - 9PM',
+            'thu_hours' : '11AM - 9PM',
+            'fri_hours' : '11AM - 9PM',
+            'sat_hours' : '11AM - 9PM',
+            'sun_hours' : '11AM - 9PM',
+            'website' : 'www.kerbey.com' })
    
     def test_restaurant_get_all_2(self):
-        r = Restaurant(name="Magnolia Cafe",
-                       reservation_required = False,
-                       reservation_avail = False,
-                       has_waiter = True,
-                       phone_number = "5125555555",
-                       description = "Diner",
-                       zip_code = "78741",
-                       address = "Austin",
-                       delivery = False,
-                       take_out = True,
-                       pet_friendly = True,
-                       cost = 2,
-                       website = "http://fakewebsite.com")
-        self.assertEqual(r.get_all(), {"name": "Magnolia Cafe",
-	                                   "reservation_required": False,
-	                                   "reservation_avail": False,
-	                                   "has_waiter": True,
-	                                   "phone_number":"5125555555" ,
-	                                   "description": "Diner",
-	                                   "zip_code": "78741",
-	                                   "address": "Austin",
-	                                   "delivery":False,
-	                                   "take_out":True,
-	                                   "pet_friendly":True,
-	                                   "cost":2,
-	                                   "website":"http://fakewebsite.com"})
+        self.assertEqual(Tests.r2.get_all(), {'name' : "Magnolia",
+            'reservation_required' : True,
+            'reservation_avail' : False,
+            'has_waiter' : False,
+            'phone_number' : '5554445555',
+            'description' : 'Amazing breakfast',
+            'zip_code' : '78705',
+            'address' : '555 w 5th St',
+            'delivery' : False,
+            'take_out' : True,
+            'pet_friendly' : False, 
+            'dollar_avg_rating' : 6,
+            'dollar_num_rating' : 6,
+            'dollar_sum_rating' : 36, 
+            'star_avg_rating' : 4,
+            'star_num_rating' : 4,
+            'star_sum_rating' : 16, 
+            'cuisine' : Tests.c3, 
+            'mon_hours' : '9AM - 10PM', 
+            'tue_hours' : '9AM - 10PM',
+            'wed_hours' : '9AM - 10PM',
+            'thu_hours' : '9AM - 10PM',
+            'fri_hours' : '9AM - 10PM',
+            'sat_hours' : '9AM - 10PM',
+            'sun_hours' : '9AM - 10PM',
+            'website' : 'www.MangoliaCafe.com',
+            })
 
     def test_restaurant_get_all_3(self):
-        r = Restaurant(name="Thai Spice",
-                       reservation_required = False,
-                       reservation_avail = True,
-                       has_waiter = True,
-                       phone_number = "5125555555",
-                       description = "Asian",
-                       zip_code = "78741",
-                       address = "Austin",
-                       delivery = True,
-                       take_out = True,
-                       pet_friendly = False,
-                       cost = 2,
-                       website = "http://2spicy4U.com")
-        self.assertEqual(r.get_all(), {"name": "Thai Spice",
-	                                   "reservation_required": False,
-	                                   "reservation_avail": True,
-	                                   "has_waiter": True,
-	                                   "phone_number":"5125555555" ,
-	                                   "description": "Asian",
-	                                   "zip_code": "78741",
-	                                   "address": "Austin",
-	                                   "delivery":True,
-	                                   "take_out":True,
-	                                   "pet_friendly":False,
-	                                   "cost":2,
-	                                   "website":"http://2spicy4U.com"})
+        self.assertEqual(Tests.r3.get_all(), {'name' : "Big Bite",
+            'reservation_required' : False,
+            'reservation_avail' : False,
+            'has_waiter' : True,
+            'phone_number' : '1234445555',
+            'description' : 'Amazing pizza',
+            'zip_code' : '78705',
+            'address' : '523 w 5th St',
+            'delivery' : False,
+            'take_out' : True,
+            'pet_friendly' : True,
+            'dollar_avg_rating' : 7,
+            'dollar_num_rating' : 7,
+            'dollar_sum_rating' : 49,
+            'star_avg_rating' : 2,
+            'star_num_rating' : 2,
+            'star_sum_rating' : 4,
+            'cuisine' : Tests.c1,
+            'mon_hours' : '9AM - 10PM',
+            'tue_hours' : '9AM - 10PM',
+            'wed_hours' : '9AM - 10PM',
+            'thu_hours' : '9AM - 10PM',
+            'fri_hours' : '9AM - 10PM',
+            'sat_hours' : '9AM - 10PM',
+            'sun_hours' : '9AM - 10PM',
+            'website' : 'www.BigBite.com'
+            })
 
     # ----------------
     # customer get_all
     # ----------------
     def test_customer_get_all_1(self):
-        c = Customer(name = "Bobby")
-        self.assertEqual(c.get_all(), {"name": "Bobby"})
+        self.assertEqual(Tests.cu1.get_all(), {"name": "Bobby"})
 
     def test_customer_get_all_2(self):
-        c = Customer(name = "Sam")
-        self.assertEqual(c.get_all(), {"name": "Sam"})
+        self.assertEqual(Tests.cu2.get_all(), {"name": "Sam"})
 
     def test_customer_get_all_3(self):
-        c = Customer(name = "Dean")
-        self.assertEqual(c.get_all(), {"name": "Dean"})
+        self.assertEqual(Tests.cu3.get_all(), {"name": "Jake"})
 
     # --------------------
     # generic dish get_all
     # --------------------
     def test_generic_dish_get_all_1(self):
-        gd = GenericDish(name = "Hamburger")
-        self.assertEqual(gd.get_all(), {"name":"Hamburger"})
+        self.assertEqual(Tests.gd1.get_all(), {"name":"Hamburger"})
 
     def test_generic_dish_get_all_2(self):
-        gd = GenericDish(name = "Pizza")
-        self.assertEqual(gd.get_all(), {"name":"Pizza"})
+        self.assertEqual(Tests.gd2.get_all(), {"name":"Pizza"})
 
     def test_generic_dish_get_all_3(self):
-        gd = GenericDish(name = "Sushi")
-        self.assertEqual(gd.get_all(), {"name":"Sushi"})
+        self.assertEqual(Tests.gd3.get_all(), {"name":"Sushi"})
 
     # ------------
     # dish get_all
     # ------------
     def test_dish_get_all_1(self):
-        d = Dish(name = "BLT Sandwhich",
-                 rating = 2,
-                 num_ratings = 3,
-                 sum_of_ratings = 5,
-                 vegetarian = False,
-                 vegan = False,
-                 kosher = False,
-                 halal = False,
-                 nut_allergy = True,
-                 cost = 4)
-        self.assertEqual(d.get_all(),{"name":"BLT Sandwhich",
-                                      "rating":2,
-                                      "num_ratings":3,
-                                      "sum_of_ratings":5,
-                                      "vegetarian":False,
-                                      "vegan":False,
-                                      "kosher":False,
-                                      "halal":False,
-                                      "nut_allergy":True,
-                                      "cost" : 4})
+        self.assertEqual(Tests.d1.get_all(),{'name' : 'Trifecta Pizza',
+            'star_avg_rating' : 4,
+            'star_num_ratings' : 4,
+            'star_sum_ratings' : 16, 
+            'dollar_avg_rating' : 3 , 
+            'dollar_num_ratings' : 3,
+            'dollar_sum_ratings' : 9,
+            'vegetarian' : False,
+            'vegan' : False,
+            'kosher' : False, 
+            'halal' : False,
+            'nut_allergy' : False,
+            'restaurant' : Tests.r3, 
+            'generic_dish' : Tests.gd2,
+            'cuisine' : Tests.c1,                                                                               
+            'description' : 'A trifecta of 3 meats'})
 
     def test_dish_get_all_2(self):
-        d = Dish(name = "Beef Taco",
-                 rating = 4,
-                 num_ratings = 10,
-                 sum_of_ratings = 6,
-                 vegetarian = False,
-                 vegan = False,
-                 kosher = True,
-                 halal = False,
-                 nut_allergy = False,
-                 cost = 2)
-        self.assertEqual(d.get_all(),{"name":"Beef Taco",
-                                      "rating":4,
-                                      "num_ratings":10,
-                                      "sum_of_ratings":6,
-                                      "vegetarian":False,
-                                      "vegan":False,
-                                      "kosher":True,
-                                      "halal":False,
-                                      "nut_allergy":False,
-                                      "cost" : 2})
+        self.assertEqual(Tests.d2.get_all(),{'name' : 'Bacon Cheezburger',
+        'star_avg_rating' : 5,
+        'star_num_ratings' : 5,
+        'star_sum_ratings' : 25, 
+        'dollar_avg_rating' : 2 , 
+        'dollar_num_ratings' : 5,
+        'dollar_sum_ratings' : 10, 
+        'vegetarian' : False,
+        'vegan' : False,
+        'kosher' : False, 
+        'halal' : False,
+        'nut_allergy' : False,
+        'restaurant' : Tests.r1, 
+        'generic_dish' : Tests.gd1,
+        'cuisine' : Tests.c1, 
+        'description' : 'Bacon with some cheezburger on it' })
 
     def test_dish_get_all_3(self):
-        d = Dish(name = "Pancake",
-                 rating = 4,
-                 num_ratings = 11,
-                 sum_of_ratings = 8,
-                 vegetarian = True,
-                 vegan = True,
-                 kosher = True,
-                 halal = True,
-                 nut_allergy = False,
-                 cost = 3)
-        self.assertEqual(d.get_all(),{"name":"Pancake",
-                                      "rating":4,
-                                      "num_ratings":11,
-                                      "sum_of_ratings":8,
-                                      "vegetarian":True,
-                                      "vegan":True,
-                                      "kosher":True,
-                                      "halal":True,
-                                      "nut_allergy":False,
-                                      "cost" : 3})
+        self.assertEqual(Tests.d3.get_all(),{'name' : 'White Roll',
+        'star_avg_rating' : 3,
+        'star_num_ratings' : 7,
+        'star_sum_ratings' : 21,
+        'dollar_avg_rating' : 2 ,
+        'dollar_num_ratings' : 7,
+        'dollar_sum_ratings' : 14,
+        'vegetarian' : False,
+        'vegan' : False,
+        'kosher' : False, 
+        'halal' : False,
+        'nut_allergy' : False,
+        'restaurant' : Tests.r2,
+        'generic_dish' : Tests.gd3,
+        'cuisine' : Tests.c1,
+        'description' : 'Prime sushi'})
 
     # -------------------------
     # restaurant review get_all
     # -------------------------
     def test_restaurant_review_get_all_1(self):
-        rr = RestaurantReview(rating = 3, review_comment = "Okay")
-        self.assertEqual(rr.get_all(), {"rating":3, "review_comment":"Okay"})
+        self.assertEqual(Tests.rr1.get_all(), {'star_rating' : 1,
+            'dollar_rating' : 5,
+            'review_comment' : 'The food here stinks',
+            'customer' : Tests.cu1,
+            'restaurant' : Tests.r1
+            })
 
     def test_restaurant_review_get_all_2(self):
-        rr = RestaurantReview(rating = 4, review_comment = "")
-        self.assertEqual(rr.get_all(), {"rating":4, "review_comment":""})
+        self.assertEqual(Tests.rr2.get_all(), {
+            'star_rating' : 5,
+            'dollar_rating' : 1,
+            'review_comment' : 'The food here da bomb dot com.',
+            'customer' : Tests.cu2,
+            'restaurant' : Tests.r2, 
+            })
 
     def test_restaurant_review_get_all_3(self):
-        rr = RestaurantReview(star_rating = 1, review_comment = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium.")
-        self.assertEqual(rr.get_all(), {"rating":1, "review_comment":"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium."})
+        self.assertEqual(Tests.rr3.get_all(), {
+            'star_rating' : 3,
+            'dollar_rating' : 3,
+            'review_comment' : 'The food here is alright.',
+            'customer' : Tests.cu3,
+            'restaurant' : Tests.r3
+            })
 
     # -------------------
     # dish review get_all
     # -------------------
     def test_dish_review_get_all_1(self):
-        dr = DishReview(rating = 3, review_comment = "Okay")
-        self.assertEqual(dr.get_all(), {"rating":3, "review_comment":"Okay"})
+        self.assertEqual(Tests.dr1.get_all(), {
+            'star_rating' : 2,
+            'dollar_rating' : 4,
+            'review_comment' : 'Meh.',
+            'customer' : Tests.cu1 ,
+            'dish' : Tests.d1
+            })
 
     def test_dish_review_get_all_2(self):
-        dr = DishReview(rating = 1, review_comment = "")
-        self.assertEqual(dr.get_all(), {"rating":1, "review_comment":""})
+        self.assertEqual(Tests.dr2.get_all(), {
+            'star_rating' : 5,
+            'dollar_rating' : 2,
+            'review_comment' : 'I love bacon! I love this burger!',
+            'customer' : Tests.cu2 ,
+            'dish' : Tests.d2
+            })
 
     def test_dish_review_get_all_3(self):
-        dr = DishReview(rating = 5, review_comment = "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium.")
-        self.assertEqual(dr.get_all(), {"rating":5, "review_comment":"Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium."})
-
-    def test_restaurant_api_list_restaurants_1(self):
-        dr = DishReview(star_rating = 3, dollar_rating = 4, review_comment = "Okay")
-        dr.save()
-        self.assertTrue(True)
-
-        
-
-
-
+        self.assertEqual(Tests.dr3.get_all(), {
+            'star_rating' : 3,
+            'dollar_rating' : 4,
+            'review_comment' : "It's ok but it's a little expensive.",
+            'customer' : Tests.cu3 ,
+            'dish' : Tests.d3
+            })
 

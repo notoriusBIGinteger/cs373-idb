@@ -1,12 +1,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<html><head><title>Python: module models</title>
+<html><head><title>Python: module ourapp.models</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head><body bgcolor="#f0f0f8">
 
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
 <tr bgcolor="#7799ee">
 <td valign=bottom>&nbsp;<br>
-<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>models</strong></big></big></font></td
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="ourapp.html"><font color="#ffffff">ourapp</font></a>.models</strong></big></big></font></td
 ><td align=right valign=bottom
 ><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/notoriousbiginteger/notoriousBIGinteger/ourapp/models.py">/home/notoriousbiginteger/notoriousBIGinteger/ourapp/models.py</a></font></td></tr></table>
     <p></p>
@@ -29,13 +29,13 @@
 <dt><font face="helvetica, arial"><a href="django.db.models.base.html#Model">django.db.models.base.Model</a>(django.db.models.base.NewBase)
 </font></dt><dd>
 <dl>
-<dt><font face="helvetica, arial"><a href="models.html#Cuisine">Cuisine</a>
-</font></dt><dt><font face="helvetica, arial"><a href="models.html#Customer">Customer</a>
-</font></dt><dt><font face="helvetica, arial"><a href="models.html#Dish">Dish</a>
-</font></dt><dt><font face="helvetica, arial"><a href="models.html#DishReview">DishReview</a>
-</font></dt><dt><font face="helvetica, arial"><a href="models.html#GenericDish">GenericDish</a>
-</font></dt><dt><font face="helvetica, arial"><a href="models.html#Restaurant">Restaurant</a>
-</font></dt><dt><font face="helvetica, arial"><a href="models.html#RestaurantReview">RestaurantReview</a>
+<dt><font face="helvetica, arial"><a href="ourapp.models.html#Cuisine">Cuisine</a>
+</font></dt><dt><font face="helvetica, arial"><a href="ourapp.models.html#Customer">Customer</a>
+</font></dt><dt><font face="helvetica, arial"><a href="ourapp.models.html#Dish">Dish</a>
+</font></dt><dt><font face="helvetica, arial"><a href="ourapp.models.html#DishReview">DishReview</a>
+</font></dt><dt><font face="helvetica, arial"><a href="ourapp.models.html#GenericDish">GenericDish</a>
+</font></dt><dt><font face="helvetica, arial"><a href="ourapp.models.html#Restaurant">Restaurant</a>
+</font></dt><dt><font face="helvetica, arial"><a href="ourapp.models.html#RestaurantReview">RestaurantReview</a>
 </font></dt></dl>
 </dd>
 </dl>
@@ -49,7 +49,7 @@
 <td colspan=2><tt><a href="#Cuisine">Cuisine</a>(id,&nbsp;name)<br>&nbsp;</tt></td></tr>
 <tr><td>&nbsp;</td>
 <td width="100%"><dl><dt>Method resolution order:</dt>
-<dd><a href="models.html#Cuisine">Cuisine</a></dd>
+<dd><a href="ourapp.models.html#Cuisine">Cuisine</a></dd>
 <dd><a href="django.db.models.base.html#Model">django.db.models.base.Model</a></dd>
 <dd>django.db.models.base.NewBase</dd>
 <dd><a href="builtins.html#object">builtins.object</a></dd>
@@ -58,22 +58,26 @@
 Methods defined here:<br>
 <dl><dt><a name="Cuisine-__str__"><strong>__str__</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="Cuisine-get_all"><strong>get_all</strong></a>(self)</dt></dl>
+<dl><dt><a name="Cuisine-get_all"><strong>get_all</strong></a>(self)</dt><dd><tt>returns&nbsp;all&nbsp;of&nbsp;the&nbsp;elements&nbsp;in&nbsp;the&nbsp;class<br>
+in&nbsp;a&nbsp;dictionary&nbsp;with&nbsp;key&nbsp;being&nbsp;the&nbsp;attribute&nbsp;name<br>
+and&nbsp;value&nbsp;being&nbsp;the&nbsp;value&nbsp;of&nbsp;the&nbsp;attribute</tt></dd></dl>
 
 <strong>objects</strong> = &lt;django.db.models.manager.Manager object&gt;
 <dl><dt><a name="Cuisine-set_name"><strong>set_name</strong></a>(self, name)</dt></dl>
 
 <hr>
 Data descriptors defined here:<br>
+<dl><dt><strong>dish_set</strong></dt>
+</dl>
 <dl><dt><strong>genericdish_set</strong></dt>
 </dl>
 <dl><dt><strong>restaurant_set</strong></dt>
 </dl>
 <hr>
 Data and other attributes defined here:<br>
-<dl><dt><strong>DoesNotExist</strong> = &lt;class 'models.DoesNotExist'&gt;</dl>
+<dl><dt><strong>DoesNotExist</strong> = &lt;class 'ourapp.models.DoesNotExist'&gt;</dl>
 
-<dl><dt><strong>MultipleObjectsReturned</strong> = &lt;class 'models.MultipleObjectsReturned'&gt;</dl>
+<dl><dt><strong>MultipleObjectsReturned</strong> = &lt;class 'ourapp.models.MultipleObjectsReturned'&gt;</dl>
 
 <hr>
 Methods inherited from <a href="django.db.models.base.html#Model">django.db.models.base.Model</a>:<br>
@@ -157,10 +161,10 @@ Data descriptors inherited from django.db.models.base.NewBase:<br>
 <font color="#000000" face="helvetica, arial"><a name="Customer">class <strong>Customer</strong></a>(<a href="django.db.models.base.html#Model">django.db.models.base.Model</a>)</font></td></tr>
     
 <tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
-<td colspan=2><tt><a href="#Customer">Customer</a>(id,&nbsp;name)<br>&nbsp;</tt></td></tr>
+<td colspan=2><tt><a href="#Customer">Customer</a>(id,&nbsp;name,&nbsp;description)<br>&nbsp;</tt></td></tr>
 <tr><td>&nbsp;</td>
 <td width="100%"><dl><dt>Method resolution order:</dt>
-<dd><a href="models.html#Customer">Customer</a></dd>
+<dd><a href="ourapp.models.html#Customer">Customer</a></dd>
 <dd><a href="django.db.models.base.html#Model">django.db.models.base.Model</a></dd>
 <dd>django.db.models.base.NewBase</dd>
 <dd><a href="builtins.html#object">builtins.object</a></dd>
@@ -169,7 +173,9 @@ Data descriptors inherited from django.db.models.base.NewBase:<br>
 Methods defined here:<br>
 <dl><dt><a name="Customer-__str__"><strong>__str__</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="Customer-get_all"><strong>get_all</strong></a>(self)</dt></dl>
+<dl><dt><a name="Customer-get_all"><strong>get_all</strong></a>(self)</dt><dd><tt>returns&nbsp;all&nbsp;of&nbsp;the&nbsp;elements&nbsp;in&nbsp;the&nbsp;class<br>
+in&nbsp;a&nbsp;dictionary&nbsp;with&nbsp;key&nbsp;being&nbsp;the&nbsp;attribute&nbsp;name<br>
+and&nbsp;value&nbsp;being&nbsp;the&nbsp;value&nbsp;of&nbsp;the&nbsp;attribute</tt></dd></dl>
 
 <strong>objects</strong> = &lt;django.db.models.manager.Manager object&gt;
 <hr>
@@ -180,9 +186,9 @@ Data descriptors defined here:<br>
 </dl>
 <hr>
 Data and other attributes defined here:<br>
-<dl><dt><strong>DoesNotExist</strong> = &lt;class 'models.DoesNotExist'&gt;</dl>
+<dl><dt><strong>DoesNotExist</strong> = &lt;class 'ourapp.models.DoesNotExist'&gt;</dl>
 
-<dl><dt><strong>MultipleObjectsReturned</strong> = &lt;class 'models.MultipleObjectsReturned'&gt;</dl>
+<dl><dt><strong>MultipleObjectsReturned</strong> = &lt;class 'ourapp.models.MultipleObjectsReturned'&gt;</dl>
 
 <hr>
 Methods inherited from <a href="django.db.models.base.html#Model">django.db.models.base.Model</a>:<br>
@@ -266,10 +272,10 @@ Data descriptors inherited from django.db.models.base.NewBase:<br>
 <font color="#000000" face="helvetica, arial"><a name="Dish">class <strong>Dish</strong></a>(<a href="django.db.models.base.html#Model">django.db.models.base.Model</a>)</font></td></tr>
     
 <tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
-<td colspan=2><tt><a href="#Dish">Dish</a>(id,&nbsp;name,&nbsp;rating,&nbsp;num_ratings,&nbsp;sum_of_ratings,&nbsp;vegetarian,&nbsp;vegan,&nbsp;kosher,&nbsp;halal,&nbsp;nut_allergy,&nbsp;cost,&nbsp;restaurant_id,&nbsp;generic_dish_id)<br>&nbsp;</tt></td></tr>
+<td colspan=2><tt><a href="#Dish">Dish</a>(id,&nbsp;name,&nbsp;star_avg_rating,&nbsp;star_num_ratings,&nbsp;star_sum_ratings,&nbsp;dollar_avg_rating,&nbsp;dollar_num_ratings,&nbsp;dollar_sum_ratings,&nbsp;vegetarian,&nbsp;vegan,&nbsp;kosher,&nbsp;halal,&nbsp;nut_allergy,&nbsp;restaurant_id,&nbsp;generic_dish_id,&nbsp;cuisine_id,&nbsp;description)<br>&nbsp;</tt></td></tr>
 <tr><td>&nbsp;</td>
 <td width="100%"><dl><dt>Method resolution order:</dt>
-<dd><a href="models.html#Dish">Dish</a></dd>
+<dd><a href="ourapp.models.html#Dish">Dish</a></dd>
 <dd><a href="django.db.models.base.html#Model">django.db.models.base.Model</a></dd>
 <dd>django.db.models.base.NewBase</dd>
 <dd><a href="builtins.html#object">builtins.object</a></dd>
@@ -278,11 +284,15 @@ Data descriptors inherited from django.db.models.base.NewBase:<br>
 Methods defined here:<br>
 <dl><dt><a name="Dish-__str__"><strong>__str__</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="Dish-get_all"><strong>get_all</strong></a>(self)</dt></dl>
+<dl><dt><a name="Dish-get_all"><strong>get_all</strong></a>(self)</dt><dd><tt>returns&nbsp;all&nbsp;of&nbsp;the&nbsp;elements&nbsp;in&nbsp;the&nbsp;class<br>
+in&nbsp;a&nbsp;dictionary&nbsp;with&nbsp;key&nbsp;being&nbsp;the&nbsp;attribute&nbsp;name<br>
+and&nbsp;value&nbsp;being&nbsp;the&nbsp;value&nbsp;of&nbsp;the&nbsp;attribute</tt></dd></dl>
 
 <strong>objects</strong> = &lt;django.db.models.manager.Manager object&gt;
 <hr>
 Data descriptors defined here:<br>
+<dl><dt><strong>cuisine</strong></dt>
+</dl>
 <dl><dt><strong>dishreview_set</strong></dt>
 </dl>
 <dl><dt><strong>generic_dish</strong></dt>
@@ -291,9 +301,9 @@ Data descriptors defined here:<br>
 </dl>
 <hr>
 Data and other attributes defined here:<br>
-<dl><dt><strong>DoesNotExist</strong> = &lt;class 'models.DoesNotExist'&gt;</dl>
+<dl><dt><strong>DoesNotExist</strong> = &lt;class 'ourapp.models.DoesNotExist'&gt;</dl>
 
-<dl><dt><strong>MultipleObjectsReturned</strong> = &lt;class 'models.MultipleObjectsReturned'&gt;</dl>
+<dl><dt><strong>MultipleObjectsReturned</strong> = &lt;class 'ourapp.models.MultipleObjectsReturned'&gt;</dl>
 
 <hr>
 Methods inherited from <a href="django.db.models.base.html#Model">django.db.models.base.Model</a>:<br>
@@ -377,10 +387,10 @@ Data descriptors inherited from django.db.models.base.NewBase:<br>
 <font color="#000000" face="helvetica, arial"><a name="DishReview">class <strong>DishReview</strong></a>(<a href="django.db.models.base.html#Model">django.db.models.base.Model</a>)</font></td></tr>
     
 <tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
-<td colspan=2><tt><a href="#DishReview">DishReview</a>(id,&nbsp;rating,&nbsp;review_comment,&nbsp;customer_id,&nbsp;dish_id)<br>&nbsp;</tt></td></tr>
+<td colspan=2><tt><a href="#DishReview">DishReview</a>(id,&nbsp;star_rating,&nbsp;dollar_rating,&nbsp;review_comment,&nbsp;customer_id,&nbsp;dish_id)<br>&nbsp;</tt></td></tr>
 <tr><td>&nbsp;</td>
 <td width="100%"><dl><dt>Method resolution order:</dt>
-<dd><a href="models.html#DishReview">DishReview</a></dd>
+<dd><a href="ourapp.models.html#DishReview">DishReview</a></dd>
 <dd><a href="django.db.models.base.html#Model">django.db.models.base.Model</a></dd>
 <dd>django.db.models.base.NewBase</dd>
 <dd><a href="builtins.html#object">builtins.object</a></dd>
@@ -389,7 +399,9 @@ Data descriptors inherited from django.db.models.base.NewBase:<br>
 Methods defined here:<br>
 <dl><dt><a name="DishReview-__str__"><strong>__str__</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="DishReview-get_all"><strong>get_all</strong></a>(self)</dt></dl>
+<dl><dt><a name="DishReview-get_all"><strong>get_all</strong></a>(self)</dt><dd><tt>returns&nbsp;all&nbsp;of&nbsp;the&nbsp;elements&nbsp;in&nbsp;the&nbsp;class<br>
+in&nbsp;a&nbsp;dictionary&nbsp;with&nbsp;key&nbsp;being&nbsp;the&nbsp;attribute&nbsp;name<br>
+and&nbsp;value&nbsp;being&nbsp;the&nbsp;value&nbsp;of&nbsp;the&nbsp;attribute</tt></dd></dl>
 
 <strong>objects</strong> = &lt;django.db.models.manager.Manager object&gt;
 <hr>
@@ -400,9 +412,9 @@ Data descriptors defined here:<br>
 </dl>
 <hr>
 Data and other attributes defined here:<br>
-<dl><dt><strong>DoesNotExist</strong> = &lt;class 'models.DoesNotExist'&gt;</dl>
+<dl><dt><strong>DoesNotExist</strong> = &lt;class 'ourapp.models.DoesNotExist'&gt;</dl>
 
-<dl><dt><strong>MultipleObjectsReturned</strong> = &lt;class 'models.MultipleObjectsReturned'&gt;</dl>
+<dl><dt><strong>MultipleObjectsReturned</strong> = &lt;class 'ourapp.models.MultipleObjectsReturned'&gt;</dl>
 
 <hr>
 Methods inherited from <a href="django.db.models.base.html#Model">django.db.models.base.Model</a>:<br>
@@ -489,7 +501,7 @@ Data descriptors inherited from django.db.models.base.NewBase:<br>
 <td colspan=2><tt><a href="#GenericDish">GenericDish</a>(id,&nbsp;name,&nbsp;cuisine_id)<br>&nbsp;</tt></td></tr>
 <tr><td>&nbsp;</td>
 <td width="100%"><dl><dt>Method resolution order:</dt>
-<dd><a href="models.html#GenericDish">GenericDish</a></dd>
+<dd><a href="ourapp.models.html#GenericDish">GenericDish</a></dd>
 <dd><a href="django.db.models.base.html#Model">django.db.models.base.Model</a></dd>
 <dd>django.db.models.base.NewBase</dd>
 <dd><a href="builtins.html#object">builtins.object</a></dd>
@@ -498,7 +510,9 @@ Data descriptors inherited from django.db.models.base.NewBase:<br>
 Methods defined here:<br>
 <dl><dt><a name="GenericDish-__str__"><strong>__str__</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="GenericDish-get_all"><strong>get_all</strong></a>(self)</dt></dl>
+<dl><dt><a name="GenericDish-get_all"><strong>get_all</strong></a>(self)</dt><dd><tt>returns&nbsp;all&nbsp;of&nbsp;the&nbsp;elements&nbsp;in&nbsp;the&nbsp;class<br>
+in&nbsp;a&nbsp;dictionary&nbsp;with&nbsp;key&nbsp;being&nbsp;the&nbsp;attribute&nbsp;name<br>
+and&nbsp;value&nbsp;being&nbsp;the&nbsp;value&nbsp;of&nbsp;the&nbsp;attribute</tt></dd></dl>
 
 <strong>objects</strong> = &lt;django.db.models.manager.Manager object&gt;
 <hr>
@@ -509,9 +523,9 @@ Data descriptors defined here:<br>
 </dl>
 <hr>
 Data and other attributes defined here:<br>
-<dl><dt><strong>DoesNotExist</strong> = &lt;class 'models.DoesNotExist'&gt;</dl>
+<dl><dt><strong>DoesNotExist</strong> = &lt;class 'ourapp.models.DoesNotExist'&gt;</dl>
 
-<dl><dt><strong>MultipleObjectsReturned</strong> = &lt;class 'models.MultipleObjectsReturned'&gt;</dl>
+<dl><dt><strong>MultipleObjectsReturned</strong> = &lt;class 'ourapp.models.MultipleObjectsReturned'&gt;</dl>
 
 <hr>
 Methods inherited from <a href="django.db.models.base.html#Model">django.db.models.base.Model</a>:<br>
@@ -595,10 +609,10 @@ Data descriptors inherited from django.db.models.base.NewBase:<br>
 <font color="#000000" face="helvetica, arial"><a name="Restaurant">class <strong>Restaurant</strong></a>(<a href="django.db.models.base.html#Model">django.db.models.base.Model</a>)</font></td></tr>
     
 <tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
-<td colspan=2><tt><a href="#Restaurant">Restaurant</a>(id,&nbsp;name,&nbsp;reservation_required,&nbsp;reservation_avail,&nbsp;has_waiter,&nbsp;phone_number,&nbsp;description,&nbsp;zip_code,&nbsp;address,&nbsp;delivery,&nbsp;take_out,&nbsp;pet_friendly,&nbsp;cost,&nbsp;website,&nbsp;cuisine_id)<br>&nbsp;</tt></td></tr>
+<td colspan=2><tt><a href="#Restaurant">Restaurant</a>(id,&nbsp;name,&nbsp;reservation_required,&nbsp;reservation_avail,&nbsp;has_waiter,&nbsp;phone_number,&nbsp;description,&nbsp;zip_code,&nbsp;address,&nbsp;delivery,&nbsp;take_out,&nbsp;pet_friendly,&nbsp;dollar_avg_rating,&nbsp;dollar_num_rating,&nbsp;dollar_sum_rating,&nbsp;star_avg_rating,&nbsp;star_num_rating,&nbsp;star_sum_rating,&nbsp;website,&nbsp;cuisine_id,&nbsp;mon_hours,&nbsp;tue_hours,&nbsp;wed_hours,&nbsp;thu_hours,&nbsp;fri_hours,&nbsp;sat_hours,&nbsp;sun_hours)<br>&nbsp;</tt></td></tr>
 <tr><td>&nbsp;</td>
 <td width="100%"><dl><dt>Method resolution order:</dt>
-<dd><a href="models.html#Restaurant">Restaurant</a></dd>
+<dd><a href="ourapp.models.html#Restaurant">Restaurant</a></dd>
 <dd><a href="django.db.models.base.html#Model">django.db.models.base.Model</a></dd>
 <dd>django.db.models.base.NewBase</dd>
 <dd><a href="builtins.html#object">builtins.object</a></dd>
@@ -607,7 +621,9 @@ Data descriptors inherited from django.db.models.base.NewBase:<br>
 Methods defined here:<br>
 <dl><dt><a name="Restaurant-__str__"><strong>__str__</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="Restaurant-get_all"><strong>get_all</strong></a>(self)</dt></dl>
+<dl><dt><a name="Restaurant-get_all"><strong>get_all</strong></a>(self)</dt><dd><tt>returns&nbsp;all&nbsp;of&nbsp;the&nbsp;elements&nbsp;in&nbsp;the&nbsp;class<br>
+in&nbsp;a&nbsp;dictionary&nbsp;with&nbsp;key&nbsp;being&nbsp;the&nbsp;attribute&nbsp;name<br>
+and&nbsp;value&nbsp;being&nbsp;the&nbsp;value&nbsp;of&nbsp;the&nbsp;attribute</tt></dd></dl>
 
 <strong>objects</strong> = &lt;django.db.models.manager.Manager object&gt;
 <hr>
@@ -620,9 +636,9 @@ Data descriptors defined here:<br>
 </dl>
 <hr>
 Data and other attributes defined here:<br>
-<dl><dt><strong>DoesNotExist</strong> = &lt;class 'models.DoesNotExist'&gt;</dl>
+<dl><dt><strong>DoesNotExist</strong> = &lt;class 'ourapp.models.DoesNotExist'&gt;</dl>
 
-<dl><dt><strong>MultipleObjectsReturned</strong> = &lt;class 'models.MultipleObjectsReturned'&gt;</dl>
+<dl><dt><strong>MultipleObjectsReturned</strong> = &lt;class 'ourapp.models.MultipleObjectsReturned'&gt;</dl>
 
 <hr>
 Methods inherited from <a href="django.db.models.base.html#Model">django.db.models.base.Model</a>:<br>
@@ -706,10 +722,10 @@ Data descriptors inherited from django.db.models.base.NewBase:<br>
 <font color="#000000" face="helvetica, arial"><a name="RestaurantReview">class <strong>RestaurantReview</strong></a>(<a href="django.db.models.base.html#Model">django.db.models.base.Model</a>)</font></td></tr>
     
 <tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
-<td colspan=2><tt><a href="#RestaurantReview">RestaurantReview</a>(id,&nbsp;rating,&nbsp;review_comment,&nbsp;customer_id,&nbsp;restaurant_id)<br>&nbsp;</tt></td></tr>
+<td colspan=2><tt><a href="#RestaurantReview">RestaurantReview</a>(id,&nbsp;star_rating,&nbsp;dollar_rating,&nbsp;review_comment,&nbsp;customer_id,&nbsp;restaurant_id)<br>&nbsp;</tt></td></tr>
 <tr><td>&nbsp;</td>
 <td width="100%"><dl><dt>Method resolution order:</dt>
-<dd><a href="models.html#RestaurantReview">RestaurantReview</a></dd>
+<dd><a href="ourapp.models.html#RestaurantReview">RestaurantReview</a></dd>
 <dd><a href="django.db.models.base.html#Model">django.db.models.base.Model</a></dd>
 <dd>django.db.models.base.NewBase</dd>
 <dd><a href="builtins.html#object">builtins.object</a></dd>
@@ -718,7 +734,9 @@ Data descriptors inherited from django.db.models.base.NewBase:<br>
 Methods defined here:<br>
 <dl><dt><a name="RestaurantReview-__str__"><strong>__str__</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="RestaurantReview-get_all"><strong>get_all</strong></a>(self)</dt></dl>
+<dl><dt><a name="RestaurantReview-get_all"><strong>get_all</strong></a>(self)</dt><dd><tt>returns&nbsp;all&nbsp;of&nbsp;the&nbsp;elements&nbsp;in&nbsp;the&nbsp;class<br>
+in&nbsp;a&nbsp;dictionary&nbsp;with&nbsp;key&nbsp;being&nbsp;the&nbsp;attribute&nbsp;name<br>
+and&nbsp;value&nbsp;being&nbsp;the&nbsp;value&nbsp;of&nbsp;the&nbsp;attribute</tt></dd></dl>
 
 <strong>objects</strong> = &lt;django.db.models.manager.Manager object&gt;
 <hr>
@@ -729,9 +747,9 @@ Data descriptors defined here:<br>
 </dl>
 <hr>
 Data and other attributes defined here:<br>
-<dl><dt><strong>DoesNotExist</strong> = &lt;class 'models.DoesNotExist'&gt;</dl>
+<dl><dt><strong>DoesNotExist</strong> = &lt;class 'ourapp.models.DoesNotExist'&gt;</dl>
 
-<dl><dt><strong>MultipleObjectsReturned</strong> = &lt;class 'models.MultipleObjectsReturned'&gt;</dl>
+<dl><dt><strong>MultipleObjectsReturned</strong> = &lt;class 'ourapp.models.MultipleObjectsReturned'&gt;</dl>
 
 <hr>
 Methods inherited from <a href="django.db.models.base.html#Model">django.db.models.base.Model</a>:<br>

@@ -1,7 +1,7 @@
 <!-- This is a single dish page, it will have two list of customer reviews and similar dishes -->
 {% extends 'ourapp/master.html' %}
 {% block page_title %}{{dish.name}}{% endblock %}
-{% block page_header %}{% include "ourapp/carousel.html" %}{%endblock%}
+{% block page_header %}{% include "ourapp/dish_header.html" %}{%endblock%}
 {% block main_content %}
 {% load staticfiles %}
 <script src="{% static 'js/restaurant.js'%}"></script>
@@ -9,16 +9,16 @@
 <div class="col-md-6" id="reviews">
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title">Dish Reviews</h3>
+        <h3 class="panel-title"><a href= "reviews">Customer Reviews</a></h3>
         </div>
         <div class="panel-body">
 <ul class="list-group food-list">
 {% if customer_reviews %}
     {% for dish_review in customer_reviews %}
-        <li class = "list-group-item review-item"> <a href = "/customers/{{customer.id}}" >{{dish_review.customer}}</a>
+        <li class = "list-group-item review-item">{{dish_review.customer}}
         <div class = "review-item-content">
             <p>{{dish_review.review_comment}}</p>
-            <p><a href = "/dishes/{{d.dish.id}}" class = "review-item-link">Read Reviews</a></p>
+            <p><a href = "/customers/{{dish_review.customer.id}}" class = "review-item-link">Read Reviews</a></p>
         </div>
         </li>
     {% endfor %}
@@ -33,18 +33,20 @@
 <div class="col-md-6" id="reviews">
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title">Dish Reviews</h3>
+        <h3 class="panel-title">Simliar Dishes</h3>
         </div>
         <div class="panel-body">
 <ul class="list-group food-list">
 {% if similar_dishes %}
     {% for d in similar_dishes %}
-        <li class = "list-group-item review-item"> <a href ="/dishes/{{d.id}}">{{d.name}}</a>
-        <div class = "review-item-content">
-            <p>{{d.description}}</p>
-            <p><a href = "/dishes/{{d.dish.id}}" class = "review-item-link">Read Reviews</a></p>
-        </div>
-        </li>
+        {% if d != dish %}
+            <li class = "list-group-item review-item">{{d.name}}
+            <div class = "review-item-content">
+                <p>{{d.description}}</p>
+                <p><a href = "/dishes/{{d.id}}" class = "review-item-link">Go to dish</a></p>
+            </div>
+            </li>
+        {% endif %}
     {% endfor %}
 {% else %}
     <p>This dish has no similar dishes in database</p>

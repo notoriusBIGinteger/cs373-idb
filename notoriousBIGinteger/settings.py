@@ -72,6 +72,7 @@ REST_FRAMEWORK = {
 DATABASES = {
     'default': {
         'ENGINE': 'mysql.connector.django',
+        #'ENGINE': 'django.db.backends.mysql',
         'NAME': 'notoriousbiginte$ourapp',
         'USER': 'notoriousbiginte',
         'PASSWORD': 'wordpass',

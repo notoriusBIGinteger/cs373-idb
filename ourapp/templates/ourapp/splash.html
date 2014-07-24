@@ -2,5 +2,54 @@
 {% block page_title %}Kravester{% endblock %}
 {% block page_header %}{% include "ourapp/carousel.html" %}{%endblock%}
 {% block main_content %}
-<h1>Help!</h1>
+{% load staticfiles %}
+<script src="{% static 'js/restaurant.js'%}"></script>
+
+<div class="col-md-6" id="reviews">
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title"><a href = "/dishes"> Featured Dishes</a></h3>
+        </div>
+        <div class="panel-body">
+<ul class="list-group food-list">
+{% if dish_results %}
+    {% for d in dish_results %}
+        <li class = "list-group-item review-item"> <a href = "dishes/{{d.dish}}">{{d.name}}</a>
+        <div class = "review-item-content">
+            <p>{{d.description}}</p>
+            <p><a href = "/dishes/{{d.id}}" class = "review-item-link">Read Description</a></p>
+        </div>
+        </li>
+    {% endfor %}
+{% else %}
+    <p>No Dish Results</p>
+{% endif %}
+</ul>
+</div>
+</div>
+</div> <!-- end col-md-6 -->
+
+<div class="col-md-6" id="reviews">
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title"><a href = "/restaurants" >Featured Restaurants</a></h3>
+        </div>
+        <div class="panel-body">
+<ul class="list-group food-list">
+{% if restaurant_results %}
+    {% for r in restaurant_results %}
+        <li class = "list-group-item review-item"> <a href = "restaurants/{{r.restaurant}}">{{r.name}}</a>
+        <div class = "review-item-content">
+            <p>{{r.description}}</p>
+            <p><a href = "/restaurants/{{r.id}}" class = "review-item-link">Read Description</a></p>
+        </div>
+        </li>
+    {% endfor %}
+{% else %}
+    <p>No Restaurant Results</p>
+{% endif %}
+</ul>
+</div>
+</div>
+</div> <!-- end col-md-6 -->
 {% endblock %}
