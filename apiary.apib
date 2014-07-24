@@ -17,6 +17,7 @@ Get a list of all restaurants.
             { 
                 "Restaurants": [
                     {
+                        "id" : 1,
                         "name": "Chang Thai",
                         "reservation_required" : false,
                         "reservation_avail" : false,
@@ -42,11 +43,10 @@ Get a list of all restaurants.
                         "thu_hours": "11am-9:30pm", 
                         "fri_hours": "11am-10pm", 
                         "sat_hours": "11am-10pm", 
-                        "sun_hours": "12pm-9pm",
-                        "restaurant_id": 1,
+                        "sun_hours": "12pm-9pm"
                     },
                     {
-                        
+                        "id" : 2,   
                         "name": "Kerbey Lane"
                         "reservation_required" : false,
                         "reservation_avail" : false,
@@ -72,11 +72,10 @@ Get a list of all restaurants.
                         "thu_hours": "24 hours", 
                         "fri_hours": "24 hours", 
                         "sat_hours": "24 hours", 
-                        "sun_hours": "24 hours",
-                        "restaurant_id": 2,
-                        
+                        "sun_hours": "24 hours"
                     },
                     {
+                        "id" : 3,
                         "name": "Magnolia Cafe"
                         "reservation_required" : false,
                         "reservation_avail" : false,
@@ -102,8 +101,7 @@ Get a list of all restaurants.
                         "thu_hours": "24 hours", 
                         "fri_hours": "24 hours", 
                         "sat_hours": "24 hours", 
-                        "sun_hours": "24 hours",
-                        "restaurant_id": 3,
+                        "sun_hours": "24 hours"
                     }
                 ]
             }
@@ -119,6 +117,7 @@ Get a list of all restaurants.
 ## GET /restaurants/{id}/json
 Get a single restaurant's details:
 
+- Restaurant ID
 - Name
 - Reservation required
 - Reservation available
@@ -145,15 +144,16 @@ Get a single restaurant's details:
 - Friday Hours
 - Saturday Hours
 - Sunday Hours
-- Restaurant ID
 
 + Parameters
     + id (required, number, `1`) ... Numeric `id` of the restaurant to perform action with. Has example value.
 
 + Response 200 (application/json)
+
     + Body
 
             {
+                "id" : 1,
                 "name": "Chang Thai",
                 "reservation_required" : false,
                 "reservation_avail" : false,
@@ -179,8 +179,7 @@ Get a single restaurant's details:
                 "thu_hours": "11am-9:30pm", 
                 "fri_hours": "11am-10pm", 
                 "sat_hours": "11am-10pm", 
-                "sun_hours": "12pm-9pm",
-                "restaurant_id": 1,
+                "sun_hours": "12pm-9pm"
             },
 
 + Response 404 (application/json)
@@ -206,6 +205,7 @@ Content-Type: application/json
                 
                 "Restaurant Dishes": [
                     {   
+                        "id" : 12,
                         "name" : "Blackened Fish Tacos",
                         "star_avg_rating": 0.0, 
                         "star_num_ratings": 0, 
@@ -222,10 +222,10 @@ Content-Type: application/json
                         "generic_dish_id" : "2",
                         "cuisine_id" : 3,
                         "description" : "A whole fillet of blackened tilapia served with poblano coleslaw, jalapeno marinated tomatoes, 
-                        tomatillo salsa and red onion.",
-                        "dish_id" : "12",
+                        tomatillo salsa and red onion."
                     },
                     {
+                        "id" : 13,
                         "name" : "Caesar Salad",
                         "star_avg_rating": 2.5, 
                         "star_num_ratings": 2, 
@@ -242,8 +242,7 @@ Content-Type: application/json
                         "generic_dish_id" : 3,
                         "cuisine_id" : 3,
                         "description" : "rough chopped romaine hearts tossed with fresh shaved parmesan, cracked black pepper, caramelized 
-                        garlic, sourdough croutons and our homemade caesar dressing",
-                        "dish_id" : 13,
+                        garlic, sourdough croutons and our homemade caesar dressing"
                     },
                 ]
             }
@@ -270,20 +269,20 @@ Get a list of a restaurant's reviews.
                 
                 "Restaurant Reviews": [
                     {   
+                        "id" : 1,
                         "star_rating" : 3,
                         "dollar_rating" : 4,
                         "review_comment" : "The ambience is pretty nice, great date spot!!!",
                         "customer_id" : 1,
-                        "restaurant_id" : 4, 
-                        "review_id" : 1,
+                        "restaurant_id" : 4
                     },
                     {
+                        "id" : 2,
                         "star_rating" : 3,
                         "dollar_rating" : 3,
                         "review_comment" : "Being a vegetarian I was pleased to see that they had plenty of options for me.",
                         "customer_id" : 2,
-                        "restaurant_id" : 4, 
-                        "review_id" : 2,
+                        "restaurant_id" : 4
                     },
                 ]
             }
@@ -613,7 +612,7 @@ Get a list of generic dishes.
     + Body
 
             { 
-                "generic_dishes": [
+                "Generic Dishes" : [
                     {
                         "id": 1,
                         "name" : "Pasta",
@@ -912,6 +911,7 @@ Get a list of restaurants serving a specific cuisine.
             { 
                 "Cuisine Restaurants": [
                     {
+                        "id" : 12,
                         "name": "Torchy's Tacos",
                         "reservation_required" : false,
                         "reservation_avail" : false,
@@ -937,10 +937,10 @@ Get a list of restaurants serving a specific cuisine.
                         "thu_hours": "7am-10pm", 
                         "fri_hours": "7am-10pm", 
                         "sat_hours": "7am-10pm", 
-                        "sun_hours": "7am-10pm",
-                        "restaurant_id": 12,
+                        "sun_hours": "7am-10pm"
                     },
                     {
+                        "id" : 13,
                         "name": "Habanero Mexican Cafe",
                         "reservation_required" : false,
                         "reservation_avail" : false,
@@ -966,8 +966,7 @@ Get a list of restaurants serving a specific cuisine.
                         "thu_hours": "7am-5pm", 
                         "fri_hours": "7am-9pm", 
                         "sat_hours": "7am-9pm", 
-                        "sun_hours": "7am-3pm",
-                        "restaurant_id": 13,
+                        "sun_hours": "7am-3pm"
                     },
                 ]
             }
