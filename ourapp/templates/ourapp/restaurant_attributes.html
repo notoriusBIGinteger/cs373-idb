@@ -1,1 +1,10 @@
-Look at dish_temp, once thats done, copy over to here
+{% extends 'ourapp/master.html' %}
+{% block page_title %}{{restaurant.name}}{% endblock %}
+{% block page_header %}{% include "ourapp/restaurant_header.html" %}{%endblock%}
+{% block main_content %}
+{% load staticfiles %}
+<script src="{% static 'js/restaurant.js'%}"></script>
+{% include "ourapp/review_list.html" %}
+{% include "ourapp/menu_list.html" %}
+
+{% endblock %}

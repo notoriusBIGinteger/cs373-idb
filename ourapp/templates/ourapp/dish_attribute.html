@@ -2,22 +2,55 @@
 {% extends 'ourapp/master.html' %}
 {% block page_title %}{{dish.name}}{% endblock %}
 {% block page_header %}{% include "ourapp/carousel.html" %}{%endblock%}
+{% block main_content %}
+{% load staticfiles %}
+<script src="{% static 'js/restaurant.js'%}"></script>
 <!-- First list of the customer reviews -->
+<div class="col-md-6" id="reviews">
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Dish Reviews</h3>
+        </div>
+        <div class="panel-body">
+<ul class="list-group food-list">
 {% if customer_reviews %}
-    {% for customer in customer_reviews %}
-        <li> <a href = "/customers/{{customer.id}}" >{{customer.name}}</a> </li>
+    {% for dish_review in customer_reviews %}
+        <li class = "list-group-item review-item"> <a href = "/customers/{{customer.id}}" >{{dish_review.customer}}</a>
+        <div class = "review-item-content">
+            <p>{{dish_review.review_comment}}</p>
+            <p><a href = "/dishes/{{d.dish.id}}" class = "review-item-link">Read Reviews</a></p>
+        </div>
+        </li>
     {% endfor %}
 {% else %}
     <p>No Customers have reviewed this dish</p>
 {% endif %}
-
+</ul>
+</div>
+</div>
+</div> <!-- end col-md-6 -->
 <!-- Second list of all the similar dishes -->
+<div class="col-md-6" id="reviews">
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Dish Reviews</h3>
+        </div>
+        <div class="panel-body">
+<ul class="list-group food-list">
 {% if similar_dishes %}
     {% for d in similar_dishes %}
-        <li> <a href ="/dishes/{{d.id}}">{{d.name}}</a></li>
+        <li class = "list-group-item review-item"> <a href ="/dishes/{{d.id}}">{{d.name}}</a>
+        <div class = "review-item-content">
+            <p>{{d.description}}</p>
+            <p><a href = "/dishes/{{d.dish.id}}" class = "review-item-link">Read Reviews</a></p>
+        </div>
+        </li>
     {% endfor %}
 {% else %}
     <p>This dish has no similar dishes in database</p>
 {% endif %}
-
+</ul>
+</div>
+</div>
+</div> <!-- end col-md-6 -->
 {% endblock%}

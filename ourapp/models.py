@@ -64,18 +64,45 @@ class Restaurant(models.Model) :
         in a dictionary with key being the attribute name
         and value being the value of the attribute
         """
-        return {"name": self.name,
-                "reservation_required": self.reservation_required,
-                "reservation_avail": self.reservation_avail ,
-                "has_waiter": self.has_waiter,
-                "phone_number": self.phone_number,
-                "description": self.description,
-                "zip_code": self.zip_code,
-                "address": self.address,
-                "delivery":self.delivery,
-                "take_out":self.take_out,
-                "pet_friendly":self.pet_friendly,
-                "website":self.website}
+        return {}
+ #   name = 
+ #   reservation_required =
+ #   reservation_avail = 
+ #   has_waiter =
+ #   phone_number = 
+ #   description = 
+ #   zip_code = 
+ #   address = 
+ #   delivery = 
+ #   take_out = 
+ #   pet_friendly =
+ #   dollar_avg_rating =
+ #   dollar_num_rating =
+ #   dollar_sum_rating=
+ #   star_avg_rating = 
+ #   star_num_rating =
+ #   star_sum_rating=
+ #   website = 
+ #   cuisine = 
+ #   mon_hours = 
+ #   tue_hours = 
+ #   wed_hours = 
+ #   thu_hours = 
+ #   fri_hours = 
+ #   sat_hours = 
+ #   sun_hours = } 
+#        return {"name": self.name,
+#                "reservation_required": self.reservation_required,
+#                "reservation_avail": self.reservation_avail ,
+#                "has_waiter": self.has_waiter,
+#                "phone_number": self.phone_number,
+#                "description": self.description,
+#                "zip_code": self.zip_code,
+#                "address": self.address,
+#                "delivery":self.delivery,
+#                "take_out":self.take_out,
+#                "pet_friendly":self.pet_friendly,
+#                "website":self.website}
 
 """
 Customer containts a full name of a reviewer
@@ -133,7 +160,6 @@ class Dish(models.Model) :
     halal = models.BooleanField('Halal')
     nut_allergy = models.BooleanField('Contains Nuts')
     #image = models.ImageField()
-    cost = models.IntegerField('Cost', max_length=1)
     restaurant = models.ForeignKey(Restaurant)
     generic_dish = models.ForeignKey(GenericDish)
     cuisine = models.ForeignKey(Cuisine)
@@ -156,8 +182,7 @@ class Dish(models.Model) :
                 "vegan":self.vegan,
                 "kosher":self.kosher,
                 "halal":self.halal,
-                "nut_allergy":self.nut_allergy,
-                "cost":self.cost}
+                "nut_allergy":self.nut_allergy}
 
 
 """

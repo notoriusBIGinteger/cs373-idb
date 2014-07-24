@@ -128,10 +128,7 @@ def restaurant_detail(request, pk, format=None):
     try:
         restaurant = Restaurant.objects.get(pk=pk)
         dish_results = Dish.objects.all().filter(restaurant = pk)
-        restaurant_reviews = RestaurantReview.objects.all().filter(restaurant = pk)
-        customer_reviews = []
-        for r  in restaurant_reviews:
-            customer_reviews.append([r,Customer.objects.get(pk=r.customer)])
+        customer_reviews = RestaurantReview.objects.all().filter(restaurant = pk)
     except Restaurant.DoesNotExist:
         return HttpResponse(content='Restaurant not found', status=404)
 
@@ -141,7 +138,7 @@ def restaurant_detail(request, pk, format=None):
         serializer.data['restaurant_id'] = serializer.data.pop('id')
 
         if format is None :
-            return render_to_response('ourapp/dish_temp.html', { 'restaurant' : serializer.data, 'dish_results':dish_results,'restaurant_reviews':restaurant_reviews })
+            return render_to_response('ourapp/restaurant_attributes.html', { 'restaurant' : serializer.data, 'dish_results':dish_results,'customer_reviews':customer_reviews })
         elif format.lower() == 'json' :
             return JSONResponse(serializer.data)
 
@@ -152,19 +149,20 @@ def restaurant_dishes(request, pk, format=None):
     """
     try:
         restaurant_dishes = Dish.objects.all().filter(restaurant_id = pk)
+        restaurant = Restaurant.objects.get(pk=pk)
     except Restaurant.DoesNotExist:
         return HttpResponse(content='Restaurant not found', status=404)
 
     if request.method == 'GET':
-        serializer = DishesSerializer(restaurant_dishes, many=True)
+        #serializer = DishesSerializer(restaurant_dishes, many=True)
 
-        for x in serializer.data :
-            x['dish_id'] = x.pop('id')
+        #for x in serializer.data :
+        #    x['dish_id'] = x.pop('id')
 
         if format is None :
-            return render_to_response('#.html', { 'result' : serializer.data })
-        elif format.lower() == 'json' :
-            return JSONResponse( { 'Restaurant Dishes' : serializer.data} )
+            return render_to_response('ourapp/restaurant_dishes.html', { 'restaurant_dishes' : restaurant_dishes,'restaurant':restaurant })
+        #elif format.lower() == 'json' :
+        #    return JSONResponse( { 'Restaurant Dishes' : serializer.data} )
 
 @csrf_exempt
 def restaurant_reviews(request, pk, format=None):
@@ -172,20 +170,22 @@ def restaurant_reviews(request, pk, format=None):
     Retrieve a Restaurant's dishes.
     """
     try:
-        restaurant_reviews = RestaurantReview.objects.all().filter(restaurant_id = pk)
+        customer_reviews = RestaurantReview.objects.all().filter(restaurant = pk)
+        restaurant = Restaurant.objects.get(pk = pk)
     except Restaurant.DoesNotExist:
         return HttpResponse(content='Restaurant not found', status=404)
 
     if request.method == 'GET':
-        serializer = RestaurantReviewsSerializer(restaurant_reviews, many=True)
+        serializer = RestaurantReviewsSerializer(customer_reviews, many=True)
 
         for y in serializer.data :
             y['review_id'] = y.pop('id')
 
         if format is None :
-            return render_to_response('#.html', { 'result' : serializer.data })
+            return render_to_response('ourapp/restaurant_reviews.html', { 'customer_reviews' : customer_reviews, 'restaurant':restaurant })
+            #return render_to_response('ourapp/restaurant_reviews.html', { 'customer_reviews': serializer.data})
         elif format.lower() == 'json' :
-            return JSONResponse({ 'Restaurant Reviews' : serialzer.data })
+            return JSONResponse({ 'Restaurant Reviews' : serializer.data })
 
 @csrf_exempt
 def customer_list(request, format=None):
@@ -197,7 +197,7 @@ def customer_list(request, format=None):
         serializer = CustomerSerializer(customers, many=True)
 
         if format is None :
-            return render_to_response('customer.html', { 'customers_results' : serializer.data })
+            return render_to_response('ourapp/customer.html', { 'customers_result' : serializer.data })
         elif format.lower() == 'json' :
             return JSONResponse({ 'Customers' : serializer.data })
 
@@ -208,8 +208,8 @@ def customer_detail(request, pk, format=None):
     """
     try:
         customer = Customer.objects.get(pk=pk)
-        dish_reviews = DishReview.objects.all().filter(customer_id = pk)
-        restaurant_reviews = Restaurant.objects.get(pk = customer.restaurant)
+        dish_reviews = DishReview.objects.all().filter(customer = pk)
+        restaurant_reviews = RestaurantReview.objects.all().filter(customer = pk)
     except Customer.DoesNotExist:
         return HttpResponse(content='Customer not found', status=404)
 
@@ -217,7 +217,7 @@ def customer_detail(request, pk, format=None):
         serializer = CustomerSerializer(customer)
 
         if format is None :
-            return render_to_response('customer_attributes.html', {'customer' : serializer.data, 'dish_reviews':dish_reviews,'restaurant_reviews':restaurant_reviews})
+            return render_to_response('ourapp/customer_attributes.html', {'customer' : serializer.data, 'dish_reviews':dish_reviews,'restaurant_reviews':restaurant_reviews})
         elif format.lower() == 'json' :
             return JSONResponse(serializer.data)
 
@@ -228,6 +228,7 @@ def customer_restaurant_reviews(request, pk, format=None):
     """
     try:
         customer_r_reviews = RestaurantReview.objects.all().filter(customer_id = pk)
+        customer = Customer.objects.get(pk=pk)
     except RestaurantReview.DoesNotExist:
         return HttpResponse(content='Customer not found', status=404)
 
@@ -235,7 +236,7 @@ def customer_restaurant_reviews(request, pk, format=None):
         serializer = RestaurantReviewsSerializer(customer_r_reviews, many=True)
 
         if format is None :
-            return render_to_response('#.html', { 'result' : serializer.data })
+            return render_to_response('ourapp/customer_restaurant_reviews.html', { 'customer_r_reviews' : customer_r_reviews, 'customer':customer})
         elif format.lower() == 'json' :
             return JSONResponse({ 'Customer Restaurant Reviews' : serializer.data })
 
@@ -246,6 +247,7 @@ def customer_dish_reviews(request, pk, format=None):
     """
     try:
         customer_d_reviews = DishReview.objects.all().filter(customer_id = pk)
+        customer = Customer.objects.get(pk = pk)
     except DishReview.DoesNotExist:
         return HttpResponse(content='Customer not found', status=404)
 
@@ -253,7 +255,7 @@ def customer_dish_reviews(request, pk, format=None):
         serializer = DishReviewsSerializer(customer_d_reviews, many=True)
 
         if format is None :
-            return render_to_response('#.html', { 'result' : serializer.data })
+            return render_to_response('ourapp/customer_dish_reviews.html', { 'customer_d_reviews' : customer_d_reviews, 'customer':customer })
         elif format.lower() == 'json' :
             return JSONResponse({ 'Customer Dish Reviews' : serializer.data })
 
@@ -267,7 +269,7 @@ def dish_list(request, format=None):
         serializer = DishesSerializer(dishes, many=True)
 
         if format is None :
-            return render_to_response('dishes.html', { 'result' : serializer.data })
+            return render_to_response('ourapp/dishes.html', { 'dish_list' : dishes })
         elif format.lower() == 'json' :
             return JSONResponse({ 'Dishes' : serializer.data})
 
@@ -278,6 +280,8 @@ def dish_detail(request, pk, format=None):
     """
     try:
         dish = Dish.objects.get(pk = pk)
+        customer_reviews = DishReview.objects.all().filter(dish = pk)
+        similar_dishes = Dish.objects.all().filter(generic_dish = dish.generic_dish)
     except Dish.DoesNotExist:
         return HttpResponse(content='Dish not found', status=404)
 
@@ -285,7 +289,7 @@ def dish_detail(request, pk, format=None):
         serializer = DishesSerializer(dish)
 
         if format is None :
-            return render_to_response('dish_attribute.html', { 'result' : serializer.data })
+            return render_to_response('ourapp/dish_attribute.html', { 'dish' : dish, 'customer_reviews':customer_reviews,'similar_dishes':similar_dishes})
         elif format.lower() == 'json' :
             return JSONResponse(serializer.data)
 
