@@ -7,7 +7,7 @@ Kravester API is a **meal recommendation and review** service.
 # Group Restaurants
 Restaurant related resources of the *Kravester API*
 
-## GET /restaurants
+## GET /restaurants/json
 Get a list of all restaurants.
 
 + Response 200 (application/json)
@@ -15,66 +15,110 @@ Get a list of all restaurants.
     + Body
 
             { 
-                "restaurants": [
+                "Restaurants": [
                     {
-                        "restaurant_id": "1",
                         "name": "Chang Thai",
-                        "cuisine_id" : "1",
-                        "reservation_required" : "False",
-                        "reservation_avail" : "False",
-                        "has_waiter" : "True",
+                        "reservation_required" : false,
+                        "reservation_avail" : false,
+                        "has_waiter" : true,
                         "phone" :  "5124918859",
                         "description" : "Brings the legendary flavors of Thailand to Austin.",
                         "zip_code" : "78753",
                         "address" : "13000 N IH-35",
-                        "delivery" : "False",
-                        "take_out" : "True",
-                        "pet_friendly" : "False",
-                        "cost" : "2",
-                        "website" : "http://www.changthaithaicuisine.com/"
+                        "delivery" : false,
+                        "take_out" : true,
+                        "pet_friendly" : false,
+                        "dollar_avg_rating": 2.0, 
+                        "dollar_num_rating": 3, 
+                        "dollar_sum_rating": 6, 
+                        "star_avg_rating": 5.0, 
+                        "star_num_rating": 3, 
+                        "star_sum_rating": 15, 
+                        "website" : "http://www.changthaithaicuisine.com/",
+                        "cuisine_id": 1, 
+                        "mon_hours": "11am-9:30pm", 
+                        "tue_hours": "11am-9:30pm", 
+                        "wed_hours": "11am-9:30pm", 
+                        "thu_hours": "11am-9:30pm", 
+                        "fri_hours": "11am-10pm", 
+                        "sat_hours": "11am-10pm", 
+                        "sun_hours": "12pm-9pm",
+                        "restaurant_id": 1,
                     },
                     {
-                        "restaurant_id": "2",
+                        
                         "name": "Kerbey Lane"
-                        "cuisine_id" : "2",
-                        "reservation_required" : "False",
-                        "reservation_avail" : "False",
-                        "has_waiter" : "True",
+                        "reservation_required" : false,
+                        "reservation_avail" : false,
+                        "has_waiter" : true,
                         "phone" :  "5124775717",
                         "description" : "Brings the legendary flavors of Austin to Austin.",
                         "zip_code" : "78705",
                         "address" : "2606 Guadalupe St.",
-                        "delivery" : "False",
-                        "take_out" : "True",
-                        "pet_friendly" : "False",
-                        "cost" : "1",
-                        "website" : "http://www.kerbeylanecafe.com/"
+                        "delivery" : false,
+                        "take_out" : true,
+                        "pet_friendly" : false,
+                        "dollar_avg_rating": 1.0, 
+                        "dollar_num_rating": 4, 
+                        "dollar_sum_rating": 4, 
+                        "star_avg_rating": 3.0, 
+                        "star_num_rating": 4, 
+                        "star_sum_rating": 12, 
+                        "website" : "http://www.kerbeylanecafe.com/",
+                        "cuisine_id": 2, 
+                        "mon_hours": "24 hours", 
+                        "tue_hours": "24 hours", 
+                        "wed_hours": "24 hours", 
+                        "thu_hours": "24 hours", 
+                        "fri_hours": "24 hours", 
+                        "sat_hours": "24 hours", 
+                        "sun_hours": "24 hours",
+                        "restaurant_id": 2,
+                        
                     },
                     {
-                        "restaurant_id": "3",
                         "name": "Magnolia Cafe"
-                        "cuisine_id" : "2",
-                        "reservation_required" : "False",
-                        "reservation_avail" : "False",
-                        "has_waiter" : "True",
+                        "reservation_required" : false,
+                        "reservation_avail" : false,
+                        "has_waiter" : true,
                         "phone" :  "5124918859",
                         "description" : "Brings the legendary flavors of Magnolia to Austin.",
                         "zip_code" : "78704",
                         "address" : "1920 S. Congress Ave.",
-                        "delivery" : "False",
-                        "take_out" : "True",
-                        "pet_friendly" : "False",
-                        "cost" : "1",
-                        "website" : "http://themagnoliacafe.com/"
+                        "delivery" : false,
+                        "take_out" : true,
+                        "pet_friendly" : false,
+                        "dollar_avg_rating": 2.0, 
+                        "dollar_num_rating": 5, 
+                        "dollar_sum_rating": 10, 
+                        "star_avg_rating": 3.0, 
+                        "star_num_rating": 6, 
+                        "star_sum_rating": 18, 
+                        "website" : "http://themagnoliacafe.com/",
+                        "cuisine_id": 2, 
+                        "mon_hours": "24 hours", 
+                        "tue_hours": "24 hours", 
+                        "wed_hours": "24 hours", 
+                        "thu_hours": "24 hours", 
+                        "fri_hours": "24 hours", 
+                        "sat_hours": "24 hours", 
+                        "sun_hours": "24 hours",
+                        "restaurant_id": 3,
                     }
                 ]
             }
 
-## GET /restaurants/{id}
++ Response 404 (application/json)
+
+    + Body
+
+            { 
+              "Error" : "No restaurants found."
+            }
+
+## GET /restaurants/{id}/json
 Get a single restaurant's details:
 
-- Restaurant ID
-- Cuisine ID
 - Name
 - Reservation required
 - Reservation available
@@ -86,8 +130,22 @@ Get a single restaurant's details:
 - Delivery
 - Take out
 - Pet-friendly
-- Cost
+- Average Cost Ratings
+- Number of Cost Ratings
+- Sum of Cost Ratings
+- Average of Quality Ratings
+- Number of Quality Ratings
+- Sum of Quality Ratings
 - Website
+- Cuisine ID
+- Monday Hours
+- Tuesday Hours
+- Wednesday Hours
+- Thursday Hours
+- Friday Hours
+- Saturday Hours
+- Sunday Hours
+- Restaurant ID
 
 + Parameters
     + id (required, number, `1`) ... Numeric `id` of the restaurant to perform action with. Has example value.
@@ -95,25 +153,45 @@ Get a single restaurant's details:
 + Response 200 (application/json)
     + Body
 
-            { 
-              "restaurant_id" : "1",
-              "cuisine_id" : "1",
-              "name" : "Chang Thai", 
-              "reservation_required" : "False",
-              "reservation_avail" : "False",
-              "has_waiter" : "True",
-              "phone" :  "5124918859",
-              "description" : "Brings the legendary flavors of Thailand to Austin.",
-              "zip_code" : "78753",
-              "address" : "13000 N IH-35",
-              "delivery" : "False",
-              "take_out" : "True",
-              "pet_friendly" : "False",
-              "cost" : "1",
-              "website" : "http://www.changthaithaicuisine.com/"
-             }
+            {
+                "name": "Chang Thai",
+                "reservation_required" : false,
+                "reservation_avail" : false,
+                "has_waiter" : true,
+                "phone" :  "5124918859",
+                "description" : "Brings the legendary flavors of Thailand to Austin.",
+                "zip_code" : "78753",
+                "address" : "13000 N IH-35",
+                "delivery" : false,
+                "take_out" : true,
+                "pet_friendly" : false,
+                "dollar_avg_rating": 2.0, 
+                "dollar_num_rating": 3, 
+                "dollar_sum_rating": 6, 
+                "star_avg_rating": 5.0, 
+                "star_num_rating": 3, 
+                "star_sum_rating": 15, 
+                "website" : "http://www.changthaithaicuisine.com/",
+                "cuisine_id": 1, 
+                "mon_hours": "11am-9:30pm", 
+                "tue_hours": "11am-9:30pm", 
+                "wed_hours": "11am-9:30pm", 
+                "thu_hours": "11am-9:30pm", 
+                "fri_hours": "11am-10pm", 
+                "sat_hours": "11am-10pm", 
+                "sun_hours": "12pm-9pm",
+                "restaurant_id": 1,
+            },
 
-## GET /restaurants/{id}/dishes
++ Response 404 (application/json)
+
+    + Body
+
+            { 
+              "Error" : "No restaurant found."
+            }
+
+## GET /restaurants/{id}/dishes/json
 Get a list of a restaurant's dishes.
 
 + Parameters
@@ -126,41 +204,59 @@ Content-Type: application/json
 
             { 
                 
-                "restaurant_dishes": [
+                "Restaurant Dishes": [
                     {   
-                        "restaurant_id" : "4",
-                        "dish_id" : "12", 
-                        "generic_id" : "2"
                         "name" : "Blackened Fish Tacos",
-                        "rating" : "3",
-                        "number_ratings" : "5",
-                        "sum_ratings" : "15",
+                        "star_avg_rating": 0.0, 
+                        "star_num_ratings": 0, 
+                        "star_sum_ratings": 0, 
+                        "dollar_avg_rating": 0.0, 
+                        "dollar_num_ratings": 0, 
+                        "dollar_sum_ratings": 0,
                         "vegetarian" : "False", 
                         "vegan" : "False",
                         "kosher" : "False",
                         "halal" : "False",
                         "nut_allergy" : "False", 
-                        "cost" : "2"
+                        "restaurant_id" : "4",
+                        "generic_dish_id" : "2",
+                        "cuisine_id" : 3,
+                        "description" : "A whole fillet of blackened tilapia served with poblano coleslaw, jalapeno marinated tomatoes, 
+                        tomatillo salsa and red onion.",
+                        "dish_id" : "12",
                     },
                     {
-                        "restaurant_id" : "4",
-                        "dish_id" : "13",
-                        "generic_id" : "3"
                         "name" : "Caesar Salad",
-                        "rating" : "2",
-                        "number_ratings" : "5",
-                        "sum_ratings" : "10",
-                        "vegetarian" : "True", 
-                        "vegan" : "False",
-                        "kosher" : "False",
-                        "halal" : "False",
-                        "nut_allergy" : "False", 
-                        "cost" : "1"
+                        "star_avg_rating": 2.5, 
+                        "star_num_ratings": 2, 
+                        "star_sum_ratings": 5, 
+                        "dollar_avg_rating": 2.0, 
+                        "dollar_num_ratings": 3, 
+                        "dollar_sum_ratings": 6,
+                        "vegetarian" : false, 
+                        "vegan" : false,
+                        "kosher" : false,
+                        "halal" : false,
+                        "nut_allergy" : false, 
+                        "restaurant_id" : 4,
+                        "generic_dish_id" : 3,
+                        "cuisine_id" : 3,
+                        "description" : "rough chopped romaine hearts tossed with fresh shaved parmesan, cracked black pepper, caramelized 
+                        garlic, sourdough croutons and our homemade caesar dressing",
+                        "dish_id" : 13,
                     },
                 ]
             }
+
++ Response 404 (application/json)
+
+    + Body
+
+            { 
+              "Error" : "No restaurant dishes found."
+            }
     
-## GET /restaurants/{id}/reviews     
+## GET /restaurants/{id}/reviews/json     
 Get a list of a restaurant's reviews.
 
 + Parameters
@@ -172,28 +268,38 @@ Get a list of a restaurant's reviews.
 
             { 
                 
-                "restaurant_reviews": [
+                "Restaurant Reviews": [
                     {   
-                        "restaurant_id" : "4", 
-                        "customer_id" : "1",
-                        "review_id" : "1",
-                        "comment" : "The ambience is pretty nice, great date spot!!!",
-                        "rating" : "4"
+                        "star_rating" : 3,
+                        "dollar_rating" : 4,
+                        "review_comment" : "The ambience is pretty nice, great date spot!!!",
+                        "customer_id" : 1,
+                        "restaurant_id" : 4, 
+                        "review_id" : 1,
                     },
                     {
-                        "restaurant_id" : "4", 
-                        "customer_id" : "2",
-                        "review_id" : "2",
-                        "comment" : "Being a vegetarian I was pleased to see that they had plenty of options for me.",
-                        "rating" : "3"
+                        "star_rating" : 3,
+                        "dollar_rating" : 3,
+                        "review_comment" : "Being a vegetarian I was pleased to see that they had plenty of options for me.",
+                        "customer_id" : 2,
+                        "restaurant_id" : 4, 
+                        "review_id" : 2,
                     },
                 ]
+            }
+
++ Response 404 (application/json)
+
+    + Body
+
+            { 
+              "Error" : "No restaurant reviews found."
             }
 
 # Group Customers
 Customer related resources of the *Kravester API*
 
-## GET /customers
+## GET /customers/json
 
 Get a list of all customers.
 
@@ -202,23 +308,34 @@ Get a list of all customers.
     + Body
 
             { 
-                "customers": [
+                "Customers": [
                     {
-                        "customer_id": "1",
-                        "name": "Kevin Wheeler"
+                        "id": 1,
+                        "name": "Kevin Wheeler",
+                        "description" : ""
                     },
                     {
-                        "customer_id": "2",
-                        "name": "Mike Wham"
+                        "id": 2,
+                        "name": "Mike Wham",
+                        "description" : ""
                     },
                     {
-                        "customer_id": "3",
-                        "name": "Omar Lalani"
+                        "id": "3",
+                        "name": "Omar Lalani",
+                        "description" : ""
                     }
                 ]
             }
 
-## GET /customers/{id}
++ Response 404 (application/json)
+
+    + Body
+
+            { 
+              "Error" : "No customers found."
+            }
+
+## GET /customers/{id}/json
 Get a single customers's details:
 
 - Customer ID
@@ -233,11 +350,21 @@ Get a single customers's details:
     + Body
 
             { 
-              "customer_id" : "3",
+              "id" : "3",
               "name" : "Omar Lalani"
+              "description" : "I'm an austin local and have spent the past 6 years eating out at various restaurants on a college 
+              students budget. Learn from my experiences :)"
             }
 
-## GET /customers/{id}/restaurantreviews
++ Response 404 (application/json)
+
+    + Body
+
+            { 
+              "Error" : "No customer found."
+            }
+
+## GET /customers/{id}/restaurantreviews/json
 Get a list of restaurant reviews by a specific customer.
 
 + Parameters
@@ -248,25 +375,33 @@ Get a list of restaurant reviews by a specific customer.
     + Body
 
             { 
-                "customer_restaurant_reviews": [
+                "Customer Restaurant Reviews": [
                     {
-                        "customer_id" : "1",
-                        "restaurant_id" : "4", 
-                        "review_id" : "1",
-                        "rating" : "5",
-                        "comment" : "The ambience is pretty nice, great date spot!!!"
+                        "id" : 1,
+                        "star_rating" : 5,
+                        "review_comment" : "The ambience is pretty nice, great date spot!!!"
+                        "customer_id" : 1,
+                        "restaurant_id" : 4, 
                     },
                     {
-                        "customer_id" : "1",
-                        "restaurant_id" : "4", 
-                        "review_id" : "5",
-                        "rating" : "4",
-                        "comment" : "Menu selection is HUGE!!! Lots to choose from and something for everyone."
+                        "id" : 5,
+                        "star_rating" : 4,
+                        "review_comment" : "Menu selection is HUGE!!! Lots to choose from and something for everyone."
+                        "customer_id" : 1,
+                        "restaurant_id" : 4, 
                     }
                 ]
             }
 
-## GET /customers/{id}/dishreviews
++ Response 404 (application/json)
+
+    + Body
+
+            { 
+              "Error" : "No customer restaurant reviews found."
+            }
+
+## GET /customers/{id}/dishreviews/json
 Get a list of dish reviews by a specific customer.
 
 + Parameters
@@ -278,27 +413,38 @@ Get a list of dish reviews by a specific customer.
     + Body
 
             { 
-                "customer_dish_reviews": [
+                "Customer Dish Reviews": [
                     {
-                        "customer_id" : "1",
-                        "dish_id" : "12", 
-                        "rating" : "2",
-                        "comment" : "Tortillas were mad soggy."
+                        "id" : 6
+                        "star_rating" : 2,
+                        "dollar_rating" : 3,
+                        "review_comment" : "Tortillas were mad soggy."
+                        "customer_id" : 1,
+                        "dish_id" : 12, 
                     },
                     {
-                        "customer_id" : "1",
-                        "dish_id" : "13", 
-                        "rating" : "3",
-                        "comment" : "Love me some crunchy iceberg lettuce!"
+                        "id" : 7
+                        "star_rating" : 3,
+                        "dollar_rating" : 2,
+                        "review_comment" : "Love me some crunchy iceberg lettuce!"
+                        "customer_id" : 1,
+                        "dish_id" : 13, 
                     }
                 ]
             }
 
++ Response 404 (application/json)
+
+    + Body
+
+            { 
+              "Error" : "No customer dish reviews found."
+            }
 
 # Group Dishes
 Dish related resources of the *Kravester API*
 
-## GET /dishes
+## GET /dishes/json
 
 Get a list of all dishes.
 
@@ -307,54 +453,78 @@ Get a list of all dishes.
     + Body
 
             { 
-                "dishes": [
+                "Dishes": [
                     {
-                        "dish_id" : "1", 
-                        "restaurant_id" : "3",
-                        "generic_id" : "1",
+                        "id" : 1, 
                         "name" : "Alfredo Pasta",
-                        "rating" : "4",
-                        "number_ratings" : "4",
-                        "sum_ratings" : "16",
-                        "vegetarian" : "False", 
-                        "vegan" : "False",
-                        "kosher" : "False",
-                        "halal" : "False",
-                        "nut_allergy" : "False", 
-                        "cost" : "1",
+                        "star_avg_rating": 1.0, 
+                        "star_num_ratings": 10, 
+                        "star_sum_ratings": 10, 
+                        "dollar_avg_rating": 2.0, 
+                        "dollar_num_ratings": 5, 
+                        "dollar_sum_ratings": 10, 
+                        "vegetarian" : false, 
+                        "vegan" : false,
+                        "kosher" : false,
+                        "halal" : false,
+                        "nut_allergy" : false,
+                        "restaurant_id" : 3,
+                        "generic_dish_id" : 1,
+                        "cuisine_id" : 2,
+                        "description" : "Spinach fettuccine with fresh basil, mushrooms and garlic topped with alfredo parmesan sauce. 
+                        Served with garlic bread."
                     },
                     {
-                        "dish_id" : "2", 
-                        "restaurant_id" : "3",
-                        "generic_id" : "1",
+                        "id" : 2, 
                         "name" : "Pasta Caspian",
-                        "rating" : "3",
-                        "number_ratings" : "7",
-                        "sum_ratings" : "21",
-                        "vegetarian" : "False", 
-                        "vegan" : "False",
-                        "kosher" : "False",
-                        "halal" : "False",
-                        "nut_allergy" : "False", 
-                        "cost" : "1"
+                        "star_avg_rating": 3.0, 
+                        "star_num_ratings": 7, 
+                        "star_sum_ratings": 21, 
+                        "dollar_avg_rating": 3.0, 
+                        "dollar_num_ratings": 4, 
+                        "dollar_sum_ratings": 12, 
+                        "vegetarian" : false, 
+                        "vegan" : false,
+                        "kosher" : false,
+                        "halal" : false,
+                        "nut_allergy" : false,
+                        "restaurant_id" : 3,
+                        "generic_dish_id" : 1,
+                        "cuisine_id" : 2,
+                        "description" : "Julliened grilled chicken breast, artichoke hearts, sun-dried tomatoes, black olives, 
+                        fresh spinach and garlic in a white wine butter sauce."
                     }
                 ]
             }
 
-## GET /dishes/{id}
++ Response 404 (application/json)
+
+    + Body
+
+            { 
+              "Error" : "No dishes found."
+            }
+
+## GET /dishes/{id}/json
 Get a single dishes's details:
 
 - Dish ID
-- Restaurant ID
-- Generic Dish ID
 - Name
-- Average Rating
+- Average Quality Rating
+- Number of Quality Ratings
+- Sum of Quality Ratings
+- Average Cost Rating
+- Number of Cost Ratings
+- Sum of Cost Ratings
 - Vegetarian
 - Vegan
 - Kosher
 - Halal
 - Contains Nuts
-- Cost
+- Restaurant ID
+- Generic Dish ID
+- Cuisine ID
+- Description
 
 + Parameters
     + id (required, number, `1`) ... Numeric `id` of the dish to perform action with. Has example value.
@@ -365,22 +535,35 @@ Content-Type: application/json
     + Body
 
                 {
-                    "dish_id" : "2", 
-                    "restaurant_id" : "3",
-                    "generic_id" : "1",
-                    "name" : "Pasta Caspian" ,
-                    "rating" : "3",
-                    "number_ratings" : "7",
-                    "sum_ratings" : "21",
-                    "vegetarian" : "False", 
-                    "vegan" : "False",
-                    "kosher" : "False",
-                    "halal" : "False",
-                    "nut_allergy" : "False", 
-                    "cost" : "1"
+                    "id" : 2, 
+                    "name" : "Pasta Caspian",
+                    "star_avg_rating": 3.0, 
+                    "star_num_ratings": 7, 
+                    "star_sum_ratings": 21, 
+                    "dollar_avg_rating": 3.0, 
+                    "dollar_num_ratings": 4, 
+                    "dollar_sum_ratings": 12, 
+                    "vegetarian" : false, 
+                    "vegan" : false,
+                    "kosher" : false,
+                    "halal" : false,
+                    "nut_allergy" : false,
+                    "restaurant_id" : 3,
+                    "generic_dish_id" : 1,
+                    "cuisine_id" : 2,
+                    "description" : "Julliened grilled chicken breast, artichoke hearts, sun-dried tomatoes, black olives, 
+                    fresh spinach and garlic in a white wine butter sauce."
                 }
 
-## GET /dishes/{id}/reviews
++ Response 404 (application/json)
+
+    + Body
+
+            { 
+              "Error" : "No dish found."
+            }
+
+## GET /dishes/{id}/reviews/json
 Get a list of reviews of a specific dish.
 
 + Parameters
@@ -391,26 +574,38 @@ Get a list of reviews of a specific dish.
     + Body
 
             { 
-                "dish_reviews": [
+                "Dish Reviews": [
                     {
-                        "dish_id" : "12", 
-                        "customer_id" : "1" ,
-                        "rating" : "2",
-                        "comment" : "Tortillas were soggy."
+                        "id" : 1, 
+                        "star_rating" : 1,
+                        "dollar_rating" : 2,
+                        "review_comment" : "Tortillas were soggy."
+                        "customer_id" : 4,
+                        "dish_id" : 12
                     },
                     {
-                        "dish_id" : "12", 
-                        "customer_id" : "2" ,
-                        "rating" : "3",
-                        "comment" : "I would rather have fried fish but I suppose this option is healthier."
+                        "id" : 3, 
+                        "star_rating" : 2,
+                        "dollar_rating" : 3,
+                        "review_comment" : "I would rather have fried fish but I suppose this option is healthier."
+                        "customer_id" : 2,
+                        "dish_id" : 12                    
                     }
                 ]
+            }
+
++ Response 404 (application/json)
+
+    + Body
+
+            { 
+              "Error" : "No dish reviews found."
             }
 
 # Group Generic Dishes
 Generic Dish related resources of the *Kravester API*
 
-## GET /genericdishes
+## GET /genericdishes/json
 Get a list of generic dishes.
 
 + Response 200 (application/json)
@@ -420,24 +615,32 @@ Get a list of generic dishes.
             { 
                 "generic_dishes": [
                     {
-                        "generic_id": "1",
-                        "cuisine_id": "1",
-                        "name" : "Pasta"
+                        "id": 1,
+                        "name" : "Pasta",
+                        "cuisine_id": 1
                     },
                     {
-                        "generic_id": "2",
-                        "cuisine_id": "2",
-                        "name" : "Tacos"
+                        "id": 2,
+                        "name" : "Tacos",
+                        "cuisine_id": 2
                     },
                     {
-                        "generic_id": "3",
-                        "cuisine_id": "3",
-                        "name" : "Salad"
+                        "id": 3,
+                        "name" : "Salad",
+                        "cuisine_id": 3
                     }
                 ]
             }
 
-## GET /genericdishes/{id}
++ Response 404 (application/json)
+
+    + Body
+
+            { 
+              "Error" : "No generic dishes found."
+            }
+
+## GET /genericdishes/{id}/json
 Get attributes of a generic dish type.
 
 - Generic Dish ID
@@ -452,12 +655,21 @@ Get attributes of a generic dish type.
     + Body
 
             {
-                "generic_id": "3",
-                "cuisine_id": "3",
-                "name" : "Salad"
+            
+                "id": 3,
+                "name" : "Salad",
+                "cuisine_id": 3
             }
 
-## GET /genericdishes/{id}/dishes
++ Response 404 (application/json)
+
+    + Body
+
+            { 
+              "Error" : "No generic dish found."
+            }
+
+## GET /genericdishes/{id}/dishes/json
 Get a list of dishes categorized under a generic dish type.
 
 + Parameters
@@ -468,59 +680,81 @@ Get a list of dishes categorized under a generic dish type.
     + Body
 
             { 
-                "dishes": [
+                "Generic Dish Dishes": [
                     {
-                        "generic_id" : "4",
-                        "dish_id" : "3", 
-                        "restaurant_id" : "2",
-                        "name" : "Asian Chicken Salad" ,
-                        "rating" : "3",
-                        "number_ratings" : "6",
-                        "sum_ratings" : "18",
-                        "vegetarian" : "False", 
-                        "vegan" : "False",
-                        "kosher" : "False",
-                        "halal" : "False",
-                        "nut_allergy" : "False", 
-                        "cost" : "1"
+                        "id" : 3, 
+                        "name" : "Asian Chicken Salad",
+                        "star_avg_rating": 3.0, 
+                        "star_num_ratings": 6, 
+                        "star_sum_ratings": 18, 
+                        "dollar_avg_rating": 4.0, 
+                        "dollar_num_ratings": 6, 
+                        "dollar_sum_ratings": 24, 
+                        "vegetarian" : false, 
+                        "vegan" : false,
+                        "kosher" : false,
+                        "halal" : false,
+                        "nut_allergy" : false,
+                        "restaurant_id" : 2,
+                        "generic_dish_id" : 4,
+                        "cuisine_id" : 2,
+                        "description" : "Grilled chicken, organic greens, carrots, wontons, sprouts, peanuts, soy-ginger vinaigrette."
                     },
                     {
-                        "generic_id" : "3",
-                        "dish_id" : "4", 
-                        "restaurant_id" : "2",
-                        "name" : "Southwestern Grilled Chicken Salad" ,
-                        "rating" : "5",
-                        "number_ratings" : "5",
-                        "sum_ratings" : "25",
-                        "vegetarian" : "False", 
-                        "vegan" : "False",
-                        "kosher" : "False",
-                        "halal" : "False",
-                        "nut_allergy" : "False", 
-                        "cost" : "1"
+                        "id" : 4, 
+                        "name" : "Southwestern Grilled Chicken Salad",
+                        "star_avg_rating": 5.0, 
+                        "star_num_ratings": 5, 
+                        "star_sum_ratings": 25, 
+                        "dollar_avg_rating": 3.0, 
+                        "dollar_num_ratings": 6, 
+                        "dollar_sum_ratings": 18, 
+                        "vegetarian" : false, 
+                        "vegan" : false,
+                        "kosher" : false,
+                        "halal" : false,
+                        "nut_allergy" : false,
+                        "restaurant_id" : 2,
+                        "generic_dish_id" : 3,
+                        "cuisine_id" : 2,
+                        "description" : "Grilled chicken dressed with mustard and mayonaise and tossed with celery, red onion, parsley, 
+                        tarragon, peas and pecans, served over bibb lettuce with tomatoes and cucumbers."
                     },
                     {
-                        "generic_id" : "3",
-                        "dish_id" : "13", 
-                        "restaurant_id" : "3",
-                        "name" : "Caesar Salad" ,
-                        "rating" : "4",
-                        "number_ratings" : "4",
-                        "sum_ratings" : "16",
-                        "vegetarian" : "True", 
-                        "vegan" : "False",
-                        "kosher" : "False",
-                        "halal" : "False",
-                        "nut_allergy" : "False", 
-                        "cost" : "1"
+                        "id" : 5, 
+                        "name" : "Caesar Salad",
+                        "star_avg_rating": 4.0, 
+                        "star_num_ratings": 4, 
+                        "star_sum_ratings": 16, 
+                        "dollar_avg_rating": 3.0, 
+                        "dollar_num_ratings": 4, 
+                        "dollar_sum_ratings": 12, 
+                        "vegetarian" : true, 
+                        "vegan" : false,
+                        "kosher" : false,
+                        "halal" : false,
+                        "nut_allergy" : false,
+                        "restaurant_id" : 3,
+                        "generic_dish_id" : 3,
+                        "cuisine_id" : 2,
+                        "description" : "Rough chopped romaine hearts tossed with fresh shaved parmesan, cracked black pepper, caramelized garlic, 
+                        sourdough croutons and our homemade caesar dressing."
                     }
                 ]
+            }
+
++ Response 404 (application/json)
+
+    + Body
+
+            { 
+              "Error" : "No generic dish dishes found."
             }
 
 # Group Cuisines
 Cuisine related resources of the *Kravester API*
 
-## GET /cuisines/
+## GET /cuisines/json
 
 Get a list of all cuisines.
 
@@ -529,27 +763,35 @@ Get a list of all cuisines.
     + Body
 
             { 
-                "cuisines": [
+                "Cuisines": [
                     {
-                        "cuisine_id" : "1",
+                        "id" : 1,
                         "name" : "Italian"
                     },
                     {
-                        "cuisine_id" : "2",
+                        "id" : 2,
                         "name" : "Mexican"
                     },
                     {
-                        "cuisine_id" : "3",
+                        "id" : 3,
                         "name" : "American"
                     },
                     {
-                        "cuisine_id" : "4",
+                        "id" : 4,
                         "name" : "Asian"
                     }
                 ]
             }
-            
-## GET /cuisines/{id}
+
++ Response 404 (application/json)
+
+    + Body
+
+            { 
+              "Error" : "No cuisines found."
+            }            
+
+## GET /cuisines/{id}/json
 Get attributes of a specific cuisine.
 
 - Cuisine ID
@@ -559,16 +801,24 @@ Get attributes of a specific cuisine.
     + id (required, number, `1`) ... Numeric `id` of the cuisine to perform action with. Has example value.
 
 + Response 200 (application/json)
-    
+
     + Body
 
-            {
-                "cuisine_id" : "4",
-                "name" : "Asian"
-            }   
+            { 
+              "id" : 4,
+              "name" : "Asian"
+            } 
 
-## GET /cuisines/{id}/dishes
-Get a list of generic dishes for a specific cuisine.
++ Response 404 (application/json)
+
+    + Body
+
+            { 
+              "Error" : "No cuisine found."
+            } 
+
+## GET /cuisines/{id}/dishes/json
+Get a list of dishes for a specific cuisine.
 
 + Parameters
     + id (required, number, `1`) ... Numeric `id` of the cuisine to perform action with. Has example value.
@@ -578,26 +828,78 @@ Get a list of generic dishes for a specific cuisine.
     + Body
 
             { 
-                "cuisine_dishes": [
+                "Cuisine Dishes": [
                     {
-                        "cuisine_id" : "1", 
-                        "generic_id" : "1",
-                        "name" : "Pasta"
+                        "id": 1, 
+                        "name": "Thai Fresh Summer Rolls", 
+                        "star_avg_rating": 3.0, 
+                        "star_num_ratings": 4, 
+                        "star_sum_ratings": 12, 
+                        "dollar_avg_rating": 1.0, 
+                        "dollar_num_ratings": 4, 
+                        "dollar_sum_ratings": 4, 
+                        "vegetarian": true, 
+                        "vegan": false, 
+                        "kosher": true, 
+                        "halal": false, 
+                        "nut_allergy": false, 
+                        "restaurant_id": 1, 
+                        "generic_dish_id": 5, 
+                        "cuisine_id": 4, 
+                        "description": "Thin rice noodles, lettuce, carrots, bean sprouts, basil leaves wrapped with rice papers, 
+                        served with sweet and sour and peanut sauce."
                     },
                     {
-                        "cuisine_id" : "1", 
-                        "generic_id" : "4",
-                        "name" : "Pizza"
+                        "id": 2, 
+                        "name": "Tom Kha (Thai Creamy Coconut Soup)", 
+                        "star_avg_rating": 5.0, 
+                        "star_num_ratings": 4, 
+                        "star_sum_ratings": 20, 
+                        "dollar_avg_rating": 1.0, 
+                        "dollar_num_ratings": 4, 
+                        "dollar_sum_ratings": 4, 
+                        "vegetarian": false, 
+                        "vegan": false, 
+                        "kosher": true, 
+                        "halal": false, 
+                        "nut_allergy": false, 
+                        "restaurant_id": 1, 
+                        "generic_dish_id": 2, 
+                        "cuisine_id": 4, 
+                        "description": "Thai soup with thai chili paste, tomato, onions, lemongrass, galangal, mushroom, and 
+                        kaffir leaves."
                     },
                     {
-                        "cuisine_id" : "1", 
-                        "generic_id" : "11",
-                        "name" : "Antipasti"
+                        "id": 3, 
+                        "name": "Pork Rib Basil Flavor", 
+                        "star_avg_rating": 4.5, 
+                        "star_num_ratings": 2, 
+                        "star_sum_ratings": 9, 
+                        "dollar_avg_rating": 2.0, 
+                        "dollar_num_ratings": 2, 
+                        "dollar_sum_ratings": 4, 
+                        "vegetarian": true, 
+                        "vegan": false, 
+                        "kosher": true, 
+                        "halal": false, 
+                        "nut_allergy": false, 
+                        "restaurant_id": 1, 
+                        "generic_dish_id": 9, 
+                        "cuisine_id": 4, 
+                        "description": "Crispy pork rib marinated with pepper, onions, green bean, garlic, Thai basil, chili sauce."
                     }
                 ]
             }
 
-## GET /cuisines/{id}/restaurants
++ Response 404 (application/json)
+
+    + Body
+
+            { 
+              "Error" : "No cuisine dishes found."
+            } 
+
+## GET /cuisines/{id}/restaurants/json
 Get a list of restaurants serving a specific cuisine.
 
 + Parameters
@@ -608,57 +910,72 @@ Get a list of restaurants serving a specific cuisine.
     + Body
 
             { 
-                "cuisine_restaurants": [
+                "Cuisine Restaurants": [
                     {
-                        "cuisine_id" : "2",
-                        "restaurant_id": "12",
-                        "name": "Torchy's Tacos"
-                        "reservation_required" : "False",
-                        "reservation_avail" : "False",
-                        "has_waiter" : "False",
+                        "name": "Torchy's Tacos",
+                        "reservation_required" : false,
+                        "reservation_avail" : false,
+                        "has_waiter" : false,
                         "phone" :  "5124440300",
                         "description" : "Brings the legendary flavors of Mexico to Austin.",
                         "zip_code" : "78704",
-                        "address" : " 2809 S 1st St.",
-                        "delivery" : "False",
-                        "take_out" : "True",
-                        "pet_friendly" : "False",
-                        "cost" : "1",
-                        "website" : "http://www.torchystacos.com/"
+                        "address" : "2809 S 1st St.",
+                        "delivery" : false,
+                        "take_out" : true,
+                        "pet_friendly" : false,
+                        "dollar_avg_rating": 2.0, 
+                        "dollar_num_rating": 3, 
+                        "dollar_sum_rating": 6, 
+                        "star_avg_rating": 5.0, 
+                        "star_num_rating": 3, 
+                        "star_sum_rating": 15, 
+                        "website" : "http://www.torchystacos.com/",
+                        "cuisine_id": 2, 
+                        "mon_hours": "7am-10pm", 
+                        "tue_hours": "7am-10pm", 
+                        "wed_hours": "7am-10pm", 
+                        "thu_hours": "7am-10pm", 
+                        "fri_hours": "7am-10pm", 
+                        "sat_hours": "7am-10pm", 
+                        "sun_hours": "7am-10pm",
+                        "restaurant_id": 12,
                     },
                     {
-                        "cuisine_id" : "2",
-                        "restaurant_id": "13",
                         "name": "Habanero Mexican Cafe",
-                        "reservation_required" : "False",
-                        "reservation_avail" : "False",
-                        "has_waiter" : "True",
+                        "reservation_required" : false,
+                        "reservation_avail" : false,
+                        "has_waiter" : true,
                         "phone" :  "5124160443",
                         "description" : "Brings the legendary flavors of Mexico to Austin.",
                         "zip_code" : "78704",
-                        "address" : " 501 W. Oltorf St.",
-                        "delivery" : "False",
-                        "take_out" : "False",
-                        "pet_friendly" : "False",
-                        "cost" : "1",
-                        "website" : "http://www.habanerocafe.com/"
+                        "address" : "501 W. Oltorf St.",
+                        "delivery" : false,
+                        "take_out" : false,
+                        "pet_friendly" : false,
+                        "dollar_avg_rating": 2.0, 
+                        "dollar_num_rating": 3, 
+                        "dollar_sum_rating": 6, 
+                        "star_avg_rating": 5.0, 
+                        "star_num_rating": 3, 
+                        "star_sum_rating": 15, 
+                        "website" : "http://www.habanerocafe.com/",
+                        "cuisine_id": 2, 
+                        "mon_hours": "7am-3pm", 
+                        "tue_hours": "7am-5pm", 
+                        "wed_hours": "7am-5pm", 
+                        "thu_hours": "7am-5pm", 
+                        "fri_hours": "7am-9pm", 
+                        "sat_hours": "7am-9pm", 
+                        "sun_hours": "7am-3pm",
+                        "restaurant_id": 13,
                     },
-                    {
-                        "cuisine_id" : "2",
-                        "restaurant_id": "14",
-                        "name": "Curra's Grill",
-                        "reservation_required" : "False",
-                        "reservation_avail" : "False",
-                        "has_waiter" : "True",
-                        "phone" :  "5124440012",
-                        "description" : "Brings the legendary flavors of Mexico to Austin.",
-                        "zip_code" : "78704",
-                        "address" : " 614 E Oltorf St.",
-                        "delivery" : "False",
-                        "take_out" : "False",
-                        "pet_friendly" : "False",
-                        "cost" : "2",
-                        "website" : "http://www.currasgrill.com/"
-                    }
                 ]
             }
+
++ Response 404 (application/json)
+
+    + Body
+
+            { 
+              "Error" : "No cuisine restaurants found."
+            } 
