@@ -1,0 +1,34 @@
+<!-- This page will list all the dishes for a restaurant in our DB-->
+{% extends 'ourapp/master.html' %}
+{% block page_title %}{{customer.name}}{% endblock %}
+{% block page_header %}{% include "ourapp/customer_header.html" %}{%endblock%}
+{% block main_content %}
+{% load staticfiles %}
+<script src="{% static 'js/restaurant.js'%}"></script>
+<div class="col-md-3">
+</div>
+<div class="col-md-6" id="reviews">
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">Dishes</h3>
+        </div>
+        <div class="panel-body">
+<ul class="list-group food-list">
+{% if customer_d_reviews %}
+    {% for review in customer_d_reviews %}
+        <li class = "list-group-item food-item"><strong>{{review.dish}}</strong>
+        <div class="food-item-content">
+            <p>{{review.review_comment}}</p>
+                <p><a href="/dishes/{{review.dish.id}}" class="menu-item-link">Read Reviews</a></p></div>
+        </li>
+    {% endfor %}
+{% else %}
+    <p>Customer has not made Dish Reviews</p>
+{% endif %}
+</ul>
+</div>
+</div>
+</div>
+<div class="col-md-3">
+</div>
+{% endblock %}

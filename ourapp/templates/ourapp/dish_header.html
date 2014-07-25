@@ -1,0 +1,10 @@
+<div class="jumbotron masthead">
+<div class="container gray-overlay">
+        <div class="col-md-8"><h1>{{dish.name}}</h1>
+		<p>From <a href="/restaurants/{{dish.restaurant.id}}/"><strong class="status-open">{{dish.restaurant}}</strong></a></p>
+		<p>{{dish.description}}</p>
+        </div>
+        <div class="col-md-3">
+                {% load static %}
+                <img src="{% get_static_prefix %}img/dishes/{{dish.id|lower}}.png">
+</div></div></div>

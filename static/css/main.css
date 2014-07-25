@@ -2,11 +2,22 @@
 {
 background-image:url("../img/kerbeylane.jpg");
 background-position:left bottom;
+height:400px;
+max-height:400px;
+}
+.jumbotron
+{
+	padding:2%;
 }
 
+.masthead img
+
+{
+	padding:5%;
+	max-height:200px;
+}
 .gray-overlay
 {
-padding:1em;
 background-color:rgba(240, 240, 240, 0.5);
 }
 
@@ -56,5 +67,7 @@ float:right; padding:2px;
 
 #food-carousel {
 margin-bottom:1.5%;
+height:285px;
+max-height:285px;
 }
 .carousel-caption { display:none;}

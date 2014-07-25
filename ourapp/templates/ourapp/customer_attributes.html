@@ -15,10 +15,10 @@
 <ul class="list-group food-list">
 {% if dish_reviews %}
     {% for d in dish_reviews %}
-        <li class = "list-group-item review-item"> {{d.dish}}
+        <li class = "list-group-item review-item"> <strong>{{d.dish}}</strong>
         <div class = "review-item-content">
             <p>{{d.review_comment}}</p>
-            <p><a href = "/dishes/{{d.dish.id}}" class = "review-item-link">Read Reviews</a></p>
+                <p><a href = "/dishes/{{d.dish.id}}" class = "review-item-link">Read Reviews</a></p>
         </div>
         </li>
     {% endfor %}
@@ -39,7 +39,7 @@
 <ul class="list-group food-list">
 {% if restaurant_reviews %}
     {% for r in restaurant_reviews %}
-        <li class = "list-group-item review-item">{{r.restaurant}}
+        <li class = "list-group-item review-item"><strong>{{r.restaurant}}</strong>
         <div class = "review-item-content">
             <p>{{r.review_comment}}</p>
             <p><a href = "/restaurants/{{r.restaurant.id}}" class = "review-item-link">Read Reviews</a></p>

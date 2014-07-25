@@ -6,4 +6,19 @@
 <script src="{% static 'js/restaurant.js'%}"></script>
 {% include "ourapp/review_list.html" %}
 {% include "ourapp/menu_list.html" %}
+
+<!--
+{% if twitter_response %}
+<ul class="tweets"><h3>Tweets</h3>
+    {% for name, text in twitter_response %}
+        <li><strong>{{name}}</strong>
+            {{text}}
+        </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No Twitter Response</p>
+{% endif %} -->
+{% load static %}
+</div>
 {% endblock %}

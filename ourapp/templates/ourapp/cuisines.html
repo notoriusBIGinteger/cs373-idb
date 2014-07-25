@@ -1,0 +1,33 @@
+{% extends 'ourapp/master.html' %}
+{% block page_title %}Cuisines{% endblock %}
+{% block page_header %}{% include "ourapp/carousel.html" %}{%endblock%}
+{% block main_content %}
+{% load staticfiles %}
+<script src="{% static 'js/restaurant.js'%}"></script>
+<div class="col-md-3">
+</div>
+<div class="col-md-6" id="reviews">
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">All Cuisines</h3>
+        </div>
+        <div class="panel-body">
+<ul class="list-group food-list">
+{% if cuisine_result %}
+    {% for c in cuisine_result %}
+    <li class = "list-group-item food-item"><strong>{{c.name}}</strong>
+        <div class="food-item-content">
+            <p>{{c.description}}</p>
+                <p><a href="/cuisines/{{c.id}}" class="menu-item-link">Read Reviews</a></p></div>
+        </li>
+    {% endfor %}
+{% else %}
+    <p>No Cuisines in our database</p>
+{% endif %}
+</ul>
+</div>
+</div>
+</div>
+<div class="col-md-3">
+</div>
+{% endblock %}

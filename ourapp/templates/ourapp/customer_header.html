@@ -1,0 +1,9 @@
+<div class="jumbotron masthead">
+<div class="container gray-overlay">
+        <div class="col-md-8"><h1>{{customer.name}}</h1>
+                <p>{{customer.description}}</p>
+        </div>
+        <div class="col-md-3">
+                {% load static %}
+                <img style="" src="{% get_static_prefix %}img/customers/{{customer.id|lower}}.png">
+</div></div></div>

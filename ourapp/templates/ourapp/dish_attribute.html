@@ -15,7 +15,7 @@
 <ul class="list-group food-list">
 {% if customer_reviews %}
     {% for dish_review in customer_reviews %}
-        <li class = "list-group-item review-item">{{dish_review.customer}}
+        <li class = "list-group-item review-item"><strong>{{dish_review.customer}}</strong>
         <div class = "review-item-content">
             <p>{{dish_review.review_comment}}</p>
             <p><a href = "/customers/{{dish_review.customer.id}}" class = "review-item-link">Read Reviews</a></p>
@@ -40,7 +40,7 @@
 {% if similar_dishes %}
     {% for d in similar_dishes %}
         {% if d != dish %}
-            <li class = "list-group-item review-item">{{d.name}}
+            <li class = "list-group-item review-item"><strong>{{d.name}}</strong>
             <div class = "review-item-content">
                 <p>{{d.description}}</p>
                 <p><a href = "/dishes/{{d.id}}" class = "review-item-link">Go to dish</a></p>

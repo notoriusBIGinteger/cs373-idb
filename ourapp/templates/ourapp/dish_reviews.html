@@ -1,0 +1,33 @@
+{% extends 'ourapp/master.html' %}
+{% block page_title %}{{dish.name}} Reviews{% endblock %}
+{% block page_header %}{% include "ourapp/dish_header.html" %}{%endblock%}
+{% block main_content %}
+{% load staticfiles %}
+<script src="{% static 'js/restaurant.js'%}"></script>
+<div class="col-md-3">
+</div>
+<div class="col-md-6" id="reviews">
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">All Dish Reviews</h3>
+        </div>
+        <div class="panel-body">
+<ul class="list-group food-list">
+{% if dish_reviews %}
+    {% for d in dish_reviews %}
+    <li class = "list-group-item food-item"> <a href = "/dishes/{{d.id}}" >{{d.customer}}</a>
+        <div class="food-item-content">
+            <p>{{d.review_comment}}</p>
+                <p><a href="/customers/{{d.customer.id}}" class="menu-item-link">Read Reviews</a></p></div>
+        </li>
+    {% endfor %}
+{% else %}
+    <p>No Dishes in our database</p>
+{% endif %}
+</ul>
+</div>
+</div>
+</div>
+<div class="col-md-3">
+</div>
+{% endblock %}

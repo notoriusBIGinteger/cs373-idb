@@ -1,0 +1,30 @@
+<div class="col-md-6" id="reviews">
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title"><a href = "reviews">Reviews</a></h3>
+        </div>
+        <div class="panel-body">
+<ul class="list-group food-list">
+{% if customer_reviews %}
+    {% for review in customer_reviews %}
+    <li class = "list-group-item review-item"><strong>{{review.customer}}</strong>
+        <div class="review-item-content">
+            <p>{{review.review_comment}}</p>
+                <p><a href="/customers/{{review.customer.id}}" class="review-item-link">User Bio</a></p></div>
+        </li>
+    {% endfor %}
+{% else %}
+    <p>No Customer Ratings</p>
+{% endif %}
+</ul>
+</div>
+</div>
+
+
+<div id="tweetz"></div>
+
+{% load static %}
+<script type="text/javascript">$("#tweetz").load("{% get_static_prefix %}widget/{{restaurant.id}}.html");</script>
+
+
+</div> <!-- end col-md-6 -->

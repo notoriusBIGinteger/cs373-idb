@@ -1,0 +1,27 @@
+<div class="col-md-6" id="menu">
+<div class="panel panel-default">
+	 <div class="panel-heading">
+		    <h3 class="panel-title"><a href="dishes">Dishes</a></h3>
+		     </div>
+		      <div class="panel-body">
+<ul class="list-group food-list">
+{% if dish_results %}
+    {% for d in dish_results %}
+    <li class="list-group-item food-item"><strong>{{d.name}}</strong>
+    <div class="food-item-content">
+	    <p>{{d.description}}</p>
+		    <p><a href="/dishes/{{d.id}}" class="menu-item-link">Read Reviews</a></p></div>
+
+
+
+    </li>
+
+    {% endfor %}
+{% else %}
+    <p>No dishes are available</p>
+{% endif %}
+</ul>
+</div>
+</div>
+</div> <!-- end col-md-6 -->
+
