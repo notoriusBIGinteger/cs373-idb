@@ -2,10 +2,17 @@
 {
 background-image:url("../img/kerbeylane.jpg");
 background-position:left bottom;
+height:285px;
+overflow:hidden;
 }
 .jumbotron
 {
-	padding:2%;
+	padding:1%;
+}
+.jumbotron p
+{
+	font-size:1.15em;
+	font-weight:400;
 }
 
 .masthead img
