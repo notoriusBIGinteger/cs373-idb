@@ -472,6 +472,257 @@ class Tests(TestCase):
             'dish' : Tests.d3
             })
 
+    def test_cuisine_get_dict_1(self):
+        self.assertEqual(Tests.c1.getDict(), {"name": "Ital" , "id" : Tests.c1.id})
+
+    def test_cuisine_get_dict_2(self):
+        self.assertEqual(Tests.c2.getDict(), {"name": "Mexi" , "id" : Tests.c2.id})
+
+    def test_cuisine_get_dict_3(self):
+        self.assertEqual(Tests.c3.getDict(), {"name": "Amer" , "id" : Tests.c3.id})
+
+    # ------------------
+    # restaurant get_dict
+    # ------------------
+    def test_restaurant_get_dict_1(self):
+
+        self.assertEqual(Tests.r1.getDict(),  {
+            'id' : Tests.r1.id,
+            'name' : "Kerbey Lane",
+            'reservation_required' : False,
+            'reservation_avail' : False,
+            'has_waiter' : True,
+            'phone_number' : '5555555555',
+            'description' : 'Delicious breakfast',
+            'zip_code' : '78705',
+            'address' : '555 w 5th St',
+            'delivery' : False,
+            'take_out' : True,
+            'pet_friendly' : False,
+            'dollar_avg_rating' : 5,
+            'dollar_num_rating' : 5,
+            'dollar_sum_rating' : 25,
+            'star_avg_rating' : 5,
+            'star_num_rating' : 5,
+            'star_sum_rating' : 25,
+            'cuisine_id' : Tests.c3.id,
+            'mon_hours' : '11AM - 9PM',
+            'tue_hours' : '11AM - 9PM',
+            'wed_hours' : '11AM - 9PM',
+            'thu_hours' : '11AM - 9PM',
+            'fri_hours' : '11AM - 9PM',
+            'sat_hours' : '11AM - 9PM',
+            'sun_hours' : '11AM - 9PM',
+            'website' : 'www.kerbey.com' })
+
+    def test_restaurant_get_dict_2(self):
+        self.assertEqual(Tests.r2.getDict(), {'name' : "Magnolia",
+            'id' : Tests.r2.id,
+            'reservation_required' : True,
+            'reservation_avail' : False,
+            'has_waiter' : False,
+            'phone_number' : '5554445555',
+            'description' : 'Amazing breakfast',
+            'zip_code' : '78705',
+            'address' : '555 w 5th St',
+            'delivery' : False,
+            'take_out' : True,
+            'pet_friendly' : False,
+            'dollar_avg_rating' : 6,
+            'dollar_num_rating' : 6,
+            'dollar_sum_rating' : 36,
+            'star_avg_rating' : 4,
+            'star_num_rating' : 4,
+            'star_sum_rating' : 16,
+            'cuisine_id' : Tests.c3.id,
+            'mon_hours' : '9AM - 10PM',
+            'tue_hours' : '9AM - 10PM',
+            'wed_hours' : '9AM - 10PM',
+            'thu_hours' : '9AM - 10PM',
+            'fri_hours' : '9AM - 10PM',
+            'sat_hours' : '9AM - 10PM',
+            'sun_hours' : '9AM - 10PM',
+            'website' : 'www.MangoliaCafe.com',
+            })
+
+    def test_restaurant_get_dict_3(self):
+        self.assertEqual(Tests.r3.getDict(), {'name' : "Big Bite",
+            'id' : Tests.r3.id,
+            'reservation_required' : False,
+            'reservation_avail' : False,
+            'has_waiter' : True,
+            'phone_number' : '1234445555',
+            'description' : 'Amazing pizza',
+            'zip_code' : '78705',
+            'address' : '523 w 5th St',
+            'delivery' : False,
+            'take_out' : True,
+            'pet_friendly' : True,
+            'dollar_avg_rating' : 7,
+            'dollar_num_rating' : 7,
+            'dollar_sum_rating' : 49,
+            'star_avg_rating' : 2,
+            'star_num_rating' : 2,
+            'star_sum_rating' : 4,
+            'cuisine_id' : Tests.c1.id,
+            'mon_hours' : '9AM - 10PM',
+            'tue_hours' : '9AM - 10PM',
+            'wed_hours' : '9AM - 10PM',
+            'thu_hours' : '9AM - 10PM',
+            'fri_hours' : '9AM - 10PM',
+            'sat_hours' : '9AM - 10PM',
+            'sun_hours' : '9AM - 10PM',
+            'website' : 'www.BigBite.com'
+            })
+
+    # ----------------
+    # customer get_dict
+    # ----------------
+    def test_customer_get_dict_1(self):
+        self.assertEqual(Tests.cu1.getDict(), {'id' : Tests.cu1.id,"name": "Bobby", 'description' : "cool"})
+
+    def test_customer_get_dict_2(self):
+        self.assertEqual(Tests.cu2.getDict(), {'id' : Tests.cu2.id,"name": "Sam", 'description' : "ok"})
+
+    def test_customer_get_dict_3(self):
+        self.assertEqual(Tests.cu3.getDict(), {'id' : Tests.cu3.id,"name": "Jake", 'description' : "nice"})
+
+    # --------------------
+    # generic dish get_dict
+    # --------------------
+    def test_generic_dish_get_dict_1(self):
+        self.assertEqual(Tests.gd1.getDict(), {'id' : Tests.gd1.id, "name":"Hamburger", 'cuisine_id' : Tests.c3.id})
+
+    def test_generic_dish_get_dict_2(self):
+        self.assertEqual(Tests.gd2.getDict(), {'id' : Tests.gd2.id, "name":"Pizza", 'cuisine_id' : Tests.c1.id})
+
+    def test_generic_dish_get_dict_3(self):
+        self.assertEqual(Tests.gd3.getDict(), {'id' : Tests.gd3.id, "name":"Sushi", 'cuisine_id' : Tests.c3.id})
+
+    # ------------
+    # dish get_dict
+    # ------------
+    def test_dish_get_dict_1(self):
+        self.assertEqual(Tests.d1.getDict(),{'name' : 'Trifecta Pizza',
+            'id' : Tests.d1.id,
+            'star_avg_rating' : 4,
+            'star_num_ratings' : 4,
+            'star_sum_ratings' : 16,
+            'dollar_avg_rating' : 3 ,
+            'dollar_num_ratings' : 3,
+            'dollar_sum_ratings' : 9,
+            'vegetarian' : False,
+            'vegan' : False,
+            'kosher' : False,
+            'halal' : False,
+            'nut_allergy' : False,
+            'restaurant_id' : Tests.r3.id,
+            'generic_dish_id' : Tests.gd2.id,
+            'cuisine_id' : Tests.c1.id,
+            'description' : 'A trifecta of 3 meats'})
+
+    def test_dish_get_dict_2(self):
+        self.assertEqual(Tests.d2.getDict(),{'name' : 'Bacon Cheezburger',
+        'id' : Tests.d2.id,
+        'star_avg_rating' : 5,
+        'star_num_ratings' : 5,
+        'star_sum_ratings' : 25,
+        'dollar_avg_rating' : 2 ,
+        'dollar_num_ratings' : 5,
+        'dollar_sum_ratings' : 10,
+        'vegetarian' : False,
+        'vegan' : False,
+        'kosher' : False,
+        'halal' : False,
+        'nut_allergy' : False,
+        'restaurant_id' : Tests.r1.id,
+        'generic_dish_id' : Tests.gd1.id,
+        'cuisine_id' : Tests.c1.id,
+        'description' : 'Bacon with some cheezburger on it' })
+
+    def test_dish_get_dict_3(self):
+        self.assertEqual(Tests.d3.getDict(),{'name' : 'White Roll',
+        'id' : Tests.d3.id,
+        'star_avg_rating' : 3,
+        'star_num_ratings' : 7,
+        'star_sum_ratings' : 21,
+        'dollar_avg_rating' : 2 ,
+        'dollar_num_ratings' : 7,
+        'dollar_sum_ratings' : 14,
+        'vegetarian' : False,
+        'vegan' : False,
+        'kosher' : False,
+        'halal' : False,
+        'nut_allergy' : False,
+        'restaurant_id' : Tests.r2.id,
+        'generic_dish_id' : Tests.gd3.id,
+        'cuisine_id' : Tests.c1.id,
+        'description' : 'Prime sushi'})
+
+    # -------------------------
+    # restaurant review get_dict
+    # -------------------------
+    def test_restaurant_review_get_dict_1(self):
+        self.assertEqual(Tests.rr1.getDict(), {'star_rating' : 1,
+            'id' : Tests.rr1.id,
+            'dollar_rating' : 5,
+            'review_comment' : 'The food here stinks',
+            'customer_id' : Tests.cu1.id,
+            'restaurant_id' : Tests.r1.id
+            })
+
+    def test_restaurant_review_get_dict_2(self):
+        self.assertEqual(Tests.rr2.getDict(), {
+            'id' : Tests.rr2.id,
+            'star_rating' : 5,
+            'dollar_rating' : 1,
+            'review_comment' : 'The food here da bomb dot com.',
+            'customer_id' : Tests.cu2.id,
+            'restaurant_id' : Tests.r2.id,
+            })
+
+    def test_restaurant_review_get_dict_3(self):
+        self.assertEqual(Tests.rr3.getDict(), {
+            'id' : Tests.rr3.id,
+            'star_rating' : 3,
+            'dollar_rating' : 3,
+            'review_comment' : 'The food here is alright.',
+            'customer_id' : Tests.cu3.id,
+            'restaurant_id' : Tests.r3.id
+            })
+
+    # -------------------
+    # dish review get_dict
+    # -------------------
+    def test_dish_review_get_dict_1(self):
+        self.assertEqual(Tests.dr1.getDict(), {
+            'id' : Tests.dr1.id,
+            'star_rating' : 2,
+            'dollar_rating' : 4,
+            'review_comment' : 'Meh.',
+            'customer_id' : Tests.cu1.id ,
+            'dish_id' : Tests.d1.id
+            })
+
+    def test_dish_review_get_dict_2(self):
+        self.assertEqual(Tests.dr2.getDict(), {
+            'id' : Tests.dr2.id,
+            'star_rating' : 5,
+            'dollar_rating' : 2,
+            'review_comment' : 'I love bacon! I love this burger!',
+            'customer_id' : Tests.cu2.id ,
+            'dish_id' : Tests.d2.id
+            })
+
+    def test_dish_review_get_dict_3(self):
+        self.assertEqual(Tests.dr3.getDict(), {
+            'id' : Tests.dr3.id,
+            'star_rating' : 3,
+            'dollar_rating' : 4,
+            'review_comment' : 'Its ok but its a little expensive.',
+            'customer_id' : Tests.cu3.id ,
+            'dish_id' : Tests.d3.id
+            })
 
     def model_instances():
         c1 = Cuisine.objects.create(name = "Ital")  # gets set to Italian soon after
