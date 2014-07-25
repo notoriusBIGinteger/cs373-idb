@@ -22,6 +22,13 @@ class Cuisine(models.Model) :
         """
         return {"name":self.name}
 
+    def getDict(self) :
+        """
+        returns all of the elements in the class
+        in a dictionary with key being the attribute name
+        and value being the value of the attribute
+        """
+        return ({ 'id' : self.id, 'name' : self.name})
 """
 Restaurant model has a foreign key of Cuisine
 and attributes that describes an actual Restaurant
@@ -90,29 +97,51 @@ class Restaurant(models.Model) :
                 'thu_hours' : self.thu_hours,
                 'fri_hours' : self.fri_hours,
                 'sat_hours' : self.sat_hours,
-                'sun_hours' : self.sun_hours,  }
-#        return {"name": self.name,
-#                "reservation_required": self.reservation_required,
-#                "reservation_avail": self.reservation_avail ,
-#                "has_waiter": self.has_waiter,
-#                "phone_number": self.phone_number,
-#                "description": self.description,
-#                "zip_code": self.zip_code,
-#                "address": self.address,
-#                "delivery":self.delivery,
-#                "take_out":self.take_out,
-#                "pet_friendly":self.pet_friendly,
-#                "website":self.website}
+                'sun_hours' : self.sun_hours
+                }
+
+    def getDict(self):
+        """
+        returns all of the elements in the class
+        in a dictionary with key being the attribute name
+        and value being the value of the attribute
+        """
+        return {
+                'id' : self.id,
+                'name' : self.name,
+                'reservation_required' : self.reservation_required ,
+                'reservation_avail' :  self.reservation_avail ,
+                'has_waiter' : self.has_waiter ,
+                'phone_number' : self.phone_number ,
+                'description' : self.description,
+                'zip_code' : self.zip_code,
+                'address' : self.address,
+                'delivery' : self.delivery,
+                'take_out' : self.take_out,
+                'pet_friendly' : self.pet_friendly,
+                'dollar_avg_rating' : self.dollar_avg_rating,
+                'dollar_num_rating' : self.dollar_num_rating,
+                'dollar_sum_rating' : self.dollar_sum_rating,
+                'star_avg_rating' : self.star_avg_rating,
+                'star_num_rating' : self.star_num_rating,
+                'star_sum_rating' : self.star_sum_rating,
+                'website' : self.website,
+                'cuisine_id' : self.cuisine.id,
+                'mon_hours' : self.mon_hours,
+                'tue_hours' : self.tue_hours,
+                'wed_hours' : self.wed_hours,
+                'thu_hours' : self.thu_hours,
+                'fri_hours' : self.fri_hours,
+                'sat_hours' : self.sat_hours,
+                'sun_hours' : self.sun_hours
+                }
 
 """
 Customer containts a full name of a reviewer
 """
 class Customer(models.Model) :
     name = models.CharField('Name', max_length=35)
-   # location = models.CharField('Location', max_length=35)
     description = models.CharField('Description', max_length=100)
-    #recent_check_in = models.CharField('Last Check-In', max_length=30)
-    #dietary_preference = models.CharField('Diet', max_length=60)
 
     def __str__(self) :
         return self.name
@@ -123,7 +152,15 @@ class Customer(models.Model) :
         in a dictionary with key being the attribute name
         and value being the value of the attribute
         """
-        return {"name":self.name}
+        return {"name" : self.name, "description" : self.description }
+
+    def getDict(self) :
+        """
+        returns all of the elements in the class
+        in a dictionary with key being the attribute name
+        and value being the value of the attribute
+        """
+        return {"id" : self.id, "name" : self.name, "description" : self.description}
 
 """
 Generic Dish has a foreign key Cuisine
@@ -142,7 +179,15 @@ class GenericDish(models.Model) :
         in a dictionary with key being the attribute name
         and value being the value of the attribute
         """
-        return { "name" : self.name }
+        return { "name" : self.name, 'cuisine' : self.cuisine }
+
+    def getDict(self):
+        """
+        returns all of the elements in the class
+        in a dictionary with key being the attribute name
+        and value being the value of the attribute
+        """
+        return { 'id' : self.id, 'name' : self.name, 'cuisine_id' : self.cuisine.id }
 
 """
 Dish contains two foreign keys of a restaurant and a generic dish
@@ -195,6 +240,32 @@ class Dish(models.Model) :
                'description' : self.description
                }
 
+    def getDict(self):
+        """
+        returns all of the elements in the class
+        in a dictionary with key being the attribute name
+        and value being the value of the attribute
+        """
+        return {
+               'id' : self.id,
+               'name' : self.name,
+               'star_avg_rating' : self.star_avg_rating,
+               'star_num_ratings' : self.star_num_ratings,
+               'star_sum_ratings' : self.star_sum_ratings,
+               'dollar_avg_rating' : self.dollar_avg_rating,
+               'dollar_num_ratings' : self.dollar_num_ratings,
+               'dollar_sum_ratings' : self.dollar_sum_ratings,
+               'vegetarian' : self.vegetarian,
+               'vegan' : self.vegan,
+               'kosher' : self.kosher,
+               'halal' : self.halal,
+               'nut_allergy' : self.nut_allergy,
+               'restaurant_id' : self.restaurant.id,
+               'generic_dish_id' : self.generic_dish.id,
+               'cuisine_id' : self.cuisine.id,
+               'description' : self.description
+               }
+
 
 """
 Restaurant Review contains two foreign keys from Customer and Restaurant
@@ -222,7 +293,22 @@ class RestaurantReview(models.Model) :
                 "review_comment":self.review_comment,
                 'customer' : self.customer,
                 'restaurant' : self.restaurant
-                        }
+                }
+
+    def getDict(self):
+        """
+        returns all of the elements in the class
+        in a dictionary with key being the attribute name
+        and value being the value of the attribute
+        """
+        return {
+                "id" : self.id,
+                "star_rating": self.star_rating,
+                "dollar_rating":self.dollar_rating,
+                "review_comment":self.review_comment,
+                'customer_id' : self.customer.id,
+                'restaurant_id' : self.restaurant.id
+                }
 
 """
 Dish Review contains two foreign keys from Customer and Dish
@@ -249,4 +335,19 @@ class DishReview(models.Model) :
                 'review_comment' : self.review_comment,
                 'customer' : self.customer,
                 'dish' : self.dish
+               }
+
+    def getDict(self):
+        """
+        returns all of the elements in the class
+        in a dictionary with key being the attribute name
+        and value being the value of the attribute
+        """
+        return {
+                'id' : self.id,
+                'star_rating' : self.star_rating,
+                'dollar_rating' : self.dollar_rating,
+                'review_comment' : self.review_comment,
+                'customer_id' : self.customer.id,
+                'dish_id' : self.dish.id
                }
