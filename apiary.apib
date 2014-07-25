@@ -528,8 +528,7 @@ Get a single dishes's details:
 + Parameters
     + id (required, number, `1`) ... Numeric `id` of the dish to perform action with. Has example value.
 
-+ Response 200 (OK)
-Content-Type: application/json
++ Response 200 (application/json)
 
     + Body
 
@@ -665,7 +664,7 @@ Get attributes of a generic dish type.
     + Body
 
             { 
-              "Error" : "No generic dish found."
+                "Error" : "No generic dish found."
             }
 
 ## GET /genericdishes/{id}/dishes/json
@@ -747,7 +746,7 @@ Get a list of dishes categorized under a generic dish type.
     + Body
 
             { 
-              "Error" : "No generic dish dishes found."
+                "Error" : "No generic dish dishes found."
             }
 
 # Group Cuisines
