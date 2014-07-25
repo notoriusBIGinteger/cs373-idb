@@ -311,17 +311,17 @@ Get a list of all customers.
                     {
                         "id": 1,
                         "name": "Kevin Wheeler",
-                        "description" : ""
+                        "description" : "I love to try new food!"
                     },
                     {
                         "id": 2,
                         "name": "Mike Wham",
-                        "description" : ""
+                        "description" : "vegan junk-food enthusiast"
                     },
                     {
                         "id": "3",
                         "name": "Omar Lalani",
-                        "description" : ""
+                        "description" : "I gotta have a good meal"
                     }
                 ]
             }
@@ -339,6 +339,7 @@ Get a single customers's details:
 
 - Customer ID
 - Name
+- Description
 
 + Parameters
     + id (required, number, `1`) ... Numeric `id` of the customer to perform action with. Has example value.
@@ -350,9 +351,8 @@ Get a single customers's details:
 
             { 
               "id" : "3",
-              "name" : "Omar Lalani"
-              "description" : "I'm an austin local and have spent the past 6 years eating out at various restaurants on a college 
-              students budget. Learn from my experiences :)"
+              "name" : "Omar Lalani",
+              "description" : "I gotta have a good meal"
             }
 
 + Response 404 (application/json)
@@ -378,16 +378,16 @@ Get a list of restaurant reviews by a specific customer.
                     {
                         "id" : 1,
                         "star_rating" : 5,
-                        "review_comment" : "The ambience is pretty nice, great date spot!!!"
+                        "review_comment" : "The ambience is pretty nice, great date spot!!!",
                         "customer_id" : 1,
-                        "restaurant_id" : 4, 
+                        "restaurant_id" : 4 
                     },
                     {
                         "id" : 5,
                         "star_rating" : 4,
-                        "review_comment" : "Menu selection is HUGE!!! Lots to choose from and something for everyone."
+                        "review_comment" : "Menu selection is HUGE!!! Lots to choose from and something for everyone.",
                         "customer_id" : 1,
-                        "restaurant_id" : 4, 
+                        "restaurant_id" : 4 
                     }
                 ]
             }
@@ -414,18 +414,18 @@ Get a list of dish reviews by a specific customer.
             { 
                 "Customer Dish Reviews": [
                     {
-                        "id" : 6
+                        "id" : 6,
                         "star_rating" : 2,
                         "dollar_rating" : 3,
-                        "review_comment" : "Tortillas were mad soggy."
+                        "review_comment" : "Tortillas were mad soggy.",
                         "customer_id" : 1,
                         "dish_id" : 12, 
                     },
                     {
-                        "id" : 7
+                        "id" : 7,
                         "star_rating" : 3,
                         "dollar_rating" : 2,
-                        "review_comment" : "Love me some crunchy iceberg lettuce!"
+                        "review_comment" : "Love me some crunchy iceberg lettuce!",
                         "customer_id" : 1,
                         "dish_id" : 13, 
                     }
@@ -577,7 +577,7 @@ Get a list of reviews of a specific dish.
                         "id" : 1, 
                         "star_rating" : 1,
                         "dollar_rating" : 2,
-                        "review_comment" : "Tortillas were soggy."
+                        "review_comment" : "Tortillas were soggy.",
                         "customer_id" : 4,
                         "dish_id" : 12
                     },
@@ -585,7 +585,7 @@ Get a list of reviews of a specific dish.
                         "id" : 3, 
                         "star_rating" : 2,
                         "dollar_rating" : 3,
-                        "review_comment" : "I would rather have fried fish but I suppose this option is healthier."
+                        "review_comment" : "I would rather have fried fish but I suppose this option is healthier.",
                         "customer_id" : 2,
                         "dish_id" : 12                    
                     }
