@@ -1,9 +1,12 @@
+@media all and (min-width: 1024px) {
 .masthead
 {
 background-image:url("../img/kerbeylane.jpg");
 background-position:left bottom;
-height:285px;
+height:22em;
+max-height:285px;
 overflow:hidden;
+}
 }
 .jumbotron
 {
@@ -69,10 +72,11 @@ margin-right:3%;
 {
 float:right; padding:2px;
 }
-
 #food-carousel {
-margin-bottom:1.5%;
-height:285px;
+	margin-bottom:1.5%;}
+@media all and (min-width: 1024px) {
+#food-carousel {
+height:22em;
 max-height:285px;
-}
+}}
 .carousel-caption { display:none;}
