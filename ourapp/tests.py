@@ -702,7 +702,6 @@ class Tests(TestCase):
                   }
         return retDict
 
-    #--------------------------Omar------------------------------------------#
     def test_dish_json_1(self):
         Tests.model_instances()
         response = self.client.get(reverse('dishesjson', args=['json']))
@@ -769,6 +768,14 @@ class Tests(TestCase):
 
         self.assertEqual(dish.getDict(), jresponse);
 
+    def test_adish_json_4(self):
+        Tests.model_instances()
+        dishes = Dish.objects.all()
+        response = self.client.get(reverse('adishjson', args=[len(dishes), 'json']))
+        b = str(response.content)[2:-1]
+        jresponse = json.loads(b)
+        self.assertEqual({"Error" : "No dish found."}, jresponse);
+
     def test_dishesrevsjson_json_1(self):
         Tests.model_instances()
         response = self.client.get(reverse('dishesrevsjson', args=[DishReview.objects.all()[0].id, 'json']))
@@ -801,10 +808,13 @@ class Tests(TestCase):
         dish = DishReview.objects.get(pk = dish_id)
 
         self.assertEqual(dish.getDict(), jresponse[0]);
-    #---------------------^-----Omar---------^---------------------------------#
 
-
-    #--------------------------Nathan----------------------------------------#
+    def test_dishesrevsjson_json_4(self):
+        Tests.model_instances()
+        response = self.client.get(reverse('dishesrevsjson', args=[len(Dish.objects.all()), 'json']))
+        b = str(response.content)[2:-1]
+        jresponse = json.loads(b)
+        self.assertEqual({"Error" : "No dish reviews found."}, jresponse);
 
     def test_rest_json_1(self):
         Tests.model_instances()
@@ -872,6 +882,13 @@ class Tests(TestCase):
 
         self.assertEqual(restaurant.getDict(), jresponse);
 
+    def test_arest_json_4(self):
+        Tests.model_instances()
+        response = self.client.get(reverse('arestjson', args=[len(Restaurant.objects.all()), 'json']))
+        b = str(response.content)[2:-1]
+        jresponse = json.loads(b)
+        self.assertEqual({"Error" : "No restaurant found."}, jresponse);
+
     def test_restdish_json_1(self):
         Tests.model_instances()
         response = self.client.get(reverse('restdishjson', args=[Restaurant.objects.all()[0].id, 'json']))
@@ -905,6 +922,13 @@ class Tests(TestCase):
 
         self.assertEqual(dish.getDict(), jresponse['Restaurant Dishes'][0]);
 
+    def test_restdish_json_4(self):
+        Tests.model_instances()
+        response = self.client.get(reverse('restdishjson', args=[len(Restaurant.objects.all()), 'json']))
+        b = str(response.content)[2:-1]
+        jresponse = json.loads(b)
+        self.assertEqual({"Error" : "No restaurant dishes found."}, jresponse);
+
     def test_restrev_json_1(self):
         Tests.model_instances()
         response = self.client.get(reverse('restrevjson', args=[Restaurant.objects.all()[0].id, 'json']))
@@ -937,6 +961,13 @@ class Tests(TestCase):
         review = RestaurantReview.objects.get(restaurant_id = restaurant_id)
 
         self.assertEqual(review.getDict(), jresponse['Restaurant Reviews'][0]);
+
+    def test_restrev_json_4(self):
+        Tests.model_instances()
+        response = self.client.get(reverse('restrevjson', args=[len(Restaurant.objects.all()), 'json']))
+        b = str(response.content)[2:-1]
+        jresponse = json.loads(b)
+        self.assertEqual({"Error" : "No restaurant reviews found."}, jresponse);
 
     def test_custs_json_1(self):
         Tests.model_instances()
@@ -1004,6 +1035,13 @@ class Tests(TestCase):
 
         self.assertEqual(customer.getDict(), jresponse);
 
+    def test_acust_json_4(self):
+        Tests.model_instances()
+        response = self.client.get(reverse('acustjson', args=[len(Customer.objects.all()), 'json']))
+        b = str(response.content)[2:-1]
+        jresponse = json.loads(b)
+        self.assertEqual({"Error" : "No customer found."}, jresponse);
+
     def test_restrevs_json_1(self):
         Tests.model_instances()
         response = self.client.get(reverse('restrevsjson', args=[Customer.objects.all()[0].id, 'json']))
@@ -1037,6 +1075,13 @@ class Tests(TestCase):
 
         self.assertEqual(rest_review.getDict(), jresponse['Customer Restaurant Reviews'][0]);
 
+    def test_restrevs_json_4(self):
+        Tests.model_instances()
+        response = self.client.get(reverse('restrevsjson', args=[len(Customer.objects.all()), 'json']))
+        b = str(response.content)[2:-1]
+        jresponse = json.loads(b)
+        self.assertEqual({"Error" : "No customer restaurant reviews found."}, jresponse);
+
     def test_dishrevs_json_1(self):
         Tests.model_instances()
         response = self.client.get(reverse('dishrevsjson', args=[Customer.objects.all()[0].id, 'json']))
@@ -1069,6 +1114,13 @@ class Tests(TestCase):
         dish_review = DishReview.objects.get(customer_id = customer_id)
 
         self.assertEqual(dish_review.getDict(), jresponse['Customer Dish Reviews'][0]);
+
+    def test_dishrevs_json_4(self):
+        Tests.model_instances()
+        response = self.client.get(reverse('dishrevsjson', args=[len(Customer.objects.all()), 'json']))
+        b = str(response.content)[2:-1]
+        jresponse = json.loads(b)
+        self.assertEqual({"Error" : "No customer dish reviews found."}, jresponse);
 
     def test_gdishes_json_1(self):
         Tests.model_instances()
@@ -1136,6 +1188,13 @@ class Tests(TestCase):
 
         self.assertEqual(gen_dish.getDict(), jresponse);
 
+    def test_agdish_json_4(self):
+        Tests.model_instances()
+        response = self.client.get(reverse('agdishjson', args=[len(GenericDish.objects.all()), 'json']))
+        b = str(response.content)[2:-1]
+        jresponse = json.loads(b)
+        self.assertEqual({"Error" : "No generic dish found."}, jresponse);
+
     def test_agdishdishes_json_1(self):
         Tests.model_instances()
         response = self.client.get(reverse('agdishdishesjson', args=[GenericDish.objects.all()[0].id, 'json']))
@@ -1169,7 +1228,12 @@ class Tests(TestCase):
 
         self.assertEqual(dish.getDict(), jresponse['Dishes'][0]);
 
-    #---------------------^-----Nathan---------^-----------------------------#
+    def test_agdishdishes_json_4(self):
+        Tests.model_instances()
+        response = self.client.get(reverse('agdishdishesjson', args=[len(GenericDish.objects.all()), 'json']))
+        b = str(response.content)[2:-1]
+        jresponse = json.loads(b)
+        self.assertEqual({"Error" : "No generic dish dishes found."}, jresponse);
 
     def test_cuisines_json_1(self):
         Tests.model_instances()
@@ -1228,6 +1292,13 @@ class Tests(TestCase):
         cuisine = Cuisine.objects.get(pk = cid)
         self.assertEqual(cuisine.getDict(), jresponse);
 
+    def test_a_cuisine_json_4(self):
+        Tests.model_instances()
+        response = self.client.get(reverse('acuisinejson', args=[len(Cuisine.objects.all()), 'json']))
+        b = str(response.content)[2:-1]
+        jresponse = json.loads(b)
+        self.assertEqual({"Error" : "No cuisine found."}, jresponse);
+
     def test_cuisines_dishes_json_1(self):
         Tests.model_instances()
         cuisines = Cuisine.objects.all()
@@ -1263,33 +1334,6 @@ class Tests(TestCase):
         jresponse = json.loads(b)
         self.assertEqual({"Error" : "No cuisine dishes found."}, jresponse);
 
-#    def test_cuisines_dishes_json_2(self):
-#        Tests.model_instances()
-#        cuisines = Cuisine.objects.all()
-#        cid = cuisines[1].id
-#        response = self.client.get(reverse('acuisinesdishesjson', args=[cid, 'json']))
-#        b = str(response.content)[2:-1]
-#        jresponse = json.loads(b)
-#        cuisine = Cuisine.objects.get(pk = cid)
-#        dishList = []
-#        for dish in cuisine.dish_set.all():
-#          dishList.append(dish.getDict())
-#        self.assertEqual(dishList, jresponse['Cuisine Dishes']);
-#
- #   def test_cuisines_dishes_json_3(self):
- #       Tests.model_instances()
- #       cuisines = Cuisine.objects.all()
- #       cid = cuisines[2].id
- #       response = self.client.get(reverse('acuisinesdishesjson', args=[cid, 'json']))
- #       b = str(response.content)[2:-1]
- #       print("\n\n\n'response = ", b, '\n\n\n')
- #       jresponse = json.loads(b)
- #       cuisine = Cuisine.objects.get(pk = cid)
- #       dishList = []
- #       for dish in cuisine.dish_set.all():
- #         dishList.append(dish.getDict())
- #       self.assertEqual(dishList, jresponse['Cuisine Dishes']);
-
     def test_cuisines_restaurants_json_1(self):
         Tests.model_instances()
         cuisines = Cuisine.objects.all()
@@ -1324,4 +1368,3 @@ class Tests(TestCase):
         b = str(response.content)[2:-1]
         jresponse = json.loads(b)
         self.assertEqual({"Error" : "No cuisine restaurants found."}, jresponse);
-
