@@ -1,3 +1,9 @@
+from urllib.request import urlopen
+import requests
+from bs4 import BeautifulSoup
+from html.parser import HTMLParser
+import re
+from django.db.models import Q
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import Http404
@@ -6,6 +12,10 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework.renderers import JSONRenderer
 from ourapp.models import *
 from ourapp.serializers import *
+from twitter import *
+import json
+import requests
+from django.core.urlresolvers import reverse
 
 def splash(request):
     context = {}
@@ -58,10 +68,23 @@ def restaurant_detail(request, pk, format=None):
     """
     Retrieve a Restaurant's details.
     """
+    rest = {"1":"#hydeparkbarandgrill","2":"#magnoliacafe","3":"#changthai"}
     try:
         restaurant = Restaurant.objects.get(id = pk)
         dish_results = Dish.objects.all().filter(restaurant = pk)
         customer_reviews = RestaurantReview.objects.all().filter(restaurant = pk)
+        t = Twitter(
+            auth=OAuth('2678149836-qlByM0SSADzChlFzrcZsmvQagsjhOqCm1lgON87', 'QuqqOy5N9xlHRnmQk7W88nA9yLtG3CgnNXfV0avcsXwwg',
+                       'BqmrjxAmBB6YzG5qsoWEcpMvg', 'ZosP5zX4h3AD9zBc6YFaHoLZw9WSognRqGeF6uz7PYGmGyDaeJ')
+           )
+        name_lower = restaurant.name.replace(" ", "")
+        name = "#" + name_lower
+        d = json.loads(json.dumps(t.search.tweets(q="#hello", count=5)))
+        twitter_response = []
+        for line in d["statuses"]:
+            twitter_response.append((line["user"]["name"],line["text"]))
+
+
     except Restaurant.DoesNotExist:
         if format is None :
             return HttpResponse(content='No restaurant found.', status=404)
@@ -70,8 +93,9 @@ def restaurant_detail(request, pk, format=None):
 
     if request.method == 'GET':
         if format is None :
+            #return StreamingHttpResponse(twitter_response)
             return render_to_response('ourapp/restaurant_attributes.html', { 'restaurant' : restaurant , 'dish_results' : dish_results,
-            'customer_reviews' : customer_reviews })
+            'customer_reviews' : customer_reviews, 'twitter_response': twitter_response,})
         elif format.lower() == 'json' :
             serializer = RestaurantSerializer(restaurant)
             return JSONResponse(serializer.data)
@@ -451,7 +475,7 @@ def cuisine_restaurants(request, pk, format=None):
             return render_to_response('ourapp/cuisine_restaurants.html', { 'dish_restaurant' : restaurants })
         if format.lower() == 'json' :
             serializer = RestaurantSerializer(restaurants, many=True)
-            return JSONResponse({ 'Cuisine Restuarants' : serializer.data })
+            return JSONResponse({ 'Cuisine Restaurants' : serializer.data })
 
 @csrf_exempt
 def cuisine_dishes(request, pk, format=None):
@@ -483,3 +507,230 @@ def about(request):
     Render the "about us" page.
     """
     return render(request, 'ourapp/about_us.html')
+
+@csrf_exempt
+def the_austinites(request) :
+    """
+    Request all data from the Austinites API and store in dictionary, then
+    render HTML response.
+    """
+    api_data = {}
+    api_data['all'] = {'stages' : None, 'sponsors' : None, 'artists' : None}
+
+    for k in api_data['all'] :
+	    x = requests.get("http://theaustinites.pythonanywhere.com/api/" + k + "/")
+	    api_data['all'][k] = x.json()
+
+    for k in api_data['all'] :
+	    for d in api_data['all'][k] :
+		    x = requests.get("http://theaustinites.pythonanywhere.com/api/" + k + "/"
+			    + str(d['id']) + "/media/")
+		    d['media'] = x.json()
+
+    return render_to_response('ourapp/nathan_test.html', { 'austinitesAPI' : api_data['all'] } )
+
+@csrf_exempt
+def search_results(request) :
+    """
+    Render the "about us" page.
+    """
+    return render(request, 'ourapp/results.html')
+
+
+def normalize_query(query_string):
+    return query_string.split()
+
+
+def get_and_query(terms, search_fields): # changed to take terms directly instead of string.
+    ''' Returns a query, that is a combination of Q objects. That combination
+    aims to search keywords within a model by testing the given search fields.
+
+    '''
+    query = None # Query to search for every search term
+    for term in terms:
+        or_query = None # Query to search for a given term in each field
+        for field_name in search_fields: # if any of the fields contain it.
+            q = Q(**{"%s__icontains" % field_name: term})
+            if or_query is None:
+                or_query = q
+            else:
+                or_query = or_query | q
+        if query is None:
+            query = or_query
+        else:
+            query = query & or_query
+    return query
+
+def get_or_query(terms, search_fields): # changed to take terms directly instead of string.
+    ''' Returns a query, that is a combination of Q objects. That combination
+    aims to search keywords within a model by testing the given search fields.
+
+    '''
+    query = None # Query to search for every search term
+    for term in terms:
+        or_query = None # Query to search for a given term in each field
+        for field_name in search_fields: # if any of the fields contain it.
+            q = Q(**{"%s__icontains" % field_name: term})
+            if or_query is None:
+                or_query = q
+            else:
+                or_query = or_query | q
+        if query is None:
+            query = or_query
+        else:
+            query = query & or_query
+    return query
+
+def getDishAndInstances(terms):
+    andQObject = get_and_query(terms, ['name', 'description'])
+    return Dish.objects.filter(andQObject)
+
+def getRestAndInstances(terms):
+    andQObject = get_and_query(terms, ['name', 'description'])
+    return Restaurant.objects.filter(andQObject)
+
+def getDishOrInstances(terms):
+    andQObject = get_or_query(terms, ['name', 'description'])
+    return Dish.objects.filter(andQObject)
+
+def getRestOrInstances(terms):
+    andQObject = get_or_query(terms, ['name', 'description'])
+    return Restaurant.objects.filter(andQObject)
+
+def getDishResults(inst, terms, resultDict):
+    """given a dish instance, a list of search terms, and a dictionary
+    where the keys are url strings, and the values are search result text
+    strings for the corresponding url, update the dictionary TODO.'
+    inst = Dish objects
+    terms = ['name','description']
+    {'url':'text...'}
+    """
+    # first see if this object is already in the result
+    # if it is, append to the text, if not create it.
+    url = reverse('adishjson',args=[inst.id])
+    text = inst.name + "..." + inst.description + "..."
+    if url in resultDict:
+        resultDict[url] = text + resultDict[url]
+    else:
+        resultDict[url] = text
+
+    #Now handle all the dishes similar to the inst object
+    similar_dishes = Dish.objects.all().filter(generic_dish = inst.generic_dish)
+    for dish in similar_dishes:
+        if dish.name != inst.name:
+            url = reverse('adishjson',args=[dish.id])
+            text = "Similar Dishes..." + inst.name + "..."
+
+            if url in resultDict:
+                resultDict[url] += text
+            else:
+                resultDict[url] = text
+
+    return resultDict
+
+def getRestResults(inst, terms, resultDict):
+    """given a dish instance, a list of search terms, and a dictionary
+    where the keys are url strings, and the values are search result text
+    strings for the corresponding url, update the dictionary TODO.
+    """
+    url = reverse('arestjson', args=[inst.id])
+    resultDict[url] = {'stub. rest name = ' + inst.name}
+
+def getAndInstances(terms):
+    retList = []
+    retList += list(getDishAndInstances(terms))
+    retList += list(getRestAndInstances(terms))
+    return retList
+
+def getOrInstances(terms):
+    retList = []
+    retList += list(getDishOrInstances(terms))
+    retList += list(getRestOrInstances(terms))
+    return retList
+
+def getAndResults(andInstanceList, terms):
+    result = {}
+    for inst in andInstanceList:
+        if type(inst) == Dish:
+            getDishResults(inst, terms, result)
+        if type(inst) == Restaurant:
+            getRestResults(inst, terms, result)
+    return result
+
+def getOrResults(orInstanceList, terms):
+    result = {}
+    for inst in orInstanceList:
+        if type(inst) == Dish:
+            getDishResults(inst, terms, result)
+        if type(inst) == Restaurant:
+            getRestResults(inst, terms, result)
+    return result
+
+class MLStripper(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.reset()
+        self.fed = []
+    def handle_data(self, d):
+        self.fed.append(d)
+    def get_data(self):
+        return ''.join(self.fed)
+
+def strip_tags(html):
+    s = MLStripper()
+    s.feed(html)
+    return s.get_data()
+
+def get_text(url):
+    """ Given a url, returns the body of the http response with all HTML
+    stripped out.
+    Make sure input url starts with "http://"
+    """
+    r = requests.get(url)
+    return strip_tags(r.text)
+
+def search(request, string):
+   # address="http://notoriousbiginteger.pythonanywhere.com/restaurants/1/"
+   # html = urlopen(address).read()
+    html = restaurant_detail(request, 1).content
+    soup = BeautifulSoup(html)
+    retString = ""
+    for p_tag in soup.find_all('p'):
+        retString += str(p_tag.text)
+    #txt = soup.body.getText()
+    return HttpResponse(retString)
+   # myString = get_text("http://www.yahoo.com")
+   # return HttpResponse(myString)
+
+
+#def search(request, string):
+#    terms = normalize_query(string)
+#    andInstanceList = getAndInstances(terms)
+#    andResultDict = getAndResults(andInstanceList, terms)
+#    orInstanceList = getOrInstances(terms)
+#    orResultDict = getOrResults(orInstanceList, terms)
+#    retList = [andResultDict, "-----"*50, orResultDict]
+#    return HttpResponse(str(retList))
+#   # retString = ', '.join(str(item) for item in andInstanceList)
+#   #  return HttpResponse(retString)
+#   # orInstanceList = getOrInstances(queryList)
+#   # andJSON = getAndJSON(queryList, andInstanceList)
+#   # orJSON = getOrJSON(queryList, orInstanceList)
+
+#@csrf_exempt
+#def search(request, string):
+#    searchFields = ['name', 'description']
+#    qObject = get_query(string, searchFields)
+#    found_entries = Dish.objects.filter(qObject)
+#    retString = ""
+#    for entry in found_entries:
+#        retString += entry.name
+#    return HttpResponse(retString)
+#    query_string = ''
+#    found_entries = None
+#    if ('q' in request.GET) and request.GET['q'].strip():
+#        query_string = request.GET['q']
+#        entry_query = get_query(query_string, ['title', 'body',])
+#        found_entries = Entry.objects.filter(entry_query)#.order_by('-pub_date')
+#    return render_to_response('search/search_results.html',
+#        { 'query_string': query_string, 'found_entries': found_entries },

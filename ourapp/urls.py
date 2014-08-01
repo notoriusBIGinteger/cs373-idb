@@ -1,4 +1,4 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import patterns, url, include
 
 from ourapp import views
 
@@ -23,5 +23,9 @@ url(r'^cuisines/([0-9]+)/(json)?$', views.cuisine_detail, name = 'acuisinejson')
 url(r'^cuisines/([0-9]+)/dishes/(json)?$', views.cuisine_dishes, name = 'acuisinesdishesjson'),
 url(r'^cuisines/([0-9]+)/restaurants/(json)?$', views.cuisine_restaurants, name = 'acuisinesrestsjson'),
 url(r'^about$', views.about, name = 'about'),
-url(r'splash/$', views.splash, name = 'splash'),
+url(r'^splash/$', views.splash, name = 'splash'),
+url(r'^theaustinites/$', views.the_austinites, name = 'austinites'),
+url(r'^results/$', views.search_results, name = 'searchresults'),
+#url(r'^search/', include('haystack.urls')),
+url(r'^search/(.*)', views.search, name = 'search'),
 )
