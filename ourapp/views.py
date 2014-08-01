@@ -520,12 +520,14 @@ def the_austinites(request) :
     for k in api_data['all'] :
 	    x = requests.get("http://theaustinites.pythonanywhere.com/api/" + k + "/")
 	    api_data['all'][k] = x.json()
+	    x.close()
 
     for k in api_data['all'] :
 	    for d in api_data['all'][k] :
 		    x = requests.get("http://theaustinites.pythonanywhere.com/api/" + k + "/"
 			    + str(d['id']) + "/media/")
 		    d['media'] = x.json()
+		    x.close()
 
     return render_to_response('ourapp/nathan_test.html', { 'austinitesAPI' : api_data['all'] } )
 
@@ -538,199 +540,252 @@ def search_results(request) :
 
 
 def normalize_query(query_string):
-    return query_string.split()
+    return query_string.lower().split()
 
 
-def get_and_query(terms, search_fields): # changed to take terms directly instead of string.
-    ''' Returns a query, that is a combination of Q objects. That combination
-    aims to search keywords within a model by testing the given search fields.
+#def get_and_query(terms, search_fields): # changed to take terms directly instead of string.
+#    ''' Returns a query, that is a combination of Q objects. That combination
+#    aims to search keywords within a model by testing the given search fields.
+#
+#    '''
+#    query = None # Query to search for every search term
+#    for term in terms:
+#        or_query = None # Query to search for a given term in each field
+#        for field_name in search_fields: # if any of the fields contain it.
+#            q = Q(**{"%s__icontains" % field_name: term})
+#            if or_query is None:
+#                or_query = q
+#            else:
+#                or_query = or_query | q
+#        if query is None:
+#            query = or_query
+#        else:
+#            query = query & or_query
+#    return query
+#
+#def get_or_query(terms, search_fields): # changed to take terms directly instead of string.
+#    ''' Returns a query, that is a combination of Q objects. That combination
+#    aims to search keywords within a model by testing the given search fields.
+#
+#    '''
+#    query = None # Query to search for every search term
+#    for term in terms:
+#        or_query = None # Query to search for a given term in each field
+#        for field_name in search_fields: # if any of the fields contain it.
+#            q = Q(**{"%s__icontains" % field_name: term})
+#            if or_query is None:
+#                or_query = q
+#            else:
+#                or_query = or_query | q
+#        if query is None:
+#            query = or_query
+#        else:
+#            query = query & or_query
+#    return query
+#
+#def getDishAndInstances(terms):
+#    andQObject = get_and_query(terms, ['name', 'description'])
+#    return Dish.objects.filter(andQObject)
+#
+#def getRestAndInstances(terms):
+#    andQObject = get_and_query(terms, ['name', 'description'])
+#    return Restaurant.objects.filter(andQObject)
+#
+#def getDishOrInstances(terms):
+#    andQObject = get_or_query(terms, ['name', 'description'])
+#    return Dish.objects.filter(andQObject)
+#
+#def getRestOrInstances(terms):
+#    andQObject = get_or_query(terms, ['name', 'description'])
+#    return Restaurant.objects.filter(andQObject)
+#
+#def getDishResults(inst, terms, resultDict):
+#    """given a dish instance, a list of search terms, and a dictionary
+#    where the keys are url strings, and the values are search result text
+#    strings for the corresponding url, update the dictionary TODO.'
+#    inst = Dish objects
+#    terms = ['name','description']
+#    {'url':'text...'}
+#    """
+#    # first see if this object is already in the result
+#    # if it is, append to the text, if not create it.
+#    url = reverse('adishjson',args=[inst.id])
+#    text = inst.name + "..." + inst.description + "..."
+#    if url in resultDict:
+#        resultDict[url] = text + resultDict[url]
+#    else:
+#        resultDict[url] = text
+#
+#    #Now handle all the dishes similar to the inst object
+#    similar_dishes = Dish.objects.all().filter(generic_dish = inst.generic_dish)
+#    for dish in similar_dishes:
+#        if dish.name != inst.name:
+#            url = reverse('adishjson',args=[dish.id])
+#            text = "Similar Dishes..." + inst.name + "..."
+#
+#            if url in resultDict:
+#                resultDict[url] += text
+#            else:
+#                resultDict[url] = text
+#
+#    return resultDict
+#
+#def getRestResults(inst, terms, resultDict):
+#    """given a dish instance, a list of search terms, and a dictionary
+#    where the keys are url strings, and the values are search result text
+#    strings for the corresponding url, update the dictionary TODO.
+#    """
+#    url = reverse('arestjson', args=[inst.id])
+#    resultDict[url] = {'stub. rest name = ' + inst.name}
+#
+#def getAndInstances(terms):
+#    retList = []
+#    retList += list(getDishAndInstances(terms))
+#    retList += list(getRestAndInstances(terms))
+#    return retList
+#
+#def getOrInstances(terms):
+#    retList = []
+#    retList += list(getDishOrInstances(terms))
+#    retList += list(getRestOrInstances(terms))
+#    return retList
+#
+#def getAndResults(andInstanceList, terms):
+#    result = {}
+#    for inst in andInstanceList:
+#        if type(inst) == Dish:
+#            getDishResults(inst, terms, result)
+#        if type(inst) == Restaurant:
+#            getRestResults(inst, terms, result)
+#    return result
+#
+#def getOrResults(orInstanceList, terms):
+#    result = {}
+#    for inst in orInstanceList:
+#        if type(inst) == Dish:
+#            getDishResults(inst, terms, result)
+#        if type(inst) == Restaurant:
+#            getRestResults(inst, terms, result)
+#    return result
 
-    '''
-    query = None # Query to search for every search term
+def urlContentPairs(request):
+    """
+    Input a HttpRequest just so we have something to call our views with.
+    Returns a generator that yields length two tuples. The first element of
+    the tuple will be a url and the second element will be a string with
+    the contents the html document associated with that url (with all html
+    tags, css, javascript still included).
+    """
+    for rest in Restaurant.objects.all():
+        restUrl = reverse('arestjson', args=[rest.id])
+        html = restaurant_detail(request, rest.id).content
+        yield (restUrl, html)
+
+    for dish in Dish.objects.all():
+        dishUrl = reverse('adishjson', args=[dish.id])
+        html = dish_detail(request, dish.id).content
+        yield (dishUrl, html)
+
+    indexUrl = reverse('index')
+    html = index(request).content
+    yield (indexUrl, html)
+
+    aboutUrl = reverse('about')
+    html = about(request).content
+    yield (aboutUrl, html)
+
+
+
+def urlStrippedContentPairs(request):
+    """
+    Input: a generator that yields length two tuples, the first element will be
+    a URL and the second element will be the html/css/javascript content of that
+    URL.
+
+    Also input a request just so urlContentPairs() has something to call 
+    views with.
+
+    Output: a generator that yields length two tuples, the first element will
+    be a URL, and the second element will be the text content of that URL after
+    stripping out all html/css/javascript.
+    """
+    urlContentGen = urlContentPairs(request)
+    for url, content in urlContentGen:
+        yield (url, myStrip(content))
+
+def myStrip(string):
+    """ Given an html document sent as a string, strips out all of the
+    html/css/javscript and return the resulting text as a string
+    """
+    soup = BeautifulSoup(string)
+    retString = ""
+    for p_tag in soup.find_all('p'):
+        retString += str(p_tag.text)
+    return retString
+
+def andResultsBlah(string, terms):
+    """
+       Takes in a string and a list of terms to search for. If the string
+       contains all of the terms then it will return the string with tags
+       around the matched terms. Else returns None.
+    """
+    lowerString = string.lower()
     for term in terms:
-        or_query = None # Query to search for a given term in each field
-        for field_name in search_fields: # if any of the fields contain it.
-            q = Q(**{"%s__icontains" % field_name: term})
-            if or_query is None:
-                or_query = q
-            else:
-                or_query = or_query | q
-        if query is None:
-            query = or_query
-        else:
-            query = query & or_query
-    return query
+        if not term in lowerString:
+            return None
+    return string
 
-def get_or_query(terms, search_fields): # changed to take terms directly instead of string.
-    ''' Returns a query, that is a combination of Q objects. That combination
-    aims to search keywords within a model by testing the given search fields.
-
-    '''
-    query = None # Query to search for every search term
+def orResultsBlah(string, terms):
+    """
+       Takes in a string and a list of terms to search for. If the string
+       contains any of the terms then it will return the string with tags
+       around the matched terms. Else returns None.
+    """
+    lowerString = string.lower()
+    foundSomething = False
     for term in terms:
-        or_query = None # Query to search for a given term in each field
-        for field_name in search_fields: # if any of the fields contain it.
-            q = Q(**{"%s__icontains" % field_name: term})
-            if or_query is None:
-                or_query = q
-            else:
-                or_query = or_query | q
-        if query is None:
-            query = or_query
-        else:
-            query = query & or_query
-    return query
+        if term in lowerString:
+            foundSomething = True
+            break
 
-def getDishAndInstances(terms):
-    andQObject = get_and_query(terms, ['name', 'description'])
-    return Dish.objects.filter(andQObject)
+    if not foundSomething:
+        return None
 
-def getRestAndInstances(terms):
-    andQObject = get_and_query(terms, ['name', 'description'])
-    return Restaurant.objects.filter(andQObject)
-
-def getDishOrInstances(terms):
-    andQObject = get_or_query(terms, ['name', 'description'])
-    return Dish.objects.filter(andQObject)
-
-def getRestOrInstances(terms):
-    andQObject = get_or_query(terms, ['name', 'description'])
-    return Restaurant.objects.filter(andQObject)
-
-def getDishResults(inst, terms, resultDict):
-    """given a dish instance, a list of search terms, and a dictionary
-    where the keys are url strings, and the values are search result text
-    strings for the corresponding url, update the dictionary TODO.'
-    inst = Dish objects
-    terms = ['name','description']
-    {'url':'text...'}
-    """
-    # first see if this object is already in the result
-    # if it is, append to the text, if not create it.
-    url = reverse('adishjson',args=[inst.id])
-    text = inst.name + "..." + inst.description + "..."
-    if url in resultDict:
-        resultDict[url] = text + resultDict[url]
-    else:
-        resultDict[url] = text
-
-    #Now handle all the dishes similar to the inst object
-    similar_dishes = Dish.objects.all().filter(generic_dish = inst.generic_dish)
-    for dish in similar_dishes:
-        if dish.name != inst.name:
-            url = reverse('adishjson',args=[dish.id])
-            text = "Similar Dishes..." + inst.name + "..."
-
-            if url in resultDict:
-                resultDict[url] += text
-            else:
-                resultDict[url] = text
-
-    return resultDict
-
-def getRestResults(inst, terms, resultDict):
-    """given a dish instance, a list of search terms, and a dictionary
-    where the keys are url strings, and the values are search result text
-    strings for the corresponding url, update the dictionary TODO.
-    """
-    url = reverse('arestjson', args=[inst.id])
-    resultDict[url] = {'stub. rest name = ' + inst.name}
-
-def getAndInstances(terms):
-    retList = []
-    retList += list(getDishAndInstances(terms))
-    retList += list(getRestAndInstances(terms))
-    return retList
-
-def getOrInstances(terms):
-    retList = []
-    retList += list(getDishOrInstances(terms))
-    retList += list(getRestOrInstances(terms))
-    return retList
-
-def getAndResults(andInstanceList, terms):
-    result = {}
-    for inst in andInstanceList:
-        if type(inst) == Dish:
-            getDishResults(inst, terms, result)
-        if type(inst) == Restaurant:
-            getRestResults(inst, terms, result)
-    return result
-
-def getOrResults(orInstanceList, terms):
-    result = {}
-    for inst in orInstanceList:
-        if type(inst) == Dish:
-            getDishResults(inst, terms, result)
-        if type(inst) == Restaurant:
-            getRestResults(inst, terms, result)
-    return result
-
-class MLStripper(HTMLParser):
-    def __init__(self):
-        super().__init__()
-        self.reset()
-        self.fed = []
-    def handle_data(self, d):
-        self.fed.append(d)
-    def get_data(self):
-        return ''.join(self.fed)
-
-def strip_tags(html):
-    s = MLStripper()
-    s.feed(html)
-    return s.get_data()
-
-def get_text(url):
-    """ Given a url, returns the body of the http response with all HTML
-    stripped out.
-    Make sure input url starts with "http://"
-    """
-    r = requests.get(url)
-    return strip_tags(r.text)
+    return string
 
 def search(request, string):
    # address="http://notoriousbiginteger.pythonanywhere.com/restaurants/1/"
    # html = urlopen(address).read()
-    html = restaurant_detail(request, 1).content
-    soup = BeautifulSoup(html)
-    retString = ""
-    for p_tag in soup.find_all('p'):
-        retString += str(p_tag.text)
-    #txt = soup.body.getText()
-    return HttpResponse(retString)
-   # myString = get_text("http://www.yahoo.com")
-   # return HttpResponse(myString)
+#    try:
+        urlsAndStrippedConts = urlStrippedContentPairs(request)
+        orResults = []
+        andResults = []
+        terms = normalize_query(string)
+        for url, text in urlsAndStrippedConts:
+
+            andResultStr = andResultsBlah(text, terms)
+            if andResultStr:
+                andResults.append((url, andResultStr)) 
+
+            orResultStr = orResultsBlah(text, terms)
+            if orResultStr:
+                orResults.append((url, orResultStr)) 
+
+        return HttpResponse(str(andResults) + str(orResults))
+#    except Exception:
+#        return HttpResponse(str([[],[]]))
 
 
-#def search(request, string):
-#    terms = normalize_query(string)
-#    andInstanceList = getAndInstances(terms)
-#    andResultDict = getAndResults(andInstanceList, terms)
-#    orInstanceList = getOrInstances(terms)
-#    orResultDict = getOrResults(orInstanceList, terms)
-#    retList = [andResultDict, "-----"*50, orResultDict]
-#    return HttpResponse(str(retList))
-#   # retString = ', '.join(str(item) for item in andInstanceList)
-#   #  return HttpResponse(retString)
-#   # orInstanceList = getOrInstances(queryList)
-#   # andJSON = getAndJSON(queryList, andInstanceList)
-#   # orJSON = getOrJSON(queryList, orInstanceList)
 
-#@csrf_exempt
-#def search(request, string):
-#    searchFields = ['name', 'description']
-#    qObject = get_query(string, searchFields)
-#    found_entries = Dish.objects.filter(qObject)
-#    retString = ""
-#    for entry in found_entries:
-#        retString += entry.name
-#    return HttpResponse(retString)
-#    query_string = ''
-#    found_entries = None
-#    if ('q' in request.GET) and request.GET['q'].strip():
-#        query_string = request.GET['q']
-#        entry_query = get_query(query_string, ['title', 'body',])
-#        found_entries = Entry.objects.filter(entry_query)#.order_by('-pub_date')
-#    return render_to_response('search/search_results.html',
-#        { 'query_string': query_string, 'found_entries': found_entries },
+
+
+
+
+
+
+
+
+
+
+
+
