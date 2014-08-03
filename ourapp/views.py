@@ -695,7 +695,7 @@ def urlContentPairs(request):
     yield (aboutUrl, html)
 
 
-def urlStrippedContentPairs(request):
+def urlStrippedContentPairs(request, terms):
     """
     Input: a generator that yields length two tuples, the first element will be
     a URL and the second element will be the html/css/javascript content of that
@@ -710,14 +710,25 @@ def urlStrippedContentPairs(request):
     """
     urlContentGen = urlContentPairs(request)
     for url, content in urlContentGen:
-        yield (url, list(myStrip(content)))
+        yield (url, list(myStrip(content, terms)))
 
-def myStrip(string):
+def getPattern(terms):
+    """ Given a list of terms, constructs a pattern that matches any of the terms """
+    patternStr = "("
+    for term in terms:
+        patternStr += term + "|"
+    patternStr = patternStr[:-1] #chop of extra "|" character
+    patternStr += ")"
+    pat = re.compile(patternStr)
+    return pat
+
+def myStrip(string, terms):
     """ Given an html document sent as a string, strips out all of the
     html/css/javscript and return a generator that yields paragraphs
-    without html/css/javascript.
+    without html/css/javascript. Only returns paragraphs that contain a match.
     """
     soup = BeautifulSoup(string)
+    pat = getPattern(terms)
     for p_tag in soup.find_all('p'):
         yield str(p_tag.text)
 
@@ -753,16 +764,6 @@ def orResultsBlah(pList, terms):
 
     return string
 
-def getPattern(terms):
-    """ Given a list of terms, constructs a pattern that matches any of the terms """
-    patternStr = "("
-    for term in terms:
-        patternStr += term + "|"
-    patternStr = patternStr[:-1] #chop of extra "|" character
-    patternStr += ")"
-    pat = re.compile(patternStr)
-    return pat
-
 def addTags(string, terms):
     """
        Given a string and an iterable of terms (each term is a string), returns the string except with 
@@ -782,10 +783,10 @@ def search(request, string):
    # address="http://notoriousbiginteger.pythonanywhere.com/restaurants/1/"
    # html = urlopen(address).read()
 #    try:
-        urlsAndStrippedConts = urlStrippedContentPairs(request)
+        terms = normalize_query(string)
+        urlsAndStrippedConts = urlStrippedContentPairs(request, terms)
         orResults = []
         andResults = []
-        terms = normalize_query(string)
         for url, textList in urlsAndStrippedConts:
             andResultStr = andResultsBlah(textList, terms)
             if andResultStr:
