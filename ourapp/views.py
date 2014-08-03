@@ -515,19 +515,21 @@ def the_austinites(request) :
     render HTML response.
     """
     api_data = {}
-    api_data['all'] = {'stages' : None, 'sponsors' : None, 'artists' : None}
+    api_data['all'] = {'stages' : {}, 'sponsors' : {}, 'artists' : {}}
 
     for k in api_data['all'] :
 	    x = requests.get("http://theaustinites.pythonanywhere.com/api/" + k + "/")
-	    api_data['all'][k] = x.json()
-	    x.close()
+	    d = x.json();
 
-    for k in api_data['all'] :
-	    for d in api_data['all'][k] :
-		    x = requests.get("http://theaustinites.pythonanywhere.com/api/" + k + "/"
-			    + str(d['id']) + "/media/")
-		    d['media'] = x.json()
-		    x.close()
+	    for x in range(len(d)) :
+		    new_key = d[x]['name']
+		    id = d[x]['id']
+		    r = requests.get("http://theaustinites.pythonanywhere.com/api/" + k + "/"
+			    + str(id) + "/media/")
+		    api_data['all'][k][new_key] = d[x]
+		    api_data['all'][k][new_key]['media'] = r.json()
+		    r.close()
+	    x.close()
 
     return render_to_response('ourapp/nathan_test.html', { 'austinitesAPI' : api_data['all'] } )
 
@@ -546,9 +548,9 @@ def urlContentPairs(request):
     """
     Input a HttpRequest just so we have something to call our views with.
     Returns a generator that yields length two tuples. The first element of
-    the tuple will be a url and the second element will be a string with
-    the contents the html document associated with that url (with all html
-    tags, css, javascript still included).
+    the tuple will be a url and the second element will be a string containing
+    the html document associated with that url (with all html tags, css,
+    javascript still included).
     """
     for rest in Restaurant.objects.all():
         restUrl = reverse('arestjson', args=[rest.id])
@@ -568,18 +570,16 @@ def urlContentPairs(request):
     html = about(request).content
     yield (aboutUrl, html)
 
-
 def urlStrippedContentPairs(request, terms):
     """
     Input: a generator that yields length two tuples, the first element will be
-    a URL and the second element will be the html/css/javascript content of that
+    a URL and the second element will be a string containing the html content of that
     URL.
 
-    Also input a request just so urlContentPairs() has something to call 
-    views with.
+    Also input a request just so we have something to call our views with.
 
     Output: a generator that yields length two tuples, the first element will
-    be a URL, and the second element will be the a list of paragraphs from that URL
+    be a URL, the second element will be the a list of paragraphs (as strings) from that URL
     without any html/css/javascript.
     """
     urlContentGen = urlContentPairs(request)
@@ -597,9 +597,9 @@ def getPattern(terms):
     return pat
 
 def myStrip(string, terms):
-    """ Given an html document sent as a string, strips out all of the
-    html/css/javscript and return a generator that yields paragraphs
-    without html/css/javascript. Only returns paragraphs that contain a match.
+    """ Given an html document sent as a string, returns a generator that yields
+    one paragraph (text enclosed by p tags) at a time. Only returns paragraphs that
+    contain a search term.
     """
     soup = BeautifulSoup(string)
     pat = getPattern(terms)
@@ -610,8 +610,8 @@ def myStrip(string, terms):
 
 def addTags(string, terms):
     """
-       Given a string and an iterable of terms (each term is a string), returns the string except with 
-       tags around any instances of any of the terms.
+       Given a text string and an iterable of terms (each term is a string), returns the
+       text string except with tags added around instances of search terms.
     """
     if not terms: #TODO think this through?
         return string
@@ -625,8 +625,10 @@ def addTags(string, terms):
 
 def formatResults(pList, terms):
     """
-    Given a list of paragraphs in one URL that each contain at least one search term, 
+    Given a list of paragraphs (from one url/page) that each contain at least one search term,
     returns the final resulting search result string.
+
+    side effects: modifies pList.
     """
     pat = getPattern(terms)
     for i in range(0, len(pList)):
@@ -634,7 +636,7 @@ def formatResults(pList, terms):
         match = pat.search(p)
         #index 0 into string or 100 characters before first matched word
         startIndex = max(0, match.start(1) - 100)
-        pList[i] = match.string[startIndex:match.end(1) + 100] 
+        pList[i] = match.string[startIndex:match.end(1) + 100]
         pList[i] += "... "
 
     noTagsResult = ''.join(pList)
@@ -652,13 +654,13 @@ def andResultsBlah(pList, terms):
     """
     string = ''.join(pList)
     lowerString = string.lower()
-    
+
     #Return None unless all search terms are found.
     for term in terms:
         if not term in lowerString:
             return None
 
-    return formatResults(pList, terms) 
+    return formatResults(pList, terms)
 
 def orResultsBlah(pList, terms):
     """
@@ -680,7 +682,7 @@ def orResultsBlah(pList, terms):
     if not foundSomething:
         return None
 
-    return formatResults(pList, terms) 
+    return formatResults(pList, terms)
 
 def search(request, string):
    # address="http://notoriousbiginteger.pythonanywhere.com/restaurants/1/"
@@ -693,15 +695,15 @@ def search(request, string):
         for url, textList in urlsAndStrippedConts:
             andResultStr = andResultsBlah(textList, terms)
             if andResultStr:
-                andResults.append((url, andResultStr)) 
-                
+                andResults.append((url, andResultStr))
+
             orResultStr = orResultsBlah(textList, terms)
             if orResultStr:
-                orResults.append((url, orResultStr)) 
+                orResults.append((url, orResultStr))
 
         finalResults = [andResults, orResults]
         return HttpResponse(json.dumps(finalResults), content_type="application/json")
-        
+
 #    except Exception:
 #        return HttpResponse(str([[],[]]))
 
