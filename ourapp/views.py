@@ -647,8 +647,7 @@ def formatResults(pList, terms):
 def andResultsBlah(pList, terms):
     """
        Takes in a list of paragraph strings and an iterable of terms to search for. If the string
-       contains all of the terms then it will return a search result string (without tags
-       added around matched words yet). Else returns None.
+       contains all of the terms then it will return a search result string. Else returns None.
 
        side effects: modifies pList.
     """
@@ -665,8 +664,7 @@ def andResultsBlah(pList, terms):
 def orResultsBlah(pList, terms):
     """
        Takes in a list of paragraph strings and a list of terms to search for. If the string
-       contains any of the terms then it will return a search result string (without tags
-       added around matched words yet). Else returns None.
+       contains any of the terms then it will return a search result string. Else returns None.
 
        side effects: modifies pList.
     """
