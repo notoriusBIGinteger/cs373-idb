@@ -695,7 +695,6 @@ def urlContentPairs(request):
     yield (aboutUrl, html)
 
 
-
 def urlStrippedContentPairs(request):
     """
     Input: a generator that yields length two tuples, the first element will be
@@ -706,41 +705,42 @@ def urlStrippedContentPairs(request):
     views with.
 
     Output: a generator that yields length two tuples, the first element will
-    be a URL, and the second element will be the text content of that URL after
-    stripping out all html/css/javascript.
+    be a URL, and the second element will be the a list of paragraphs from that URL
+    without any html/css/javascript.
     """
     urlContentGen = urlContentPairs(request)
     for url, content in urlContentGen:
-        yield (url, myStrip(content))
+        yield (url, list(myStrip(content)))
 
 def myStrip(string):
     """ Given an html document sent as a string, strips out all of the
-    html/css/javscript and return the resulting text as a string
+    html/css/javscript and return a generator that yields paragraphs
+    without html/css/javascript.
     """
     soup = BeautifulSoup(string)
-    retString = ""
     for p_tag in soup.find_all('p'):
-        retString += str(p_tag.text)
-    return retString
+        yield str(p_tag.text)
 
-def andResultsBlah(string, terms):
+def andResultsBlah(pList, terms):
     """
-       Takes in a string and a list of terms to search for. If the string
+       Takes in a list of paragraph strings and an iterable of terms to search for. If the string
        contains all of the terms then it will return the string with tags
        around the matched terms. Else returns None.
     """
+    string = ''.join(pList)
     lowerString = string.lower()
     for term in terms:
         if not term in lowerString:
             return None
     return string
 
-def orResultsBlah(string, terms):
+def orResultsBlah(pList, terms):
     """
-       Takes in a string and a list of terms to search for. If the string
+       Takes in a list of paragraph strings and a list of terms to search for. If the string
        contains any of the terms then it will return the string with tags
        around the matched terms. Else returns None.
     """
+    string = ''.join(pList)
     lowerString = string.lower()
     foundSomething = False
     for term in terms:
@@ -753,6 +753,31 @@ def orResultsBlah(string, terms):
 
     return string
 
+def getPattern(terms):
+    """ Given a list of terms, constructs a pattern that matches any of the terms """
+    patternStr = "("
+    for term in terms:
+        patternStr += term + "|"
+    patternStr = patternStr[:-1] #chop of extra "|" character
+    patternStr += ")"
+    pat = re.compile(patternStr)
+    return pat
+
+def addTags(string, terms):
+    """
+       Given a string and an iterable of terms (each term is a string), returns the string except with 
+       tags around any instances of any of the terms.
+    """
+    if not terms: #TODO think this through?
+        return string
+
+    def tag(match):
+        return "<strong>" + match.group() + "</strong>"
+
+    pat = getPattern(terms)
+    retString = pat.sub(tag, string)
+    return retString
+
 def search(request, string):
    # address="http://notoriousbiginteger.pythonanywhere.com/restaurants/1/"
    # html = urlopen(address).read()
@@ -761,17 +786,20 @@ def search(request, string):
         orResults = []
         andResults = []
         terms = normalize_query(string)
-        for url, text in urlsAndStrippedConts:
-
-            andResultStr = andResultsBlah(text, terms)
+        for url, textList in urlsAndStrippedConts:
+            andResultStr = andResultsBlah(textList, terms)
             if andResultStr:
+                andResultStr = addTags(andResultStr, terms)
                 andResults.append((url, andResultStr)) 
-
-            orResultStr = orResultsBlah(text, terms)
+                
+            orResultStr = orResultsBlah(textList, terms)
             if orResultStr:
+                orResultStr = addTags(orResultStr, terms)
                 orResults.append((url, orResultStr)) 
 
-        return HttpResponse(str(andResults) + str(orResults))
+        finalResults = [andResults, orResults]
+        return HttpResponse(json.dumps(finalResults), content_type="application/json")
+        
 #    except Exception:
 #        return HttpResponse(str([[],[]]))
 
