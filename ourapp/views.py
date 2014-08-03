@@ -719,7 +719,7 @@ def getPattern(terms):
         patternStr += term + "|"
     patternStr = patternStr[:-1] #chop of extra "|" character
     patternStr += ")"
-    pat = re.compile(patternStr)
+    pat = re.compile(patternStr, re.IGNORECASE)
     return pat
 
 def myStrip(string, terms):
