@@ -542,132 +542,6 @@ def search_results(request) :
 def normalize_query(query_string):
     return query_string.lower().split()
 
-
-#def get_and_query(terms, search_fields): # changed to take terms directly instead of string.
-#    ''' Returns a query, that is a combination of Q objects. That combination
-#    aims to search keywords within a model by testing the given search fields.
-#
-#    '''
-#    query = None # Query to search for every search term
-#    for term in terms:
-#        or_query = None # Query to search for a given term in each field
-#        for field_name in search_fields: # if any of the fields contain it.
-#            q = Q(**{"%s__icontains" % field_name: term})
-#            if or_query is None:
-#                or_query = q
-#            else:
-#                or_query = or_query | q
-#        if query is None:
-#            query = or_query
-#        else:
-#            query = query & or_query
-#    return query
-#
-#def get_or_query(terms, search_fields): # changed to take terms directly instead of string.
-#    ''' Returns a query, that is a combination of Q objects. That combination
-#    aims to search keywords within a model by testing the given search fields.
-#
-#    '''
-#    query = None # Query to search for every search term
-#    for term in terms:
-#        or_query = None # Query to search for a given term in each field
-#        for field_name in search_fields: # if any of the fields contain it.
-#            q = Q(**{"%s__icontains" % field_name: term})
-#            if or_query is None:
-#                or_query = q
-#            else:
-#                or_query = or_query | q
-#        if query is None:
-#            query = or_query
-#        else:
-#            query = query & or_query
-#    return query
-#
-#def getDishAndInstances(terms):
-#    andQObject = get_and_query(terms, ['name', 'description'])
-#    return Dish.objects.filter(andQObject)
-#
-#def getRestAndInstances(terms):
-#    andQObject = get_and_query(terms, ['name', 'description'])
-#    return Restaurant.objects.filter(andQObject)
-#
-#def getDishOrInstances(terms):
-#    andQObject = get_or_query(terms, ['name', 'description'])
-#    return Dish.objects.filter(andQObject)
-#
-#def getRestOrInstances(terms):
-#    andQObject = get_or_query(terms, ['name', 'description'])
-#    return Restaurant.objects.filter(andQObject)
-#
-#def getDishResults(inst, terms, resultDict):
-#    """given a dish instance, a list of search terms, and a dictionary
-#    where the keys are url strings, and the values are search result text
-#    strings for the corresponding url, update the dictionary TODO.'
-#    inst = Dish objects
-#    terms = ['name','description']
-#    {'url':'text...'}
-#    """
-#    # first see if this object is already in the result
-#    # if it is, append to the text, if not create it.
-#    url = reverse('adishjson',args=[inst.id])
-#    text = inst.name + "..." + inst.description + "..."
-#    if url in resultDict:
-#        resultDict[url] = text + resultDict[url]
-#    else:
-#        resultDict[url] = text
-#
-#    #Now handle all the dishes similar to the inst object
-#    similar_dishes = Dish.objects.all().filter(generic_dish = inst.generic_dish)
-#    for dish in similar_dishes:
-#        if dish.name != inst.name:
-#            url = reverse('adishjson',args=[dish.id])
-#            text = "Similar Dishes..." + inst.name + "..."
-#
-#            if url in resultDict:
-#                resultDict[url] += text
-#            else:
-#                resultDict[url] = text
-#
-#    return resultDict
-#
-#def getRestResults(inst, terms, resultDict):
-#    """given a dish instance, a list of search terms, and a dictionary
-#    where the keys are url strings, and the values are search result text
-#    strings for the corresponding url, update the dictionary TODO.
-#    """
-#    url = reverse('arestjson', args=[inst.id])
-#    resultDict[url] = {'stub. rest name = ' + inst.name}
-#
-#def getAndInstances(terms):
-#    retList = []
-#    retList += list(getDishAndInstances(terms))
-#    retList += list(getRestAndInstances(terms))
-#    return retList
-#
-#def getOrInstances(terms):
-#    retList = []
-#    retList += list(getDishOrInstances(terms))
-#    retList += list(getRestOrInstances(terms))
-#    return retList
-#
-#def getAndResults(andInstanceList, terms):
-#    result = {}
-#    for inst in andInstanceList:
-#        if type(inst) == Dish:
-#            getDishResults(inst, terms, result)
-#        if type(inst) == Restaurant:
-#            getRestResults(inst, terms, result)
-#    return result
-#
-#def getOrResults(orInstanceList, terms):
-#    result = {}
-#    for inst in orInstanceList:
-#        if type(inst) == Dish:
-#            getDishResults(inst, terms, result)
-#        if type(inst) == Restaurant:
-#            getRestResults(inst, terms, result)
-#    return result
-
 def urlContentPairs(request):
     """
     Input a HttpRequest just so we have something to call our views with.
@@ -734,6 +608,21 @@ def myStrip(string, terms):
         if match:
             yield str(p_tag.text)
 
+def addTags(string, terms):
+    """
+       Given a string and an iterable of terms (each term is a string), returns the string except with 
+       tags around any instances of any of the terms.
+    """
+    if not terms: #TODO think this through?
+        return string
+
+    def tag(match):
+        return "<strong>" + match.group() + "</strong>"
+
+    pat = getPattern(terms)
+    retString = pat.sub(tag, string)
+    return retString
+
 def formatResults(pList, terms):
     """
     Given a list of paragraphs in one URL that each contain at least one search term, 
@@ -748,7 +637,10 @@ def formatResults(pList, terms):
         pList[i] = match.string[startIndex:match.end(1) + 100] 
         pList[i] += "... "
 
-    return ''.join(pList)
+    noTagsResult = ''.join(pList)
+    #limit results to 500 characters. TODO we may have chopped in the before, after, or inside ellipses. Add ellipses?
+    noTagsResults = noTagsResult[0:500]
+    return addTags(noTagsResult, terms)
 
 def andResultsBlah(pList, terms):
     """
@@ -790,21 +682,6 @@ def orResultsBlah(pList, terms):
 
     return formatResults(pList, terms) 
 
-def addTags(string, terms):
-    """
-       Given a string and an iterable of terms (each term is a string), returns the string except with 
-       tags around any instances of any of the terms.
-    """
-    if not terms: #TODO think this through?
-        return string
-
-    def tag(match):
-        return "<strong>" + match.group() + "</strong>"
-
-    pat = getPattern(terms)
-    retString = pat.sub(tag, string)
-    return retString
-
 def search(request, string):
    # address="http://notoriousbiginteger.pythonanywhere.com/restaurants/1/"
    # html = urlopen(address).read()
@@ -816,12 +693,10 @@ def search(request, string):
         for url, textList in urlsAndStrippedConts:
             andResultStr = andResultsBlah(textList, terms)
             if andResultStr:
-                #andResultStr = addTags(andResultStr, terms)
                 andResults.append((url, andResultStr)) 
                 
             orResultStr = orResultsBlah(textList, terms)
             if orResultStr:
-                #orResultStr = addTags(orResultStr, terms)
                 orResults.append((url, orResultStr)) 
 
         finalResults = [andResults, orResults]
