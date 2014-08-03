@@ -730,7 +730,9 @@ def myStrip(string, terms):
     soup = BeautifulSoup(string)
     pat = getPattern(terms)
     for p_tag in soup.find_all('p'):
-        yield str(p_tag.text)
+        match = pat.search(str(p_tag.text).lower())
+        if match:
+            yield str(p_tag.text)
 
 def andResultsBlah(pList, terms):
     """
