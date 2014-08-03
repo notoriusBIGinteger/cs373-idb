@@ -734,37 +734,61 @@ def myStrip(string, terms):
         if match:
             yield str(p_tag.text)
 
+def formatResults(pList, terms):
+    """
+    Given a list of paragraphs in one URL that each contain at least one search term, 
+    returns the final resulting search result string.
+    """
+    pat = getPattern(terms)
+    for i in range(0, len(pList)):
+        p = pList[i]
+        match = pat.search(p)
+        #index 0 into string or 100 characters before first matched word
+        startIndex = max(0, match.start(1) - 100)
+        pList[i] = match.string[startIndex:match.end(1) + 100] 
+        pList[i] += "... "
+
+    return ''.join(pList)
+
 def andResultsBlah(pList, terms):
     """
        Takes in a list of paragraph strings and an iterable of terms to search for. If the string
-       contains all of the terms then it will return the string with tags
-       around the matched terms. Else returns None.
+       contains all of the terms then it will return a search result string (without tags
+       added around matched words yet). Else returns None.
+
+       side effects: modifies pList.
     """
     string = ''.join(pList)
     lowerString = string.lower()
+    
+    #Return None unless all search terms are found.
     for term in terms:
         if not term in lowerString:
             return None
-    return string
+
+    return formatResults(pList, terms) 
 
 def orResultsBlah(pList, terms):
     """
        Takes in a list of paragraph strings and a list of terms to search for. If the string
-       contains any of the terms then it will return the string with tags
-       around the matched terms. Else returns None.
+       contains any of the terms then it will return a search result string (without tags
+       added around matched words yet). Else returns None.
+
+       side effects: modifies pList.
     """
     string = ''.join(pList)
     lowerString = string.lower()
     foundSomething = False
+
+    #Return None if none of the search terms are found.
     for term in terms:
         if term in lowerString:
             foundSomething = True
             break
-
     if not foundSomething:
         return None
 
-    return string
+    return formatResults(pList, terms) 
 
 def addTags(string, terms):
     """
@@ -792,12 +816,12 @@ def search(request, string):
         for url, textList in urlsAndStrippedConts:
             andResultStr = andResultsBlah(textList, terms)
             if andResultStr:
-                andResultStr = addTags(andResultStr, terms)
+                #andResultStr = addTags(andResultStr, terms)
                 andResults.append((url, andResultStr)) 
                 
             orResultStr = orResultsBlah(textList, terms)
             if orResultStr:
-                orResultStr = addTags(orResultStr, terms)
+                #orResultStr = addTags(orResultStr, terms)
                 orResults.append((url, orResultStr)) 
 
         finalResults = [andResults, orResults]
