@@ -1,3 +1,4 @@
+import copy
 from urllib.request import urlopen
 import requests
 from bs4 import BeautifulSoup
@@ -16,6 +17,7 @@ from twitter import *
 import json
 import requests
 from django.core.urlresolvers import reverse
+from notoriousBIGinteger.views import home
 
 def splash(request):
     context = {}
@@ -515,21 +517,19 @@ def the_austinites(request) :
     render HTML response.
     """
     api_data = {}
-    api_data['all'] = {'stages' : {}, 'sponsors' : {}, 'artists' : {}}
+    api_data['all'] = {'stages' : None, 'sponsors' : None, 'artists' : None}
 
     for k in api_data['all'] :
 	    x = requests.get("http://theaustinites.pythonanywhere.com/api/" + k + "/")
-	    d = x.json();
-
-	    for x in range(len(d)) :
-		    new_key = d[x]['name']
-		    id = d[x]['id']
-		    r = requests.get("http://theaustinites.pythonanywhere.com/api/" + k + "/"
-			    + str(id) + "/media/")
-		    api_data['all'][k][new_key] = d[x]
-		    api_data['all'][k][new_key]['media'] = r.json()
-		    r.close()
+	    api_data['all'][k] = x.json()
 	    x.close()
+
+    for k in api_data['all'] :
+	    for d in api_data['all'][k] :
+		    x = requests.get("http://theaustinites.pythonanywhere.com/api/" + k + "/"
+			    + str(d['id']) + "/media/")
+		    d['media'] = x.json()
+		    x.close()
 
     return render_to_response('ourapp/nathan_test.html', { 'austinitesAPI' : api_data['all'] } )
 
@@ -539,7 +539,6 @@ def search_results(request) :
     Render the "about us" page.
     """
     return render(request, 'ourapp/results.html')
-
 
 def normalize_query(query_string):
     return query_string.lower().split()
@@ -562,8 +561,8 @@ def urlContentPairs(request):
         html = dish_detail(request, dish.id).content
         yield (dishUrl, html)
 
-    indexUrl = reverse('index')
-    html = index(request).content
+    indexUrl = reverse('home')
+    html = home(request).content
     yield (indexUrl, html)
 
     aboutUrl = reverse('about')
@@ -603,10 +602,10 @@ def myStrip(string, terms):
     """
     soup = BeautifulSoup(string)
     pat = getPattern(terms)
-    for p_tag in soup.find_all('p'):
-        match = pat.search(str(p_tag.text).lower())
+    for tag in soup.find_all('h1') + soup.find_all('p'):
+        match = pat.search(str(tag.text).lower())
         if match:
-            yield str(p_tag.text)
+            yield str(tag.text)
 
 def addTags(string, terms):
     """
@@ -647,10 +646,9 @@ def formatResults(pList, terms):
 def andResultsBlah(pList, terms):
     """
        Takes in a list of paragraph strings and an iterable of terms to search for. If the string
-       contains all of the terms then it will return a search result string. Else returns None.
-
-       side effects: modifies pList.
+       contains all of the terms then we return a search result string. Else return None.
     """
+    pList = copy.deepcopy(pList)
     string = ''.join(pList)
     lowerString = string.lower()
 
@@ -664,10 +662,9 @@ def andResultsBlah(pList, terms):
 def orResultsBlah(pList, terms):
     """
        Takes in a list of paragraph strings and a list of terms to search for. If the string
-       contains any of the terms then it will return a search result string. Else returns None.
-
-       side effects: modifies pList.
+       contains any of the terms then we return a search result string. Else return None.
     """
+    pList = copy.deepcopy(pList)
     string = ''.join(pList)
     lowerString = string.lower()
     foundSomething = False
@@ -704,18 +701,3 @@ def search(request, string):
 
 #    except Exception:
 #        return HttpResponse(str([[],[]]))
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
