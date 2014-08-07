@@ -15,7 +15,7 @@
 <ul class="list-group food-list">
 {% if dish_list %}
     {% for dish in dish_list %}
-    <li class = "list-group-item food-item"> <strong>{{dish.name}}</strong>
+    <li class = "list-group-item food-item"> <strong>{{dish.name}}</strong><span class="food-item-rating"><meter max="5.0" min="0" value="{{dish.star_avg_rating}}" high="4.25" low="1.25" optimum="5.0"></meter></span>
         <div class="food-item-content">
             <p>{{dish.description}}</p>
                 <p><a href="/dishes/{{dish.id}}" class="menu-item-link">Read Reviews</a></p></div>

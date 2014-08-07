@@ -542,6 +542,7 @@ def the_austinites(request) :
 
 def normalize_query(query_string):
     query_string = query_string.lower()
+    query_string = query_string.strip()
 
     #remove punctuation
     transFrom = string.punctuation

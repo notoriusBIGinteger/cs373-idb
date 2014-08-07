@@ -5,26 +5,19 @@
 {% load staticfiles %}
 <script src="{% static 'js/restaurant.js'%}"></script>
 <script src="{% static 'js/results.js'%}"></script>
-<script type="text/javascript">
-
-	$( window ).on( "orientationchange", function( event ) { $("#search_masthead").css("width", width+"px");} );
-	$( window ).resize(function() {$("#search_masthead").css("width", width+"px"); } );
-	
-	$(document).ready(function() {
+<script type="text/javascript">$(document).ready(function() {
 var width = $( document ).width();       
-$("#search_masthead").css("width", width+"px"); });</script>
+	$("#search_masthead").css("width", width+"px"); });</script>
 
 <div class="col-md-8 col-md-offset-2">
 	<div class="panel panel-default">
 		<div class="panel-heading">Search Results <span id="num_results"></span></div>
 		<div class="panel-body">
-			<div id="loading">Loading...</div>
 			<span id="andQuery"></span>	
 			<ul class="list-group" style="" id="andResults"><li class="list-group-item">Search For the Food You Krave</li></ul>
 			<span id="orQuery"></span>
 		<ul class="list-group" style="" id="orResults"><li class="list-group-item"></li></ul>
 	</div>
-</div>
-
+	</div>
 </div>
 {% endblock %}

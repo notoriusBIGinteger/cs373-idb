@@ -79,4 +79,18 @@ float:right; padding:2px;
 height:22em;
 max-height:285px;
 }}
+
+
 .carousel-caption { display:none;}
+#loading {
+    display:    none;
+    margin:auto auto;
+    text-align:center;
+    position:   relative;
+    z-index:    1000;
+    height:     180px;
+    width:      100px;
+    background: rgba( 255, 255, 255, .8 ) 
+                url('/static/img/loader.gif') 
+                50% 50% 
+                no-repeat;}

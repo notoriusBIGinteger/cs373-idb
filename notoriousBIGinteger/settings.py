@@ -20,11 +20,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = '48-u_2j#@bv9!^&!=@g&b@$-!v55zd1=gie+fg!!&fyggib)ns'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["notoriousbiginteger.pythonanywhere.com"]
 
 
 # Application definition
@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'ourapp',
     'rest_framework',
     'django_extensions',
+    'haystack',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -64,6 +65,14 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.JSONRenderer',
         'rest_framework.renderers.BrowsableAPIRenderer',
     )
+}
+
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
+        'URL': 'http://notoriousbiginteger.pythonanywhere.com/',
+        'INDEX_NAME': 'haystack',
+    },
 }
 
 # Database
