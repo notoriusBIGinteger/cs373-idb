@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>The Austinites</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load staticfiles %}
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/main.css'    %}" rel="stylesheet" />
+    <link href="{% static 'css/lightbox.css'    %}" rel="stylesheet" />
+    <style type="text/css">
+	#map-container { height: 400px; }
+    #map-outer {float:right; }
+    @importurl({% static 'css/bootstrap.min.css' %});
+    .modal-content {
+        background-color: #3D4E56;
+    }
+    .modal-header {
+        min-height: 16px;
+        padding: 10px;
+        border-bottom: 0px solid #e5e5e5;
+    }
+    .modal-footer {
+        padding: 10px;
+        text-align: right;
+        border-top: 0px solid #e5e5e5;
+    }
+    .modal-body {
+        position: relative;
+        padding: 10px;
+    }
+    .modal-body iframe {
+        background: #3D4E56;
+    }
+    .modal-body p {
+        color: white;
+    }
+    .modal-body h3 {
+        color: white;
+    }
+    .modal.fade .modal-dialog {
+        -webkit-transition: -webkit-transform 0.3s ease-out;
+        -moz-transition: -moz-transform 0.3s ease-out;
+        -o-transition: -o-transform 0.3s ease-out;
+            transition: transform 0.3s ease-out;
+    }
+    .modal.in .modal-dialog {
+
+    }
+    .close {
+        color: #FFFFFF;
+        text-shadow: 0 1px 0 #ffffff;
+        opacity: 0.9;
+    }
+    .close:hover {
+        color: #FFFFFF;
+        opacity: 1;
+    }
+	.acl_map {
+	}
+	@media (min-width: 1024px)
+	.acl_map
+	{
+
+		width:100%;
+	}
+
+    </style>
+</head>
+<body>
+    {% include "ourapp/menu.html" %}
+    <div class="container">
+
+        <div class="row">
+            <h2>Discover ACL Artists by Location: </h2>
+        </div>
+
+        <div class="row">
+            <div id="map-container" class="col-md-6 acl_map"></div>
+                <div id="map-outer" class="col-md-6">
+                    <div class="locationinfo" id="locationinfo2">
+				    <h4>Click a location marker on the map to explore artists from that location who are
+				    playing ACL 2014.</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <h2 style="float: left;">ACL Festival Pictures: </h2>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-3" id="imgColumn1">
+            </div>
+            <div class="col-xs-3" id="imgColumn2">
+            </div>
+            <div class="col-xs-3" id="imgColumn3">
+            </div>
+            <div class="col-xs-3" id="imgColumn4">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-3" id="imgColumn5">
+            </div>
+            <div class="col-xs-3" id="imgColumn6">
+            </div>
+            <div class="col-xs-3" id="imgColumn7">
+            </div>
+            <div class="col-xs-3" id="imgColumn8">
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container">
+        <div class="span12" id="sponsors">
+        </div>
+    </div>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIkSeanX1fyMnfQVnJU4daAqFjKrSAKgU">
+    </script>
+    <script src="http://www.google.com/jsapi"></script>
+    <script src="{% static 'js/lightbox.min.js'%}"></script>
+    <script>
+
+    function writeSponsors(){
+        element = document.getElementById('sponsors');
+
+        var html = '<br /><p align="center"><font size:3px><b>2014 Sponsors: </b></font>'
+
+        {% for sponsor in austinitesAPI.sponsors %}
+            console.log('{{sponsor.years}}')
+
+            {% for year in sponsor.years %}
+                if('{{year}}' === '2014'){
+                    html += '<a href="' + '{{sponsor.media.webpage}}';
+                    html += '" data-toggle="tooltip" title="{{sponsor.industry}}"' + ' target="_blank">{{sponsor.name}}</a>';
+
+                {% if not forloop.parentloop.last %}
+                    html += ' | ';
+                {% endif %}
+               }
+            {% endfor %}
+
+        {% endfor %}
+
+        element.innerHTML = html + '</p><br />';
+
+        $('a[data-toggle="tooltip"]').tooltip({
+            placement: 'top',
+        });
+
+    }
+
+    writeSponsors();
+
+    function writeFlickr(){
+
+    var url = 'https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=c80aa800b0456e0635a335ad9c879363'
+    url += '&photoset_id=72157636188215713&format=json&jsoncallback=?'
+
+    $.getJSON(url, function(data){
+        if(data.stat === "ok"){
+            var element;
+            var newHTML = '';
+            var indexes = [];
+
+            for (var j = 0; j < 8; j++){
+                element = document.getElementById('imgColumn' + (j+1));
+                var index = Math.floor(Math.random() * (data.photoset.photo.length));
+
+                while (indexes.indexOf(index) > -1){ //don't use the same photo index twice!
+                    index = Math.floor(Math.random() * (data.photoset.photo.length));
+                }
+
+                indexes.push(index);
+
+                var img_id = data.photoset.photo[index].id;
+                var img_farm = data.photoset.photo[index].farm;
+                var img_server = data.photoset.photo[index].server;
+                var img_title = data.photoset.photo[index].title;
+                var img_secret = data.photoset.photo[index].secret;
+                var img_url_lg = 'https://farm' + img_farm + '.staticflickr.com/' + img_server + '/' + img_id + '_' + img_secret + '_b.jpg'
+                var img_url_sm = 'https://farm' + img_farm + '.staticflickr.com/' + img_server + '/' + img_id + '_' + img_secret + '_q.jpg'
+
+                newHTML += '<a href="' + img_url_lg + '" class="thumbnail" data-lightbox="ACL" data-title="' + img_title + '">';
+                newHTML += '<img src="' + img_url_sm + '"></img>'
+                newHTML += '</a>'
+
+                element.innerHTML = newHTML;
+                newHTML = '';
+            }
+        }
+    });
+    }
+
+    writeFlickr();
+
+    var locations = [], artist_locations = {}, artist_map, geocoder, info_window;
+    var nextLocation = 0, delay = 120;
+
+    {% for artist in austinitesAPI.artists %}
+        var artist = "{{artist.name}}";
+        var origin = "{{artist.origin}}";
+
+        if (artist_locations.hasOwnProperty(origin)){
+            artist_locations[origin].artists.push(artist);
+        }
+
+        if (!artist_locations.hasOwnProperty(origin)){
+            artist_locations[origin] = {'artists' : []};
+            artist_locations[origin].artists.push(artist);
+            locations.push(origin);
+        }
+    {% endfor %}
+
+	var myZoom = 4;
+    if ($(window).width() < 960) {
+		$("#map-container").css({"height":"200px"});
+			myZoom = 2;
+	}
+
+    var map_options = {
+        center: new google.maps.LatLng(40.923216, -96.918455),
+        zoom: myZoom,
+    };
+
+	artist_map = new google.maps.Map(document.getElementById("map-container"),
+        map_options);
+
+    geocoder = new google.maps.Geocoder();
+    info_window = new google.maps.InfoWindow();
+
+    /*geocodeOrigin function written based on tutorial for geocoding
+      multiple addresses: http://econym.org.uk/gmap/example_geomulti.htm */
+
+	function geocodeOrigin(location, map_next){
+
+		var content = '<ul><lh>' + location + ':</lh>';
+
+        for (var i = 0 ; i < artist_locations[location].artists.length; i++ )
+            content += '<li>' + artist_locations[location].artists[i] + '</li>';
+
+        content += '</ul>';
+
+        geocoder.geocode( { 'address': location },function(results, status) {
+
+                if (status == google.maps.GeocoderStatus.OK) {
+                    createMarker(results[0].geometry.location, content, location);
+                }
+                else {
+
+                    if (status == google.maps.GeocoderStatus.OVER_QUERY_LIMIT) {
+                        nextLocation--;
+                        delay++;
+                    } else {
+                        alert("Geocode error: " + status);
+                    }
+                }
+                map_next();
+        });
+    }
+
+    function createMarker(geometry, html, location){
+		var content = html;
+		var latitude = geometry.lat();
+		var longitude = geometry.lng();
+
+        var marker= new google.maps.Marker({
+                map: artist_map,
+                position: new google.maps.LatLng(latitude,longitude)
+        });
+
+        google.maps.event.addListener(marker, 'click', function() {
+            info_window.setContent(content);
+            info_window.open(artist_map, marker);
+            rewriteOuter(location);
+
+            for(x in artist_locations[location].artists){
+                writeSimilarArtists(artist_locations[location].artists[x]);
+                writeArtistTags(artist_locations[location].artists[x]);
+                writeYouTubeResult(artist_locations[location].artists[x]);
+            }
+
+        });
+
+    }
+
+	function mapNext() {
+		if (nextLocation < locations.length) {
+          setTimeout('geocodeOrigin("'+locations[nextLocation]+'",mapNext)', delay);
+          nextLocation++;
+        }
+      }
+
+    mapNext();
+
+    function rewriteOuter(origin){
+        var element = document.getElementById("locationinfo2"), artists = [];
+        var modalHTML = '<h3>Artist(s) from ' + origin + ': </h3>';
+
+        for (x in artist_locations[origin].artists){
+            var artist = artist_locations[origin].artists[x];
+
+            {% for artist in austinitesAPI.artists %}
+                if(artist == "{{ artist.name }}"){
+
+                    artists.push("{{ artist.name }}");
+
+                    var modal_link = '<h4><a href="#" data-toggle="modal" ';
+                    modal_link += 'data-target="#' + artist.replace(/\s+/g, '') + 'Modal"';
+                    modal_link += 'id="' + artist.replace(/\s+/g, '') + 'ModalLabel">';
+                    modal_link += '{{ artist.name }}';
+                    modal_link += '</a> ' + '<font size=2px>({{artist.label}} | {{artist.genre}})</font></h4>';
+
+                    {% if not artist.years|length_is:'0' %}
+
+                    modal_link += '<div id="' + artist.replace(/\s+/g, '') + 'Years"><font size=2px><b>ACL Years: </b>';
+
+                        {% for year in artist.years %}
+                            modal_link += '{{year}}';
+
+                            {% if not forloop.last %}
+                                modal_link += ', ';
+                            {% endif %}
+
+                        {% endfor %}
+
+                    modal_link += '</font></div>';
+
+                    {% endif %}
+
+                    var modal = writeModal('{{ artist.name }}', '{{ artist.media.bio }}',
+                    '{{ artist.media.photo }}', '{{ artist.genre }}', '{{ artist.media.facebook }}');
+
+                    modalHTML += modal_link + modal;
+                }
+            {% endfor %}
+
+        }
+
+        element.innerHTML = modalHTML;
+
+    }
+
+    function writeModal(name, bio, image, genre, fb){
+        var ref = 'https%3A%2F%2Fwww.facebook.com%2F' + fb. replace('https://www.facebook.com/', '');
+
+        var new_modal = '';
+	    new_modal += '<div class="modal fade" id="' + name.replace(/\s+/g, '') + 'Modal" tabindex="-1" role="dialog" aria-labelledby="' + name.replace(/\s+/g, '') + 'ModalLabel" aria-hidden="true">';
+  	    new_modal += '<div class="modal-dialog modal-lg">';
+        new_modal += '<div class="modal-content">';
+        new_modal += '<div class="modal-header">';
+        new_modal += '<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>';
+	    new_modal += '<h1 class="modal-title" id="' + name.replace(/\s+/g, '') + 'ModalLabel"><font color="#FFFFFF">' + name;
+	    new_modal += '<font size=5px> (' + genre + ')</font></font></h1>';
+        new_modal += '</div>';
+        new_modal += '<div class="modal-body">';
+        new_modal += '<iframe src="//www.facebook.com/plugins/likebox.php?href=' + ref + '&amp;width&amp;'
+        new_modal += 'height=62&amp;colorscheme=dark&amp;show_faces=false&amp;header=false&amp;stream=false&amp;show_border=false&amp;appId=1569275859966613"'
+        new_modal += 'scrolling="no" frameborder="0" style="border:none; link:white; overflow:hidden; height:62px;" allowTransparency="true" class="frame-FB"></iframe>';
+        new_modal += '<h3>Biography:</h3>';
+        new_modal += '<p>' + bio + '</p>';
+        new_modal += '<div id="' + name.replace(/\s+/g, '') +'Similar"></div>'
+        new_modal += '<div id="' + name.replace(/\s+/g, '') +'Descriptions"></div>'
+        //new_modal += '<h3>Media:</h3>';
+        new_modal += '<img src = "' + image + '" width="400" align="left"></img>';
+        new_modal += '<iframe width="400" height="300" frameborder="0" allowfullscreen="" align="right" id="';
+        new_modal += name.replace(/\s+/g, '') + 'Youtube' + '"></iframe>';
+	    new_modal += '</div>';
+        new_modal += '<div class="modal-footer"></div>';
+        new_modal += '</div></div></div>';
+
+	    return new_modal;
+    }
+
+    function writeYouTubeResult(artist){
+        var youtubevideo = '';
+        var id = '';
+
+        {% for artist in austinitesAPI.artists %}
+            if(artist == '{{artist.name}}'){
+
+                id = '{{artist.media.video}}';
+                var stop = id.indexOf('&');
+                if (stop > 0)
+                    id = id.slice(0, stop);
+
+                id = id.replace('//www.youtube.com/embed/','')
+            }
+        {% endfor %}
+
+        if(id !== ''){
+            var youtubelink = 'http://www.youtube.com/v/' + id + '&amp;autoplay=1';
+            var label = '#' + artist.replace(/\s+/g, '') + 'ModalLabel';
+            var frame = '#' + artist.replace(/\s+/g, '') + 'Youtube';
+            var button = '#' + artist.replace(/\s+/g, '') + 'Modal button';
+
+            $(label).click(function () {
+                $(frame).attr('src', youtubelink);
+            });
+
+            $(button).click(function () {
+                $(frame).removeAttr('src');
+            });
+        }
+        else{
+            $.getJSON('https://gdata.youtube.com/feeds/api/videos?q=' + artist + '&max-results=1&v=2&alt=jsonc&duration=medium&orderby=relevance',
+            function(data) {
+                var videoID = data.data.items[0].id;
+                var youtubelink = 'http://www.youtube.com/v/' + videoID + '&amp;autoplay=1';
+                var label = '#' + artist.replace(/\s+/g, '') + 'ModalLabel';
+                var frame = '#' + artist.replace(/\s+/g, '') + 'Youtube';
+                var button = '#' + artist.replace(/\s+/g, '') + 'Modal button';
+
+                $(label).click(function () {
+                    $(frame).attr('src', youtubelink);
+                });
+
+                $(button).click(function () {
+                    $(frame).removeAttr('src');
+                });
+            });
+        }
+    }
+
+    function writeSimilarArtists(artist){
+        $.getJSON('http://developer.echonest.com/api/v4/artist/similar?api_key=JZG7KNQY2FUFRDDXS&results=5&name=' + artist,
+            function(data) {
+                var elementname = artist.replace(/\s+/g, '') + 'Similar';
+                var element = document.getElementById(elementname);
+
+                var new_inner = '<p><font size=3px><b>Similar Artists: </b></font> ';
+
+                for (var j = 0 ; j < data.response.artists.length; j++){
+                    new_inner += data.response.artists[j].name;
+
+                    if (j < data.response.artists.length - 1){
+                        new_inner += ', ';
+                    }
+                }
+
+                element.innerHTML = new_inner + '</p>';
+        });
+
+    }
+
+    function writeArtistTags(artist){
+        $.getJSON('http://developer.echonest.com/api/v4/artist/terms?api_key=JZG7KNQY2FUFRDDXS&name=' + artist +'&format=json',
+            function(data) {
+
+                var elementname = artist.replace(/\s+/g, '') + 'Descriptions';
+                var element = document.getElementById(elementname);
+
+                var newInner = '<p><font size=3px><b>Frequent tags:</b></font> ';
+
+                for (var j = 0 ; j < data.response.terms.length; j++){
+                    newInner += data.response.terms[j].name;
+
+                    if (j == 7){ //cut-off after too many results
+                        j = data.response.terms.length - 1;
+                    }
+
+                    if (j < data.response.terms.length - 1){
+                        newInner += ', ';
+                    }
+                }
+
+                    element.innerHTML = newInner + '</p>';
+        });
+
+    }
+    </script>
+</body>
+</html>
