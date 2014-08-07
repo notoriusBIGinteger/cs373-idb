@@ -1619,3 +1619,88 @@ class Tests(TestCase):
         b = str(response.content)[2:-1]
         jresponse = json.loads(b)
         self.assertEqual({"Error" : "No cuisine restaurants found."}, jresponse);
+
+    def test_search_dish_1(self):
+        Tests.model_instances()
+        response = self.client.get(reverse('search', args=['blank']))
+        b = str(response.content)[2:-1]
+        jresponse = json.loads(b)
+        self.assertEqual([], jresponse);
+
+    def test_search_dish_2(self):
+        Tests.model_instances()
+        response = self.client.get(reverse('search', args=['pizza']))
+        b = str(response.content)[2:-1]
+        jresponse = json.loads(b)
+        self.assertEqual([{'id': 199,
+                           'modelType': 'Dish',
+                           'name': 'Trifecta Pizza',
+                           'text': 'Trifecta <strong>Pizza</strong>... ',
+                           'type': 'and','url': '/dishes/199/'},
+                          {'id': 199,
+                           'modelType': 'Dish',
+                           'name': 'Trifecta Pizza',
+                           'text': 'Trifecta <strong>Pizza</strong>... ',
+                           'type': 'or',
+                           'url': '/dishes/199/'}], jresponse);
+
+    def test_search_dish_3(self):
+        Tests.model_instances()
+        response = self.client.get(reverse('search', args=['sushi']))
+        b = str(response.content)[2:-1]
+        jresponse = json.loads(b)
+        self.assertEqual([{'id': 204,
+                           'modelType': 'Dish',
+                           'name': 'White Roll',
+                           'text': 'Prime <strong>sushi</strong>... ',
+                           'type': 'and',
+                           'url': '/dishes/204/'},
+                          {'id': 204,
+                           'modelType': 'Dish',
+                           'name': 'White Roll',
+                           'text': 'Prime <strong>sushi</strong>... ',
+                           'type': 'or',
+                           'url': '/dishes/204/'}], jresponse);
+
+    def test_search_rest_1(self):
+        Tests.model_instances()
+        response = self.client.get(reverse('search', args=['blank']))
+        b = str(response.content)[2:-1]
+        jresponse = json.loads(b)
+        self.assertEqual([], jresponse);
+
+    def test_search_rest_2(self):
+        Tests.model_instances()
+        response = self.client.get(reverse('search', args=['magnolia']))
+        b = str(response.content)[2:-1]
+        jresponse = json.loads(b)
+        self.assertEqual([{'id': 209,
+                           'modelType': 'Restaurant',
+                           'name': 'Magnolia',
+                           'text': '<strong>Magnolia</strong>... ',
+                           'type': 'and',
+                           'url': '/restaurants/209/'},
+                          {'id': 209,
+                           'modelType': 'Restaurant',
+                           'name': 'Magnolia',
+                           'text': '<strong>Magnolia</strong>... ',
+                           'type': 'or',
+                           'url': '/restaurants/209/'}], jresponse);
+
+    def test_search_rest_3(self):
+        Tests.model_instances()
+        response = self.client.get(reverse('search', args=['kerbey']))
+        b = str(response.content)[2:-1]
+        jresponse = json.loads(b)
+        self.assertEqual([{'id': 211,
+                           'modelType': 'Restaurant',
+                           'name': 'Kerbey Lane',
+                           'text': '<strong>Kerbey</strong> Lane... ',
+                           'type': 'and',
+                           'url': '/restaurants/211/'},
+                          {'id': 211,
+                           'modelType': 'Restaurant',
+                           'name': 'Kerbey Lane',
+                           'text': '<strong>Kerbey</strong> Lane... ',
+                           'type': 'or',
+                           'url': '/restaurants/211/'}], jresponse);
