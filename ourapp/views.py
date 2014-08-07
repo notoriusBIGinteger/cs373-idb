@@ -1,3 +1,4 @@
+import string
 import copy
 from urllib.request import urlopen
 import requests
@@ -56,7 +57,7 @@ def restaurant_list(request, format=None):
         if format is None :
             return HttpResponse(content='No restaurants found.', status=404)
         elif format.lower() == 'json' :
-            return JSONResponse({'Error' : 'No restaurants found.'})
+            return JSONResponse({'Error' : 'No restaurants found.'}, status=404)
 
     if request.method == 'GET':
         if format is None :
@@ -75,6 +76,7 @@ def restaurant_detail(request, pk, format=None):
         restaurant = Restaurant.objects.get(id = pk)
         dish_results = Dish.objects.all().filter(restaurant = pk)
         customer_reviews = RestaurantReview.objects.all().filter(restaurant = pk)
+        """
         t = Twitter(
             auth=OAuth('2678149836-qlByM0SSADzChlFzrcZsmvQagsjhOqCm1lgON87', 'QuqqOy5N9xlHRnmQk7W88nA9yLtG3CgnNXfV0avcsXwwg',
                        'BqmrjxAmBB6YzG5qsoWEcpMvg', 'ZosP5zX4h3AD9zBc6YFaHoLZw9WSognRqGeF6uz7PYGmGyDaeJ')
@@ -85,19 +87,19 @@ def restaurant_detail(request, pk, format=None):
         twitter_response = []
         for line in d["statuses"]:
             twitter_response.append((line["user"]["name"],line["text"]))
-
+        """
 
     except Restaurant.DoesNotExist:
         if format is None :
             return HttpResponse(content='No restaurant found.', status=404)
         elif format.lower() == 'json' :
-            return JSONResponse({'Error' : 'No restaurant found.'})
+            return JSONResponse({'Error' : 'No restaurant found.'}, status=404)
 
     if request.method == 'GET':
         if format is None :
             #return StreamingHttpResponse(twitter_response)
             return render_to_response('ourapp/restaurant_attributes.html', { 'restaurant' : restaurant , 'dish_results' : dish_results,
-            'customer_reviews' : customer_reviews, 'twitter_response': twitter_response,})
+            'customer_reviews' : customer_reviews})
         elif format.lower() == 'json' :
             serializer = RestaurantSerializer(restaurant)
             return JSONResponse(serializer.data)
@@ -118,7 +120,7 @@ def restaurant_dishes(request, pk, format=None):
         if format is None :
             return HttpResponse(content='No restaurant dishes found.', status=404)
         elif format.lower() == 'json' :
-            return JSONResponse({'Error' : 'No restaurant dishes found.'})
+            return JSONResponse({'Error' : 'No restaurant dishes found.'}, status=404)
 
     if request.method == 'GET':
         if format is None :
@@ -143,7 +145,7 @@ def restaurant_reviews(request, pk, format=None):
         if format is None :
             return HttpResponse(content='No restaurant reviews found.', status=404)
         elif format.lower() == 'json' :
-            return JSONResponse({'Error' : 'No restaurant reviews found.'})
+            return JSONResponse({'Error' : 'No restaurant reviews found.'}, status=404)
 
     if request.method == 'GET':
         if format is None :
@@ -167,7 +169,7 @@ def customer_list(request, format=None):
         if format is None :
             return HttpResponse(content='No customers found.', status=404)
         elif format.lower() == 'json' :
-            return JSONResponse({'Error' : 'No customers found.'})
+            return JSONResponse({'Error' : 'No customers found.'}, status=404)
 
     if request.method == 'GET':
         if format is None :
@@ -189,7 +191,7 @@ def customer_detail(request, pk, format=None):
         if format is None :
             return HttpResponse(content='No customer found.', status=404)
         elif format.lower() == 'json' :
-            return JSONResponse({'Error' : 'No customer found.'})
+            return JSONResponse({'Error' : 'No customer found.'}, status=404)
 
     if request.method == 'GET':
         if format is None :
@@ -215,7 +217,7 @@ def customer_restaurant_reviews(request, pk, format=None):
         if format is None :
             return HttpResponse(content='No customer restaurant reviews found.', status=404)
         elif format.lower() == 'json' :
-            return JSONResponse({'Error' : 'No customer restaurant reviews found.'})
+            return JSONResponse({'Error' : 'No customer restaurant reviews found.'}, status=404)
 
     if request.method == 'GET':
         if format is None :
@@ -241,7 +243,7 @@ def customer_dish_reviews(request, pk, format=None):
         if format is None :
             return HttpResponse(content='No customer dish reviews found.', status=404)
         elif format.lower() == 'json' :
-            return JSONResponse({'Error' : 'No customer dish reviews found.'})
+            return JSONResponse({'Error' : 'No customer dish reviews found.'}, status=404)
 
     if request.method == 'GET':
         if format is None :
@@ -265,7 +267,7 @@ def dish_list(request, format=None):
         if format is None :
             return HttpResponse(content='No dishes found.', status=404)
         elif format.lower() == 'json' :
-            return JSONResponse({'Error' : 'No dishes found.'})
+            return JSONResponse({'Error' : 'No dishes found.'}, status=404)
 
     if request.method == 'GET':
         if format is None :
@@ -287,7 +289,7 @@ def dish_detail(request, pk, format=None):
         if format is None :
             return HttpResponse(content='No dish found.', status=404)
         elif format.lower() == 'json' :
-            return JSONResponse({'Error' : 'No dish found.'})
+            return JSONResponse({'Error' : 'No dish found.'}, status=404)
 
     if request.method == 'GET':
         if format is None :
@@ -313,7 +315,7 @@ def dish_reviews(request, pk, format=None):
         if format is None :
             return HttpResponse(content='No dish reviews found.', status=404)
         elif format.lower() == 'json' :
-            return JSONResponse({'Error' : 'No dish reviews found.'})
+            return JSONResponse({'Error' : 'No dish reviews found.'}, status=404)
 
     if request.method == 'GET':
         if format is None :
@@ -337,7 +339,7 @@ def generic_dish_list(request, format=None):
         if format is None :
             return HttpResponse(content='No generic dishes found.', status=404)
         elif format.lower() == 'json' :
-            return JSONResponse({'Error' : 'No generic dishes found.'})
+            return JSONResponse({'Error' : 'No generic dishes found.'}, status=404)
 
     if request.method == 'GET':
         if format is None :
@@ -363,7 +365,7 @@ def generic_dish_detail(request, pk, format=None):
         if format is None :
             return HttpResponse(content='No generic dish found.', status=404)
         elif format.lower() == 'json' :
-            return JSONResponse({'Error' : 'No generic dish found.'})
+            return JSONResponse({'Error' : 'No generic dish found.'}, status=404)
 
     if request.method == 'GET':
         if format is None:
@@ -389,7 +391,7 @@ def generic_dish_dishes(request, pk, format=None):
         if format is None :
             return HttpResponse(content='No generic dish dishes found.', status=404)
         elif format.lower() == 'json' :
-            return JSONResponse({'Error' : 'No generic dish dishes found.'})
+            return JSONResponse({'Error' : 'No generic dish dishes found.'}, status=404)
 
     if request.method == 'GET':
         if format is None :
@@ -414,7 +416,7 @@ def cuisine_list(request, format=None):
         if format is None :
             return HttpResponse(content='No cuisines found.', status=404)
         elif format.lower() == 'json' :
-            return JSONResponse({'Error' : 'No cuisines found.'})
+            return JSONResponse({'Error' : 'No cuisines found.'}, status=404)
 
     if request.method == 'GET':
         if format is None :
@@ -445,7 +447,7 @@ def cuisine_detail(request, pk, format=None):
         if format is None :
             return HttpResponse(content='No cuisine found.', status=404)
         elif format.lower() == 'json' :
-            return JSONResponse({'Error' : 'No cuisine found.'})
+            return JSONResponse({'Error' : 'No cuisine found.'}, status=404)
 
     if request.method == 'GET':
         if format is None :
@@ -470,7 +472,7 @@ def cuisine_restaurants(request, pk, format=None):
         if format is None :
             return HttpResponse(content='No cuisine restaurants found.', status=404)
         elif format.lower() == 'json' :
-            return JSONResponse({'Error' : 'No cuisine restaurants found.'})
+            return JSONResponse({'Error' : 'No cuisine restaurants found.'}, status=404)
 
     if request.method == 'GET':
         if format is None :
@@ -494,7 +496,7 @@ def cuisine_dishes(request, pk, format=None):
         if format is None :
             return HttpResponse(content='No cuisine dishes found.', status=404)
         elif format.lower() == 'json' :
-            return JSONResponse({'Error' : 'No cuisine dishes found.'})
+            return JSONResponse({'Error' : 'No cuisine dishes found.'}, status=404)
 
     if request.method == 'GET':
         if format is None :
@@ -521,29 +523,34 @@ def the_austinites(request) :
 
     for k in api_data['all'] :
 	    x = requests.get("http://theaustinites.pythonanywhere.com/api/" + k + "/")
-	    api_data['all'][k] = x.json()
-	    x.close()
-
-    for k in api_data['all'] :
-	    for d in api_data['all'][k] :
-		    x = requests.get("http://theaustinites.pythonanywhere.com/api/" + k + "/"
-			    + str(d['id']) + "/media/")
-		    d['media'] = x.json()
+	    if x.status_code == 200 :
+		    api_data['all'][k] = x.json()
 		    x.close()
 
-    return render_to_response('ourapp/nathan_test.html', { 'austinitesAPI' : api_data['all'] } )
+    for k in api_data['all'] :
+	    if type(api_data['all'][k]) is list :
+		    for d in api_data['all'][k] :
+			    if type(d) is dict :
+				    if 'id' in d:
+					    x = requests.get("http://theaustinites.pythonanywhere.com/api/" + k + "/"
+						+ str(d['id']) + "/media/")
+					    if x.status_code == 200 :
+						    d['media'] = x.json()
+						    x.close()
 
-@csrf_exempt
-def search_results(request) :
-    """
-    Render the "about us" page.
-    """
-    return render(request, 'ourapp/results.html')
+    return render_to_response('ourapp/austinites.html', { 'austinitesAPI' : api_data['all'] } )
 
 def normalize_query(query_string):
-    return query_string.lower().split()
+    query_string = query_string.lower()
 
-def urlContentPairs(request):
+    #remove punctuation
+    transFrom = string.punctuation
+    transTo = ''.join([" " for c in transFrom])
+    query_string = query_string.translate(query_string.maketrans(transFrom, transTo))
+
+    return query_string.split()
+
+def urlsAndContents(request):
     """
     Input a HttpRequest just so we have something to call our views with.
     Returns a generator that yields length two tuples. The first element of
@@ -554,22 +561,28 @@ def urlContentPairs(request):
     for rest in Restaurant.objects.all():
         restUrl = reverse('arestjson', args=[rest.id])
         html = restaurant_detail(request, rest.id).content
-        yield (restUrl, html)
+        yield (restUrl, html, "Restaurant", rest.id, rest.name)
 
     for dish in Dish.objects.all():
         dishUrl = reverse('adishjson', args=[dish.id])
         html = dish_detail(request, dish.id).content
-        yield (dishUrl, html)
+        yield (dishUrl, html, "Dish", dish.id, dish.name)
 
-    indexUrl = reverse('home')
-    html = home(request).content
-    yield (indexUrl, html)
+   # indexUrl = reverse('home')
+   # html = home(request).content
+   # yield (indexUrl, html)
 
-    aboutUrl = reverse('about')
-    html = about(request).content
-    yield (aboutUrl, html)
+   # aboutUrl = reverse('about')
+   # html = about(request).content
+   # yield (aboutUrl, html)
 
-def urlStrippedContentPairs(request, terms):
+def getName(url):
+    return "name stub"
+
+def getId(url):
+    return 5
+
+def urlsAndParsedContents(request, terms):
     """
     Input: a generator that yields length two tuples, the first element will be
     a URL and the second element will be a string containing the html content of that
@@ -581,9 +594,9 @@ def urlStrippedContentPairs(request, terms):
     be a URL, the second element will be the a list of paragraphs (as strings) from that URL
     without any html/css/javascript.
     """
-    urlContentGen = urlContentPairs(request)
-    for url, content in urlContentGen:
-        yield (url, list(myStrip(content, terms)))
+    urlContentGen = urlsAndContents(request)
+    for url, content, modelType, modelId, name in urlContentGen:
+        yield (url, list(myStrip(content, terms)), modelType, modelId, name)
 
 def getPattern(terms):
     """ Given a list of terms, constructs a pattern that matches any of the terms """
@@ -602,7 +615,8 @@ def myStrip(string, terms):
     """
     soup = BeautifulSoup(string)
     pat = getPattern(terms)
-    for tag in soup.find_all('h1') + soup.find_all('p'):
+    #for tag in soup.find_all('h1') + soup.find_all('p'):
+    for tag in soup.find_all('h1') + soup.find_all('p', class_="description"):
         match = pat.search(str(tag.text).lower())
         if match:
             yield str(tag.text)
@@ -684,19 +698,28 @@ def search(request, string):
    # html = urlopen(address).read()
 #    try:
         terms = normalize_query(string)
-        urlsAndStrippedConts = urlStrippedContentPairs(request, terms)
-        orResults = []
-        andResults = []
-        for url, textList in urlsAndStrippedConts:
+        if len(terms) == 0:
+            return HttpResponse(json.dumps([]), content_type="application/json")
+        urlsAndParsedConts = urlsAndParsedContents(request, terms)
+        finalResults = []
+        #orResults = []
+        #andResults = []
+        for url, textList, modelType, modelId, name in urlsAndParsedConts:
             andResultStr = andResultsBlah(textList, terms)
             if andResultStr:
-                andResults.append((url, andResultStr))
+                #andResults.append((url, andResultStr))
+                #andResults.append({"url":url, "text": andResultStr})
+                finalResults.append({"url":url, "text": andResultStr, "type":"and",
+                    "modelType":modelType, "id":modelId, "name":name})
 
             orResultStr = orResultsBlah(textList, terms)
             if orResultStr:
-                orResults.append((url, orResultStr))
+                #orResults.append((url, orResultStr))
+                #orResults.append({"url":url, "text": orResultStr})
+                finalResults.append({"url":url, "text": orResultStr,"type":"or",
+                    "modelType":modelType, "id":modelId, "name":name})
 
-        finalResults = [andResults, orResults]
+        #finalResults = [andResults, orResults]
         return HttpResponse(json.dumps(finalResults), content_type="application/json")
 
 #    except Exception:
