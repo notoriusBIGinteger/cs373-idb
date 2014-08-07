@@ -63,17 +63,14 @@
 
 		width:100%;
 	}
-
     </style>
 </head>
 <body>
     {% include "ourapp/menu.html" %}
     <div class="container">
-
         <div class="row">
             <h2>Discover ACL Artists by Location: </h2>
         </div>
-
         <div class="row">
             <div id="map-container" class="col-md-6 acl_map"></div>
                 <div id="map-outer" class="col-md-6">
@@ -84,14 +81,12 @@
                 </div>
             </div>
         </div>
-
     </div>
 
     <div class="container">
         <div class="row">
             <h2 style="float: left;">ACL Festival Pictures: </h2>
         </div>
-
         <div class="row">
             <div class="col-xs-3" id="imgColumn1">
             </div>
@@ -102,7 +97,6 @@
             <div class="col-xs-3" id="imgColumn4">
             </div>
         </div>
-
         <div class="row">
             <div class="col-xs-3" id="imgColumn5">
             </div>
@@ -113,7 +107,6 @@
             <div class="col-xs-3" id="imgColumn8">
             </div>
         </div>
-
     </div>
 
     <div class="container">
@@ -131,74 +124,70 @@
     <script>
 
     function writeSponsors(){
-        element = document.getElementById('sponsors');
-
-        var html = '<br /><p align="center"><font size:3px><b>2014 Sponsors: </b></font>'
+        var element = document.getElementById('sponsors');
+        var sponsor_html = '<br /><p align="center"><font size:3px><b>2014 Sponsors: </b></font>'
 
         {% for sponsor in austinitesAPI.sponsors %}
             console.log('{{sponsor.years}}')
 
             {% for year in sponsor.years %}
                 if('{{year}}' === '2014'){
-                    html += '<a href="' + '{{sponsor.media.webpage}}';
-                    html += '" data-toggle="tooltip" title="{{sponsor.industry}}"' + ' target="_blank">{{sponsor.name}}</a>';
+                    sponsor_html += '<a href="' + '{{sponsor.media.webpage}}';
+                    sponsor_html += '" data-toggle="tooltip" title="{{sponsor.industry}}"' + ' target="_blank">{{sponsor.name}}</a>';
 
-                {% if not forloop.parentloop.last %}
-                    html += ' | ';
-                {% endif %}
+                    {% if not forloop.parentloop.last %}
+                        sponsor_html += ' | ';
+                    {% endif %}
                }
             {% endfor %}
-
         {% endfor %}
 
-        element.innerHTML = html + '</p><br />';
+        element.innerHTML = sponsor_html + '</p><br />';
 
         $('a[data-toggle="tooltip"]').tooltip({
             placement: 'top',
         });
-
     }
 
     writeSponsors();
 
     function writeFlickr(){
+        var url = 'https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=c80aa800b0456e0635a335ad9c879363'
+        url += '&photoset_id=72157636188215713&format=json&jsoncallback=?'
 
-    var url = 'https://api.flickr.com/services/rest/?method=flickr.photosets.getPhotos&api_key=c80aa800b0456e0635a335ad9c879363'
-    url += '&photoset_id=72157636188215713&format=json&jsoncallback=?'
+        $.getJSON(url, function(data){
+            if(data.stat === "ok"){
+                var element;
+                var newHTML = '';
+                var indexes = [];
 
-    $.getJSON(url, function(data){
-        if(data.stat === "ok"){
-            var element;
-            var newHTML = '';
-            var indexes = [];
+                for (var j = 0; j < 8; j++){
+                    element = document.getElementById('imgColumn' + (j+1));
+                    var index = Math.floor(Math.random() * (data.photoset.photo.length));
 
-            for (var j = 0; j < 8; j++){
-                element = document.getElementById('imgColumn' + (j+1));
-                var index = Math.floor(Math.random() * (data.photoset.photo.length));
+                    while (indexes.indexOf(index) > -1){ //don't use the same photo index twice!
+                        index = Math.floor(Math.random() * (data.photoset.photo.length));
+                    }
 
-                while (indexes.indexOf(index) > -1){ //don't use the same photo index twice!
-                    index = Math.floor(Math.random() * (data.photoset.photo.length));
+                    indexes.push(index);
+
+                    var img_id = data.photoset.photo[index].id;
+                    var img_farm = data.photoset.photo[index].farm;
+                    var img_server = data.photoset.photo[index].server;
+                    var img_title = data.photoset.photo[index].title;
+                    var img_secret = data.photoset.photo[index].secret;
+                    var img_url_lg = 'https://farm' + img_farm + '.staticflickr.com/' + img_server + '/' + img_id + '_' + img_secret + '_b.jpg'
+                    var img_url_sm = 'https://farm' + img_farm + '.staticflickr.com/' + img_server + '/' + img_id + '_' + img_secret + '_q.jpg'
+
+                    newHTML += '<a href="' + img_url_lg + '" class="thumbnail" data-lightbox="ACL" data-title="' + img_title + '">';
+                    newHTML += '<img src="' + img_url_sm + '"></img>'
+                    newHTML += '</a>'
+
+                    element.innerHTML = newHTML;
+                    newHTML = '';
                 }
-
-                indexes.push(index);
-
-                var img_id = data.photoset.photo[index].id;
-                var img_farm = data.photoset.photo[index].farm;
-                var img_server = data.photoset.photo[index].server;
-                var img_title = data.photoset.photo[index].title;
-                var img_secret = data.photoset.photo[index].secret;
-                var img_url_lg = 'https://farm' + img_farm + '.staticflickr.com/' + img_server + '/' + img_id + '_' + img_secret + '_b.jpg'
-                var img_url_sm = 'https://farm' + img_farm + '.staticflickr.com/' + img_server + '/' + img_id + '_' + img_secret + '_q.jpg'
-
-                newHTML += '<a href="' + img_url_lg + '" class="thumbnail" data-lightbox="ACL" data-title="' + img_title + '">';
-                newHTML += '<img src="' + img_url_sm + '"></img>'
-                newHTML += '</a>'
-
-                element.innerHTML = newHTML;
-                newHTML = '';
             }
-        }
-    });
+        });
     }
 
     writeFlickr();
@@ -223,7 +212,7 @@
 
 	var myZoom = 4;
     if ($(window).width() < 960) {
-		$("#map-container").css({"height":"200px"});
+	    $("#map-container").css({"height":"200px"});
 			myZoom = 2;
 	}
 
@@ -242,7 +231,6 @@
       multiple addresses: http://econym.org.uk/gmap/example_geomulti.htm */
 
 	function geocodeOrigin(location, map_next){
-
 		var content = '<ul><lh>' + location + ':</lh>';
 
         for (var i = 0 ; i < artist_locations[location].artists.length; i++ )
@@ -251,20 +239,18 @@
         content += '</ul>';
 
         geocoder.geocode( { 'address': location },function(results, status) {
-
-                if (status == google.maps.GeocoderStatus.OK) {
-                    createMarker(results[0].geometry.location, content, location);
+            if (status == google.maps.GeocoderStatus.OK) {
+                createMarker(results[0].geometry.location, content, location);
+            }
+            else {
+                if (status == google.maps.GeocoderStatus.OVER_QUERY_LIMIT) {
+                    nextLocation--;
+                    delay++;
+                } else {
+                    alert("Geocode error: " + status);
                 }
-                else {
-
-                    if (status == google.maps.GeocoderStatus.OVER_QUERY_LIMIT) {
-                        nextLocation--;
-                        delay++;
-                    } else {
-                        alert("Geocode error: " + status);
-                    }
-                }
-                map_next();
+            }
+            map_next();
         });
     }
 
@@ -288,9 +274,7 @@
                 writeArtistTags(artist_locations[location].artists[x]);
                 writeYouTubeResult(artist_locations[location].artists[x]);
             }
-
         });
-
     }
 
 	function mapNext() {
@@ -311,48 +295,38 @@
 
             {% for artist in austinitesAPI.artists %}
                 if(artist == "{{ artist.name }}"){
-
                     artists.push("{{ artist.name }}");
-
                     var modal_link = '<h4><a href="#" data-toggle="modal" ';
                     modal_link += 'data-target="#' + artist.replace(/\s+/g, '') + 'Modal"';
                     modal_link += 'id="' + artist.replace(/\s+/g, '') + 'ModalLabel">';
                     modal_link += '{{ artist.name }}';
                     modal_link += '</a> ' + '<font size=2px>({{artist.label}} | {{artist.genre}})</font></h4>';
 
-                    {% if not artist.years|length_is:'0' %}
+                        {% if not artist.years|length_is:'0' %}
+                            modal_link += '<div id="' + artist.replace(/\s+/g, '') + 'Years"><font size=2px><b>ACL Years: </b>';
 
-                    modal_link += '<div id="' + artist.replace(/\s+/g, '') + 'Years"><font size=2px><b>ACL Years: </b>';
+                            {% for year in artist.years %}
+                                modal_link += '{{year}}';
 
-                        {% for year in artist.years %}
-                            modal_link += '{{year}}';
+                                {% if not forloop.last %}
+                                    modal_link += ', ';
+                                {% endif %}
+                            {% endfor %}
 
-                            {% if not forloop.last %}
-                                modal_link += ', ';
-                            {% endif %}
-
-                        {% endfor %}
-
-                    modal_link += '</font></div>';
-
-                    {% endif %}
+                            modal_link += '</font></div>';
+                        {% endif %}
 
                     var modal = writeModal('{{ artist.name }}', '{{ artist.media.bio }}',
                     '{{ artist.media.photo }}', '{{ artist.genre }}', '{{ artist.media.facebook }}');
-
                     modalHTML += modal_link + modal;
                 }
             {% endfor %}
-
         }
-
         element.innerHTML = modalHTML;
-
     }
 
     function writeModal(name, bio, image, genre, fb){
         var ref = 'https%3A%2F%2Fwww.facebook.com%2F' + fb. replace('https://www.facebook.com/', '');
-
         var new_modal = '';
 	    new_modal += '<div class="modal fade" id="' + name.replace(/\s+/g, '') + 'Modal" tabindex="-1" role="dialog" aria-labelledby="' + name.replace(/\s+/g, '') + 'ModalLabel" aria-hidden="true">';
   	    new_modal += '<div class="modal-dialog modal-lg">';
@@ -368,9 +342,8 @@
         new_modal += 'scrolling="no" frameborder="0" style="border:none; link:white; overflow:hidden; height:62px;" allowTransparency="true" class="frame-FB"></iframe>';
         new_modal += '<h3>Biography:</h3>';
         new_modal += '<p>' + bio + '</p>';
-        new_modal += '<div id="' + name.replace(/\s+/g, '') +'Similar"></div>'
-        new_modal += '<div id="' + name.replace(/\s+/g, '') +'Descriptions"></div>'
-        //new_modal += '<h3>Media:</h3>';
+        new_modal += '<div id="' + name.replace(/\s+/g, '') +'Similar"></div>';
+        new_modal += '<div id="' + name.replace(/\s+/g, '') +'Descriptions"></div>';
         new_modal += '<img src = "' + image + '" width="400" align="left"></img>';
         new_modal += '<iframe width="400" height="300" frameborder="0" allowfullscreen="" align="right" id="';
         new_modal += name.replace(/\s+/g, '') + 'Youtube' + '"></iframe>';
@@ -387,12 +360,11 @@
 
         {% for artist in austinitesAPI.artists %}
             if(artist == '{{artist.name}}'){
-
                 id = '{{artist.media.video}}';
                 var stop = id.indexOf('&');
-                if (stop > 0)
+                if (stop > 0){
                     id = id.slice(0, stop);
-
+                }
                 id = id.replace('//www.youtube.com/embed/','')
             }
         {% endfor %}
@@ -436,7 +408,6 @@
             function(data) {
                 var elementname = artist.replace(/\s+/g, '') + 'Similar';
                 var element = document.getElementById(elementname);
-
                 var new_inner = '<p><font size=3px><b>Similar Artists: </b></font> ';
 
                 for (var j = 0 ; j < data.response.artists.length; j++){
@@ -455,10 +426,8 @@
     function writeArtistTags(artist){
         $.getJSON('http://developer.echonest.com/api/v4/artist/terms?api_key=JZG7KNQY2FUFRDDXS&name=' + artist +'&format=json',
             function(data) {
-
                 var elementname = artist.replace(/\s+/g, '') + 'Descriptions';
                 var element = document.getElementById(elementname);
-
                 var newInner = '<p><font size=3px><b>Frequent tags:</b></font> ';
 
                 for (var j = 0 ; j < data.response.terms.length; j++){
@@ -473,9 +442,8 @@
                     }
                 }
 
-                    element.innerHTML = newInner + '</p>';
+                element.innerHTML = newInner + '</p>';
         });
-
     }
     </script>
 </body>
