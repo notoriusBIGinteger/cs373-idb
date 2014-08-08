@@ -1631,11 +1631,18 @@ class Tests(TestCase):
         match = next(matches)
         self.assertEqual("</strong>", match.group())
 
-        for match in matches:
-            self.assertEqual("<strong>", match.group())
-
-            match = next(matches)
-            self.assertEqual("</strong>", match.group())
+        #for match in matches:
+        while True:
+            try:
+                match = next(matches)
+                self.assertEqual("<strong>", match.group())
+            except StopIteration:
+                break
+            try:
+                match = next(matches)
+                self.assertEqual("</strong>", match.group())
+            except StopIteration:
+                self.assertTrue(False)
 
 
     def verify_search_results(self, searchResultDictList):
