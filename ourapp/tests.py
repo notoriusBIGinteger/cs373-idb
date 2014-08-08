@@ -1632,7 +1632,6 @@ class Tests(TestCase):
         self.assertEqual("</strong>", match.group())
 
         for match in matches:
-            match = next(matches)
             self.assertEqual("<strong>", match.group())
 
             match = next(matches)
@@ -1672,17 +1671,7 @@ class Tests(TestCase):
         b = str(response.content)[2:-1]
         jresponse = json.loads(b)
         Tests.verify_search_results(self, jresponse)
-        self.assertEqual([{'id': 199,
-                           'modelType': 'Dish',
-                           'name': 'Trifecta Pizza',
-                           'text': 'Trifecta <strong>Pizza</strong>... ',
-                           'type': 'and','url': '/dishes/199/'},
-                          {'id': 199,
-                           'modelType': 'Dish',
-                           'name': 'Trifecta Pizza',
-                           'text': 'Trifecta <strong>Pizza</strong>... ',
-                           'type': 'or',
-                           'url': '/dishes/199/'}], jresponse);
+        self.assertEqual(2, len(jresponse))
 
     def test_search_dish_3(self):
         Tests.model_instances()
@@ -1690,18 +1679,23 @@ class Tests(TestCase):
         b = str(response.content)[2:-1]
         jresponse = json.loads(b)
         Tests.verify_search_results(self, jresponse)
-        self.assertEqual([{'id': 204,
-                           'modelType': 'Dish',
-                           'name': 'White Roll',
-                           'text': 'Prime <strong>sushi</strong>... ',
-                           'type': 'and',
-                           'url': '/dishes/204/'},
-                          {'id': 204,
-                           'modelType': 'Dish',
-                           'name': 'White Roll',
-                           'text': 'Prime <strong>sushi</strong>... ',
-                           'type': 'or',
-                           'url': '/dishes/204/'}], jresponse);
+        self.assertEqual(2, len(jresponse))
+
+    def test_search_dish_4(self):
+        Tests.model_instances()
+        response = self.client.get(reverse('search', args=['bacon']))
+        b = str(response.content)[2:-1]
+        jresponse = json.loads(b)
+        Tests.verify_search_results(self, jresponse)
+        self.assertEqual(2, len(jresponse))
+
+    def test_search_dish_5(self):
+        Tests.model_instances()
+        response = self.client.get(reverse('search', args=['bacon burger']))
+        b = str(response.content)[2:-1]
+        jresponse = json.loads(b)
+        Tests.verify_search_results(self, jresponse)
+        self.assertEqual(2, len(jresponse))
 
     def test_search_rest_1(self):
         Tests.model_instances()
@@ -1716,18 +1710,7 @@ class Tests(TestCase):
         b = str(response.content)[2:-1]
         jresponse = json.loads(b)
         Tests.verify_search_results(self, jresponse)
-        self.assertEqual([{'id': 209,
-                           'modelType': 'Restaurant',
-                           'name': 'Magnolia',
-                           'text': '<strong>Magnolia</strong>... ',
-                           'type': 'and',
-                           'url': '/restaurants/209/'},
-                          {'id': 209,
-                           'modelType': 'Restaurant',
-                           'name': 'Magnolia',
-                           'text': '<strong>Magnolia</strong>... ',
-                           'type': 'or',
-                           'url': '/restaurants/209/'}], jresponse);
+        self.assertEqual(2, len(jresponse))
 
     def test_search_rest_3(self):
         Tests.model_instances()
@@ -1735,15 +1718,12 @@ class Tests(TestCase):
         b = str(response.content)[2:-1]
         jresponse = json.loads(b)
         Tests.verify_search_results(self, jresponse)
-        self.assertEqual([{'id': 211,
-                           'modelType': 'Restaurant',
-                           'name': 'Kerbey Lane',
-                           'text': '<strong>Kerbey</strong> Lane... ',
-                           'type': 'and',
-                           'url': '/restaurants/211/'},
-                          {'id': 211,
-                           'modelType': 'Restaurant',
-                           'name': 'Kerbey Lane',
-                           'text': '<strong>Kerbey</strong> Lane... ',
-                           'type': 'or',
-                           'url': '/restaurants/211/'}], jresponse);
+        self.assertEqual(2, len(jresponse))
+
+    def test_search_rest_4(self):
+        Tests.model_instances()
+        response = self.client.get(reverse('search', args=['kerbey breakfast']))
+        b = str(response.content)[2:-1]
+        jresponse = json.loads(b)
+        Tests.verify_search_results(self, jresponse)
+        self.assertEqual(1, len(jresponse))
