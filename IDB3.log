@@ -1,0 +1,810 @@
+commit 904cf2e7ccd894e2e5825b1b54345549a2cfd9bd
+Author: notoriousBIGinteger <omarlalani@gmail.com>
+Date:   Thu Aug 7 21:38:12 2014 +0000
+
+    Almost ready for final release
+
+commit c0a346b82d12b69adfc98c67292a129448f1f171
+Author: notoriousBIGinteger <omarlalani@gmail.com>
+Date:   Thu Aug 7 20:49:17 2014 +0000
+
+    Closes issue #55
+
+commit defbaa1804b0cd1adaa0115a9af87824e79925cc
+Author: notoriousBIGinteger <omarlalani@gmail.com>
+Date:   Thu Aug 7 20:36:03 2014 +0000
+
+    Closes issue #60, #51
+
+commit 58ee1f12f4c0ead62483e436a5cda119f7840ad7
+Author: notoriousBIGinteger <omarlalani@gmail.com>
+Date:   Thu Aug 7 19:36:28 2014 +0000
+
+    Clean up code and variable names
+
+commit 0752a6a5cf5cfb3aa8babd34e229550e7f715d86
+Author: notoriousBIGinteger <omarlalani@gmail.com>
+Date:   Thu Aug 7 18:40:25 2014 +0000
+
+    Added Presentation closes #54
+
+commit 77e652dc8054a746b888f4eaa944c2784c95e1bf
+Author: notoriousBIGinteger <omarlalani@gmail.com>
+Date:   Thu Aug 7 17:51:10 2014 +0000
+
+    About us page updated to include tools. Added Austinites API link in menu
+
+commit 0c69789c7e9717c13c0bfae7df32c9e043625089
+Author: notoriousBIGinteger <omarlalani@gmail.com>
+Date:   Thu Aug 7 17:49:32 2014 +0000
+
+    Closes issues #51, #61, #62, #63
+
+commit 2a0df15dd218dc22c38b2cb7e28a726ede37819b
+Author: notoriousBIGinteger <omarlalani@gmail.com>
+Date:   Thu Aug 7 17:42:21 2014 +0000
+
+    Close issue #13
+
+commit afc6cbbadfa0b7d7ca32c1ba5c95175c2842074a
+Author: notoriousBIGinteger <omarlalani@gmail.com>
+Date:   Mon Aug 4 22:54:16 2014 +0000
+
+    more api stuff, m search almost done
+
+commit b30d4a34cd9c598fc2277147b9219bf8fee4402d
+Author: notoriousBIGinteger <omarlalani@gmail.com>
+Date:   Sun Aug 3 20:13:43 2014 +0000
+
+    more documentation for search functions
+
+commit 2125fbc9dda4c442d3d050ec05dab1807285670d
+Author: notoriousBIGinteger <omarlalani@gmail.com>
+Date:   Sun Aug 3 20:11:38 2014 +0000
+
+    Improving search function documentation. Nathan seems to have made changes to Austinites
+
+commit 9ca6243d537555d68bb9af46a06626bfd8e528d5
+Author: notoriousBIGinteger <omarlalani@gmail.com>
+Date:   Sun Aug 3 19:43:46 2014 +0000
+
+    Removed commented out old approach at searching
+
+commit ab9b035eda539c9192aba7166c26bb902ab88353
+Author: notoriousBIGinteger <omarlalani@gmail.com>
+Date:   Sun Aug 3 19:27:07 2014 +0000
+
+    Almost done factoring out the code for formatting results
+
+commit 2875e6a62de14ad2f979b5c19a0a67a9e60929f7
+Author: notoriousBIGinteger <omarlalani@gmail.com>
+Date:   Sun Aug 3 18:34:56 2014 +0000
+
+    re.IGNORECASE enabled. Now search seems to be case insensitive.
+
+commit 7060c8388755e078d0cb8c11760fc33069ef3bf6
+Author: notoriousBIGinteger <omarlalani@gmail.com>
+Date:   Sun Aug 3 18:29:35 2014 +0000
+
+    search results only displaying the paragraphs that actuall contain matches
+
+commit 2501cb8bb398a575983189fa63fd31ed0a59f85e
+Author: notoriousBIGinteger <omarlalani@gmail.com>
+Date:   Sun Aug 3 18:22:14 2014 +0000
+
+    More refactoring towards truncating search results
+
+commit c3818187fe05dd4aa1316a94f9517bfdd1728ef2
+Author: notoriousBIGinteger <omarlalani@gmail.com>
+Date:   Sun Aug 3 18:14:33 2014 +0000
+
+    Refactored a bit to move towards truncating search results
+
+commit 379a0ab4cddc6f0a8fe245041b0326bc1c79dc31
+Author: notoriousBIGinteger <omarlalani@gmail.com>
+Date:   Fri Aug 1 21:33:16 2014 +0000
+
+    initial, dumb framework setup for or and and results, need to add tags to output strings among other improvements
+
+commit f1be7dac3b9c55d3e7b103e4f403e3ee63cb2f87
+Author: notoriousBIGinteger <omarlalani@gmail.com>
+Date:   Fri Aug 1 05:49:03 2014 +0000
+
+    Seemingly correct text extraction from one of our pages. Now need to search through it
+
+commit dd0c33a8fcdcb243758be75f11c5e9b57f710347
+Author: notoriousBIGinteger <omarlalani@gmail.com>
+Date:   Fri Jul 25 21:41:04 2014 +0000
+
+    Fix dead link
+
+commit 4b05ff2636e9688bcedfa1904363a1d6ab0ef9be
+Author: notoriousBIGinteger <omarlalani@gmail.com>
+Date:   Fri Jul 25 18:05:46 2014 +0000
+
+    Closes issue #30
+
+commit 221d896884021c932d3d3ed983b74cff08ff5b1f
+Author: notoriousBIGinteger <omarlalani@gmail.com>
+Date:   Fri Jul 25 18:01:17 2014 +0000
+
+    Add @media tags to size things correctly for mobile
+
+commit 48c92227d8e501bdf91993ca71d26d4f90fbe543
+Author: notoriousBIGinteger <omarlalani@gmail.com>
+Date:   Fri Jul 25 17:57:21 2014 +0000
+
+    Closes issue #39
+
+commit 850c6df7fe229d66b0e335ae1f20cd83c4c211e1
+Author: notoriousBIGinteger <omarlalani@gmail.com>
+Date:   Fri Jul 25 17:54:12 2014 +0000
+
+    Added tests for the models new getDict method. Updated tests.out #43 #27
+
+commit a7c4595860d4e105faef2cd0d323bd6fae87f28e
+Author: notoriousBIGinteger <omarlalani@gmail.com>
+Date:   Fri Jul 25 17:43:23 2014 +0000
+
+    Fix jumbotron padding
+
+commit 6a8d4113e3012c6cd793d095a513b891aad60e32
+Author: notoriousBIGinteger <omarlalani@gmail.com>
+Date:   Fri Jul 25 17:40:29 2014 +0000
+
+    Closes issue #45
+
+commit 54c1b837f4a5c2bf012bc28cafb082b5995f2940
+Author: notoriousBIGinteger <omarlalani@gmail.com>
+Date:   Fri Jul 25 17:20:06 2014 +0000
+
+    Add twitter widgets
+
+commit 52baf86350135a6ad62df41b52101a48523c7cfe
+Author: notoriousBIGinteger <omarlalani@gmail.com>
+Date:   Fri Jul 25 17:08:16 2014 +0000
+
+    Adjust height for .masthead
+
+commit f5f1b12cb8e352e34931d47556b8ee4b467301a7
+Merge: 098c46e 25fd9a8
+Author: notoriousBIGinteger <omarlalani@gmail.com>
+Date:   Fri Jul 25 17:01:20 2014 +0000
+
+    Merge branch 'master' of https://github.com/notoriusBIGinteger/cs373-idb
+
+commit 098c46e85d82ea00b70f6d96dce53fabf5533785
+Author: notoriousBIGinteger <omarlalani@gmail.com>
+Date:   Fri Jul 25 16:54:05 2014 +0000
+
+    Update HTML and JS changes
+
+commit 25fd9a81e413e7294746130a7ca157330c6c42ce
+Author: Nathan Heskia <nathan.heskia@utexas.edu>
+Date:   Fri Jul 25 11:40:33 2014 -0500
+
+    Closes issue #44
+
+commit 49cab237c2fe3147b2c28904e15350c0d1cbcd44
+Author: notoriousBIGinteger <omarlalani@gmail.com>
+Date:   Fri Jul 25 10:43:29 2014 +0000
+
+    Created tests.out Close #43
+
+commit 4b4c85298c66e4b340fea8c4a91d7424711c4db2
+Author: notoriousBIGinteger <omarlalani@gmail.com>
+Date:   Fri Jul 25 10:38:19 2014 +0000
+
+    Added 404 response tests. #27 #36
+
+commit 7a23a3157457a42d15631d01c35e578bb4c7866f
+Merge: d8ddbb2 239cd86
+Author: notoriousBIGinteger <omarlalani@gmail.com>
+Date:   Fri Jul 25 08:20:37 2014 +0000
+
+    Merge branch 'master' of https://github.com/notoriusBIGinteger/cs373-idb
+
+commit d8ddbb2ae05288d950f27045c860b8dda64d4017
+Author: notoriousBIGinteger <omarlalani@gmail.com>
+Date:   Fri Jul 25 08:19:35 2014 +0000
+
+    Integrated old tests and added new tests. Close #36 Close #27
+
+commit 239cd86c6cc3a9c7dd364c9a33f91f79f0e9cd38
+Author: Nathan Heskia <nathan.heskia@utexas.edu>
+Date:   Thu Jul 24 22:25:30 2014 -0500
+
+    Transferring blueprint from apiary.io
+
+commit 36e264d04de52b37bccc4357d3aaf1dbc7f7f113
+Author: notoriousBIGinteger <omarlalani@gmail.com>
+Date:   Thu Jul 24 22:46:42 2014 +0000
+
+    regular interval commit
+
+commit 7cb41733124e283733684b15aca510941c7145e4
+Author: notoriousBIGinteger <omarlalani@gmail.com>
+Date:   Thu Jul 24 22:15:06 2014 +0000
+
+    Close #42 Close #41 Close #38 Close #37
+
+commit 09227f5bf6d74d3923267d01d49fc04ceb828f16
+Author: Nathan Heskia <nathan.heskia@utexas.edu>
+Date:   Thu Jul 24 14:09:31 2014 -0500
+
+    Transferring blueprint from apiary.io
+
+commit 1c219981f37ac9854d345b2cd8c179cbd5ebba30
+Author: Nathan Heskia <nathan.heskia@utexas.edu>
+Date:   Thu Jul 24 04:33:37 2014 -0500
+
+    Closes issue #29
+
+commit 124f6828818047ffa623c2aa02def77479864daf
+Author: notoriousBIGinteger <omarlalani@gmail.com>
+Date:   Thu Jul 24 00:11:24 2014 +0000
+
+    Right after I created, and then we fixed an unhandled exception
+
+commit e93b95342c22762368475fe6a831b78d737bded5
+Merge: ed63272 aacd3fd
+Author: notoriousBIGinteger <omarlalani@gmail.com>
+Date:   Wed Jul 23 21:26:04 2014 +0000
+
+    Merge branch 'master' of https://github.com/notoriusBIGinteger/cs373-idb
+
+commit ed632723f2aca8f17b241c2de4d1c4a613726d73
+Author: notoriousBIGinteger <omarlalani@gmail.com>
+Date:   Wed Jul 23 21:22:57 2014 +0000
+
+    Closes issues 26, 31, 34,
+
+commit 810e439a95c5344940b526efe2dacf76fed67b77
+Author: notoriousBIGinteger <omarlalani@gmail.com>
+Date:   Tue Jul 22 23:55:04 2014 +0000
+
+    About to change data model.
+
+commit 68ecf53a392b8303002409351badf49a7ef59cd6
+Author: notoriousBIGinteger <omarlalani@gmail.com>
+Date:   Tue Jul 22 22:55:25 2014 +0000
+
+    Working on splash page after lots of other changes
+
+commit aacd3fd363c4783aa997f4c61d9c08b7589e06d9
+Author: Nathan Heskia <nathan.heskia@utexas.edu>
+Date:   Tue Jul 22 16:11:44 2014 -0500
+
+    Transferring blueprint from apiary.io
+
+commit 50c081e71455205da86655e1046ea411cc9aa047
+Author: Nathan Heskia <nathan.heskia@utexas.edu>
+Date:   Tue Jul 22 15:29:52 2014 -0500
+
+    Transferring blueprint from apiary.io
+
+commit 6f541f838fd7cda550d155f9e5ceb272d98c4d42
+Author: notoriousBIGinteger <omarlalani@gmail.com>
+Date:   Mon Jul 21 21:08:36 2014 +0000
+
+    Website/API name changed to Kravester. Closes issue #22
+
+commit 56c3e8bced1b334b93ef6e8d0af84aecd2e57c4c
+Author: Group name <groupemail@noreply.com>
+Date:   Mon Jul 21 21:03:39 2014 +0000
+
+    Fixes issue #21
+
+commit c079f162dd624978afe36f928e050d5c947bc44d
+Author: Nathan Heskia <nathan.heskia@utexas.edu>
+Date:   Mon Jul 21 13:57:52 2014 -0500
+
+    Transferring blueprint from apiary.io
+
+commit e36e1ada83a061f3055cd5adbf54c0b7f26f9fee
+Merge: afad69c 6c90489
+Author: Group name <groupemail@noreply.com>
+Date:   Sun Jul 20 22:48:40 2014 +0000
+
+    Merge branch 'master' of https://github.com/notoriusBIGinteger/cs373-idb
+
+commit afad69cd2fa5d7e3444aef7a59c16b77839a058c
+Author: Group name <groupemail@noreply.com>
+Date:   Sun Jul 20 22:47:52 2014 +0000
+
+    MySQL is proper working now
+
+commit 6c90489b4c52d8b4eb01295ab80fdb837973c0f8
+Merge: b383753 70e3653
+Author: Omar Lalani <omarlalani@gmail.com>
+Date:   Sun Jul 20 17:13:25 2014 -0500
+
+    Merge branch 'master' of https://github.com/notoriusBIGinteger/cs373-idb
+
+commit b3837535038d1ec2fe4653c455cc598634091d49
+Author: Omar Lalani <omarlalani@gmail.com>
+Date:   Sun Jul 20 17:13:13 2014 -0500
+
+    More notes on strategies for making website dynamic
+
+commit 70e36535f5a5da73d90ec5e87b258cf1e3abe16e
+Merge: bb56b70 a719ea6
+Author: Group name <groupemail@noreply.com>
+Date:   Sun Jul 20 22:01:26 2014 +0000
+
+    Merge branch 'master' of https://github.com/notoriusBIGinteger/cs373-idb
+
+commit a719ea63b2a31010b0502834586f7d019b05ce28
+Author: Omar Lalani <omarlalani@gmail.com>
+Date:   Sun Jul 20 17:00:32 2014 -0500
+
+    Begin initial process of turning static HTML into dynamic content
+
+commit bb56b706605e440cdaf95e3337f18411e7144d5e
+Merge: 61ecd7d 996653a
+Author: Group name <groupemail@noreply.com>
+Date:   Sun Jul 20 21:59:19 2014 +0000
+
+    Merge branch 'master' of https://github.com/notoriusBIGinteger/cs373-idb
+
+commit 61ecd7da744d4a47cc65e8da13591274082afb60
+Author: Group name <groupemail@noreply.com>
+Date:   Sun Jul 20 20:32:39 2014 +0000
+
+    changes directly in pythonanywhere, starting IDB2
+
+commit 996653abf9ab7eb9fb4ffbc5cb2792b13d1ec2d1
+Author: Kevin Wheeler <kevinwheeler2@yahoo.com>
+Date:   Thu Jul 10 21:55:44 2014 -0500
+
+    added tests.out
+
+commit 901b01073cbf06507ccb841bc2a3f425cb18238f
+Author: Group name <groupemail@noreply.com>
+Date:   Fri Jul 11 00:55:16 2014 +0000
+
+    Create IDB.log, close #8
+
+commit 6d2a88cc442a08209619bdc79c9731c34e78993b
+Author: Group name <groupemail@noreply.com>
+Date:   Fri Jul 11 00:53:47 2014 +0000
+
+    Fixed typo on Nathan's bio
+
+commit 33f769dfdf2dcf97f58f159cec41a9e1cf5f25b1
+Author: Group name <groupemail@noreply.com>
+Date:   Fri Jul 11 00:53:25 2014 +0000
+
+    Fixed reviewer links for Caesar Salad
+
+commit 956b51ddd432d4f8b77f512f804412572dae5a28
+Author: Group name <groupemail@noreply.com>
+Date:   Fri Jul 11 00:52:57 2014 +0000
+
+    Fixed broken link
+
+commit 90f8154cb2884c9c20619171ede6768356d0b9a1
+Author: Group name <groupemail@noreply.com>
+Date:   Fri Jul 11 00:49:47 2014 +0000
+
+    ran pydoc
+
+commit d2ea0892afda514bfc9b6c28d734500f72d9d791
+Merge: 2772e76 2de5711
+Author: Group name <groupemail@noreply.com>
+Date:   Thu Jul 10 23:57:03 2014 +0000
+
+    Merge branch 'master' of https://github.com/notoriusBIGinteger/cs373-idb
+
+commit 2772e76f6adc2760e4b7a60331e227b8aad3106b
+Author: Group name <groupemail@noreply.com>
+Date:   Thu Jul 10 23:54:28 2014 +0000
+
+    Fixed the dead links for the html,set up proper view/urls in django, added new html web pages
+
+commit 2de5711268973d0624d8fa99b2ade28bdad2024b
+Author: Nathan Heskia <nathan.heskia@utexas.edu>
+Date:   Thu Jul 10 18:02:34 2014 -0500
+
+    10+ Technical Report
+
+commit 1b4211fdf69d46a8737b5c965e675ff893ab90dc
+Author: Nathan Heskia <nathan.heskia@utexas.edu>
+Date:   Thu Jul 10 14:23:56 2014 -0500
+
+    Transferring blueprint from apiary.io
+
+commit 0be8241033511dd7aa168f6d6990db8bf2af16ca
+Author: Nathan Heskia <nathan.heskia@utexas.edu>
+Date:   Thu Jul 10 14:20:51 2014 -0500
+
+    Transferring blueprint from apiary.io
+
+commit 63d91247ab561f5c88787ab902fb0080d64786d6
+Author: Nathan Heskia <nathan.heskia@utexas.edu>
+Date:   Wed Jul 9 20:37:17 2014 -0500
+
+    Transferring blueprint from apiary.io
+
+commit f63ebf83db5ea3a3993e0811595a677287ed082b
+Author: Nathan Heskia <nathan.heskia@utexas.edu>
+Date:   Wed Jul 9 20:36:41 2014 -0500
+
+    Transferring blueprint from apiary.io
+
+commit 0b713d9d5340f6fb8728c2b5c795250f7a4b9858
+Merge: 4448459 71a52f4
+Author: Mike Wham <mtwham@humility>
+Date:   Wed Jul 9 20:22:49 2014 -0500
+
+    Merge branch 'master' of github.com:notoriusBIGinteger/cs373-idb
+
+commit 444845926e096d81f0634ffa516d0c0172ab2762
+Author: Mike Wham <mtwham@humility>
+Date:   Wed Jul 9 20:22:40 2014 -0500
+
+    Adding in reviewer section
+
+commit 71a52f452d2e009ae59db9e2b8be417026abc491
+Author: Nathan Heskia <nathan.heskia@utexas.edu>
+Date:   Wed Jul 9 20:10:04 2014 -0500
+
+    Transferring blueprint from apiary.io
+
+commit d387dc71abf123f860e15c91ab44b2fbe607d136
+Author: Mike Wham <mtwham@humility>
+Date:   Wed Jul 9 19:28:21 2014 -0500
+
+    Finishing up splash page
+
+commit 6485c3d2edcd041ed4248e372b8d6ccab21d8bab
+Merge: 70fdd15 dcf0288
+Author: Omar Lalani <omarlalani@gmail.com>
+Date:   Wed Jul 9 19:26:57 2014 -0500
+
+    Merge branch 'master' of https://github.com/notoriusBIGinteger/cs373-idb
+    
+    r Please enter a commit message to explain why this merge is necessary,
+
+commit 70fdd15c69f55031a58922f6923054fbdce37f48
+Author: Omar Lalani <omarlalani@gmail.com>
+Date:   Wed Jul 9 19:26:43 2014 -0500
+
+    New Review Pages added closes #19
+
+commit dcf028808096b2d1ecefbf5bbb270d2f453a42ea
+Author: Nathan Heskia <nathan.heskia@utexas.edu>
+Date:   Wed Jul 9 19:20:43 2014 -0500
+
+    Transferring blueprint from apiary.io
+
+commit efc42e1ba0c06c4b52a7b2d8f48be3f5bcc8f560
+Merge: f3d0c78 ecbc3e8
+Author: Mike Wham <mtwham@humility>
+Date:   Wed Jul 9 17:10:20 2014 -0500
+
+    Merge branch 'master' of github.com:notoriusBIGinteger/cs373-idb
+
+commit f3d0c786a24cd6eb773709242a7edd6290d490ca
+Author: Mike Wham <mtwham@humility>
+Date:   Wed Jul 9 17:10:11 2014 -0500
+
+    Very basic splash page
+
+commit ecbc3e8c05c6d6308875a4e7d3ede6d3d6c601ba
+Author: Nathan Heskia <nathan.heskia@utexas.edu>
+Date:   Wed Jul 9 16:49:14 2014 -0500
+
+    Transferring blueprint from apiary.io
+
+commit fd10444dd90278fbee576f5afbbb9c36e786dcc1
+Author: Nathan Heskia <nathan.heskia@utexas.edu>
+Date:   Wed Jul 9 16:43:35 2014 -0500
+
+    Transferring blueprint from apiary.io
+
+commit f3bde0d2b43296929c706613c6f5b8190708ec56
+Author: Nathan Heskia <nathan.heskia@utexas.edu>
+Date:   Wed Jul 9 16:28:36 2014 -0500
+
+    Transferring blueprint from apiary.io
+
+commit a67d30fbd57b62ef97360ac8e25c0a7f8a7e437b
+Author: Nathan Heskia <nathan.heskia@utexas.edu>
+Date:   Wed Jul 9 16:24:07 2014 -0500
+
+    Transferring blueprint from apiary.io
+
+commit e72b524ae19b993ae3f3348731eb2fd0069afec2
+Author: Nathan Heskia <nathan.heskia@utexas.edu>
+Date:   Wed Jul 9 16:20:17 2014 -0500
+
+    Transferring blueprint from apiary.io
+
+commit c42e8cdaa6bc3ff97e65b4901e07c0de866ffcd8
+Author: Mike Wham <mtwham@humility>
+Date:   Wed Jul 9 16:19:01 2014 -0500
+
+    Update hyde park entrees
+
+commit a94d201cddadff6184badcfd56f8ff930401b63a
+Author: Mike Wham <mtwham@humility>
+Date:   Wed Jul 9 15:55:57 2014 -0500
+
+    Finish kerbey lane
+
+commit 8266c7b077c5c3180879caf051fc4fc1d3a9f918
+Author: Mike Wham <mtwham@humility>
+Date:   Wed Jul 9 15:46:03 2014 -0500
+
+    Add reviews to magnolia cafe, fish taco pic
+
+commit f3ef3fe9c2474f0c51ae41674a61b7d1f898c781
+Author: Nathan Heskia <nathan.heskia@utexas.edu>
+Date:   Wed Jul 9 11:59:45 2014 -0500
+
+    Transferring blueprint from apiary.io
+
+commit bcfcb38610721ecf568b47fba7f5f3a8c32864b4
+Author: Nathan Heskia <nathan.heskia@utexas.edu>
+Date:   Tue Jul 8 19:30:11 2014 -0500
+
+    Transferring blueprint from apiary.io
+
+commit dfa70bff401c4aebb2bf655e97817996b4bfffe8
+Author: Alex Landaverde <tigresalex11@gmail.com>
+Date:   Tue Jul 8 19:13:42 2014 -0500
+
+    added unit testing and some get_all methods within models.
+
+commit 103dfc7b8dba9f747ce840605e83746158e6d4ab
+Author: Mike Wham <mtwham@humility>
+Date:   Tue Jul 8 18:54:41 2014 -0500
+
+    Add in reviews for Hyde Park
+
+commit 8821cfc6e997a9e0ff8c9dfb1b69402c4fded433
+Merge: 70edab8 6ddaf9c
+Author: Kevin Wheeler <kevinwheeler@users.noreply.github.com>
+Date:   Tue Jul 8 18:18:11 2014 -0500
+
+    Merge branch 'master' of github.com:notoriusBIGinteger/cs373-idb
+
+commit 70edab8c3d33e813353b680dc97ba9d508d666b2
+Author: Kevin Wheeler <kevinwheeler@users.noreply.github.com>
+Date:   Tue Jul 8 18:17:52 2014 -0500
+
+    Correct stubs being rendered based on captured ID. Close #18
+
+commit 6ddaf9c5dddf43b8138ddc5e0f78cc1d62e065a4
+Author: Omar Lalani <omarlalani@gmail.com>
+Date:   Tue Jul 8 17:38:59 2014 -0500
+
+    Review pages for all three restaurants closes #17
+
+commit ed5554235520a0f721702353dc6ccdcd8d331379
+Author: Omar Lalani <omarlalani@gmail.com>
+Date:   Tue Jul 8 17:21:41 2014 -0500
+
+    foods similar and specific food pages for ceasar salad and hyde park bar grill closes #16
+
+commit 78cf48676177cb08149eb34899747c57625d3e05
+Author: Mike Wham <mtwham@humility>
+Date:   Tue Jul 8 17:08:15 2014 -0500
+
+    Update links between menu and pasta dish
+
+commit 1c7fdf4e5faf24232f0f07441b6b6b207009cc25
+Author: Mike Wham <mtwham@humility>
+Date:   Tue Jul 8 16:47:01 2014 -0500
+
+    Fix menu path
+
+commit b89ab4a79699b36c773a37c3582e2527ba8d9f6c
+Author: Mike Wham <mtwham@humility>
+Date:   Tue Jul 8 16:45:48 2014 -0500
+
+    Rename hyde park html
+
+commit ae6013ace48cd87d308254de8463d31566f8f0b3
+Merge: 6513574 7cd3922
+Author: Omar Lalani <omarlalani@gmail.com>
+Date:   Tue Jul 8 16:42:55 2014 -0500
+
+    Merge branch 'master' of https://github.com/notoriusBIGinteger/cs373-idb
+    
+    Out of order commits?
+
+commit 7cd392288c78e77be4947875c75527ab259d57ec
+Merge: 3c46844 aa1a452
+Author: Kevin Wheeler <kevinwheeler@users.noreply.github.com>
+Date:   Tue Jul 8 16:42:41 2014 -0500
+
+    Merge branch 'master' of github.com:notoriusBIGinteger/cs373-idb
+
+commit 3c468445669b314b64a7c3069275abda2e05fefe
+Author: Kevin Wheeler <kevinwheeler@users.noreply.github.com>
+Date:   Tue Jul 8 16:42:37 2014 -0500
+
+    Views now rendering stub html/template files. Close #14
+
+commit 6513574008d997a4376eed1617799ba73c1a2a81
+Merge: 835d0b3 aa1a452
+Author: Omar Lalani <omarlalani@gmail.com>
+Date:   Tue Jul 8 16:42:32 2014 -0500
+
+    Merge branch 'master' of https://github.com/notoriusBIGinteger/cs373-idb
+
+commit 835d0b3898c4c64f61649b001ff9b82e9120096c
+Author: Omar Lalani <omarlalani@gmail.com>
+Date:   Tue Jul 8 16:42:24 2014 -0500
+
+    menu items for hyde park bar and grill closes #15
+
+commit aa1a45228af6b1bb23e828df70f10d8866854f2b
+Author: Mike Wham <mtwham@humility>
+Date:   Tue Jul 8 16:39:02 2014 -0500
+
+    Update map for hyde park location
+
+commit 677c3820e7097c990e0006fd43bd709c32e0997a
+Author: Mike Wham <mtwham@humility>
+Date:   Tue Jul 8 16:30:43 2014 -0500
+
+    Add hyde park b-n-g
+
+commit c46868565fb539e782a8e8a43a8ee82f0951e39c
+Author: Mike Wham <mtwham@humility>
+Date:   Tue Jul 8 16:25:14 2014 -0500
+
+    Rename similar-alfredo-pasta
+
+commit 341ef9b0caf7591e7a40ad06513a097dff45a95f
+Author: Omar Lalani <omarlalani@gmail.com>
+Date:   Tue Jul 8 16:20:26 2014 -0500
+
+    page containing items similar to alfredo pasta closes #12
+
+commit b683a7a887ff46df9cbdb3a9416df114e3e747c1
+Author: Mike Wham <mtwham@humility>
+Date:   Tue Jul 8 16:00:03 2014 -0500
+
+    Begin on first menu item
+
+commit e58accea4d647f13aabaff44eecbd4b0b6022a9c
+Author: Omar Lalani <omarlalani@gmail.com>
+Date:   Tue Jul 8 15:58:41 2014 -0500
+
+    kirbey lane menu items closes #11
+
+commit 916d48f7cf3cc4e4da57b0a785a805ec7e76824f
+Author: Mike Wham <mtwham@humility>
+Date:   Tue Jul 8 15:18:46 2014 -0500
+
+    remove index.html, not currently needed
+
+commit 39079fcbd59d9e2b5eed197a18342ca354684e42
+Author: Mike Wham <mtwham@humility>
+Date:   Tue Jul 8 15:13:40 2014 -0500
+
+    Add base static html to repo
+
+commit 94ced0ed1c8ebaaf0f2c7e071696b0b3322d0bc6
+Author: Kevin Wheeler <kevinwheeler@users.noreply.github.com>
+Date:   Sun Jul 6 19:10:49 2014 -0500
+
+    forgot to add file to last commit
+
+commit b083e9e020117904135a154f0bb41a2844628182
+Author: Kevin Wheeler <kevinwheeler@users.noreply.github.com>
+Date:   Sun Jul 6 19:03:38 2014 -0500
+
+    got initial/bad solution for url mapping
+
+commit 92cd75c1fcc89287b10873122db53f796154c4c2
+Author: Kevin Wheeler <kevinwheeler@users.noreply.github.com>
+Date:   Sun Jul 6 18:22:49 2014 -0500
+
+    fixed indentation bugs from last commit
+
+commit c456261714b1a2ab24ecf9775ab23e42899f0648
+Author: Kevin Wheeler <kevinwheeler@users.noreply.github.com>
+Date:   Sun Jul 6 18:03:57 2014 -0500
+
+    Updated Models as a group of 3
+
+commit 92720304370c41936215c67296612da78c8819d0
+Author: Group name <groupemail@noreply.com>
+Date:   Sun Jul 6 21:58:35 2014 +0000
+
+    small adjustments to models
+
+commit 99efd253f4cf0fde85eff87f52f2ece29d94d69f
+Author: Kevin Wheeler <kevinwheeler@users.noreply.github.com>
+Date:   Sun Jul 6 16:36:07 2014 -0500
+
+    Registered Models with admin
+
+commit 5c221afd5b7c5328c832373ee24b658a53e06101
+Author: Group name <groupemail@noreply.com>
+Date:   Sun Jul 6 21:27:51 2014 +0000
+
+    ran syncdb after adding ourapp models
+
+commit 177e1085be3b29fc85a0f72243878c8c7dae73fe
+Author: Nathan Heskia <nathan.heskia@utexas.edu>
+Date:   Sun Jul 6 16:25:06 2014 -0500
+
+    Class hierarchies fixed
+
+commit aa3464b6d3439980286f78da833ead505dc96c06
+Author: Nathan Heskia <nathan.heskia@utexas.edu>
+Date:   Sun Jul 6 16:21:58 2014 -0500
+
+    Initial models
+
+commit 06fafa10d3e08615a0b6bdbf920a2aaa820100a2
+Author: Group name <groupemail@noreply.com>
+Date:   Sun Jul 6 20:52:02 2014 +0000
+
+    added ourapp to INSTALLED_APPS
+
+commit 7f857cf1055594b5cdddeb5538ba53e397f33cc6
+Author: Group name <groupemail@noreply.com>
+Date:   Sun Jul 6 20:46:30 2014 +0000
+
+    ran startapp command
+
+commit 7436b60c1b3f1dd7adbcdb6c219449c10ccdce18
+Author: Group name <groupemail@noreply.com>
+Date:   Sun Jul 6 20:41:34 2014 +0000
+
+    ran initial syncdb
+
+commit 68a4df365892d16456a0f3faaa13f426eeb168c8
+Author: Kevin Wheeler <kevinwheeler@users.noreply.github.com>
+Date:   Sun Jul 6 15:38:49 2014 -0500
+
+    added timezone
+
+commit 31ecccedcf36ec95d001fe400e00502a525c22f9
+Author: Group name <groupemail@noreply.com>
+Date:   Sun Jul 6 20:34:11 2014 +0000
+
+    made new project to use python 3.3
+
+commit 9b7de8100cb217cfdbbaafdce4efbdda9a4f68e5
+Author: Kevin Wheeler <kevinwheeler@users.noreply.github.com>
+Date:   Sun Jul 6 14:22:49 2014 -0500
+
+    Set timezone. Ran intial syncdb
+
+commit 6507d790547db77fb4bf20e21824cf0d2b0ef36e
+Author: Group name <groupemail@noreply.com>
+Date:   Sun Jul 6 19:08:28 2014 +0000
+
+    Got project intialized on pythonanywhere
+
+commit 5a6ccc4b8dc17b4bc677a1ea5ec3ae4520f13439
+Author: Kevin Wheeler <kevinwheeler@users.noreply.github.com>
+Date:   Sun Jul 6 13:12:16 2014 -0500
+
+    ran djangoadmin.py makeproject.
+
+commit f70d8a0827d1ae5aa591aa9cd613f955d8a5e509
+Author: Mike Wham <mtwham@gmail.com>
+Date:   Wed Jul 2 20:23:47 2014 -0500
+
+    Add contact info for Mike Wham
+
+commit 3b8c4f72def9e535b262a6567e9e9467d96accb2
+Author: Omar Lalani <omarlalani@gmail.com>
+Date:   Wed Jul 2 20:22:26 2014 -0500
+
+    Updated Readme
+
+commit 0dff2050d1085d94111daa90b11cff8d3cfd8636
+Author: Omar Lalani <omarlalani@gmail.com>
+Date:   Wed Jul 2 20:16:54 2014 -0500
+
+    Initial commit
