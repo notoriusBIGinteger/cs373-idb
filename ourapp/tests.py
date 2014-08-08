@@ -1697,6 +1697,14 @@ class Tests(TestCase):
         Tests.verify_search_results(self, jresponse)
         self.assertEqual(2, len(jresponse))
 
+    def test_search_dish_5(self):
+        Tests.model_instances()
+        response = self.client.get(reverse('search', args=['bacon blank']))
+        b = str(response.content)[2:-1]
+        jresponse = json.loads(b)
+        Tests.verify_search_results(self, jresponse)
+        self.assertEqual(1, len(jresponse))
+
     def test_search_rest_1(self):
         Tests.model_instances()
         response = self.client.get(reverse('search', args=['blank']))
