@@ -94,3 +94,8 @@ max-height:285px;
                 url('/static/img/loader.gif') 
                 50% 50% 
                 no-repeat;}
+.bio
+{
+	padding-left:0px;
+	border-bottom:1px solid black;
+}
