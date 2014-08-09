@@ -1,3 +1,51 @@
+commit cc70e643491f434196a2d9a68e55a9551ab59131
+Author: notoriousBIGinteger <omarlalani@gmail.com>
+Date:   Sat Aug 9 00:49:25 2014 +0000
+
+    Adjust padding on About page, remove : from Kravester:
+
+commit 58b66ce96090073b6c17c7e9d547294c4dfccc4b
+Author: notoriousBIGinteger <omarlalani@gmail.com>
+Date:   Sat Aug 9 00:40:45 2014 +0000
+
+    Fix report sections/subsections
+
+commit 50e752ceadc02919fc56a038ce1143609d865d56
+Author: notoriousBIGinteger <omarlalani@gmail.com>
+Date:   Fri Aug 8 22:31:59 2014 +0000
+
+    modified tests file
+
+commit 0d0298a29a8ca22b094489407fc7841aa766e0c6
+Author: notoriousBIGinteger <omarlalani@gmail.com>
+Date:   Fri Aug 8 03:48:44 2014 +0000
+
+    just kidding now finished writing tests
+
+commit db63d6c7125fa9f2e900551314299076951cef73
+Author: notoriousBIGinteger <omarlalani@gmail.com>
+Date:   Fri Aug 8 03:46:11 2014 +0000
+
+    Finished writing tests
+
+commit 03ebb65398d6fce0cf9f2fdf2ded19660b2480f6
+Author: notoriousBIGinteger <omarlalani@gmail.com>
+Date:   Fri Aug 8 03:26:24 2014 +0000
+
+    more test updating
+
+commit a3c9dc91b22fc12af60d359c4a6ce02e8f98c88a
+Author: notoriousBIGinteger <omarlalani@gmail.com>
+Date:   Fri Aug 8 03:16:57 2014 +0000
+
+    Updated search tests
+
+commit 51d78067770f7e0041a0f25cc3db3c96e0a56de7
+Author: notoriousBIGinteger <omarlalani@gmail.com>
+Date:   Fri Aug 8 00:38:05 2014 +0000
+
+    Add log of commits for phase 3
+
 commit 904cf2e7ccd894e2e5825b1b54345549a2cfd9bd
 Author: notoriousBIGinteger <omarlalani@gmail.com>
 Date:   Thu Aug 7 21:38:12 2014 +0000
